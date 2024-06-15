@@ -1,0 +1,80 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathcomp}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage{array}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{tabularx}
+
+\newtheorem{ishaan}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\renewcommand\qedsymbol{$\blacksquare$}
+
+
+\title{Homework 7}
+\author{Sean Eva}
+\date{March 2021}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item 
+    
+    \begin{align*}
+        ||A^{-1}-B^{-1}|| &= ||A^{-1} + (-B^{-1})||\\
+        &\leq ||A^{-1}||+||-B^{-1}||\\
+        &= ||A^{-1}||+||B^{-1}||\\
+        &= ||A^{-1}||*||B||*||B^{-1}||+||B^{-1}||*||A||*||A^{-1}||\\
+        &= ||A^{-1}||*(||B||*||B^{-1}||+||B^{-1}||*||A||)\\
+        &= ||A^{-1}||*(||B||+||A||)*||B^{-1}||\\
+        &= ||A^{-1}||*(||B||+||-A||)*||B^{-1}||\\
+        &= ||A^{-1}||*||B-A||*||B^{-1}||.
+    \end{align*}
+    
+    \item
+    
+    Hint: It is trivial to see that $\underset{j}{max}|z_j|=||z||$ if all elements of $z$ are zero or if there is only one non-zero element. It is also easy to see that $\underset{j}{max}|z_j|<||z||$ if there are multiple nonzero elements in $z$. Additionally, the maximum value $||z||$ can take on is if all values of $z$ are equal to each other which would result in $\sqrt{\sum_{j=1}^nz_j\overline{z_j}}=\sqrt{\sum_{j=1}^nz_i\overline{z_i}}=\sqrt{nz_i\overline{z_i}}=\sqrt{n}|z_i|$ for $z_i=\underset{j}{max}|z_j|$. Therefore, $\underset{j}{max}|z_j|\leq||z||\leq\sqrt{n}*\underset{j}{max}|z_j|$.\\
+    Actual Question: 
+    \begin{align*}
+        \underset{i, j}{max}|a_{ij}| &\leq \underset{j}\sum{_i=1}^n|a_{ij}|\\
+        &=max|Ax| \text{ for } x\in\mathbb{C}^n \text{ and } ||x||=1\\
+        &= ||A||.
+    \end{align*} Therefore,
+    \begin{align*}
+        \underset{i, j}{max}|a_{ij}| &\leq ||A||\\
+        &=max{||Ax||:||x||=1}\\
+        &\leq n*max||A||\\
+        &\leq n*\sqrt{n}*max|a_{ij}|\\
+        &=n*\sqrt{n}*\underset{i, j}{max}|a_{ij}|.
+    \end{align*} Thus, $\underset{i, j}{max}|a_{ij}|\leq ||A||\leq n*\sqrt{n}*\underset{i, j}{max}|a_{i, j}|.$
+    
+    \item
+    
+    Given that $\kappa (A)=\frac{\underset{k}{max}|\lambda_k|}{\underset{k}{min}|\lambda_k|}=\frac{\Lambda}{\lambda}$. Therefore, 
+    \begin{align*}
+        \frac{\Lambda}{\lambda}(\kappa(P))^{-2} &= \kappa(A)(\kappa(P))^{-2}\\
+        &= \frac{\kappa(A)}{(\kappa(P))^2}.
+    \end{align*} Since $\kappa \geq1$ for any matrix,
+    \begin{align*}
+        \frac{\kappa(A)}{(\kappa(P))^2} &\leq \kappa(A).
+    \end{align*} Since $\kappa(P)\geq1$,
+    \begin{align*}
+        \kappa(A)&\leq\kappa(A)(\kappa(P))^2\\
+        &=\frac{\Lambda}{\lambda}(\kappa(P))^2.
+    \end{align*}
+    
+    \item
+    
+    $\kappa(A)=3.4184, \kappa(A^5)=149.7032, \kappa(A^{10})=1.0116*10^4$.\\
+    The growth rate is caused by the growth in $\underset{j}{max}|\lambda_j|$ and the  growth of $\underset{j}{min}|\lambda_j|$. The largest eigenvalue will grow much faster than the smallest eigenvalue. That means that $\kappa(A)=\frac{\underset{j}{max}|\lambda_j|}{\underset{j}{min}|\lambda_j|}=\frac{\Lambda}{\lambda}$ will grow as $\Lambda$ increases much faster than $\lambda$.
+    
+\end{enumerate}
+
+\end{document}

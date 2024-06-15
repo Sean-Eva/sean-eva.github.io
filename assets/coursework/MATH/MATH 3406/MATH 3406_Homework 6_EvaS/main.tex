@@ -1,0 +1,177 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathcomp}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage{array}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{tabularx}
+
+\newtheorem{ishaan}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\title{Homework 6}
+\author{Sean Eva}
+\date{March 2021}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item 
+    
+    \begin{enumerate}
+        \item 
+        
+        Consider we have two unitary matrices $U \text{ and } V$, that is two say that $U^{-1}=\overline{U}^T$ and $V^{-1}=\overline{V}^T$. The product of these two is $UV$. Therefore,
+        \begin{align*}
+            (UV)^{-1} &= V^{-1}U^{-1}\\
+            &= \overline{V}^T\overline{U}^T\\
+            &= (\overline{U}\overline{V})^T\\
+            &= (\overline{UV})^T.
+        \end{align*}Thus, the product of unitary matrices is also unitary.
+        
+        \item
+        
+        Suppose that $U$ is a unitary matrix, that is to say that $U^{-1}=\overline{U}^T$. Then,
+        \begin{align*}
+            U*U^{-1}&=I\\
+            U*\overline{U}^T&=I\\
+            U^{-1}*(\overline{U}^T)^{-1}&=I\\
+            U*U^{-1}*(\overline{U}^T)^{-1}*U^{-1}&=I\\
+            (\overline{U}^T)^{-1}*U^{-1}&=I\\
+            \overline{U^{-1}}^T*U^{-1}&=I.
+        \end{align*}This implies that $(U^{-1})^{-1}=\overline{U^{-1}}^T$ which means that $U^{-1}$ is also unitary.
+        
+        \item
+        
+        Suppose that $U$ is a unitary matrix, that is to say that $U^{-1}=\overline{U}^T$. Then,
+        \begin{align*}
+            \overline{U}^{-1}&= \overline{U^{-1}}\\
+            &= \overline{\overline{U}^T}\\
+            &= \overline{\overline{U}}^T.
+        \end{align*} Therefore, the complex conjugate of a unitary matrix is also unitary.
+        
+        \item
+        
+        Suppose that $U$ is a unitary matrix, that is to say that $U^{-1}=\overline{U}^T$. Then, 
+        \begin{align*}
+            (U^T)^{-1}&=(U^{-1})^T\\
+            &= (\overline{U}^T)^T\\
+            &= (\overline{U^T})^T.
+        \end{align*} Therefore, the transpose of a unitary matrix is also unitary.
+        
+    \end{enumerate}
+    
+    \item
+    
+    ($\Rightarrow$) Let $R:\mathbb{C}^n \rightarrow \mathbb{R}^{2n}$ be the $\mathbb{R}$-linear isomorphism defined by 
+    $\begin{bmatrix}
+    z_1\\
+    \vdots\\
+    z_n
+    \end{bmatrix}\rightarrow
+    \begin{bmatrix}
+    x_1\\
+    y_1\\
+    \vdots\\
+    x_n\\
+    y_n
+    \end{bmatrix}$, where $z_k=x_k+iy_k$. Let $z=\begin{bmatrix}
+    z_1\\
+    \vdots\\
+    z_n
+    \end{bmatrix}, w=\begin{bmatrix}
+    w_1\\
+    \vdots\\
+    w_n
+    \end{bmatrix}\in \mathbb{C}, z_k=x_k+iy_k, w_k=x_k^{'}+iy_k^{'}$. Suppose that $z$ and $w$ are orthogonal in $\mathbb{C}^n$. That is to say that $z\cdot w=0 \Rightarrow \sum_{k=1}^n\overline{z_k}w_k=0$. Next, $R(z)=\begin{bmatrix}
+    x_1\\
+    y_1\\
+    \vdots\\
+    x_n\\
+    y_n
+    \end{bmatrix}, R(w)=\begin{bmatrix}
+    x_1^{'}\\
+    y_1^{'}\\
+    \vdots\\
+    x_n^{'}\\
+    y_n^{'}
+    \end{bmatrix}$. Then, $R(iw)=\begin{bmatrix}
+    -y_1^{'}\\
+    x_1^{'}\\
+    \vdots\\
+    -y_n^{'}\\
+    x_n^{'}
+    \end{bmatrix}$. Therefore, $R(z)\cdot R(iw)=\sum_{k=1}^n(-x_ky_k^{'}+y_kx_k^{'})$ and $R(z)\cdot R(w) = x_1x_1^{'}+y_1y_1^{'}+...+x_nx_n^{'}+y_ny_n^{'}=\sum_{k=1}^n(x_kx_k^{'}+y_ky_k^{'})$. Since we know, \begin{align*}
+        \sum_{k=1}^n\overline{z_k}w_k&=0\\
+        \sum_{k=1}^n(x_k-iy_k)(x_k^{'}+iy_k^{'})&=0\\
+        \sum_{k=1}^n(x_kx_k^{'}+y_ky_k^{'})+i(x_ky_k^{'}-y_kx_k^{'})&=0\\
+        \sum_{k=1}^n(x_kx_k^{'}+y_ky_k^{'})+i\sum_{k=1}^n(x_ky_k^{'}-y_kx_k^{'})&=0.
+    \end{align*} This implies that both $\sum_{k=1}^n(x_kx_k^{'}+y_ky_k^{'})=0$ and $\sum_{k=1}^n(x_ky_k^{'}-y_kx_k^{'})=0$. This therefore means that $R(z)\cdot R(w)=0$ and $-\sum_{k=1}^n(-x_ky_k^{'}+y_kx_k^{'}=$, which means that $R(z)\cdot R(iw)=0$. Thus, $R(z)$ is orthogonal to both $R(w)$ and $R(iw)$ in $\mathbb{R}^{2n}$\\
+    ($\Leftarrow$) Let $R(z)$ be orthogonal to both $R(w)$ and $R(iw)$ in $\mathbb{R}^{2n}$ That is to say that $\sum_{k=1}^n(x_kx_k^{'}+y_ky_k^{'})=0$ and $\sum_{k=1}^n(-x_ky_k^{'}+y_kx_k^{'})=0$ Therefore, $\sum_{k=1}^n(x_kx_k^{'}+y_ky_k^{'})-i\sum_{k=1}^n(-x_ky_k^{'}+y_kx_k^{'})=\sum_{k=1}^n(x_kx_k^{'}+y_ky_k^{'})-i(-x_ky_k^{'}+y_kx_k^{'})=\sum_{k=1}^n(x_k-iy_k)(x_k^{'}+iy_k^{'})=0$, Thus, $\sum_{k=1}^n\overline{z_k}w_k=0$, which means that $z\cdot w=0$ which means that $z$ and $w$ are orthogonal in $\mathbb{C}^n$.\\
+    Let $z = \begin{bmatrix}
+    z_1\\
+    \vdots\\
+    z_n
+    \end{bmatrix}\in \mathbb{C}^n$. Where $z_k=x_k+iy_k$. Then $R(z)=\begin{bmatrix}
+    x_1\\
+    y_1\\
+    \vdots\\
+    x_n\\
+    y_n
+    \end{bmatrix}, R(iz)=\begin{bmatrix}
+    -y_1\\
+    x_1\\
+    \vdots\\
+    -y_n\\
+    x_n
+    \end{bmatrix}$. Therefore, $R(z)\cdot R(iz)=-x_1y_1+y_1x_1-x_2y_2+y_2x_2-...-x_ny_n+y_nx_n=0$. Thus, $R(z)$ is orthogonal to $R(iz)$ for any $z\in\mathbb{C}^n$
+    
+    \item
+    
+    ($\Rightarrow$) Let $<su, v>=<u, sv>$. Let $A=(a_{ij})_{n\times n}$. Then, $\overline{A}=A^T$ if and only if $\overline{a_{ij}}=a_{ji}$. Let, $e_i$ be an orthonormal basis for $\mathbb{R}^n$. Then we know that $a_{ij}=<Ae_j, e_i>$. Therefore,
+    \begin{align*}
+        \overline{a_ij} &= \overline{<Ae_j, e_i>}\\
+        &= <e_i, Ae_j>\\
+        &= <e_i, TST^{-1}e_j>\\
+        &= <T^{-1}e_i, ST^{-1}e_j>\\
+        &= <u_i, su_j> \text{ for } u_i = T^{-1}e_i, u_j=T^{-1}e_j\\
+        &= <su_i, u_j>\\
+        &= <ST^{-1}e_i, T^{-1}e_j>\\
+        &= <TST^{-1}e_i, e_j>\\
+        &= <Ae_i, e_j>\\
+        &= a_{ji}\\
+        \overline{a_{ij}}&=a_{ji}\\
+        \overline{A}&=A^T
+    \end{align*}\\
+    ($\Leftarrow$) Alternatively, let $\overline{A}=A^T$. Therefore, \begin{align*}
+        \overline{a_{ij}}&=a_{ji}\\
+        \overline{<Ae_j, e_i>} &= <Ae_i, e_j>\\
+        <e_i, Ae_j> &= <Ae_i, e_j>\\
+        <e_i, TST^{-1}e_j> &= <TST^{-1}e_i, e_j>\\
+        <T^{-1}e_i, TST^{-1}e_j> &= <ST^{-1}e_i, T^{-1}>\\
+        <u_i, su_j> &= <su_i, u_j> \text{ where } u_i=T^{-1}e_i, u_j, T^{-1}e_j.
+    \end{align*} Now, let $u, v\in V$, since $T$ is an isomorphism, $\exists x, y\in\mathbb{C}^n$ such that $T(u)=x$ and $T(v)=y$. Therefore, $u=T^{-1}(x)$ and $v=T^{-1}(y)$. Since $\{e_i\}_{i=1:n}$ is an orthonormal basis for $\mathbb{R}^n$ so $<T^{-1}x, ST^{-1}y>=<ST^{-1}x, T^{-1}y> \Rightarrow <u, sv>=<su, v> \forall u, v\in V$
+    
+    \item
+    
+    Given the initial equation, we can solve for these two sequences by,
+    \begin{align*}
+        y_{k+2}&=\frac{5}{2}y_{k+1}-y_k\\
+        y_{k+2}-\frac{5}{2}y_{k+1}+y_k&=0\\
+        s^2-\frac{5}{2}s+1&=0\\
+        (s-2)(s-\frac{1}{2})&=0\\
+        s&= 2, 2^{-1}
+    \end{align*}
+    Therefore, we know that the two sequences that solve the series of values are $2^k$ and $2^{-k}$ to provide the general equation $y_k=C_12^k+C_22^{-k}$. In order to solve for the specific solution given $y_1$ and $y_2$, we would set $k=1, 2$ equal to $y_1, y_2$ respectively, and solve the systems of equation for the values of $C_1 \text{ and } C_2$. The effect of noise as the initial condition of the recursive equation as $n$ increases, the little bit of noise causes the sequence to grow once it had decayed to what was rounded down to $0.0000$.
+    
+\end{enumerate}
+
+\end{document}

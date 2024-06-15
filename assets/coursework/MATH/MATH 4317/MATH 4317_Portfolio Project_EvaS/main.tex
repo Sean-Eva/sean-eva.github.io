@@ -1,0 +1,195 @@
+\documentclass{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Packages
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%amsthm settings
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem{claim}{Claim}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: mathbb
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\A}{\mathbb A}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: greek
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\g}{\gamma}
+\renewcommand{\d}{\delta}
+\newcommand{\e}{\epsilon}
+\renewcommand{\l}{\lambda}
+
+\title{Portfolio Project}
+\author{Sean Eva}
+\date{Spring 2022}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+\begin{theorem}
+(Homework 1, Problem 1) Prove the following directly from the field axioms (Postulate 1 in Section 1.2): For all $x \in \R$ and $n \in \N$, we have that
+\begin{align}\label{eq:geometricSeries}
+(x - 1) \cdot \left(  \sum_{k = 0}^{n-1} x^k \right) = (x^n - 1)
+\end{align}
+Explain each step, including uses of the distributive properties for addition and multiplication. You do not have to explain uses of the associative properties for addition and multiplication.
+\end{theorem}
+
+\begin{proof}
+We are going to proceed by mathematical induction.\\
+\textbf{Base Case:} Let us first consider when $n=1.$ Then $(x-1)*(\sum_{k=0}^{1-1}x^k) = (x-1)(1)$ by the definition of the problem statement. Then by the additive identity we know then that $(x-1)(1) = (x-1)$ which then implies that $(x-1) = (x^1-1)$ which means the statement is true for $n=1.$\\
+\textbf{Inductive Step:} We will then assume that this statement is true for $n=j.$ That is to say that we know that $(x-1)(\sum_{k=0}^{j-1}x^k) = (x^k-1).$ We now want to show it works for $n=j+1$. That is to say that we want to show $(x-1)(\sum_{k=0}^{j+1-1}x^k) = (x^{j+1}-1)$. We could then say by the distributive law $(x-1)(\sum_{k=0}^{j-1}x^k+x^j) = (x-1)(\sum_{k=0}^{j-1}x^k)+(x-1)(x^j) = (x^j-1)+(x-1)(x^j)$. Then we could again invoke the distributive law to say $(x^j-1)+(x^{j+1}-x^j) = x^{j+1}-1$ which is what we wanted to show. Then we know it is then true that $(x-1)(\sum_{k=0}^{n-1}x^k) = (x^n-1)$ by induction.
+\end{proof}
+
+\pagebreak
+\begin{theorem}
+(Homework 2, Problem 2) Find the $\sup$ and $\inf$ of the set 
+\[
+E = \left\{ 2 + \frac{1}{n} : n \in \N \right\} \,. 
+\]
+\end{theorem}
+
+\begin{claim}
+sup(E) = 3
+\end{claim}
+\begin{proof}
+We first want to show that $3$ is an upper bound of $E.$ We want to show that $2+\frac{1}{n} \leq 3: \forall n\in \mathbb{N}$. We can say that $2+\frac{1}{n}\leq 3 \Rightarrow \frac{1}{n}\leq 1.$ Then for all $n\in \mathbb{N}$ we have that $n\geq 1,$ and further that $1\geq \frac{1}{n}.$ Therefore we have that $2+\frac{1}{n}\leq 3.$ Now we want to show that $3$ is the least upper bound of $E$. Let $\epsilon > 0$ if we then take that $3-\epsilon < 3$ we know that that $3-\epsilon$ is not an upper bound of the set $E$. Therefore, we know that $\sup(E)=3.$
+\end{proof}
+\begin{claim}
+inf(E) = 2
+\end{claim}
+\begin{proof}
+We first want to show that $2$ is a lower bound of $E$. We want to show that $2+\frac{1}{n}\geq 2: \forall n\in \N$. We know that $2+\frac{1}{n}\geq 2\Rightarrow \frac{1}{n}\geq 0$, and if we take $1\geq 0$, then for all $n\in \N$ we know then that $\frac{1}{n}\geq 0$. Therefore, $2$ is a lower bound on $E$. We now want to show that $2$ is a greatest lower bound on $E$. Let $\epsilon > 0$ then we have that $2+\epsilon > 2 $ we know that $2+epsilon$ is not a lower bound of the set $E$. Therefore, we then know that $\inf(E) = 2.$
+\end{proof}
+
+\pagebreak
+\begin{theorem}
+(Homework 3, Problem 4) Let $(x_n)$ be defined recursively by 
+\[
+x_{n + 1} = 2 + \sqrt{x_n -2} \,,
+\]
+where $x_1$ is assumed to be $> 3$. Note that the sequence $(x_n)$ is defined. 
+Prove that if $x_n \to x$ for some $x \in \R$, then $x = 3$. 
+\end{theorem}
+
+By theorem 2.8 we know that every convergent sequence is bounded, and since $x_n$ is convergent it is also bounded. I am first going to show that $x_n$ is bounded from below by $3.$
+\begin{proof}
+We are going to prove this statement by mathematical induction.\\
+\textbf{Base case:} We are given that $x_1>3$ by definition so it is true for $n=1$.\\
+\textbf{Inductive step:} Let's assume that $x_n>3$ we then want to show that $x_{n+1}>3$. Then $x_{n+1} = 2 + \sqrt{x_n-2} > 2 + \sqrt{3-2} = 2 + \sqrt{1} = 3.$ Therefore, $x_{n+1} > 3$ and further that $x_n$ is bounded from below by $3.$
+\end{proof}
+Given this we are going to prove the original problem statement.
+\begin{proof}
+Given that $x_n \rightarrow x$ for $x\in \R$, we can say that as $n \rightarrow \infty$ then we can say that $x_n \rightarrow x$ and $x_{n+1} \rightarrow x$. Then we can continue to say that,
+\begin{align*}
+    x &= 2 + \sqrt{x - 2}\\
+    x - 2 &= \sqrt{x - 2}\\
+    (x - 2)^2 &= x - 2\\
+    x^2 - 4x + 4 &= x - 2\\
+    x^2 - 5x + 6 &= 0\\
+    (x - 2)(x - 3) &= 0\\
+    x &= 2, 3.
+\end{align*} But since we know that $x_n$ is bounded below by 3, we can eliminate the fact that $x = 2$ as it is not the biggest lower bound. So we can then determine that if $x_n \rightarrow x$ for some $x\in \R$, then $x = 3.$
+\end{proof}
+
+\pagebreak
+\begin{theorem}
+(Homework 5, Question 4) Let $a_k, b_k \geq 0$ and assume that each of $\sum_1^\infty a_k$ and 
+$\sum_1^\infty b_k$ converge. Prove that $\sum_1^\infty a_k b_k$ converges. 
+\end{theorem}
+
+\begin{proof}
+In order to show that this series converges, it suffices to show that it is Cauchy. Since we know that $\sum_1^\infty a_k, \sum_1^\infty b_k$ converge, we know that they are Cauchy. This further implies that the sequence of partial sums of both of these series converge and are also Cauchy. We will represent these partial sums as $s_n, t_n$ where they are the partial sums of $\sum_1^\infty a_k, \sum_1^\infty b_k$. We then know that the product of Cauchy sequences is Cauchy, so we can take $z_n = s_nt_n$, which is then the product of the partial sums of $\sum_1^\infty a_kb_k$, and since this is Cauchy, it fulfills the Cauchy Criterion (Theorem 6.8). Therefore, we know that $\sum_1^\infty$ is Cauchy and further it converges as desired.
+\end{proof}
+
+\pagebreak
+\begin{theorem}
+(Homework 4, Question 2) Prove that the function 
+\[
+f(x) = \begin{cases} \frac{x^2 + x - 2}{x - 1} & x \neq 1 \\ 3 & x = 1 \end{cases}
+\]
+is continuous on $\R$. 
+\end{theorem}
+
+We will prove this in two parts, $\frac{x^2+x-2}{x-1}$ is continuous on $\R$ then that $f(x)$ is continuous at $x = 1$.
+
+\textbf{Claim: } $\frac{x^2+x-2}{x-1}$ is continuous on $\R$.
+\begin{proof}
+Let us simplify $\frac{x^2+x-2}{x-1} = \frac{(x+2)(x-1)}{x-1} = x+2.$ So we need to show that $x+2$ is continuous on $\R$. If we fix $a\in \R$, for $x\in \R$ we have that $|f(x)-f(a)| = |x+2-(a+2)| = |x-a|$. Given $\epsilon > 0$ if we choose $\delta = \epsilon.$ So we have that $|f(x) - f(a)| = |x - a| < \delta = \epsilon$
+\end{proof}
+\textbf{Claim:} $f(x)$ is continuous at $x=1.$
+\begin{proof}
+Using the same simplification from the first part of this proof that we can write $\frac{x^2+x-2}{x-1} = \frac{(x+2)(x-1)}{x-1} = x+2$ for $\epsilon > 0$ if we choose $\delta = \epsilon$. Then if $|x - 1| < \delta$ we get that $|f(x) - f(3)| = |x + 2 - 3| = |x - 1| < \delta = \epsilon.$ Therefore, we know that $f(x)$ is continuous at $x = 3.$
+\end{proof} Since we have that $\frac{x^2+x-2}{x-1}$ is continuous on $\R$ and that $f(x)$ is continuous at $x = 1$ then we know that $f(x)$ is continuous on $\R.$
+
+\pagebreak
+\begin{theorem}
+(Homework 6, Question 4) Let $f_n, f : E \to \R, n \geq 1$ be continuous functions defined on some set $E \subset \R$. Show that $f_n$ converges to $f$ uniformly on $E$ if and only if 
+\[
+\lim_{n \to \infty} \sup_{x \in E} | f_n(x) - f(x)| = 0 \, . 
+\]
+\end{theorem}
+
+\begin{proof}
+Let assumptions be as above. Let us assume that $f_n$ converges to $f$ uniformly on $E$, that is to say that for every $\epsilon > 0$ there is an $N\in \N$ such that $n \geq N$ implies $|f_n(x) - f(x)| < \frac{\epsilon}{2}$ for all $x\in E.$ This implies that $0 \leq \sup|f_n(x) - f(x)| \leq \frac{\epsilon}{2} < \epsilon$ for all $n > N$. It then follows that $\lim_{n\to \infty} \sup|f_n(x)-f(x)| = 0.$\\
+Conversely, suppose that $\lim_{n \to \infty} \sup_{x \in E} | f_n(x) - f(x)| = 0$, and let $\epsilon > 0.$ We want to show that there exists $N \in \N$ such that $n > N$ implies that $|f_n(x) - f(x)| < \epsilon$ for all $x\in E$. Since $\lim_{n \to \infty} \sup_{x \in E} | f_n(x) - f(x)| = 0$, there exists $N$ such that $n > N$ implies that $\sup|f_n(x)-f(x)| - 0 = \sup|f_n(x)-f(x)| < \frac{\epsilon}{2}.$ Then, by the definition of a supremum, we have that $|f_n(x) - f(x)| \leq \frac{\epsilon}{2}<\epsilon$ for $x \in E$ and $n > N$ as desired.\\
+\end{proof}
+
+\pagebreak
+\begin{theorem}
+(Homework 9, Question 3) Let $A, B \subset \R^n$. Show that if $A \subset B$, then $A^\circ \subset B^\circ$. 
+\end{theorem}
+
+\begin{proof}
+Let assumptions be as in the problem statement. Let us consider $x \in A^\circ$ which is to say that $x$ is in the interior of $A$. This implies that there is a set $U$ such that $x\in U \subseteq A$ and since $A \subset B$ then we know that $U\subseteq A \subset B \Rightarrow x\in U\subset B$ which further implies that $x\in B^\circ$ as desired.
+\end{proof}
+
+\pagebreak
+\begin{theorem}
+(Homework 10, Question 3) Let $E \subset \R^n$ be finite. Prove, directly from the open-cover definition of compactness, that $E$ is compact. 
+\end{theorem}
+
+\begin{proof}
+Let $U$ be an open cover of $E$, there is some $A_0\in U$ such that $0\in A_0$. Since $A_0$ is open and $\lim_{n\to\infty}\frac{1}{n} = 0, \frac{1}{n}\in A_0$ as $n$ is large enough. So there is some $N\in \N$ such that $n \geq N$ that implies that $\frac{1}{n}\in A_0.$ For each $n\in \{1, 2, ..., N-1\}$, let $A_n\in U$ be such that $\frac{1}{n} \in A_n$. Then $\{A_n|n \in \{0, 1, ..., N-1\}\}$ is a finite subcover of $U.$ Since this open cover has finite subcovers, then $E$ is compact as desired.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,287 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework 1C}
+\newcommand{\hmwkDueDate}{Saturday, February 5}
+\newcommand{\hmwkClass}{CS 3510}
+\newcommand{\hmwkClassTime}{}
+\newcommand{\hmwkClassInstructor}{Professor Faulkner}
+\newcommand{\hmwkAuthorName}{\textbf{CS 3510 Staff}}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+
+\maketitle
+
+\pagebreak
+
+
+
+% \title{Homework 1A}
+
+\begin{homeworkProblem}
+\textbf{\large Modular Arithmetic (40 points)} \ \\[2pt]
+\textbf{Part A (15 points)} \\
+One way of defining congruence modulo $n$ is as follows: given integers $x$, $y$, and $n > 0$, we say that $x \equiv y \mod n$ when $x = y + cn$, with $c$ integer. Prove that if $x \equiv x' \mod n$, then for any polynomial function with integer coefficients $f$, we have $f(x) \equiv f(x') \mod n$. We say $f$ is a polynomial with integer coefficients of degree $k$ if $f$ is of the form $f(x) = \sum_{i=0}^k a_i x^i$, where all $a_i$ and $k$ are integers.\\
+
+\textbf{Part B (10 points)} \\
+Solve for $x$ in each of the following using modular exponentiation and/or Fermat's little theorem.  Show your work. You may NOT use a calculator.
+\begin{enumerate}
+    \item $27^{43} \equiv x \mod 127$
+    \item $2^{2n} \equiv x \mod 3$
+    \item $5^8 \equiv x \mod 13$
+\end{enumerate}
+
+\textbf{Part C (10 points)} \\
+Use the Extended Euclidean algorithm to find a pair of integers $x$ and $y$ satisfying $57x - 91y = 1$ if such a pair exists.\\
+
+\textbf{Part D (5 points)} \\
+Prove or disprove the following statement
+$$x^y \equiv x^{y'} \text{mod } n \text{ if } y = y' \text{mod } n$$
+\end{homeworkProblem}
+
+\textbf{Part A}
+
+\begin{proof}
+Given that $f(x) = \sum_{i=0}^ka_ix^i = a_kx^k+a_{k-1}x^{k-1} + ... + a_1x+a_0,$ where all $a_i$s and $k$ are integers. Since, $x\equiv x'\mod n$, then $x^p \equiv x'^p\mod n$ where $p$ is an integer. Therefore, $x_px^p \equiv a_px'^p\mod n$ where the $a_p$s are integers. Adding these congruences for $p= 0, 1, ..., k$ we have that $A-0+a_1x+a_2x^2+...+a_kx^k\equiv a_0+a_1'+...+a_kx'^k\mod n.$ Therefore we have that $f(x)\equiv f(x')\mod n.$
+\end{proof}
+
+\textbf{Part B}
+
+\begin{enumerate}
+    \item 
+    
+    $27^{43} = (27^2)^{21}*27 = (729)^{21}*27 \equiv (94)^{21}*27 = (94^2)^{10}*94*27 = (8836)^{10}*94*27\equiv (73)^{10}*94*27 = (73^2)^5*94*27 = (5329)^5*94*27\equiv (122)^5*94*27 = (122^2)^2*122*94*27 = (14884)^2*122*94*27\equiv (25)^2*122*94*27 = (625)*122*94*27 \equiv 177*122*94*27 = 14274*94*27 \equiv 50*94*27 = 4700*27 \equiv 1*27 \equiv 27 \mod 127$
+    
+    \item
+    
+    $2^{2n} = (2^2)^n = (4)^n \equiv (1)^n \equiv 1 \mod 3$
+    
+    \item
+    
+    $5^8 = (5^2)^4 = (25)^4 \equiv (-1)^4 \equiv 1 \mod 13$
+    
+\end{enumerate}
+
+\textbf{Part C}
+
+\begin{align*}
+    91 &= 57(1) + 34\\
+    57 &= 34(1) + 23\\
+    34 &= 23(1) + 11\\
+    23 &= 11(2) + 1\\
+    1 &= 23 - 11(2)\\
+    1 &= 23 - (34-23(1))(2)\\
+    1 &= 23(3) - 34(2)\\
+    1 &= (57 - 34(1))(3) - 34(2)\\
+    1 &= 57(3) - 34(5)\\
+    1 &= 57(3) - (91 - 57(1))(5)\\
+    1 &= 57(8) - 91(5)
+\end{align*}
+
+\textbf{Part D}
+
+Consider (1) in Part B. We showed that it is true that $27^{43} \equiv 27 \mod 127.$ However, by Fermat's little theorem that $a^p\equiv a \mod p$ and since $127$ is prime then $27^{127} \equiv 27 \mod 127$. Additionally then $43\not\equiv 127 \equiv 0 \mod 127$. Therefore the statement is disproven.
+
+\clearpage
+
+\begin{homeworkProblem}
+\textbf{\large RSA Cryptosystem (30 points)}\\
+
+\textbf{Part A (20 points)}\ \\[2pt]
+Suppose Alice wants to send Bob a message using the RSA scheme.
+\begin{enumerate}
+    \item Who should generate the RSA keys?
+    \item Suppose the person generating the key chooses the primes $p = 13$ and $q = 29$ and the encryption exponent $e = 5$. What must the decryption exponent $d$ be? Show your work. You may use a calculator.
+    \item If the message being sent is $m = 6$, then what is the encrypted message? Show your work. You may use a calculator.
+\end{enumerate} \ 
+
+\textbf{Part B (10 points)}
+Suppose that when you generate your RSA key you pick $p$ and $q$ as random 1024-bit primes, and it turns out that the encryption exponent $e = 5$ works. At first glance, it might seem like using this small value for $e$ is helpful since it would require less computation to encrypt messages. But there's actually a problem here, and you should modify your algorithm to ensure that $e$ is suitably large. Why is this?\\
+
+(\textbf{Hint:} Think about what happens when the message is really short.)
+\end{homeworkProblem} \\[12pt]
+
+\textbf{Part A}
+
+\begin{enumerate}
+    \item 
+    
+    The RSA keys should be generated by Bob.
+    
+    \item
+    
+    So if we take $N = 13 * 29 = 377,$ and subsequently, $(13-1)(29-28) = 336.$ Then $\gcd(5, 336) = 1$ means we can perform the extended Euclidean algorithm and get that $1 = 336(-4) + 5(269)$. Therefore, the decryption exponent is $d=269.$
+    
+    \item
+    
+    To encrypt the message we need to simply do $m^e\mod (N)$ which is $6^5 \mod 377 \equiv 236\mod 377$. So Alice will send Bob the message $236.$
+    
+\end{enumerate}
+
+\textbf{Part B}
+
+If we use two primes that are $1024$-bit then $N$ can be a very large number. If we choose $e$ to be very small like $e=5$ then we can run the risk that when we process the encryption of $m^e \mod N$ with a relatively small $m$ then it could get confused when trying to decrypt the message. If the message is very small and it is encrypted, then the process is then similarly done to decrypt it by applying $(m^e)^d$ it might not loop back around to the original intended message, it might be large enough $\mod N$.
+
+\clearpage
+
+\begin{homeworkProblem}
+\textbf{\large Fermat's Primality Test (30 points)}\\
+
+To answer the following questions, consider the following function. Show your work (you can use a calculator).
+
+\begin{verbatim}
+    def naiveIsPrime(N, k):
+        for i = 1 to k:
+            x = a integer in the range [2, N-1] chosen uniformly at random
+            if (x^(n-1) % n) != 1:
+                return false
+        return true
+\end{verbatim}
+
+\begin{enumerate}
+    \item (10 points) What is the probability that naiveIsPrime(13, 1) returns true?
+    
+    Since $13$ is prime by Fermat's Little Theorem it is true that $a^{12} \equiv 1 \mod 13.$ Therefore, in this algorithm we know that for any int $x$ in the range $[2, N-1]$ that $x^{13-1} \mod n$ will be $\equiv 1$. So the probability that naiveIsPrime(13,1) returns true is $100\% $.
+    
+    \item (10 points) What is the probability that naiveIsPrime(9,1) returns true?
+    
+    Since $9$ is not prime, we cannot use Fermat's Little Theorem. If we observe the possibilities, we see that $2^8\equiv 4\mod 9, 3^8 \equiv 0\mod 9, 4^8 \equiv 7\mod 9, 5^8 \equiv 7\mod 9, 6^8 \equiv 0\mod 9, 7^8 \equiv 4\mod 9, 8^8 \equiv 1\mod 9.$ Therefore, the probability that the algorithm returns true is $\frac{1}{8}$
+    
+    \item (10 points) What is the probability that naiveIsPrime(9,5) returns true?
+    
+    We can use the findings from $2$ to help with this problem, we simply need naiveIsPrime(9,1) to return true 5 times. Therefore, the probability that algorithm will return true is $\frac{1}{8^5}$.
+    
+\end{enumerate}
+\end{homeworkProblem} \\[12pt]
+
+\end{document}

@@ -1,0 +1,81 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathcomp}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage{array}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{graphicx}
+
+\newtheorem{ishaan}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\title{Homework 9}
+\author{Sean Eva}
+\date{September 2021}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item 
+    
+    Absolute Magnitude: $m-M = 5\log(\frac{d}{10})$. According to the colorful diagram, an M0 Ib star has absolute magnitude of about $-4$. Therefore,
+    \begin{align*}
+        m-M &= 5\log(\frac{d}{10})\\
+        1-(-4) &= 5\log(\frac{d}{10})\\
+        d &= 100\text{pc}
+    \end{align*}
+    
+    \item
+    
+    Stefan-Boltzmann Law: $L\propto R^2T^4$. Sun temp: $6000k$, Radius $R_\odot$, Mass $M_\odot$. Then for an M0 V star
+    \begin{align*}
+        L &= (\frac{R_{M0V}}{R_\odot})^2(\frac{T}{6000k})^4\\
+        10^{-2} &= (\frac{R_{M0}}{1})^2(\frac{4400}{6000})^4\\
+        R_{M0V} &= 0.19 R_\odot.
+    \end{align*} And for an M0 Ia star,
+    \begin{align*}
+        L &= (\frac{R_{M0Ia}}{R_\odot})^2(\frac{T}{6000k})^4\\
+        10^5 &= (\frac{R_{M0Ia}}{1})^2(\frac{4400}{6000k})^4\\
+        R_{M0Ia} &= 588.03 R_\odot.
+    \end{align*}
+    
+    \item
+    
+    Stefan-Boltzmann Law: $L\propto R^2T^4$. Betelgeus(4000k, M0 Ib), luminosity: $10^{3.5}$
+    \begin{enumerate}
+        \item 
+        
+        \begin{align*}
+            \frac{10^{3.5}}{10^2} &= (R)^2(\frac{4000}{4000})^4\\
+            R &= 5.62 \text{ times larger}
+        \end{align*}
+        
+        \item
+        
+        \begin{align*}
+            \frac{10^{3.5}}{10^{4.2}} &= (R)^2(\frac{4000}{25000})^4\\
+            R &= 17.448 \text{ times larger}
+        \end{align*}
+        
+        \item
+        
+        \begin{align*}
+            \frac{10^{3.5}}{1} &= (R)^2(\frac{4000}{5800})^4\\
+            R &= 118.23\text{ times larger}
+        \end{align*}
+        
+    \end{enumerate}
+    
+\end{enumerate}
+
+\end{document}

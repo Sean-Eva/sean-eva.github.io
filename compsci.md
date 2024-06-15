@@ -6,4 +6,4 @@ classes: wide
 author_profile: true
 ---
 
-CompSci Stuff
+## CS 3510: Design and Analysis of Algorithms

@@ -1,0 +1,366 @@
+\documentclass[letterpaper,12pt,addpoints]{exam}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{epic}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+ 
+\qformat{Question \thequestion\dotfill \emph{\totalpoints\ point}}
+
+\renewcommand{\Pr}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\begin{document}
+ 
+\header{MATH 3235}{Final Exam}{Due May 4, 2021 at 5:30pm}
+\firstpagefooter{}{}{}
+\pagestyle{headandfoot}
+
+\vspace*{1cm}
+\begin{center}
+\fbox{\parbox{6in}{\centering {\bf This is a take home final exam. You can use 
+your notes, my online notes on canvas and the text book. 
+You are supposed to work on your own text without external help. I'll be 
+available to answer question in person or via email. Please, write clearly and 
+legibly and take a readable scan before uploading.}}}
+\end{center}
+
+\vspace*{1cm}
+\begin{center}
+\fbox{\parbox{6in}{\centering To solve the Exam problems, I have not 
+collaborated with anyone nor sought external help and the material presented is 
+the result of my own work.
+\bigskip
+\bigskip
+
+
+
+\noindent Signature: Sean Eva
+}}
+\end{center}
+
+
+\vspace*{\fill}
+
+\vspace{0.5cm}
+\noindent
+\makebox[\textwidth]{Name (print): Sean Eva}
+\vspace{0.5cm}
+
+\vspace*{\fill}
+ 
+\begin{center}
+\gradetable[h][questions]
+\end{center}
+\vspace{0.5cm}
+\begin{center}
+\bonusgradetable[h][questions]
+\end{center}
+\vspace{0.5cm}
+
+\vspace*{\fill}
+\newpage
+
+
+%\printanswers
+
+\setcounter{page}{1}
+\footer{}{Page \thepage\ of \numpages}{}
+
+\begin{questions}
+\question Let $X$ be a continuous r.v. with p.d.f. given by
+\[
+ f(x)=\begin{cases} p+2(1-p)x & 0<x<1 \\ 0 & \mathrm{otherwise}\end{cases}
+\]
+where $p$ is a parameter.
+
+\begin{parts}
+\part[10] for which value of $p$ is $f$ a valid p.d.f.? ({\bf Hint}: remember 
+that there are 2 conditions you should check.)
+
+In order for this to be a valid p.d.f., it must meet two conditions.\\
+$(1): \int_{-\infty}^{\infty}f(x)dx=1$.\\
+Then, $\int_{0}^1f(x)dx=1 : \forall p$. This then means that $p$ can take on any real value.\\
+$(2): f(x)\geq0,$ for all $x$, and since $X$ is a continuous random variable, it needs to be piecewise continuous. Therefore, $lim_{0^+}=lim_{0^-1}=0$, and in order for this to be true $p=0$.\\
+Therefore, in order for this p.d.f. to be valid for random variable $X$, p=0. This then redefines $f(x)$ as\\
+\[f(x)\begin{cases}
+2x & 0<x<1\crcr
+0 & \text{otherwise}
+\end{cases}
+\]
+
+\vspace*{\fill}
+
+\part[10] Compute the expected value $\E(X)$ and the variance ${\rm var}(X)$ of $X$.
+
+$\mathbb{E}(X)=\int_{0}^{1}x*f(x)dx=\int_0^12x^2dx=\frac{2}{3}[x^3]^1_0=\frac{2}{3}$\\
+$var(X)=\int_{0}^1x^2*f(x)dx-(\int_0^1xf(x)dx)^2=\int_0^12x^3dx-(\int_0^12x^2)^2=\frac{1}{2}[x^4]^1_0-(\frac{2}{3}[x^3]^1_0)^2=\frac{1}{2}-(\frac{2}{3})^2=\frac{1}{2}-\frac{4}{9}=\frac{1}{18}$.
+
+\vspace*{\fill}\eject
+
+\part[10]
+Show that
+\[
+ \E\left(\left(X-\frac23\right)^2\right)\geq \left(\frac p6\right)^2
+\]
+({\bf Hint}: use Jensen inequality.)
+
+Consider the function $g(X)=(X-\frac{2}{3})^2$. By using the Jensen inequality, we know that $\mathbb{E}(g(X))\geq g(\mathbb{E}(X))$. Therefore, $\mathbb{E}((X-\frac{2}{3})^2)\geq (\mathbb{E}(X)-\frac{2}{3})^2$. Given that $\mathbb{E}(X)=\frac{2}{3}$, $\mathbb{E}((X-\frac{2}{3})^2)\geq (\frac{2}{3}-\frac{2}{3})^2=0$. We also know that $p=0$, so $(\frac{p}{6})^2=(\frac{0}{6})^2=0$. Therefore, the inequality of $\mathbb{E}((X-\frac{2}{3})^2)\geq (\frac{p}{6})^2$ holds.
+
+\vspace*{\fill}
+
+
+\end{parts}
+
+\vspace*{\fill}\eject
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\question[15] Let $N_k$, $k=1,2,3,\ldots$, be an infinite sequence of 
+geometric random variable with parameter $p_k=\frac{\lambda}k$, that is
+\[
+ \Pr(N_k=n)=(1-p_k)^{n-1}p_k \qquad\mathrm{for\ } n\geq1\, .
+\]
+and $\Pr(N_k=n)=0$ for $n<1$.
+Moreover let $Y$ be an exponential r.v. with parameter $\lambda$, that is
+\[
+ f_Y(y)=\lambda e^{-\lambda y}\qquad\mathrm{for\ } y\geq 0\,
+\]
+and $f_Y(y)=0$ for $y<0$.
+
+Show that $Z_k=N_k/k$ converge in distribution to $Y$ as $k\to\infty$. ({\bf 
+Hint}: compute the c.d.f. of $Z_k$, that is $F_k(x)=\Pr(Z_k\leq x)$ for every 
+real number $x$.)
+
+\begin{align*}
+    F_k(x) &= \mathbb{P}(Z_k\leq x)\\
+    &= \mathbb{P}(\frac{N_k}{k}\leq x)\\
+    &= \mathbb{P}(N_k\leq kx)\\
+    &= \mathbb{P}(N_k=1)+\mathbb{P}(N_k=2)+...+\mathbb{P}(N_k=kx)\\
+    &= (1-P_k)^{1-1}P_k+(1-P_k)^{2-1}P_k+...+(1-P_k)^{kx-1}P_k\\
+    &= P_k((1-P_k)^0+(1-P_k)^1+...+(1-P_k)^{kx-1})\\
+    &= P_k(1+(1-P_k)^1+...+(1-P_k)^{kx}-(1-P_k)^{kx})\\
+    &= P_k(1-(1-P_k)^{kx}+\frac{(1-P_k)(1-(1-P_k)^{kx})}{1-(1-P_k)})\\
+    &= P_k(1+\frac{-(1-P_k)^{kx}+(1-P_k)^{kx+1}+(1-P_k)-(1-P_k)^{kx+1}}{P_k})\\
+    &= \frac{P_k}{P_k}*1-(1-P_k)^{kx}\\
+    &= 1-(1-\frac{\omega }{k})^{kx}\\
+    &= 1-((1-\frac{\omega }{k})^k)^x\\
+    &= 1-e^{-\omega  x}\\
+    &= \int_0^x\omega e^{-\omega  x}dx\\
+    &= \int_{-\infty}^x\omega E^{-\omega  x}dx\\
+    &= \int_{-\infty}^xf(x)dx.
+\end{align*} Therefore, $f(x)$ is an exponential p.d.f., and we can say that $Z_k=\frac{N_k}{k}$ converges in distribution to $Y$ as $k\rightarrow \infty$.
+
+\vspace*{\fill}\eject
+
+
+
+
+
+\question A student is attempting a multiple choices exam. For each 
+question there are 4 possible answers. He has a probability of 0.75 of knowing 
+the correct answer. If he does not know the answer he chooses one answer 
+uniformly and randomly. All questions and answers are independent. 
+
+To get a B he need to answer correctly 85\% of the questions while to get an A 
+he needs to answer correctly 95\% of the questions.
+
+To answer the questions below, you can use Matlab or R (or any other 
+software) to compute the needed 
+values c.d.f. of a Standard Normal r.v.. In case you do not have them 
+available, this is an online 
+\href{https://keisan.casio.com/exec/system/1180573191}{
+calculator}.
+
+\begin{parts}
+\part[10]  If the test contains 40 questions, use a normal approximation 
+(CLT) to compute the probability $p_B$ that the student will get at least a B 
+and the probability $p_A$ that the student will get a A.
+
+In order to developed a normal distribution approximation, we first need to solve for a mean and standard deviation for this situation. First we will develop three probabilities,\\
+$p(\text{he knows the answer})=\frac{3}{4},$\\
+$p(\text{he doesn't know the answer but still gets it correct})=\frac{1}{4}$\\
+$p(\text{he gets the question correct})=\frac{3}{4}+(\frac{1}{4})(\frac{1}{4})=\frac{13}{16}$.\\
+Therfore, the mean of this situation would simply be $\mu_x=\mathbb{E}(x)=n*p=40*\frac{13}{16}=32.5 \text{ or } 81.25\%.$. Similarly, the standard deviation will be $\sigma_x=\sqrt{\sigma_x^2}=\sqrt{var(x)}=\sqrt{n*p*(1-p)}=\sqrt{40*\frac{13}{16}*\frac{3}{16}}=\sqrt{\frac{195}{32}}\approx 2.47$.\\
+Then, using a normal distribution, we know the probability that he gets at least a B is $0.27$ or $27\%$, and the probability that he will get at least an A is $0.012$ or $1.2\%$.
+
+\vspace*{\fill}\eject
+
+
+\part[15] Let $p_B$ be the probability that a student that knows 75\% of the 
+answers will get a B or more. If the teacher wants $p_B$ to be less than 0.025, 
+how many questions should there be on the exam. 
+
+Given that we want this probability to be less than $0.025$, that means that we need the probability of getting a B to be 2 standard deviations away from the mean. Therefore, we can use the standard z-score formula for the normal distribution.
+\begin{align*}
+    z &= \frac{x-\mu}{\sigma}\\
+    2 &= \frac{0.85*n-n*\frac{13}{16}}{\sqrt{n*\frac{13}{16}*\frac{3}{16}}}\\
+    n &= 433.333.
+\end{align*} However, since there cannot be a third of a question, the teacher must have 434 questions on the examination.
+
+\vspace*{\fill}\eject
+ 
+ 
+\end{parts}
+
+
+\question Let $X$ be a continuous r.v. with uniform distribution in $[-1,1]$ and 
+$Y$ be such that $\Pr(Y=1)=\Pr(Y=-1)=0.5$, $X$ and $Y$ independent. Consider the 
+r.v. $Z=XY$. 
+
+\begin{parts}
+\part[10] Find the p.d.f. of $Z$.
+
+We will first find the CDF of $Z$.
+\begin{align*}
+    \mathbb{P}(Z\leq z) &= \mathbb{P}(XY\leq z)\\
+    &= \mathbb{P}(XY\leq z, Y=-1)+\mathbb{P}(XZ\leq z, Y=1)\\
+    &= \mathbb{P}(X(-1)\leq z, Y=-1)+\mathbb{P}(X\leq z, Y=1)\\
+    &= \mathbb{P}(X\geq -z)\mathbb{P}(Y=-1)+\mathbb{P}(X\leq z)\mathbb{P}(Y=1)\\
+    &= (1-\frac{1-z}{2})(\frac{1}{2})+(\frac{z+1}{2})(\frac{1}{2})\\
+    &= \frac{1}{4}(z+1)+\frac{1}{4}(z+1)\\
+    &= \frac{z+1}{2} = F_Z(z).
+\end{align*} Then, PDF of $Z$ will be $\frac{\partial F_Z(z)}{\partial Z}=\frac{1}{2}$. Then, $f_Z(z)=\frac{1}{2}$ for $-1\leq Z\leq 1$.
+
+\part[10] Are $Z$ and $Y$ independent?
+
+$\mathbb{E}(Z)=\int_{-1}^1z\frac{1}{2}dz=\frac{1}{2}*\frac{1}{2}[z^2]^1_{-1}=\frac{1}{4}(1-1)=0$.\\
+$\mathbb{E}(Y)=(-1)(\frac{1}{2})+1(\frac{1}{2})=\frac{1}{2}-\frac{1}{2}=0$\\
+Now we will find the CDF and PDF of $ZY=M$
+\begin{align*}
+    \mathbb{P}(M\leq m) &= \mathbb{P}(YZ\leq m)\\
+    &= \mathbb{P}(Z(-1)\leq m, Y=-1)+\mathbb{P}(Z\leq m,Y=1)\\
+    &= \mathbb{P}(Z\geq -m)\mathbb{P}(Y=-1)+\mathbb{P}(Z\leq m)\mathbb{P}(Y=1)\\
+    &= \frac{1}{2}(\frac{1+m}{2})+\frac{1}{2}(\frac{m+1}{2})=\frac{1}{2}(m+1) : -1\leq m\leq 1.
+\end{align*} Then, $f_M(m)=\frac{d}{dm}(\frac{m+1}{2})=\frac{1}{2}: -1\leq m \leq 1$. Then the PDF of $YZ$ is $f_M(m)=\frac{1}{2}$. $\mathbb{E}(YZ)=\mathbb{E}(M)=\int_{-1}^1\frac{1}{2}mdm=\frac{1}{4}[m^2]^1_{-1}=0-.$ So as $\mathbb{E}(YZ)=\mathbb{E}(Y)\mathbb{E}(Z)=0 * 0 = 0$, $Y$ and $Z$ are independent.
+
+\end{parts}
+
+\vspace*{\fill}\eject 
+
+\question[10]
+Let $X_1$ and $X_2$ be two independent exponential r.v. with expected 
+value $\lambda$. Find the joint p.d.f. of $Y_1=X_1+X_2$ and $Y_2=X_1-X_2$ and 
+the marginal p.d.f. of $Y_2$. ({\bf Hint}: pay attention to the possible values 
+of $Y_1$ and $Y_2$)
+
+The expected value of an exponential r.v. is equal to the inverse of the parameter. That is to say that the parameter for both exponential r.v.s $X_1$ and $X_2$ is $\frac{1}{\lambda}$. That is to say that $f_{X_1}(x_1)=\frac{1}{\lambda}*e^{-\frac{1}{\lambda}x_1}$ and $f_{X_2}(x_2)=\frac{1}{\lambda}*e^{-\frac{1}{\lambda}x_2}$. Therefore, the p.d.f. of $Y_1$ is,
+\begin{align*}
+    f_{Y_1}(y_1) &= \int_{-\infty}^{\infty}f_{X_1}(x_1)f_{X_2}(y_1-x_1)dx_1\\
+    &= \int_0^{y_1}\frac{1}{\lambda}e^{-\frac{1}{\lambda}x_1}\frac{1}{\lambda}e^{-\frac{1}{\lambda}(y_1-x_1)}dx_1\\
+    &= \frac{1}{\lambda}\frac{1}{\lambda}e^{-\frac{1}{\lambda}y_1}\int_0^{y_1}e^{(\frac{1}{\lambda}-\frac{1}{\lambda})x_1}dx_1\\
+    &= \frac{1}{\lambda^2}y_1e^{-\frac{1}{\lambda}y_1}.
+\end{align*} Similarly, the p.d.f. of $Y_2$ is,
+\begin{align*}
+    f_{Y_2}(y_2) &= \int_{-\infty}^{\infty}f_{X_1}(x_1)f_{X_2}(x_1-y_2)dx_2\\
+    &= \int_0^{\infty}\frac{1}{\lambda}e^{-\frac{1}{\lambda}x_1}\frac{1}{\lambda}e^{-\frac{1}{\lambda}(x_1-y_2)}dx_2\\
+    &= \frac{1}{\lambda}e^{\frac{1}{\lambda}y_2}\int_0^{\infty}\frac{1}{\lambda}e^{-2\frac{1}{\lambda}x}dx_2\\
+    &= \frac{1}{2\lambda}e^{\frac{1}{\lambda}z}.
+\end{align*}
+
+\vspace*{\fill}\eject
+
+\bonusquestion[15] Let $N_1$, $N_2$ and $N_3$ be discrete random 
+variables with joint probability mass function
+\[
+ p(n_1,n_2,n_3)=\Pr(N_1=n_1\,\&\, N_2=n_2\,\&\, 
+N_3=n_3)=\frac{3^{-N}N!}{n_1!n_2!n_3!}
+\]
+if $n_1+n_2+n_3=N$ and 0 otherwise.
+
+Compute the marginal mass function $p_{N_1}$ of $N_1$, 
+that is
+\[
+ p_{N_1}(n_1)=\Pr(N_1=n_1)\, 
+\]
+and the conditional mass function $p_{N_2,N_3 | N_1}$ of $N_2$ and 
+$N_3$ given $N_1$, that is
+\[
+ p_{N_2,N_3 | N_1}(n_2,n_3 | n_1)=\Pr(N_2=n_2\,\&\, N_3=n_3\, |\, N_1=n_1)\,.
+\]
+({\bf Hint}: you can answer the question without doing any computation. Think 
+what situation is described by $N_1$, $N_2$ and $N_3$.)
+
+\begin{align*}
+    p_{N_1} &= \sum_{n_1\in N_2}(\sum_{n_3\in N_3}(\frac{3^{-N}N!}{n_1!n_2!n_3!}))\\
+    p_{N_2,N_3|N_1} &= \frac{p(n_1,n_2,n_3)}{p_{n_1}}\\
+    &= \frac{\frac{3^{-N}N!}{n_1!n_2!n_3!}}{\sum_{n_1\in N_2}(\sum_{n_3\in N_3}(\frac{3^{-N}N!}{n_1!n_2!n_3!}))}.
+\end{align*}
+
+\vspace*{\fill}\eject
+
+
+\bonusquestion[15] Let $X_i$, $i=1,\ldots,N$ be independent and identically 
+distributed continuous r.v. with median $m$, that is
+\[
+ \Pr(X_i\leq m)=\frac12\, .
+\]
+Show that
+\[
+ \lim_{N\to\infty}\Pr\left(\min_{1\leq i\leq N}(X_i)\leq m<\max_{1\leq i\leq 
+N}(X_i)\right)=1\, .
+\]
+
+
+
+\vspace*{\fill}\eject
+
+
+\end{questions}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \centerline{\bf Useful Formulas}
+% 
+% \begin{itemize}
+% 
+% \item{\bf Normal Distribution}: if $Z$ is a standard normal r.v. then its  
+% density function is 
+% \[
+%  f(z)=\frac1{\sqrt{2\pi}}e^{-\frac{z^2}2}
+% \]
+% %
+% while $E(Z)=0$ and $V(Z)=1$. The moment generating function $M_Z(t)$ is
+% given by
+% \[
+%  M_Z(t)=e^{\frac{t^2}2}\,.
+% \]
+% Moreover 
+% \[
+% \Phi(z)=\Pr(Z\leq z) 
+% \]
+% is given in the table on next page. Finally if $X$ is normal with $\E(X)=\mu$ 
+% and $V(X)=\sigma^2$ then
+% \[
+%  Y=\frac{X-\mu}\sigma
+% \]
+% is normal standard.
+% 
+% \item{\bf Jensen's Inequality}: If $X$ is a r.v. and $g$ is a convex function 
+% then
+% \[
+%  \E(g(X))\geq g(\E(X))\, .
+% \]
+% 
+% \item{\bf CLT}: if $X_i$ is a sequence of i.i.d. random variable with expected 
+% value $\mu$ and variance $\sigma^2$ and
+% \[
+%  S_n=\frac{1}{\sqrt{n}}\sum_{i=1}^n \frac{X_i-\mu}\sigma
+% \]
+% then $S_n$ converges in distribution to a normal standard r.v. $Z$. 
+% 
+% \item{\bf Convergence in Distribution}: we say that the sequence $X_n$ converge 
+% in distribution to $X$ if
+% \[
+%  \Pr(X_n\leq x)\to_{n\to\infty}\Pr(X\leq x)
+% \]
+% for every $x\in\mathbb{R}$.
+% 
+% \end{itemize}
+% 
+% \vglue -3cm
+% \includepdf[pages={2}]{ProbTab}
+
+\end{document}

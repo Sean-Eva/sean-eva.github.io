@@ -1,0 +1,172 @@
+\documentclass[11pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Packages
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+\usepackage{graphicx}
+%\usepackage{hyperref}
+%\usepackage{mathrsfs}
+%\usepackage{color}
+%\usepackage{bm}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%amsthm settings
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{claim}{Claim}
+\newtheorem{definition}{Definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: mathbb
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\A}{\mathbb A}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: greek
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\g}{\gamma}
+\renewcommand{\d}{\delta}
+\newcommand{\e}{\epsilon}
+\renewcommand{\l}{\lambda}
+\newcommand{\bx}{{\bf x}}
+
+\title{Homework 2}
+\author{Sean Eva}
+
+\begin{document}
+
+\maketitle
+
+\begin{problem}
+Say whether or not the following the following subsets of $\R^2$ are connected:
+\begin{equation*}
+    A = \{(x, y) \in \R^2, \|x\| \leq 1, \|y\| \leq 1\},\hspace{0.5cm} B = \{(x, y)\in \R^2, xy = 1\} \cup \{(0, y)\in \R^2, y \in \R\},
+\end{equation*}
+\begin{equation*}
+    C = \R^2 - \Q^2,\hspace{0.5cm} D = \{(x, y)\in \R^2; \|x\| > 1, \|y\| > 1\}.
+\end{equation*}
+\end{problem}
+
+\begin{claim}
+A is connected.
+\end{claim}
+\begin{proof}
+    Let $(a, b), (c, d) \in A$. We will construct a path between them that lies entirely in A. Without loss of generality, assume that $a\leq c$ and $b\leq d$. Let us then define the continuous function $f: [0, 1] \to \R^2$ by $f(x) = ((1 - x)a + xc, (1 - x)b + xd)$ for $0 \leq x \leq 1$. Then for $f(0) = (a, b)$ and $f(1) = (c, d)$, and since $f(x)$ is in $A$ for all $x$ and we have that $A$ is path-connected implying that $A$ is connected as desired.
+\end{proof}
+\begin{claim}
+    B is not connected.
+\end{claim}
+\begin{proof}
+    By definition of $B$, we know that $(1, 1)$ and $(-1, -1)$ are in $B$ but there is no path that lies entirely in $B.$ Suppose for the sake of contradiction that there does exists a path $f: [0, 1] \to B$ that connects $(1, 1)$ and $(-1, -1)$. Then $f(t) = (x(t), y(t))$ for some continuous functions $x(t), y(t)$. Since $f(t)$ lies on the $xy = 1$ for all $t$, we have that $x(t)y(t) = 1$ for all $t$. This then implies that $y(t) = \frac{1}{x}(t)$. Now consider this as $t$ approaches $0$. Since $x(t)$ approaches $1$ and $y(t)$ approaches infinity, we have that the path $f$ cannot be continuous at $t = 0$. Therefore, we find that $B$ is not connected.
+\end{proof}
+\begin{claim}
+    C is connected.
+\end{claim}
+\begin{proof}
+    Suppose for the sake of contradiction that $C$ is not connected. That is to say then that there exists open sets $U, V \in \R^2$ such that $C\in U\cup V, C\cap U \neq \emptyset, C\cap V \neq \emptyset, U\cap V = \emptyset$. Let $(a, b) \in U, (c, d)\in V$. Since the rationals are dense in $\R$, we can choose a rational point $(q, r)$ that is close to $(a, b)$, and an irrational point $(p, s)$ close to $(c, d)$. Then we have that $(q, r) \in U, (p, s)\in V$ and $(q, r), (p, s)\in C$. This contradicts the fact that $U, V$ are disjoint. Thus we have that $C$ is connected.
+\end{proof}
+\begin{claim}
+    D is connected.
+\end{claim}
+\begin{proof}
+    Let $(a, b), (c, d)\in D$. We will construct a path between these two points that lies entirely in $D$. Without loss of generality, assume that $|a| < |c|$ and $|b| < |d|$. Let us define a continuous function $f: [0, 1] \to \R^2$ by $f(t) = ((1 - t)a + tc, (1 - t)b + td)$ for $0\leq t \leq 1.$ Then we have that $f(0) = (a, b), f(1) = (c, d)$, and since we have that $|f(t)| > 1$ for all $t$, we know that $f(t)$ is in $D$ for all $t$. Thus, we know that $D$ is path-connected and similarly, is connected.
+\end{proof}
+
+\pagebreak
+\begin{problem}
+    Show that $S^1, [0, 1], [0, 1), \R,$ and $\R^2$ are not homeomorphic to each other.
+\end{problem}
+
+\begin{proof}
+    $\left(S^1, [0,1]\right):$ If you remove a point from $S^1$ we will still have a connected space. However, if we remove a point from $[0,1]$ say $\{1/2\}$ the set is no longer connected. Thus, we know they are not homeomorphic.
+    \\
+    $\left(S^1, [0,1)\right):$ If you remove a point from $S^1$ we will still have a connected space. However, if we remove a point from $[0,1)$ say $\{1/2\}$ the set is no longer connected. Thus, we know they are not homeomorphic.
+    \\
+    $\left(S^1, \R\right):$ If you remove a point from $S^1$ we will still have a connected space. However, if we remove a point from $\R$ say $\{0\}$ the set is no longer connected. Thus, we know they are not homeomorphic.
+    \\
+    $\left(S^1, \R^2\right):$ If we remove two distinct points from $S^1$, it will not necessarily be connected anoymore. However, if you remove two distinct points from $\R^2$ then it will still be connected. Thus, we know they are not homeomorphic.
+    \\
+    $\left([0,1], [0, 1)\right):$ Suppose these two are homeomorphic, which implies that we can construct a homeomorphism $g: [0, 1) \to [0, 1]$. Then if we let $B = [0, 1) - \{g^{-1}(0), g^{-1}(1), g_B: B\to (0, 1)$ is a homeomorphism. However, $g^{-1}(0) \neq g^{-1}(1)$ so at most one of these can be $1$ meaning one must lie in the interval $(0, 1)$. Suppose without the loss of generality that $g^{-1}(0)\in (0, 1).$ Then it follows that $B = (0, g^{-1}(0))\cup (g^{-1}(0),1]-\{g^{-1}(1)\}$ is not connected, whereas $(0,1)$ is connected, so the two cannot be homeomorphic. From this contradiction, then, we conclude that $(0, 1]$ and $[0,1]$ are not homeomorphic.
+    \\
+    $\left([0,1], \R\right):$ Suppose we have a continuous bijection $f: \R \to [0,1]$. Let $a \in \R$ be such that $f(a) = 0$. Then if we consider $x = a - 1$ and $y = a + 1$. Since $f$ is injective, it follows that $f(x),f(y) \neq 0$. Let $0 < c < \min\{f(x), f(y)\}$. By the Intermediate Value Theorem, it follows that $f(x') = c$ for some $x < x' < a$ and $f(y') = c$ for some $a < y' < y$; but then $x' \neq y'$ but $f(x') = f(y')$, so $f$ is not injective which is a contradiction. Thus we have that they are not homeomorphic.
+    \\
+    $\left([0,1], \R^2\right):$ To show this, it is simple to see that if we remove a point from the range $[0, 1]$, for example $\{1/2\}$, this set then becomes unconnected. However, if we remove a point, let's say the origin, from $\R^2$, the set is still connected. Therefore, we find that these are not homeomorphic.
+    \\
+    $\left([0,1), \R\right):$ Let us specifically choose to remove the point $\{0\}$ from $[0, 1)$. However, if we remove any point from $\R$ the result will always be disconnected. Thus, we know that they are not homeomorphic.
+    \\
+    $\left([0,1), \R^2\right):$ To show this, it is simple to see that if we remove a point from the range $[0, 1)$, for example $\{1/2\}$, this set then becomes unconnected. However, if we remove a point, let's say the origin, from $\R^2$, the set is still connected. Therefore, we find that these are not homeomorphic.
+    \\
+    $\left(\R, \R^2\right):$ To show this, it is simple to see that if we remove a point from $\R$ take for example $\{0\}$, then the space $\R$ would no longer be connected. However, if we remove the origin from $\R^2$, then the space would still be connected because we could simply go around the hole. Therefore, these two are not homeomorphic.
+    \\
+\end{proof}
+
+\pagebreak
+\begin{problem}
+    Classify the letters of the alphabet (in capital) by homeomorphic.
+\end{problem}
+
+There are five homeomorphism classes for the letters of the alphabet $\a = \{A, R\},$\\ $\b = \{C, I, K, L, M, N, S, U, V, W, Z\}, \c = \{D, O\}, \d = \{E, F, G, T, Y\}, \e = \{H, K\}$. These are decided by simple transformations from one letter to the next to form the homeomorphism.
+
+\pagebreak
+\begin{problem}
+    Show a space $X$ is compact if and only if every collection of closed sets $\{C_\alpha\}_{\alpha \in I}$ having the the finite intersection property has $\cap_{\alpha \in I}C_\alpha \neq \emptyset$.\\
+    Hint: Think about the complements of the $C_\alpha$'s
+\end{problem}
+
+\begin{proof}
+$(\Rightarrow)$ Assume that $X$ is compact. Let $C$ be a collection of closed subsets of $X$ having the finite intersection property. Let $U = \{ c^c: c\in C$. Then we know that $U$ is a collection of open sets. Suppose for the sake of contradiction that $\cup U = X$, and then since $X$ is compact, we know that there exists some finite subcover $U^*$ of $U$. Let us label the sets in $U^* = \{c^c_1, ..., c^c_n\}$ for $c_i \in C$ for all $i$. Since $C$ has the finite intersection property, we have that $c_1 \cap ... \cap c_n \neq X$ which contradicts the fact that $U^*$ is a cover for $X$. Then it must be that $\cup U \neq X$ and if we take the complements we get $\cup C \neq \emptyset.$\\
+$(\Leftarrow)$ Now we will assume that $C$ is a collection of closed subsets of $X$ having the finite intersection property, that is to say that $\cap C \neq \emptyset$. Let $U$ be an open cover of $X$ and let $C = \{u^c: u \in U\},$ so $C$ is a collection of closed subsets. Since $U$ is an open cover, we have that $\cup U = X$ which implies that $\cap C = \emptyset.$ By this assumption, we then have that $u_1^c \cap ... \cap u_n^c = \emptyset$ for some finite subset of $C$. If we then take the compliments, we get that $U_1 \cup ... \cup U_n = X$ for some finite subset of $U$. Thus, $X$ is compact as desired.\\
+Therefore, we have show that $X$ is compact if and only if every collection of closed sets having the finite intersection property has $\cap C\neq \emptyset.$
+\end{proof}
+
+\pagebreak
+\begin{problem}
+    Show that $\{\frac{1}{n}, n \in \N^*\}\cup \{0\}$ is compact.
+\end{problem}
+
+\begin{proof}
+    Let $S = \{\frac{1}{n}: n \in \N\} \cup \{0\}$ as in the problem statement. We are going to first use that for any $\e > 0$ we have that $\exists n \in \N, m\e \Rightarrow -\e < \frac{1}{m} < \e$. Then, we get that $\frac{1}{m}\in (-\e, \e)$. Thus we have that $(-\e, \e)$ is a neighborhood of $0$ that contains a point of $S$ other than $0$. This then implies that $0$ is the only accumulation point of $S$. Let us then define $S' = \{x_n: n\in \N, x_n \in S(0, \frac{1}{n}, x_{n + 1}\neq x_n\}$. In a similar fashion, we know that $0$ is the only accumulation point of $S'$ and for $S$. Additionally, we know that $S$ is bounded by $[0, 1]$. Therefore, we know that $S$ is compact as desired.
+\end{proof}
+
+\pagebreak
+\begin{problem}
+    Show that $\{\frac{1}{n}, n \in \N^*\} \cup \{0\}$ is not homeomorphic to $\N$
+\end{problem}
+\begin{proof}
+    If these two sets were homeomorphic to each other, that would imply that the Hausdorff property would be preserved between the two topologies. For the topology $\{\frac{1}{n}, n\in \N\} \cup \{0\}$ it is easy to show that it is Hausdorff with the limit point of $0$. However, the set $\N$ is not Hausdorff. Thus, since the Hausdorff property is preserved under homeomorphism, then we know that these two topologies are not homeomorphic.
+\end{proof}
+
+
+\end{document}

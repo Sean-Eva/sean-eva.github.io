@@ -1,0 +1,140 @@
+\documentclass{article}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Packages
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%amsthm settings
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{definition}
+\newtheorem{problem}{Theorem}
+\newtheorem{claim}{Claim}
+\newtheorem{definition}{Definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: mathbb
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\A}{\mathbb A}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: greek
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\g}{\gamma}
+\renewcommand{\d}{\delta}
+\newcommand{\e}{\epsilon}
+\renewcommand{\l}{\lambda}
+
+\usepackage[utf8]{inputenc}
+
+\title{Homework 11, 12 \& 13}
+\author{Sean Eva}
+\date{November 2022}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item [[\phantom{-}1]]
+    
+    \begin{enumerate}
+        \item 
+        
+        If we isolate this function around $z = 0$ then we can write it as the series $ze^\frac{1}{z} = \frac{1}{2z} + \frac{1}{6z^2} + \frac{1}{24z^3} + ...$ which would indicate that $z = 0$ is an essential singular point.
+        
+        \item
+        
+        The principal part of this function is isolated at $z = -1$ which is $\frac{1}{1 + z}$, then we know that this is a simple pole.
+        
+        \item
+        
+        The principal part of the function is at $z = 0$. We can write out $\sin(z) = z - \frac{z^3}{3!} + \frac{z^5}{5!} -...$. This allows us to see that $z = 0$ is a removable singular point. 
+        
+        \item
+        
+        The principal part of this function is isolated at $z = 0$, but unlike the previous question, this one is not removable because the taylor expansion of $\cos(z)$ has a $1$ so $\frac{1}{z}$ is a simple pole.
+        
+        \item
+        
+        The principal part of this function is isolated at $z = 2$ and is the function in and of itself, and is non-removable. Therefore, it is a pole of order 3.
+        
+    \end{enumerate}
+    
+    \item [[\phantom{-}5]]
+    
+    \begin{enumerate}
+        \item 
+        
+        In the contour $C: |z| = 2$, which is the circle centered at $z = 0$ with radius $2$, contains the isolated singular point of $z = 0$. This singular point is a pole of order $3$ and we can rewrite $f(z) = \frac{1}{z^3(z + 4)} = \frac{\phi(z)}{z^3}$ where $\phi(z) = \frac{1}{z + 4}$. Then we know by the residue theorem that $Res_{z = 0} = \frac{\phi^{(3 - 1)}(0)}{(3 - 1)!} = \frac{\phi^{(2)}(0)}{2} = \frac{2}{(z+4)^3 * 2} = \frac{1}{(0+4)^3} = \frac{1}{64}$. Then we have that $\int_{C}\frac{dz}{z^3(z + 4)} = 2\pi i (\frac{1}{64}) = \frac{\pi i}{32}.$
+        
+        \item
+        
+        If we now consider the contour $C: |z + 2| = 3$ is a circle centered at $z = -2$ with radius 3. This contour then includes both of the singularity points of $z = 0$ and $z = -4$. We then know that $\int_Cf(z)dz = 2\pi i * \sum Res(f(z))$. We already know the $Res_{z = 0} = \frac{1}{64}$, and the $Res_{z = -4}f(z) = \frac{1}{(-4^3)} = \frac{-1}{64}$. Thus, we have that $\int_{C}f(z)dz = 2\pi i (\frac{1}{64} + \frac{-1}{64}) = 0.$
+        
+    \end{enumerate}
+    
+    \item [[\phantom{-}7]]
+    
+    We can manipulate the denominator such that $(z^2 - 1)^2 + 3 = 0$ to be such that
+    \begin{align*}
+        (z^2 - 1)^2 + 3 &= 0\\
+        (z^2 - 1)^2 = -3\\
+        z^2 - 1 = \pm\sqrt{3}i\\
+        z^2 = 1 \pm \sqrt{3}i\\
+        z = \pm\sqrt{1\pm\sqrt{3}i},
+    \end{align*} so we need to find the roots of $1 + \sqrt{3}i$. When we find the roots of $1 + \sqrt{3}i$ we get $\pm \sqrt{\frac{3}{2}} \mp \frac{1}{\sqrt{2}}i$ and we find that only $z_0 = \sqrt{\frac{3}{2}} + \frac{1}{\sqrt{2}}$ lies in the contour $C$. Therefore the function $f(z)$ has a simple pole of order $1$ and then by the residue theorem, we know that $\int_C\frac{dz}{(z^2 -1)^2 + 3} = 2\pi i*Res_{z = \sqrt{\frac{3}{2}} + \frac{1}{\sqrt{2}}}(f(z))$. Then $Res_{z = \sqrt{\frac{3}{2}} + \frac{1}{\sqrt{2}}}(f(z)) = \lim_{z \to \frac{\sqrt{3} + 1}{\sqrt{2}}}\frac{1}{((\frac{\sqrt{3} + i}{\sqrt{2}})^2 - 1)^2 + 3} = \lim_{z \to \frac{\sqrt{3} + 1}{\sqrt{2}}} \frac{1}{2(z^2 - 1)*2z} = \frac{1}{4\sqrt{3}i(\frac{\sqrt{3} + 1}{\sqrt{2}})} = \frac{\sqrt{2}}{4\sqrt{3}i}$. Then $Res_{z = \frac{-\sqrt{3} + 1}{\sqrt{2}}}f(z) = -\frac{\sqrt{2}}{4i\sqrt{3}(i-\sqrt{3})}$. Then the contour integral is equal to $2\pi i (\frac{\sqrt{2}}{4\sqrt{3}i}\frac{1}{\sqrt{3} + 1} - \frac{\sqrt{2}}{4i\sqrt{3}(i-\sqrt{3}} = \frac{\pi}{2\sqrt{2}}$
+    
+    \item [[\phantom{-}3]]
+    
+    If we consider $\int_0^\infty \frac{dx}{x^4 + 1}$ we can consider the associate complex function $f(z) = \frac{1}{z^4 + 1}$. If we then want to find $\int_Cf(z)dz$ where $C$ is the semicircle contour from $R\to -R$ where $0 \leq \theta \leq \pi$, then we know $\int_Cf(z) = 2\pi i\sum_{i = 0}^nRes_{z = z_i}f(z)$ and in this contour we have the singularity points $z = \frac{1}{\sqrt{2}} + \frac{1}{\sqrt{2}}i, -\frac{1}{\sqrt{2}} + \frac{1}{\sqrt{2}}i.$ Therefore, we need to evaluate $Res_{z = \frac{1}{\sqrt{2}} (1 + i)}f(z)$ and $Res_{z = \frac{1}{\sqrt{2}} (-1 + i)}f(z)$. We get $Res_{z = \frac{1}{\sqrt{2}}(-1 + i)}f(z) = \frac{1}{4(\frac{1}{\sqrt{2}}(-1 + i))^3} = \frac{1}{2\sqrt{2}(1 + i)}$ and $Res_{z = \frac{1}{\sqrt{2}}(1 + i)}f(z) = \frac{1}{4(\frac{1}{\sqrt{2}}(1 + i))^3} = \frac{1}{2\sqrt{2}(-1 + i)}$. Then we know that $\int_C = 2\pi i (\frac{1}{2\sqrt{2}(1 + i)} + \frac{1}{2\sqrt{2}(-1 + i)} = 2\pi i (\frac{\pi}{2\sqrt{2}}) = \frac{\pi}{\sqrt{2}}$. Then since this is an even function we need to divide this solution by 2 to arrive that $\int_0^\infty\frac{dx}{x^4+1} = \frac{\pi}{2\sqrt{2}}$ as desired.
+    
+    \item [[\phantom{-}4]]
+    
+    In order to solve $\int_{-\infty}^{\infty}\frac{x\sin(ax)}{x^4 + 4}dx$ we are going to solve the associate $f(z) = \frac{xe^{az}}{x^4 + 4}$. If we map the semi-circle from $-R\to R$ for $0\leq \theta \leq \pi$. Then we want to solve the contour integral \\ $\int_C\frac{xe^ax}{(z - (1 + i))(z - (-1 - i))(z - (1 - i))(z - (-1 + i))}$ and in this contour we have the two singularity points $z = 1 + i, -1 + i$. Therefore, to calculate this contour we need to find the associated residues. Then we have that $Res_{z = 1 + i}f(z) = \frac{1}{8i}e^{-a}e^{ia}$ and $Res_{z = -1 + i}f(z) = -\frac{1}{8i}e^{-a}e^{-ia}$. Therefore we know that $\int_Cf(z)dz = 2\pi i (\frac{1}{8i}e^{-a}e^{ia} + -\frac{1}{8i}e^{-a}e^{-ia}) = \frac{\pi i }{2}e^{-a}\sin(a)$. Since we use the form $e^{az}$ as an event representation of $\sin(z)$ we need to take the imaginary portion of the solution to the contour integral which would lead to the solution of $\frac{\pi}{2}e^{-a}\sin(a).$ as desired.
+    
+    \item [[\phantom{-}2]]
+    
+    If we let $f(z) = \frac{1}{\sqrt{z}(z^2 + 1)} = \frac{z^{\frac{-1}{2}}}{z^2 + 1} = \frac{e^{\frac{-1}{2}\log(z)}}{z^2 + 1}$. This function has $z = \pm i$ and if we define the contour $C$ to be the upper semicircle centered at $z = 0$ with radius $R$, then only $z = i$ lies inside $C.$ Then we want to find $Res_{z = i}f(z) = \frac{1}{\sqrt{i}2i} = \frac{1}{\frac{1 + i}{\sqrt{2}}2i} = \frac{1}{\sqrt{2}i(1 + i)} = \frac{1 - i}{2\sqrt{2}i}$. Therefore, we know that $\int_0^\infty = Re(2\pi i (\frac{1 - i}{2\sqrt{2}i})) = Re(\frac{\pi}{\sqrt{2}}(1 - i)) = \frac{\pi}{\sqrt{2}}$. Therefore, $\int_0^\infty \frac{dx}{\sqrt{x}(x^2 + 1)} = \frac{\pi}{2}$ as desired.
+    
+    \item [[\phantom{-}2]]
+    
+    In order to solve this integral, we first need to rewrite the function, we are going to recognize that $\sin(\theta) = \frac{e^{i\theta} - e^{-i\theta}}{2i}$ and if we say that $z(\theta) = e^{i\theta}$ then we have that $z(\theta) = \frac{z - z^{-1}}{2i}$. Then we find that $dz = ie^{i\theta}d\theta = izd\theta \Rightarrow d\theta = \frac{dz}{iz}$. We can now consider the contour integral $\int_C\frac{1}{1 + (\frac{z - z^{-1}}{2i})^2}\frac{dz}{iz} = \int_C\frac{-4zdz}{i(z^4 - 6z^2+ 1)}$. Then we need to solve this integral, but first we are going to make a substitution to make it simpler to solve. If we let $u = z^2 \Rightarrow du = 2zdz$, then we get $2\int_C\frac{-2du}{i(u^2 - 6u + 1)} = 4i\int_C\frac{du}{u^2 - 6u + 1}$. The contour we are going to use is the unit circle and with the singularities of $u = 2\pm 2\sqrt{2}$ we only need to worry about $u = 3 - 2\sqrt{2}$. Then the residue about $z = 3 - 2\sqrt{2}$ is $\frac{-1}{4\sqrt{2}}$. Then the value of $4i\int_C = 4i(2\pi i (\frac{-1}{4\sqrt{2}}) = \sqrt{2}\pi$ as desired.
+    
+\end{enumerate}
+
+\end{document}

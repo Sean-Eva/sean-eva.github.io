@@ -1,0 +1,173 @@
+\documentclass[11pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Packages
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+\usepackage{color}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%amsthm settings
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem{claim}{Claim}
+\newtheorem{definition}{Definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: mathbb
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\A}{\mathbb A}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: greek
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\g}{\gamma}
+\renewcommand{\d}{\delta}
+\newcommand{\e}{\epsilon}
+\renewcommand{\l}{\lambda}
+
+\begin{document}
+
+\noindent {\bf MATH 4317 Final Exam}  \hfill Due Wednesday, 5/4/2022 at 10AM to Gradescope
+
+\bigskip
+
+\noindent {\bf Read this first}: 
+\begin{itemize}
+
+{ \item Starting Friday, April 29 at 11 AM, you have until Wednesday, May 4th at 10AM to submit your final solution set. 
+ }\item Piazza will be closed while the exam is active. 
+\item Each problem I assign, unless otherwise stated, is asking you to prove something. Give a full mathematical proof using only results from class or Wade. You may freely use the field, order and completeness postulates without mention. Manipulations involving the field or order axioms need not be described in detail; it is sufficient to say, e.g.,  ``by algebraic manipulations'' when performing such steps. 
+\item Submit a PDF or JPG to gradescope. I have $\sim 10^{26}$ proofs to grade:  please make my job easier by submitting each problem on a different page. 
+\item No collaboration is allowed. Otherwise, you are permitted to use any of the resources available to you on Canvas or the textbook. The use of internet forums outside of class is expressly forbidden. Previous Piazza posts are accessible but no new posts are allowed until the end of the exam. 
+\item Let me know by email (ablumenthal6@gatech.edu) if you need clarification on a problem. I'll be busy but will try to reply promptly to emails. Note that I will not be able to comment on any actual math content. 
+\end{itemize}
+
+See the next page for the final exam problems. You got this!
+
+\newpage
+
+\subsection*{Problems (5 total, 10 pts each)}
+
+
+\begin{problem}
+Find the interior and closure of the set $E \subset \mathbb R$ given by
+\[
+E = [0,1) \cup \{ 2 \} \, . 
+\]
+\end{problem}
+
+\begin{proof}
+Let assumptions be as in the problem statement. In order to find the interior of this set, we need to find out which points we are able to construct a ball around such that all points of the ball are within the set $E.$ Let us consider the edge points of this set. If we consider $x = 0$ then we are unable to construct a ball around this point where $\epsilon > 0$ as any points less than $0$ will be outside of the set $E.$ We are able to see the same thing for $x = 1$ and $x = 2$ because any points $x + \epsilon$ for $1 + \epsilon$ and $2 + \epsilon$ will be outside $E.$ However, for $x \in (0, 1)$ we are able to construct such ball for $\epsilon > 0$ where all the points in the ball are within $E.$ This then implies that the interior is $E^\circ = (0, 1).$ Now to find the closure of this set we need the smallest closed set that contains the set $E$. Therefore, this set would be $[0, 1] \cup \{2\}$. We know this set is closed because this set contains all of its limit points and it does also contain the set $E.$ Therefore, the closure of the set $E$ is $\overline{E} = [0, 1] \cup \{2\}$.
+\end{proof}
+
+\pagebreak
+\begin{problem}
+Prove that the set
+\[
+E = \{ (x,y) \in \mathbb R^2 : 0 \leq x \leq y^2 + 1 \text{ and } 0 \leq y \leq 1\}
+\]
+is connected in $\R^2$. 
+
+{\it Hint: Try to realize $E$ as the image of $[0,1]^2$ under a continuous function and use the fact, covered in class, that $[0,1]^2$ is connected.}
+\end{problem}
+
+\begin{proof}
+Let assumptions be as in the problem statement. Consider the a continuous function $f: [0, 1]^2 \to E$ where we know that $[0, 1]^2$ is connected and $f$ will map from $[0, 1]^2$ to $\{(x, y)\in \R^2 : 0 \leq x \leq y^2 + 1\text{ and } 0 \leq y \leq 1\}$. Given that for every output point of this continuous function, we know that there is an input that would lead to it specifically being that for any given $(x, y) \in E$ we know that there will be an input $\sqrt{y-1}$ and $x$ that will then map to it. Therefore, we know that this continuous function is then onto. Since this continuous function is onto and we know that $[0, 1]^2$ is connected, we can conclude that $E$ is then connected as desired.
+\end{proof}
+
+\pagebreak
+\begin{problem}
+Prove that $E := \R \setminus \Z$ is not compact by providing an explicit open cover 
+of $E$ admitting no finite subcover. 
+\end{problem}
+
+\begin{proof}
+Let assumptions be as in the problem statement. Let $U_n = (-n, n)\subset \R \backslash (-n, n)\subset \Z$. If we take $\bigcup_{n\in \N}U_n = \R$ and if $F\subset\bigcup_{n\in \N}U_n$, then $F$ contains an element $U_k$ such that $k\geq i$ for each $U_i \in F$. But then $\cup F = U_k = ((-k, k)\subset \R \backslash (-k, k)\subset \Z) \subsetneq \R$ so $F$ cannot be an open cover for $\R.$ This implies that the open cover $U_n$ does not have any subcoverings as desired.
+\end{proof}
+
+\pagebreak
+\begin{problem}
+Let $\mathcal A$ denote the algebra of polynomials of the form 
+$p(x) = c_0 + c_2 x^2 + \cdots + c_{2n} x^{2n}$, i.e., polynomials with even-powered terms. 
+\begin{itemize}
+\item[(a)] Show that $\mathcal A$ separates points on $[0,1]$, hence is uniformly dense on $[0,1]$ by the Stone-Weierstrass theorem (you do not need to prove the other hypotheses, i.e., that $\mathcal A$ is algebra or that $\mathcal A$ contains constants). 
+\item[(b)] Show that $\mathcal A$ is \emph{not} uniformly dense on $[-1,1]$ by constructing an explicit continuous function $f : [-1,1] \to \R$ which is not the uniform limit on $[-1,1]$ of any sequence $(p_n) \subset \mathcal A$. 
+
+{\it Hint: Note that $p(-x) = p(x)$ for all $p \in \mathcal A$.}
+\end{itemize}
+\end{problem}
+
+\begin{enumerate}
+    \item 
+    
+    \begin{proof}
+    Let assumptions be as in the problem statement. Consider for arbitrary $x, y\in [0, 1]$ such that $x \neq y$ where we will say that $y > x$ WLOG. Then by the definition of $\mathcal{A}$ we have that $p(x) = c_0 + c_2(x)^2 + ... + c_{2n}(x)^{2n} < p(y) = c_0 + c_2(y)^2 + ... + c_{2n}(y)^{2n}$. Therefore, since we know that for arbitrary $x, y\in [0, 1]$ such that $x \neq y$ we know that $p(x) \neq p(y)$ which further implies that $\mathcal{A}$ separates points on $[0, 1]$ which by Stone-Weierstrass theorem, we know that means that it is uniformly dense on $[0, 1]$ as desired.
+    \end{proof}
+    
+    \item
+    
+    \begin{proof}
+    Let assumptions be as in the problem statement. Let us construct a continuous function $f: [-1, 1] \to \R$ such that $f(x) = x$. Let us consider $f(-1) = -1$ and that $f(1) = 1$. Therefore we know that for $x\in [-1, 1]$ then $f(-x) \neq f(x)$. However, let us consider $x = -1, y = 1$ where both $x, -x\in [-1, 1]$. By the definition of $\mathcal{A}$ we get that $p(x) = c_0 + c_2(x)^2 + .... + c_{2n}(x)^{2n}$ and we can see that $p(-x) = c_0 + c_2(-x)^2 + ... + c_{2n}(-x)^{2n} = c_0 + c_2(-1)^2(x)^2 + .... + c_{2n}(-1)^{2n}(x)^{2n} = c_0 + c_2(x)^2 + ... + c_{2n}(x)^{2n}$. This then implies that for any polynomial in $\mathcal{A}$ that $p(x) = p(-x)$ for $x\in [-1, 1]$. However, for our constructed polynomial we see that $f(x) \neq f(-x)$ which means that we have a polynomial for which there is not sequence $(p_n)\subset \mathcal{A}$ that where $f(x)$ is the uniform limit of the sequence. This then implies that $\mathcal{A}$ is not uniformly dense as desired.
+    \end{proof}
+    
+\end{enumerate}
+
+\pagebreak
+\begin{problem}
+Let $E \subset \mathbb R^n$ be a nonempty set, $n \geq 1$, and let 
+\[
+U = \{ {\bf x} \in \mathbb R^n : d({\bf x}, E) > 1\} \,. 
+\]
+Prove that $U$ is open. Here, the \emph{minimal distance} $d({\bf x}, E)$ between ${\bf x} \in \R^n$ and $E \subset \R^n$ is defined by
+\[
+d({\bf x}, E) = \inf\{ \| {\bf x} - {\bf z} \| : {\bf z} \in E\} \,. 
+\]
+{\it Hint: Using the triangle inequality, try to prove the lower bound
+\[
+d({\bf y}, E) \geq d({\bf x}, E) - \| x - y \| \quad \text{ for all } \quad {\bf x}, {\bf y} \in \R^n \, . 
+\]}
+\end{problem}
+
+\textbf{Claim: } The lower bound on this set is when $d({\bf x}, E) = 1$
+\begin{proof}
+We want to show that $d({\bf x}, E) > 1: \forall {\bf x}\in U$. We know by the definition of the minimal distance $d({\bf x}, E) = \inf\{\|{\bf x} - {\bf z}\|: {\bf z}\in E\}$. Therefore, let us consider the point ${\bf y} \in U$. For $\epsilon > 0$ let us define a point ${\bf x} \in U$ such that ${\bf x}$ is colinear to ${\bf z}$ and ${\bf y}$ where $\|x-y\| > \epsilon$. If we consider the minimum distance $d({\bf y}, E)\geq d({\bf x}, E) - \|x-y\| > d({\bf x}, E) - \epsilon$ which we know is true for all ${\bf x}, {\bf y}\in \R^n.$ Since we know that ${\bf x}\in U$ we know that $d({\bf x}, E) > 1$. Then we know that $d({\bf y}, E) \geq d({\bf x}, E) - \epsilon > 1 - \epsilon$. This implies that $d({\bf x}, E) = 1$ is then a lower bound of this set as desired.
+\end{proof}
+Now for the question.
+\begin{proof}
+Let assumptions be as in the problem statement. Since we know that this set has a lower bound of $d({\bf x}, E) = 1$ for ${\bf x}\in \R^n$ we know then that this set has an open bound at this lower bound. Since this set is open on both ends, $d({\bf x}, E) \to \infty$ and $d({\bf x}, E) \to 1$ then we know that this set is then open as desired.
+\end{proof}
+
+\end{document}
+

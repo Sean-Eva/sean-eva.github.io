@@ -1,0 +1,164 @@
+\documentclass[11pt]{article}
+
+%%% Useful packages
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathcomp}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage{array}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{tabularx}
+
+\newtheorem{ishaan}{Claim}[section]
+\newtheorem{lemma}{Lemma}[section]
+\renewcommand\qedsymbol{$\blacksquare$}
+%%% Sets page margins, overriding 11pt article defaults
+\setlength{\topmargin}{0 in}
+\setlength{\headheight}{0 in}
+\setlength{\headsep}{0 in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{9 in}
+
+%%% Useful for layout
+\newcommand{\VF}{\vspace*{\fill}}
+\newcommand{\HF}{\hspace*{\fill}}
+
+%%% shorthand for sets
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\DeclareMathOperator{\Ker}{Ker}
+
+\begin{document}
+
+{\noindent\Large\textbf{Homework 2 due Wed, Sept~8th by 11am in Gradescope}}
+
+\vspace{.25in}
+
+{\large
+\noindent
+\textbf{Name: Sean Eva} \smallskip \\
+\textbf{GTID: 903466156} \smallskip \\
+%%% List anyone with whom you discussed the problems
+\textbf{Collaborators:} \smallskip \\
+%%% List all resources used OTHER than the textbook, lecture notes, 
+%%% and previous homework assignments.
+\textbf{Outside resources:} \smallskip
+}
+
+\pagebreak 
+
+%%% Edit the directions below to remove anything which is not part of
+%%% your solution.  A blank line starts a new paragraph.  '\\' is a 
+%%% line break.   The default latex formatting is usually acceptable,
+%%% so don't spend a significant amount of time making your solutions
+%%% look pretty.  Do spellcheck.  PROOFREAD, more than once!
+
+INSERT a ``pagebreak'' command between each problem (integer numbers).
+Problem subparts (letter numbered) can be on the same page.
+
+REMOVE all comments (within ``textit\{\}'' commands) before submitting
+solutions.
+
+DO NOT include any identifying information (name, GTID) except on the
+first/cover page.
+
+\begin{enumerate}
+
+\item Let $G$ be a group with subgroups $A$ and $B$.  Let 
+$AB = \{ab \mid a \in A,\ b \in B\}$.
+\begin{enumerate}
+\item If $G$ is abelian, prove that $AB$ is a subgroup of $G$.
+
+\begin{proof}
+Let $G$ be a group such that $G$ is abelian and $A, B$ are subgroups of $G$. Let $AB = \{ ab\mid a\in A, b\in B\}.$ Since $A, B$ are subgroups, $e\in A, e\in B$, so $e=e\circ e\in AB$. Let $a_1b_1, a_2b_2\in AB$, then we know that $(a_1b_1)(a_2b_2)=(a_1a_2)(b_1b_2)\in AB$ since $a_1a_2\in A, b_1b_2\in B$ and $G$ is abelian, which implies that $AB$ is closed under the inherited operation from $G$. If $ab\in AB$, then $(ab)^{-1}=a^{-1}b^{-1}\in AB$ which implies that $AB$ contains inverses. Therefore, $AB$ is a subgroup of G.
+\end{proof}
+
+\item Suppose $b^{-1} A b \subseteq A$ for all $b \in B$.  
+Show $AB$ is a subgroup of $G$.
+
+\begin{proof}
+Let $G$ be a group such that $A, B$ are subgroups of $G$. Let $AB= \{ab\mid a\in A, b\in B\}.$ Since $A, B$ are subgroups, $e\in A, e\in B$, so $e=e\circ e\in AB$. Consider $a\in A, b\in B$ then $(ab)^{-1}=b^{-1}a^{-1}=(b^{-1}a^{-1}b)b^{-1}$ and since $b^{-1}Ab\subseteq A$ when we know that $(b^{-1}a^{-1}b)\in A$ and that $AB$ contains inverses. Additionally, consider $a, a'\in A$ and $b, b'\in B$. Consider $aba'b'=a(ba'b^{-1})bb'$. Since $b^{-1}Ab\subseteq A$ we know that $ba'b^{-1}\in A$ and we know that $a(ba'b^{-1})\in A$ and $bb'\in B$ then we know that $AB$ is closed under the operation and that $AB$ is a subgroup of $G$. 
+\end{proof}
+
+\item Disprove that $AB$ is always a subgroup of $G$.
+
+Consider if $G=S_3$, $A=<(12)>$ and $B=<(23)>.$ A and B are subgroups of $G$. However, $AB=\{1, (12), (23), (132)\}$. By Lagrange's Theorem, since $|AB|=4$ and $|G|=6$ and $4$ does not divide $6$ then $AB$ is not a subgroup of $G$.
+
+\end{enumerate}
+
+
+
+\pagebreak
+
+\item Let $G$ be a group and $H$ a subgroup of $G$.  
+\begin{enumerate}
+\item Suppose $a^{-1} H a \subseteq H$ for all $a \in G$.  
+Prove $a^{-1} H a = H$.
+
+\begin{proof}
+Consider $h\in H$ and $a\in G$. There exists some $h'\in H$ such that $ha=ah'$. Then $a^{-1}ha=h'\in H$. Since this applies to any $h\in H$, $a^{-1}Ha=H$.
+\end{proof}
+
+\item Suppose every right coset of $H$ in $G$ is also a left one.  
+Prove $aHa^{-1} = H$.
+
+\begin{proof}
+Consider $aha^{-1}$ for $h\in H$. We know that $ah\in aH=Ha,$ so therefore $ah=h'a$ for some $h'\in H$. Therefore, $aha^{-1}=h'$. Since this applies to any $h\in H$, then $aHa^{-1}=H$.
+\end{proof}
+
+\end{enumerate}
+\pagebreak
+
+\item Let $(G, \ast)$ and $(G', \circ)$ be two groups with identity 
+$e$ and $e'$ respectively.
+Let $\phi: G \rightarrow G'$ be a homomorphism.
+\begin{enumerate}
+\item Prove that $\phi(G)$, the image of $G$, is a subgroup of $G'$.
+
+\begin{proof}
+In order to prove that the image of $G$ is a subgroup of $G'$ we need to prove that the image is closed, contains the identity, and contains inverses. Consider $a,b\in G$. Then $\phi(a), \phi(b)\in \phi(G).$ Therefore, since $\phi$ is a homomorphism, $\phi(ab)=\phi(a)\phi(b)\in\phi(G)$ which implies that the image of $G$ is closed. Let $a\in G.$ Then $a=ae$, but then $\phi (a)=\phi(ae)=\phi(a)\phi(e)$  by the definition of a homomorphism so by left cancellation in $G'$ we have that $e'=\phi(e).$ Also, since $e'=\phi(e)=\phi(aa^{-1})= \phi(a)\phi(a^{-1}).$ Therefore, the inverse of $\phi(a)$ in $G'$ is $\phi(a^{-1})$; $\phi(a)^{-1}=\phi(a^{-1}).$ Therefore, the image of $G$ is a subgroup of $G'.$
+\end{proof}
+
+\item Prove that $\phi$ is a monomorphism if and only if $\Ker \phi = (e)$.
+
+\begin{proof}
+($\Rightarrow$) Let $\phi$ be a monomorphismm that is to say that for $a,b\in G$ such that $\phi(a)=\phi(b)$ that $a=b$ and since $\phi$ is a homomorphism $\phi(e)=e'$. If $g\in \Ker(f),$ then we have that $\phi(g)=e'$. Therefore, $\phi(g)=\phi(e).$ Since $\phi$ is a monomorphism then $g=e$ and then $\Ker(\phi)=\{e\}.$\\
+($\Leftarrow$) Let $\Ker(\phi)=\{e\}$. Let $a,b\in G$ such that $\phi(a)=\phi(b)$. Then we have that
+\begin{align*}
+    \phi(ab^{-1}) &= \phi(a)\phi(b^{-1})\\
+    &= \phi(a)\phi(b)^{-1}\\
+    &= \phi(a)\phi(a)^{-1}\\
+    &= e'.
+\end{align*} Thus, the element $ab^{-1}$ is in the $\Ker(\phi)=\{e\}$ and hence $ab^{-1}=e.$ This implies that $a=b$ and that $\phi$ is a monomorphism.
+\end{proof}
+
+\end{enumerate}
+\pagebreak
+
+\item Let $G$ be a group and $H$ a subgroup of $G$.  
+Let $S$ be the set of all distinct left cosets of $H$ in $G$ and 
+$T$ the set of all distinct right cosets of $H$ in $G$.
+\begin{enumerate}
+\item Prove or disprove: If $aH, bH \in S$ and $aH \neq bH$,
+then $Ha \neq Hb$.\\
+
+This statement is false. Consider $H=\{e, (12)\}$ from $S_3$. Then, $(13)H=(123)H=\{(13), (123)\}$. While, $H(13)=\{(13),(132)\}$ and $H(123)=\{(23),(123)\}$. Therefore, $H(123)\neq H(13)$.
+
+\item Prove there is a 1-1 mapping of $S$ onto $T$.
+
+Consider the mapping $x\rightarrow x^{-1}$. Any element of the form $xh$ for $h\in H$ gets mapped to $h^{-1}x^{-1}$ which lies in $Hx^{-1}$. Therefore, the image of $xH$ under the mapping is inside $Hx^{-1}$. Then, any element in $Hx^{-1}$ comes as the image of the unique element under the inverse mapping and that element is in $xH$ if $hx^{-1}$ is an element, it comes as the image of the element $xh^{-1}\in xH$
+
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}
+

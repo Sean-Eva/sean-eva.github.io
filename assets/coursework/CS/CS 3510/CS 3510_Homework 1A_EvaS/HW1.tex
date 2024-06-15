@@ -1,0 +1,113 @@
+\documentclass[11pt]{article}
+\usepackage{enumitem}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{xcolor}
+\usepackage{multicol}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{automata}
+
+\setlength{\textheight}{8.5in}
+\setlength{\textwidth}{6.0in}
+\setlength{\headheight}{0in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\oddsidemargin}{-.5in}
+
+\input{preamble.tex}
+
+\newcommand{\solution}[1]{\paragraph{Solution}  }
+\newcommand{\bl}[1]{\textcolor{blue}{#1}}
+\newcommand{\rd}[1]{\textcolor{red}{#1}}
+\newcommand{\solution}[1]{\paragraph{Solution}  }
+
+\begin{document}
+\hw{1}{1/15/2022}{}{Due:1/22/2022}
+
+This assignment is due on \textbf{11:59 PM EST, Saturday, January 22, 2022}. You may turn it in 1 day late for no penalty or 2 days late for a 10\% penalty. On-time submissions receive 3\% extra credit.  Note that a late submission means late feedback, which means less time to study before an exam.
+
+You should submit a typeset or \emph{neatly} written pdf on Gradescope.  The grading TA should not have to struggle to read what you've written; if your handwriting is hard to decipher, you will be required to typeset your future assignments.
+
+You may collaborate with other students, but any written work should be your own. Write the names of the students you work with at the top of your assignment.
+
+ Unless otherwise noted, you should \textit{always} justify your answer. Please give a written description for all algorithms; algorithms may NOT be specified only in pseudocode.
+ 
+ When the base of a log is unspecified, it is assumed to be base 2.
+
+
+\begin{enumerate}
+
+    \item \textbf{Big-O}
+    
+    (10 points) For the following list of functions, cluster the functions of the same order (i.e.,$f$ and $g$ are in the same group if and only if $f=O(g)$ AND $g=O(f)$) into one group, and then rank the groups in increasing order. You do not have to justify your answer.
+\begin{multicols}{2}
+\begin{itemize}
+    \item (a) $n\log(n)$
+    \item (b) $n^{1.01}$
+    \item (c) $n\sqrt[3]{n}$
+    \item (d) $2^{\log_3(n)}$
+    \item (e) $n + \log(n)$
+    \item (f) $2^{\log(\log(n))}$
+    \item (g) $10n\log(10n)+10$
+    \item (h) $(\log(n))^{10}$
+    \item (i) $\log(n^{10})$
+    \item (j) $42n$
+\end{itemize}
+\end{multicols}
+
+The form of the answer should be, for example,  $\{a,b\}<\{c,d\}< \ldots$.\\
+
+$\{f, i\}<\{e\}<\{h\}<\{d\}<\{j\}<\{b\}<\{c\}<\{a, g\}$
+\pagebreak
+    
+    \item \textbf{Slow Multiplication}
+    
+    (5 points) Consider the following multiplication algorithm:
+    
+    \begin{verbatim}
+    def slowmult(x,y):
+        result = 0
+        for i from 1 to x (inclusive):
+            result += y
+        return result
+    \end{verbatim}
+    
+    Assume $x$ and $y$ have $n$ bits each. What is the running time of this algorithm in terms of $n$? (It is not $O(n^2)$!) Justify your answer.\\
+    
+    Since the iterative part of this code is dependent solely on $x$ and not $y$, $y$ is used purely as a medium of addition and not iteration. The runtime of the code is only $O(n)$.
+    \pagebreak
+    
+    \item \textbf{Fast Multiplication}
+    
+    Let $x$ and $y$ be two $n$-bit numbers, where $n$ is divisible by 3. Let $x_L$, $x_M$ and $x_R$ consist of the first third, middle third, and final third of the digits of $x$, so that $x = 2^{\frac{2n}{3}}x_L + 2^{\frac{n}{3}}x_M + x_R$, and define $y_L,$ $y_M,$ and $y_R$ analogously.
+    
+    \begin{enumerate}
+        \item (3 points) Express $xy$ in terms of $x_L,x_M,x_R,y_L,y_M,y_R$. Simplify your answer.
+        
+        $xy = 2^{\frac{4n}{3}}x_Ly_L+2^n(x_Ly_M+x_My_L) + 2^{\frac{2n}{3}}(x_Ly_R+x_My_M+x_Ry_L)+2^{\frac{n}{3}}(x_My_R+x_Ry_M)+x_Ry_R$
+        
+        \item (7 points) Give a recursive algorithm that calculates the above polynomial with a recurrence relation of $T(n) = 6T(n/3) + O(n)$.\\
+        
+        We are going to first split each of $x$ and $y$ into respective third as described in the problem. We will then recursively call the algorithm with the first thirds, middle thirds, and final thirds of the $x$ and $y$ to get $x_Ly_L, x_My_M, x_Ry_R$ respectively. It would then be useful to notice that $(x_L+x_M)(y_L+y_M) = x_Ly_L+x_Ly_M+x_My_L+x_My_M$ so $(x_L+x_M)(y_L+y_M) - x_Ly_L-x_My_M= x_Ly_M+x_My_L$. Similarly, $(x_M+x_R)(y_M+y_R) - x_My_M-x_Ry_R= x_My_R+x_Ry_M$. Lastly, $(x_L+x_M+x_R)(y_L+y_M+y_R) -  (x_L+x_M)(y_L+y_M) - (x_M+x_R)(y_M+y_R) + 2(x_My_M)= x_Ly_R+x_My_M+x_Ry_L$. These are all desired outcomes to calculate $xy$ so we are able to simplify the algorithm by using these alternatives and match them up to the corresponding coefficients as indicated from part (a).\\
+        
+        \textbf{Function} $Multi(x, y)$:\\
+        $x_L \leftarrow x[0: n/3]$\\
+        $x_M \leftarrow x[n/3: 2n/3]$\\
+        $x_R \leftarrow x[2n/3: n]$\\
+        $y_L \leftarrow y[0: n/3]$\\
+        $y_M \leftarrow y[n/3: 2n/3]$\\
+        $y_R \leftarrow y[2n/3: n]$\\
+        $A \leftarrow Multi(x_L,y_L)$\\
+        $B \leftarrow Multi(x_M,y_M)$\\
+        $C \leftarrow Multi(x_R,y_R)$\\
+        $D \leftarrow Multi(x_L+x_M, y_L+y_M)$\\
+        $E \leftarrow Multi(x_M+x_R, y_M+y_R)$\\
+        $F \leftarrow Multi(x_L+x_M+x_R, y_L+y_M+y_R)$\\
+        \textbf{return} $2^{\frac{4n}{3}} A+2^n (D-A-B)+2^{\frac{2n}{3}} (F-D-E+2B)+2^{\frac{n}{3}} (E-B-C)+C$
+        
+    \end{enumerate}
+
+\end{enumerate}
+\end{document}

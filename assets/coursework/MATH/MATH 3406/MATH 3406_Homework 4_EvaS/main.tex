@@ -1,0 +1,67 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathcomp}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage{mathtools}
+
+\newtheorem{ishaan}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\title{Homework 4}
+\author{Sean Eva}
+\date{February 15, 2021}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item 
+    
+    Using the given equation, 
+    \begin{align*}
+        y_{k+1}-2ay_k+a^2y_{k-1}&=0\\
+        \alpha^2-2a\alpha+a^2 &= 0\\
+        (\alpha-a)^2 &= 0\\
+        \alpha &= a, a
+    \end{align*}
+    Therefore, $(y_k) = c_1a^k + c_2ka^k$ where $c_1, c_2$ are constants. In order to solve for the values of $c_1$ and $c_2$, we can simply plug in the values for $y_0$ and $y_1$ and solve for their values. This gives that $c_1=1$ and $c_2 = (\frac{1}{a}-1)$. Therefore $(y_k) = a^k + (\frac{1}{a}-1)ka^k$.
+    
+    \item
+    
+    Consider the fact that $\lambda_1, \lambda_2, ..., \lambda_n$ are the eigenvalues of $A$ and the corresponding eigenvectors are $\alpha_1, \alpha_2, ..., \alpha_n$. Since these eigenvectors are all linearly independent, they will also form a basis for $\mathbb{R}^n$. Since the eigenvectors form a basis for $\mathbb{R}^n$, then any $x_1\in\mathbb{R}^n$ can be written as a linear combination of the eigenvectors as $x_1=c_1(\alpha_1)+c_2(\alpha_2)+...+c_n(\alpha_n)$ for some $c_1, c_2, ..., c_n\in\mathbb{R}$. This implies that $Ax_1=c_1(A\alpha_1)+c_2(A\alpha_2)+...+c_n(A\alpha_n)$. Similarly that $A\alpha_i=\lambda_i\alpha_i$ for $i=1, 2, ..., n$ since $\alpha_i$ is the corresponding eigenvector for $\lambda_i$. It then follows that, 
+    \begin{align*}
+        Ax_1 &= c_1(\lambda_1\alpha_1)+c_2(\lambda_2\alpha_2)+...+c_n(\lambda_n\alpha_n)\\
+        A^2x_1 &= c_1\lambda_1(A\alpha_1)+c_2\lambda_2(A\alpha_2)+...+c_n\lambda_n(A\alpha_n)\\
+        A^2x_1 &= c_1\lambda_1(\lambda_1\alpha_1)+c_2\lambda_2(\lambda_2\alpha_2)+...+c_n\lambda_n(\lambda_n\alpha_n)\\
+        A^2x_1 &= c_1\lambda_1^2\alpha_1+c_2\lambda_2^2\alpha_2+...+c_n\lambda_n^2\alpha_n\\
+        & \shortvdotswithin{ = } \notag
+        A^kx_1 &= c_1\lambda_1^k\alpha_1+c_2\lambda_2^k\alpha_2+...+c_n\lambda_n^k\alpha_k
+    \end{align*}
+    Then, 
+    \begin{align*}
+        x_{k+1} &= Ax_k\\
+        &= A(Ax_{k-1})\\
+        &= A^2x_{k-1}\\
+        & \shortvdotswithin{ = } \notag
+        &= a^kx_1\\
+        x_{k+1} &= c_1\lambda_1^k\alpha_1+c_2\lambda_2^k\alpha_2+...+c_n\lambda_n^k\alpha_k
+    \end{align*}
+    Therefore, as $k\rightarrow \infty$, since $|\lambda_i|< 1$, the values of $\lambda_i^k \rightarrow 0$ which then means that $x_k \rightarrow 0$.
+    
+    \item
+    
+    Let $A$ be a square matrix of dimensions $n \times n$. Consider the characteristic polynomial for the matrix $A$, that is $det(\lambda I -A) = f(\lambda)$. If the dimensions of $A$ are odd, then the characteristic polynomial would be of degree $n$ which means that it would also be of odd degree. Considering the maximum number of complex roots, that would imply that there would have to be at least one real root implying a . This cannot be because if it were true, then there would not be a situation in which a nonzero vector $u\in \mathbb{R}^n$ could exist such that $u, Au$ are linearly independent. However, if $n$ is even, then the degree of the characteristic polynomial would also be even. Therefore, all of the roots of the characteristic polynomial could be complex, which allows for there to be a nonzero vector $u\in \mathbb{R}^n$ such that the vectors $u, Au$ are linearly independent. Therefore, $n$ must be even.
+    
+    \item
+    
+    As $m$ increased up to $10$ the roots of the equation become much more clear. The roots when $m=1$ are $1, 2, 3, 4, 5$ followed by nonsense. Similarly for $m=5$, the roots are $1, 2, 3, 4, 5, 6, 7$ followed by nonsense. Ultimately on $m=10,$ the roots are $1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20.$ All of these roots are much more clear to decipher.
+    
+\end{enumerate}
+
+\end{document}

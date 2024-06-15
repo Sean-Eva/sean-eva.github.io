@@ -1,0 +1,142 @@
+\documentclass[11pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Packages
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%amsthm settings
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem{claim}{Claim}
+\newtheorem{definition}{Definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: mathbb
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\A}{\mathbb A}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: greek
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\g}{\gamma}
+\renewcommand{\d}{\delta}
+\newcommand{\e}{\epsilon}
+\renewcommand{\l}{\lambda}
+
+\begin{document}
+
+\noindent {\bf MATH 4317 Midterm 2}  \hfill Due Sunday, 3/20/2022 at 11PM to Gradescope
+
+\bigskip
+
+\noindent {\bf Read this first}: 
+\begin{itemize}
+\item Starting Wednesday at 9:30 AM, you have until Sunday at 11PM to submit your final solution set. 
+\item There will be no class on Wednesday 3/16, nor office hours on Thursday 3/17. Piazza will be closed while the exam is active. 
+\item Each problem I assign, unless otherwise stated, is asking you to prove something. Give a full mathematical proof using only results from class or Wade. You may freely use the field, order and completeness postulates without mention. Manipulations involving the field or order axioms need not be described in detail; it is sufficient to say, e.g.,  ``by algebraic manipulations'' when performing such steps. 
+\item Submit a PDF or JPG to gradescope. I have $\sim 10^{26}$ proofs to grade:  please make my job easier by submitting each problem on a different page. 
+\item No collaboration is allowed. Otherwise, you are permitted to use any of the resources available to you on Canvas or the textbook. The use of internet forums outside of class is expressly forbidden. Previous Piazza posts are accessible but no new posts are allowed until the end of the exam. 
+\item Let me know by email (ablumenthal6@gatech.edu) if you need clarification on a problem. I'll be busy but will try to reply promptly to emails. Note that I will not be able to comment on any actual math content. 
+\end{itemize}
+
+See the next page for the midterm problems. You got this!
+
+\newpage
+
+\subsection*{Problems (5 total, 10 pts each)}
+
+\begin{problem}
+Let $f, g : [0,1] \to \R$ be continuous functions. Assume $f(0) = f(1) = 0$ and 
+that $g(0) < 0 < g(1)$. Prove that there exists an $x_0 \in (0,1)$ such that $f(x_0) = g(x_0)$. 
+\end{problem}
+
+\begin{proof}
+Let assumptions be as above. Given that $f, g$ are continuous functions, then if we take $f + -g = f - g$ we get another continuous function we will call $h$. We know that $f(0) - g(0) = 0 - g(0) > 0$ and $f(1) - g(1) = 0 - g(1) < 0.$ Then by the intermediate value theorem, since $h: [0, 1] \rightarrow \R$ is continuous, we get that there is some point $x_0 \ in [0, 1]$ such that $h(x_0) = 0$ since $0$ lies between less than $0$ and greater than $0$. This then implies that $h(x_0) = f(x_0) - g(x_0) = 0$ which further implies that $f(x_0) = g(x_0)$ as desired. Additionally since we know that the endpoints are less than and greater than $0$ then we know that $x_0 \in (0, 1)$.
+\end{proof}
+
+\pagebreak
+\begin{problem}
+Given functions $f, g : \R \to \R$, define the function $f \vee g : \R \to \R$ by
+\[
+f \vee g (x) = \max\{ f(x) , g(x)\} \,. 
+\]
+Prove or disprove the following: if $f \vee g$ is continuous and $f$ is continuous, then $g$ is continuous. 
+\end{problem}
+
+Let us define $f(x) = x$ which we already know is continuous on $\R$. Let us also define $g(x) = \begin{cases}
+x - 1 & x < 0\\
+x & x \geq 0,
+\end{cases}$ which is not continuous on $\R.$ If we consider $f\vee g 0 \max\{f(x), g(x)\}$ then for $x < 0$ it will be $f(x)$ and for $x\geq 0$ then it will be either $f(x)$ or $g(x)$ since they are equal, so for simplicity's sake we will say that it is $f(x).$ Since we know $f(x)$ is continuous on $\R$ then we know that $f\vee g$ is also continuous on $\R$, but we know that $g(x)$ is not continuous on $\R$ so the statement is disproved.
+
+\pagebreak
+\begin{problem}
+For each $p \in \R$, consider the series
+\[
+S_p = \sum_{k = 1}^\infty \frac{(-1)^k \sqrt{k} }{(1 + k^2)^{p}} \, .
+\]
+For which values of $p$ does $S_p$ converge absolutely? Prove your answers. 
+\end{problem}
+
+\textbf{Claim}: This series converges absolutely for $p > \frac{3}{4}$
+\begin{proof}
+In order to find where this series converges absolutely, we want to find where the series $\sum_{k=1}^\infty |\frac{(-1)^k \sqrt{k} }{(1 + k^2)^{p}}| = \sum_{k=1}^\infty \frac{ \sqrt{k} }{(1 + k^2)^{p}}$ converges. So if we consider $\frac{\sqrt{k}}{(1+k^2)^p} \leq \frac{k^{\frac{1}{2}}}{k^{2p}} = k^{\frac{1}{2} - 2p}$ and this is summable if $\frac{1}{2} - 2p < -1$ which means that $p > \frac{3}{4}$. What if $p \leq \frac{3}{4}$? By the ratio comparison test, we get that $\frac{\frac{k^{\frac{1}{2}}}{(1+k^2)^p}}{\frac{1}{k^{2p-\frac{1}{2}}}} = \frac{k^{2p}}{(1+k^2)^p} = (\frac{k^2}{1+k^2})^p = \lim_{k\to \infty}(\frac{k^2}{1+k^2})^p= \lim_{k\to \infty}(\frac{1}{1 + \frac{1}{k^2}})^p = (\lim_{k\to \infty}\frac{1}{1+k^{-2}})^p = 1^p = 1$ which implies we get the mapping $x \to x^p$. So the original series converges absolutely if and only if $\frac{1}{k^{2p-\frac{1}{2}}}$ converges which implies that $p > \frac{3}{4}$ as desired.
+\end{proof}
+
+\pagebreak
+\begin{problem}
+Let $f_n, g_n$ be sequences of functions $E \to \R$ and let $f, g : E \to \R$. Prove that if $f_n \to f$ uniformly on $E$ and $f_n + g_n \to f + g$ uniformly on $E$, then $g_n \to g$ uniformly on $E$. 
+\end{problem}
+
+\begin{proof}
+Given that $f_n+g_n \to f + g$ uniformly on E, that implies that $|f_n+g_n - f - g| < \epsilon$ for some $\epsilon > 0$. Similarly, we know that $f_n \to f$ uniformly on $E$ which tells us that $|f_n - f| < \frac{\epsilon}{2}$. Therefore we can write, $|f_n + g_n - f - g| = |f_n -f| + |g_n-g|< \frac{\epsilon}{2} + |g_n - g| < \epsilon.$ This implies that $\frac{\epsilon}{2} + |g_n - g| < \epsilon \Rightarrow |g_n - g| < \frac{\epsilon}{2}$ which further implies that $g_n \to g$ uniformly on $E$ as desired. Therefore, if $f_n \to f$ uniformly on $E$ and $f_n + g_n \to f + g$ uniformly on $E$, then $g_n \to g$ uniformly on $E$.
+\end{proof}
+
+\pagebreak
+\begin{problem}
+Consider the power series
+\[
+S(x) = \sum_{k = 0}^\infty \frac{(-1)^k}{(k + 1)^{2/3}} (x+1)^k \,. 
+\]
+Determine the interval of convergence for $S(x)$. 
+\end{problem}
+
+\textbf{Claim:} The interval of converges for $S(x)$ is $(-2, 0]$.
+\begin{proof}
+Let assumptions be as in the problem statement. From that given information we know that the interval of convergence for $S(x)$ is centered at $-1$. Then we can consider the ratio test for the interval of convergence. If we take $R = \frac{a_{n+1}}{a_n} = \frac{\frac{(-1)^{k+1}(x+1)^{k+1}}{(k+1+1)^{\frac{2}{3}}}}{\frac{(-1)^k(x+1)^k}{(k+1)^{\frac{2}{3}}}} = \frac{(-1)(x+1)(k+1)^{\frac{2}{3}}}{(k+2)^{\frac{2}{3}}}$. In order to move forwards with this we need to find $\lim_{k\to \infty}\frac{(-1)(x+1)(k+1)^{\frac{2}{3}}}{(k+2)^{\frac{2}{3}}} = (-1)(x+1)\lim_{k\to \infty}\frac{(k+1)^{\frac{2}{3}}}{(k+2)^{\frac{2}{3}}} = (-1)(x+1)\lim_{n\to\infty}\frac{(k+1)^2}{(k+2)^2}^\frac{1}{3}$ which we can divide by the leading term to get that $(-1)(x+1)\lim_{n\to \infty}1^{\frac{1}{3}} = (-1)(x+1)\lim_{n\to \infty} 1 = (-1)(x+1)$. We know that this series' radius of convergence has endpoints when $(-1)(x+1) = 1 \Rightarrow x = -1$ or $(1)(x+1) = 1 \Rightarrow x = 0$ which we know neither, one, or both will converge so we will need to check both of these. If we consider $x = 0$ then we get $\sum_{k = 0}^\infty \frac{(-1)^k(1)^k}{(k+1)^{\frac{2}{3}}}$ and since $\frac{1}{(k+1)^\frac{2}{3}} \downarrow 0$ as $k \to \infty$ we know by the alternating series test that this converges. Then let us consider if $x = -2$ then we get the series $\sum_{k = 0}^\infty \frac{(-1)^k(-1)^k}{(k+1)^{\frac{2}{3}}} = \sum_{k = 0}^\infty \frac{1}{(k+1)^{\frac{2}{3}}}$ and since $\frac{1}{(k+1}^{\frac{2}{3}} > \frac{1}{k}$ we know that this series diverges by the comparison test because we know that the harmonic series diverges. Therefore, the series $S(x) = \sum_{k = 0}^\infty \frac{(-1)^k}{(k + 1)^{2/3}} (x+1)^k $ has an interval of convergence of $(-2, 0]$.
+\end{proof}
+
+\end{document}
+

@@ -1,0 +1,118 @@
+\documentclass[11pt]{article}
+
+%%% Useful packages
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+%%% Sets page margins, overriding 11pt article defaults
+\setlength{\topmargin}{0 in}
+\setlength{\headheight}{0 in}
+\setlength{\headsep}{0 in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{9 in}
+
+%%% Useful for layout
+\newcommand{\VF}{\vspace*{\fill}}
+\newcommand{\HF}{\hspace*{\fill}}
+
+%%% shorthand for sets
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\DeclareMathOperator{\Ker}{Ker}
+
+\begin{document}
+
+{\noindent\Large\textbf{Homework 6 due Wed, Oct~27th by 11am in Gradescope}}
+
+\vspace{.25in}
+
+{\large
+\noindent
+\textbf{Name: Sean Eva} \smallskip \\
+\textbf{GTID: 903466156} \smallskip \\
+%%% List anyone with whom you discussed the problems
+\textbf{Collaborators:} \smallskip \\
+%%% List all resources used OTHER than the textbook, lecture notes, 
+%%% and previous homework assignments.
+\textbf{Outside resources:} \smallskip
+}
+
+\pagebreak 
+
+%%% Edit the directions below to remove anything which is not part of
+%%% your solution.  A blank line starts a new paragraph.  '\\' is a 
+%%% line break.   The default latex formatting is usually acceptable,
+%%% so don't spend a significant amount of time making your solutions
+%%% look pretty.  Do spellcheck.  PROOFREAD, more than once!
+
+INSERT a ``pagebreak'' command between each problem (integer numbers).
+Problem subparts (letter numbered) can be on the same page.
+
+REMOVE all comments (within ``textit\{\}'' commands) before submitting
+solutions.
+
+DO NOT include any identifying information (name, GTID) except on the
+first/cover page.
+
+\begin{enumerate}
+
+\item Problem 4.3 \# 9
+
+\begin{enumerate}
+    \item 
+    
+    Let assumptions be as in the problem statement. We know that $A=\{a\in R|\phi(a)\in A'\}$. Consider $a_1,a_2\in A$, then we know that $\phi(a_1),\phi(a_2)\in A'$. Since $A'$ is a subring of $R'$ we know that $\phi(a_1)+phi(a_2)\in A'$. Similarly, since $phi$ is a ring homomorphism, we know that $\phi(a_1)+\phi(a_2) = \phi(a_1+a_2)$. Likewise, since $A'$ is a ring, we know that $\phi(a_2)+\phi(a_1)\in A'$ and it is simple to show that $a_2+a_1\in A$ and it would follow that $\phi(a_1+a_2) = \phi(a_1)+\phi(a_2) = \phi(a_2)+\phi(a_1) = \phi(a_2+a_1)$ and we then know that $a_1+a_2 = a_2+a_1$. Since we know that $\phi(a_1)+\phi(a_2) = \phi(a_1+a_2)$, we know $\phi(a_1+a_2)\in A'$; therefore, by the definition of the set $A$ we have that $a_1+a_2\in A$. Similarly, since $\phi$ is a ring homomorphism, we know that $\phi(a_1a_2) = \phi(a_1a_2)$. Since $\phi(a_1),\phi(a_2)\in A'$, we also know that $\phi(a_1a_2)\in A'$ and by the definition of $A$ we know that $a_1a_2\in A$. Therefore, since for elements $a_1, a_2\in A$ we know that $a_1+a_2=a_2+a_1\in A$ and $a_1a_2\in A$, then $A$ is a subring of $R$. Now if we take $k\in K$, since $K$ is the kernel of ring homomorphism $\phi$ then it implis that $\phi(k)=0$ but since $A'$ is a subring of $R'$ therefore, $0\in A'$. Therefore, since $\phi(k)\in A'$ and from the definition of $A$ we have that $k\in A$, we know that $K\subset A$.
+    
+    \item
+    
+    Let assumptions be as in the problem statement. We can define a new function $\phi_A: A \rightarrow R'$ which is a ring homomorphism since it is just a restriction of a ring homomorphism to a subring of $R$. We define that for any $a\in A$ we have that $\phi_A(a) = \phi(a)$. The kernel of $\phi_A$ is $K$ since $K\subset A$. We know that $\phi_A(a) = \phi(a)\in A'$ which implies that the image of $\phi_A\subset A'$. We also know that for any $a'\in A'$ that there exists an $a\in A$, such that $\phi(a) = \phi_A(a) = a'\in$ Im$\phi_A$. This then implies that $A'\subset$Im$\phi_A$. Therefore, Im$\phi_A=A'$. Then by the First Homomorphism Theorem, we know that $A/K \simeq A'$.
+    
+    \item
+    
+    Let assumptions be as in the problem statement. We are given that $A'$ is a left ideal of $R'$, which tells us that for $r'\in R', a'\in A'$. We want to show that for $r\in R, a\in A$ that $ra\in A$. Since $a\in A,$ then we know that $\phi(a)\in A'$. If we take $\phi(ra)=\phi(r)\phi(a)$ since $\phi$ is a homomorphism. Since $A'$ is a left ideal we know that $\phi(r)\phi(a)\in A'$. Therefore, by the definition of $A$ we know that $ra\in A$. Therefore, $A$ is a left ideal of $R$.
+    
+\end{enumerate}
+
+\pagebreak
+\item Problem 4.3 \# 18
+
+Let assumptions be as in the problem statement. In order to show that $R \oplus S$ is a ring we need to show that for elements $a,b\in R\oplus S$ that $ab, a+b, a+(-b)\in R\oplus S$. Since $R,S$ are rings by definition, we know that elements $r+t, r+(-t), rt\in R$ and that $s+u, s+(-u), su\in S$. Then if we define $a = (r,s), b=(t,u)\in R\oplus S$ we know that $a+b, a+(-b), ab\in R\oplus S$. Therefore, we know that $R\oplus S$ is a ring. Next we will show that the subring $\{(r, 0)|r\in R\}$ is an ideal of $R\oplus S$. Since we are given that this is a subring of $R\oplus S$ we know that it is an additive subgroup. We then need to show that this subring absorbs multiplication on the left and right. Let us define $(a,0), (b, 0)\in R\oplus S$ and $a,b\in R$. We know that $ab,ba\in R$ since $R$ is a ring. This means that $(a,0)(b,0) = (ab,0)\in \{(r,0)|r\in R\}$ and $(b,0)(a,0)=(ba,0)\in \{(r,0)|r\in R\}$. We then want to show that this ideal is isomorphic to $R$. We can show this if we can develop an isomorphism $\phi: \{(r,0)|r\in R\}\rightarrow R$. We will define $\phi: \{(r,0)|r\in R\}\rightarrow R$ as for $a\in \{(r,0)|r\in R\}$ where $a = (r,0)$ that $\phi(a) = \phi((r,0)) = r\in R$. Let $a = (r, 0), b = (t, 0)\in \{(r,0)|r\in R\},$ we know that $rt\in R$ by definition, then we can show $\phi(a)+\phi(b) = r + t = \phi(a+b)$ and $\phi(a)\phi(b)=rt = \phi(ab)$. This showed that $\phi$ is a homomorphism. Then we have that if $\phi(a)=\phi(b)$ we know that $r = t$ which implies that $a = (r,0) = (t, 0) = b$ which shows that $\phi$ is one to one and an monomorphism. Lastly we want to check to see if $\phi$ is onto. Then for $r\in R$ we know that $(r, 0)\in \{(r,0)|r\in R\}$ would map as $\phi((r,0)) = r\in R$. This applies the exact same to $\{(0, s)|s\in S\}$ without loss of generality. 
+
+\pagebreak
+\item Problem 4.3 \# 19
+
+\begin{enumerate}
+    \item 
+    
+    Let assumptions be as in the problem statement. In order prove that $R$ is a ring we want to show that for $a_1,a_2\in R$ that $ab,a+b,a+(-b)\in R$. Let $a_1 = \begin{pmatrix} a_1 & b_1 \\ 0 & c_1 \end{pmatrix}, a_2 = \begin{pmatrix} a_2 & b_2 \\ 0 & c_2 \end{pmatrix}\in R$. Then it is simple to see that $a_1a_2 = \begin{pmatrix}a_1a_2 & a_1b_2+b_1c_2 \\ 0 & c_1c_2\end{pmatrix}$ then $a_1a_2\in R$. Similarly, $a_1+a_2 = \begin{pmatrix}a_1+a_2 & b_1b_2\\ 0 & c_1+c_2\end{pmatrix}\in R$, and $a_1+(-a_2) = \begin{pmatrix}a_1-a_2 & b_1-b_2\\ 0 & c_1-c_2 \end{pmatrix}\in R$. Since $a_1a_2, a_1+a_2, a_1+(-a_2)\in R$ we know that $R$ is a ring.
+    
+    \item
+    
+    Let assumptions be as in the problem statement. In order to show that $I$ is an ideal of $R$ we need to show that $I$ is an additive subgroup of $R$ and absorbs multiplication from the right and left. Since $R$ and subsequently $I$ follows normal matrix addition properties we know that for any if for any $i_1 = \begin{pmatrix}0 & a_1 \\ 0 & 0 \end{pmatrix}, i_2 = \begin{pmatrix}0 & a_2 \\ 0 & 0 \end{pmatrix}\in I$ we know that $i_1+i_2 = \begin{pmatrix}0 & a_1+a_2 \\ 0 & 0 \end{pmatrix}\in I$. Therefore, we know that $I$ is an additive subgroup of $R$. Then we want to show that $I$ absorbs multiplication on the left and right. Consider the same $i_1, i_2\in I$ as before. Then it is simple to see that $i_1i_2 = \begin{pmatrix}0 & 0\\ 0& 0 \end{pmatrix}$ and $i_2i_1 = \begin{pmatrix} 0 & 0\\ 0 & 0 \end{pmatrix}$. And since $0\in \R$, then $i_1i_2, i_2i_1\in I$. This implies that $I$ absorbs multiplication on the left and the right and is therefore an ideal of $R$.
+    
+    \item
+    
+    Let assumptions be as in the problem statement. In order to show these are isomorphic we will define a mapping $\phi: R/I\rightarrow F\oplus F$ as $\phi(\begin{pmatrix}a & b \\ 0 & c \end{pmatrix}) = (a, c)$. Let us define $A = \begin{pmatrix}a_1 & b_1 \\ 0 & c_1\end{pmatrix}, B = \begin{pmatrix}a_2 & b_2 \\ 0 & c_2\end{pmatrix}\in R$. We are able to define $A$ and $B$ simply like this because the definition of $R/I = \{a + I |a\in R\}$ does not affect elements $a_1, c_1$. Then we have that $A+B = \begin{pmatrix}a_1+a_2 & b_1+b_2 \\ 0 & c_1+c_2\end{pmatrix}$ and $\phi(A+B) = (a_1+a_2, c_1+c_2) = (a_1,c_1)+(a_2,c_2) = \phi(A) + \phi(B)$ therefore, we know that $\phi$ is a homomorphism. We then want to show that $\phi$ is one to one, Let us say that $\phi(A)=\phi(B),$ that is to say that $(a_1, c_1) = (a_2,c_2).$ This implies then that $a_1=a_2, c_1=c_2.$ Then it would follow that $A=B.$ This means that $\phi$ is one to one and is therefore a monomorphism. Lastly, we want to show that $\phi$ is onto. Let us define an element of $F\oplus F$ as $(a, c)$, then the element of $R/I$ the corresponds to $(a, c)$ is $\begin{pmatrix}a & b \\ 0 & c\end{pmatrix}$. This implies that $\phi$ is onto and is therefore an isomorphism. Therefore, since we have an isomorphism $\phi: R/I\rightarrow F\oplus F$ we know that $R/I\simeq F\oplus F.$
+    
+\end{enumerate}
+
+\pagebreak
+\item Problem 4.3 \# 20
+
+Let assumptions be as in the problem statement. Then for all $r_1,r_2\in R,$ we know that $\phi(r_1+r_2) = (r_1+r_2+I, r_1+r_2+J) = ((r_1+I)+(r_2+I), (r_1+J)+(r_2+J)) = (r_1+I, r_1+J)+(r_2+I,r_2+J) = \phi(r_1)+\phi(r_2)$. This is true since $I, J$ are ideals. Then we also know that $\phi(r_1r_2) = (r_1r_2+I, r_1r_2+J) = ((r_1+I)(r_2+I), (r_1+J)(r_2+J)) = (r_1+I, r_1+J)(r_2+I,r_2+J) = \phi(r_1)\phi(r_2).$ Therefore, we know that $\phi$ is a homomorphism. Then $\Ker\phi = \{r\in R|\phi(r) = (I,J)\} = \{r\in R | (r+I, r+J) = (I, J)\} = \{r\in R| r+I = I, r+ J = J\} = \{r\in R| r\in I, r\in J\} = \{r\in R| r\in I\cap J\} = I\cap J$.
+
+\pagebreak
+\item Problem 4.3 \# 21.
+
+Let assumptions be as in the problem statement. We have to show that $\Z_{15}\simeq \Z_3\oplus\Z_5$. We know that $\Z_15$ and $\Z_3\oplus\Z_5$ are cyclic groups and since $\gcd(3,5)=1$ we know that they are isomorphic since there is a unique cyclic group of given order up to isomorphism. 
+
+\end{enumerate}
+
+\end{document}
+

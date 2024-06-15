@@ -1,0 +1,195 @@
+\documentclass[11pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Packages
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+%\usepackage{hyperref}
+%\usepackage{mathrsfs}
+%\usepackage{color}
+%\usepackage{bm}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%amsthm settings
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem{claim}{Claim}
+\newtheorem{definition}{Definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: mathbb
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\A}{\mathbb A}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: greek
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\g}{\gamma}
+\renewcommand{\d}{\delta}
+\newcommand{\e}{\epsilon}
+\renewcommand{\l}{\lambda}
+
+\begin{document}
+
+\noindent {\bf MATH 4317 Homework 2}  \hfill Due Friday, 1/28/2022 at 11PM to Gradescope
+
+\bigskip
+
+\noindent Homework guidelines: 
+\begin{itemize}
+\item Each problem I assign, unless otherwise stated, is asking you to prove something. Give a full mathematical proof using only results from class or Wade.
+\item Submit a PDF or JPG to gradescope. The grader has $\sim 250$ proofs to grade:  please make his job easier by submitting each problem on a different page. 
+\item If you submit your homework in Latex, you get 2\% extra credit. 
+\end{itemize}
+
+\subsection*{Problems (5 total, 10 pts each)}
+
+\begin{definition}
+Given two nonempty sets $A, B \subset \R$, define their \emph{Minkowski sum} $A + B$ to be
+\[
+A + B = \{ a + b : a \in A, b \in B\} \, .
+\]
+\end{definition}
+\begin{problem}
+Prove or disprove (provide a counterexample) for the following statement: For all nonempty, bounded sets $A, B \subset \R$, we have that 
+\[
+\sup(A + B) = \sup(A) + \sup(B) \,. 
+\]
+\end{problem}
+
+\begin{proof}
+Assume that we have two bounded sets $A,B$ and assume that we have a third set $C$ that is the Minkowski sum of $A+B$. That is to say that $C=A+B=\{a+b:a\in A, b\in B\}$. Let $\sup(A) = a_1, \sup(B) = b_1$. Let $a\in A, b\in B$ then we have that $a\leq a_1, b\leq b_1$ by the definition of a supremum. Therefore, we know that $a+b \leq a_1+b_1$. We then know that $C$ is bounded above and that $a_1+b_1$ is an upper bound of the set. We then need to prove that $a_1+b_1$ is not just the upper bound of the set $C$ but that it is also $\sup(C)=a_1+b_1.$ Let $\epsilon>0$ be an arbitrary number. Then there exists an element $a\in A$ such that $a_1-\frac{\epsilon}{2}<a\leq a_1$ and similarly there is an element $b\in B$ such that $b_1-\frac{\epsilon}{2}<b\leq b_1$. Therefore, if we add these two statements together we get $(a_1+b_1)-\epsilon<a+b\leq (a_1+b_1)$. This then shows that $\sup{C} = a_1+b_1$.
+\end{proof}
+
+\pagebreak
+
+\begin{problem}
+Find the $\sup$ and $\inf$ of the set 
+\[
+E = \left\{ 2 + \frac{1}{n} : n \in \N \right\} \,. 
+\]
+\end{problem}
+
+\begin{claim}
+sup(E) = 3
+\end{claim}
+\begin{proof}
+We first want to show that $3$ is an upper bound of $E.$ We want to show that $2+\frac{1}{n} \leq 3: \forall n\in \mathbb{N}$. We can say that $2+\frac{1}{n}\leq 3 \Rightarrow \frac{1}{n}\leq 1.$ Then for all $n\in \mathbb{N}$ we have that $n\geq 1,$ and further that $1\geq \frac{1}{n}.$ Therefore we have that $2+\frac{1}{n}\leq 3.$ Now we want to show that $3$ is the least upper bound of $E$. Let $\epsilon > 0$ if we then take that $3-\epsilon < 3$ we know that that $3-\epsilon$ is not an upper bound of the set $E$. Therefore, we know that $\sup(E)=3.$
+\end{proof}
+\begin{claim}
+inf(E) = 2
+\end{claim}
+\begin{proof}
+We first want to show that $2$ is a lower bound of $E$. We want to show that $2+\frac{1}{n}\geq 2: \forall n\in \N$. We know that $2+\frac{1}{n}\geq 2\Rightarrow \frac{1}{n}\geq 0$, and if we take $1\geq 0$, then for all $n\in \N$ we know then that $\frac{1}{n}\geq 0$. Therefore, $2$ is a lower bound on $E$. We now want to show that $2$ is a greatest lower bound on $E$. Let $\epsilon > 0$ then we have that $2+\epsilon > 2 $ we know that $2+epsilon$ is not a lower bound of the set $E$. Therefore, we then know that $\inf(E) = 2.$
+\end{proof}
+
+
+\pagebreak
+
+\begin{problem}
+Prove that
+\[
+\bigcap_{k \in \N} \left[ \frac{k-1}{k} , \frac{k +1}{k} \right] = \{ 1 \} \,. 
+\]
+
+\end{problem}
+
+\begin{proof}
+Let $ E = \bigcap_{k \in \N} \left[ \frac{k-1}{k} , \frac{k +1}{k} \right]$. We will first show that $\{1\}\subset E$. We will first manipulate the definition of $E$, we then have that $\left[ \frac{k-1}{k} , \frac{k +1}{k} \right] = \left[ \frac{k}{k}-\frac{1}{k} , \frac{k}{k}+\frac{1}{k} \right] = \left[ 1-\frac{1}{k} , 1+\frac{1}{k} \right]$. From examples in class we know that $\sup(\frac{1}{n})=1,\inf(\frac{1}{n})=0$ for $n\in\N$. Therefore we have that $1-\frac{1}{n} \leq 1 \leq 1+\frac{1}{n}$. Thus, we know that $\{1\}\in\left[ \frac{k-1}{k} , \frac{k +1}{k} \right]$ and further that $\{1\}\subset E.$ Next let $x\in E$, that is to say that $\frac{k-1}{k}\leq x\leq \frac{k+1}{k}$ for all $k\in \N.$ We can then manipulate this as earlier to arrive at $1-\frac{1}{k}\leq x\leq 1+\frac{1}{k}$. If we again recall that $\sup(\frac{1}{n})=1, \inf(\frac{1}{n})=0$, then we need $x$ such that $0\leq x\leq 2 \cap 1\leq x\leq 1 = \{1\}$. This implies that $E \subset \{1\}$. Since $\{1\}\subset E, E\subset\{1\}$ we then know that $E = \{1\}$
+\end{proof}
+
+\pagebreak
+
+\begin{definition}
+Let $f : \R \to \R$. We call $f$ \emph{monotone increasing} if $a \leq b$ implies $f(a) \leq f(b)$. 
+\end{definition}
+
+\begin{problem}
+Let $E \subset \R$ be a bounded set (from above and below). Prove or disprove (provide a counterexample) each of the following statements: 
+\begin{itemize}
+	\item[(i)] If $f$ is monotone increasing, then $\sup f(E) \leq f(\sup E)$.
+	\item[(ii)] If $f$ is monotone increasing, then $\sup f(E) = f(\sup E)$. 
+\end{itemize}
+\end{problem}
+\emph{Hint: For (ii), consider a function $f$ with a jump discontinuity. } 
+
+\begin{itemize}
+    \item [(i)]
+    
+    Let $s = \sup(E)$. By definition of supremum we know that for $n\in \N$ that we can pick an $x_n\in E$ such that $s-\frac{1}{n}<x_n\leq s$. Then by the squeeze theorem we know that $x_n\rightarrow s$ as $n\rightarrow \infty$ and therefore, $f(x_n)\rightarrow f(s)$. Let $\epsilon > 0$ and pick $N$ such that $n\geq N$ implies that $|f(x_n)-f(s)| < \epsilon$. Then, $n\geq N$ implies that $f(s) = f(s)-f(x_n) + f(x_n)\leq |f(s)-f(x_n)| + f(x_n) < \epsilon + f(x_n) \leq \epsilon + \sup f(E).$ Since $\epsilon > 0$ was arbitrary we know that $f(\sup A) = f(y) \leq \sup f(A).$
+    
+    \item[(ii)]
+    
+    Let $f(x) = \begin{cases} 
+      x & x< 2 \\
+      x+1 & 2\leq x
+   \end{cases}$, and let $E = (1,2).$ It is easy to see that $\sup(E) = 2.$ Then $f(\sup(E)) = f(2) = 3$. Alternatively if we take $\sup(f(E))$ we get that $\sup(f(E)) = \sup ((1,2)) = 2.$ Since $3\neq 2$ we have disproven this statement for monotone increasing function $f$ that $\sup f(E) = f(\sup E).$
+    
+\end{itemize}
+
+\newpage
+
+Let $\sim$ denote the relation on $\Z \times \Z \setminus \{0\}$ defined by 
+\[
+(p,q) \sim (m,n) \quad \iff \quad pn = mq \,.
+\]
+Given $(p,q) \in \Z \times \Z \setminus \{ 0 \}$, let $[(p,q)]$ denote the \emph{equivalence class} of $(p,q)$, i.e.,
+\[
+[(p,q)] = \{ (m,n) \in \Z \times \Z\setminus \{ 0\} : (m,n) \sim (p,q)\} \,. 
+\]
+Recall from class that the set of equivalence classes $\{ [(p,q)]\}$ can be 
+identified with $\Q$, the set of rational numbers. 
+
+\begin{problem}
+
+Prove that $\Q$ is countable. 
+
+\end{problem}
+
+{\it Hint: You may freely use the following facts about cardinality in your proof: 
+\begin{itemize}
+	\item[(a)] An infinite subset of a countable set is countable.
+	\item[(b)] If $A, B$ are two countable sets, then the Cartesian product $A \times B$ is also countable. 
+	\item[(c)] If $A$ is countable, $B$ is a set, and $f : A \to B$ is an onto mapping from $A$ to $B$, then $B$ is either finite or countable. 
+\end{itemize}
+
+\begin{proof}
+Given that we know that $\Z$ is countable, if we take the Cartesian product of $\Z \times \Z$ we arrive at another countable set by $(b)$. Let us consider the set of all equivalence classes of $\Z \times \Z$ as $E = \{[(p_1,q_1)], [(p_2,q_2)],...\}$ with the definition of each equivalence class be as above. Since $|E| = \infty$ and $E\subset \Z\times\Z$ we know that $E$ is countable by $(a)$. Let $f: E \rightarrow \Q$ such that for $z = [(a_1, b_1)]\in E$ we have $f(z) = \frac{a_1}{b_1}$. We want to show that $f$ is onto. Let $q = \frac{q_1}{q_2} \in \Q$ be reduced as much as possible; consider the element $x = [(q_1,q_2)]\in E$, then $f(x) = \frac{q_1}{q_2}$. Therefore since we can find an element of $E$ that can map to an arbitrary element of $\Q$ we know that $f$ is onto. Therefore by $(c)$ we know that $\Q$ is either finite or countable. Since $\Z \subset \Q$ and $\Z$ is infinite, we know then that $\Q$ is also infinite which further implies that $\Q$ is countable. 
+\end{proof}
+
+}
+
+
+\end{document}
+

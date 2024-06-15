@@ -1,0 +1,131 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathcomp}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage{array}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{tabularx}
+
+\newtheorem{ishaan}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\title{Homework 10}
+\author{Sean Eva}
+\date{April 2021}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item 
+    
+    Consider arbitrary singular value for the matrix $A$, that is to say that for arbitrary singular value $\sigma$ and eigenvector $v$, then $(A^*A)v=\sigma^2 v$. Then,
+    \begin{align*}
+        A^{-1}Av&=A^{-1}\sigma v\\
+        Iv&=\sigma^2(A^*A)^{-1}v\\
+        \frac{1}{\sigma^2}v&=(A^*A)^{-1}v.
+    \end{align*} Therefore, the singular value for the inverse of $A$ is $\sqrt{\frac{1}{\sigma^2}}=\frac{1}{\sigma}$. Thus, the singular values for $A^{-1}$ are $\{\frac{1}{\sigma_n}, ..., \frac{1}{\sigma}\}$.
+    
+    \item
+    
+    Consider the matrix $A$ such that $A^2=0$. The characteristic polynomial of $A^2$ would then be $(x^3)^2=0$. This then implies that the characteristic polynomial of $A$ would be $x^3=0$. This then implies that all three eigenvalues of the matrix $A$ are $\lambda=0$. Therefore, consider the following set of matrices, $\begin{bmatrix}
+    0 & 0 & 0\\
+    0 & 0 & 0\\
+    0 & 0 & 0
+    \end{bmatrix},
+    \begin{bmatrix}
+    0 & 1 & 0\\
+    0 & 0 & 0\\
+    0 & 0 & 0
+    \end{bmatrix},
+    \begin{bmatrix}
+    0 & 1 & 0\\
+    0 & 0 & 1\\
+    0 & 0 & 0
+    \end{bmatrix},
+    \begin{bmatrix}
+    0 & 0 & 0\\
+    1 & 0 & 0\\
+    0 & 0 & 0
+    \end{bmatrix},
+    \begin{bmatrix}
+    0 & 0 & 0\\
+    1 & 0 & 0\\
+    0 & 1 & 0
+    \end{bmatrix}.$
+    
+    \item
+    
+    \begin{enumerate}
+        \item 
+        
+        Let$B=\{v, Av, ..., A^{n-1}v\}\subseteq\mathbb{R}^n, |B|=n$, so it is sufficient to show that $B$ is linearly independent. Suppose that $a_0v+a_1(Av)+...+a_{n-1}(A^{n-1}v)=0$. If we apply $A^{n-1}$ we get $a_i \in \mathbb{F}^n$
+        \begin{align*}
+            A^{n-1}(a_0v+...+a_{n-1}A^{n-1}v)&=0\\
+            a_0A^{n-1}v+a_1A^nv+...+a_{n-1}A^{2n-2}v&=0\\
+            a_0A^{n-1}v&=0\\
+            a_0&=0.
+        \end{align*} By applying subsequent $A$s we will get that $a_i=0$ for $0\leq i\leq n-1$. Therefore, $a_0=a_1=...=a_{n-1}=0$ which means that $B$ is linearly independent and is therefore a basis of $\mathbb{F}^n$.
+        
+        \item
+        
+        Let $x\in\mathbb{F}^n\Rightarrow x=a_0v+a_1Av+...+a_{n-1}A^{n-1}v, a_i\in\mathbb{F}^n.$ Then, \begin{align*}
+            A^nx &= a_0A^nv+...+a_{n-1}A^{2n-1}v\\
+            &=a_0(0)+...+)a_{n-1}(0)\\
+            A^nx&=0, \forall x\in \mathbb{F}^n.
+        \end{align*} Therefore, $A^n=0.$
+        
+        \item
+        
+        If $\lambda$ is an eigenvalue of $A\Rightarrow \exists v\neq0\in\mathbb{F}^n$ such that $Av=\lambda v$. Then,
+        \begin{align*}
+            A^nv&=\lambda^n\\
+             0&=\lambda^n v\\
+             \lambda ^n=0.
+        \end{align*} Therefore, $v\neq 0.$ Thus, $\lambda=0$ is the only eigenvalue of $A$.
+        
+        \item
+        
+        \begin{align*}
+        A^{n-1}v&\neq 0\\
+        A(A^{m-1}v)\neq0, \forall m\leq n-1.
+        \end{align*} Therefore, $A^{m-1}v$ is not an eigenvector for $A$ $m\leq n-1.$ If $m\leq n-1 \Rightarrow A^{n-1}v\neq 0$ and $A(A^{n-1}v)=A^nv=0.$ $A^{n-1}$ is an eigenvector of $A$. 
+        
+        \item
+        
+        Let $P$ be a matrix whose columns are $A^{n-1}v,...,Av,v$. Then,
+        \begin{align*}
+            Ap&=PI\\
+            P^{-1}AP&=I.
+        \end{align*} Then, $J=\begin{bmatrix}
+        0 & 1 & 0 & \cdots & 0 & 0\\
+        0 & 0 & 1 & \cdots & 0 & 0\\
+        0 & 0 & 0 & \cdots & 0 & 0\\
+        \vdots & \vdots & \vdots & \ddots & 0 & 0\\
+        0 & 0 & 0 & \cdots & 0 & 1\\
+        0 & 0 & 0 & \cdots & 0 & 0
+        \end{bmatrix}.$
+        
+    \end{enumerate}
+    
+    \item
+    
+    Task 1: Increasing to $n=-50$ does not affect the Jordan form of $B$. However, it will make the size of the Jordan form of $A$ become $5$ times smaller, decreasing its factor from $10^{-5}$ to $10^{-25}$\\
+    Task 2: The Jordan form of each random matrix is always $J=\begin{bmatrix}
+    0 & 1 & 0 & 0 & 0\\
+    0 & 0 & 1 & 0 & 0\\
+    0 & 0 & 0 & 1 & 0\\
+    0 & 0 & 0 & 0 & 1\\
+    0 & 0 & 0 & 0 & 0
+    \end{bmatrix}.$ The matrix of $B^4$ does confirm the value of $J$ because of how as each successive product $B, B^2,...$, the amount of data being stored decreases. This is indicative of why $J$ comes out this way because $B$ continues to lose information through iterations.
+    
+\end{enumerate}
+
+\end{document}

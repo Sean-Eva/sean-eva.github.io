@@ -1,0 +1,154 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathcomp}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage{array}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{tabularx}
+
+\newtheorem{ishaan}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\renewcommand\qedsymbol{$\blacksquare$}
+\renewcommand{\labelenumii}{\arabic{enumii}.}
+
+\title{Homework 5}
+\author{Sean Eva}
+\date{April 2021}
+
+\begin{document}
+
+\maketitle
+
+\section{Chapter 7 Exercises}
+
+\begin{enumerate}
+    \setcounter{enumi}{35}
+    \item 
+    
+    Since $X_1, X_2,...$ are uncorrelated, $Cov(X_i, X_j)=0$ if $i\neq j$
+    \begin{align*}
+        Cov(S_m,S_n) &= Cov(X_1+X_2+...+X_m, X_1+X_2+...+X_m+X_{m+1}+...+X_{n-1}+X_n)\\
+        &= Cov(X_1,X_1)+...+Cov(X_m,X_m)\\
+        &= V(X_1)+...+V(X_m)\\
+        &= V(X_1+...+X_m)\\
+        &= V(S_m)\\
+        &= V(X_1)+...+V(X_m)\\
+        &= m\sigma^2.
+    \end{align*} Since all $X$ have the same variance.
+    
+    \setcounter{enumi}{59}
+    \item
+    
+    Since the odd central moment of the normal distribution is $0$. Then,
+    \begin{align*}
+        0 &= \mathbb{E}[(X-\mu)^3]\\
+        &= \mathbb{E}(X^3-3\mu X^2+3\mu^2X-\mu^3)\\
+        &= \mathbb{E}(X^3)-3\mu\mathbb{E}(X^2)+3\mu^2\mathbb{E}(C)-\mu^3.
+    \end{align*} Where $\mathbb{E}(X)=\mu$ and $\mathbb{E}(X^2)=Var(X)+[\mathbb{E}(X)]^2=\sigma^2+\mu^2$.
+    \begin{align*}
+        0 &= \mathbb{E}(X^3)-3\mu(\sigma^2+\mu^2)+3\mu^3-\mu^3\\
+        &= \mathbb{E}(X^3)-3\mu\sigma^2-\mu^3\\
+        \Rightarrow \mathbb{E}(x^3)&=3\mu\sigma^2+\mu^3
+    \end{align*}
+    
+    \setcounter{enumi}{74}
+    \item
+    
+    Given that we know, $Am\geq \omega m$. We have that $\frac{x_1+x_2+...+x_n}{\eta}\geq \sqrt[n]{\eta x_2...x_n}$. If we apply this, $\frac{\sqrt[n]{\prod_{i=1}^nx_i}}{x_1}, \frac{\sqrt[n]{\prod_{i=1}^nx_i}}{x_2}, ..., \frac{\sqrt[n]{\prod_{i=1}^nx_i}}{x_n}$. Then we have, $\frac{\sum_{i=1}^n\frac{\sqrt[n]{x_1x_2...x_n}}{x_i}}{n}\geq(\frac{\sqrt[n]{x_1x_2...x_n}}{x_1}*\frac{\sqrt[n]{x_1x_2...x_n}}{x_2}*...*\frac{\sqrt[n]{x_1x_2...x_n}}{x_n})^{\frac{1}{n}}$\\
+    $\Rightarrow \frac{1}{2} \sqrt[n]{x_1x_2...x_n}\sum_{i=1}^n\frac{1}{x_i}\geq 1$\\
+    $\Rightarrow \sqrt[n]{x_1x_2...x_n} > \frac{n}{\frac{1}{x_1}+\frac{1}{x_2}+...+\frac{1}{x_n}}$
+    
+\end{enumerate}
+
+\section{Chapter 7 Problems}
+
+\begin{enumerate}
+    \setcounter{enumi}{7}
+    \item 
+    
+    Let $M_X(t)$ be the m.g.f. of $X_i$ and $P_N(*)$ be the p.g.f. of $N$. Then the m.g.f. of $X_1+ X_2+ ...+ X_N$ is
+    \begin{align*}
+        M_{X_1+X_2+...+X_N}(t) &= \mathbb{E}(e^{t(X_1+X_2+...+X_n)})\\
+        &= \mathbb{E}_N\mathbb{E}_X((e^{t(X_1+X_2+...+X_N)})|N=n)\\
+        &= \mathbb{E}_N[(M_X(t))^N]\\
+        &= P_N(M_X(t))
+    \end{align*}
+    
+\end{enumerate}
+
+\section{Chapter 8 Exercises}
+
+\begin{enumerate}
+    \setcounter{enumi}{9}
+    \item 
+    
+    Let $X_i$ be a random variable such that $X_i=\begin{cases}
+    1 & \text{if the throw is a $5$ or $6$}\crcr
+    0 & \text{if the throw is a $1$, $2$, $3$, or $4$}
+    \end{cases}.$ Therefore,
+    \begin{align*}
+        \mathbb{P}(X_i=1)&=\frac{1}{6}+\frac{1}{6}=\frac{1}{3}\\
+        \mathbb{P}(X_i=0)&=\frac{1}{6}+\frac{1}{6}+\frac{1}{6}+\frac{1}{6}=\frac{4}{6}=\frac{2}{3}.
+    \end{align*} Also, $X_i$s are independent and identically distributed random variables. Let's define $N_n=\sum_{i=1}^nX_i$. Then,
+    \begin{align*}
+        \mathbb{E}(N_n) &= \mathbb{E}(X_1)+\mathbb{E}(X_2)+...+\mathbb{E}(X_n)\\
+        &= \frac{1}{3}+\frac{1}{3}+...+\frac{1}{3}\\
+        &= \frac{n}{3}\\
+        var(N_n) &= var(X_1+X_2+...+X_n)\\
+        &= var(X_1)+var(X_2)+...+var(X_n)\\
+        &= p(1-p)+p(1-p)+...+p(1-p)\\
+        &= np(1-p)\\
+        &= n\frac{1}{3}(1-\frac{1}{3})\\
+        &= \frac{2n}{9}\\
+        \mathbb{E}(\frac{N_n}{n}) &= \frac{n}{3n}=\frac{1}{3}\\
+        var(\frac{N_n}{n}) &= \frac{1}{n^2}var(N_n)\\
+        &= \frac{1}{n^2}\frac{2n}{9}\\
+        &= \frac{2}{9n} \rightarrow 0 \text{ as $n\rightarrow\infty$}.
+    \end{align*} Therefore, $\frac{N_n}{n}\rightarrow \mathbb{E}(\frac{N_n}{n})=\frac{1}{3}$ as $n\rightarrow \infty$
+    
+    \setcounter{enumi}{20}
+    \item
+    
+    Let $X$ be a random variable that equals $1$ with probability $p=\frac{1}{6}$ and $0$ with probability $q=1-p=\frac{5}{6}.$ We have that $\mathbb{E}(X)=\frac{1}{6}$ and $var(X)=\frac{5}{36}.$ Let us define $Y=X+...+X$ ($n$ times) as a random variable accounting for the number of sixes. $Y$ has a mean value of $\mu=\mathbb{E}(Y)=\frac{n}{6}$ and $\sigma^2=var(Y)=\frac{5n}{36}$. By using Chebyshev's inequality,
+    \begin{align*}
+        \mathbb{P}[|Y-\mu|>k\sigma]\leq \frac{1}{k^2}.
+    \end{align*} Therefore, by choosing $k=\sqrt{\frac{36}{5}}$ we get,
+    \begin{align*}
+        \mathbb{P}[|Y-\frac{n}{6}>\sqrt{n}]\leq \frac{5}{36}.
+    \end{align*} So,
+    \begin{align*}
+        \mathbb{P}[Y\in(\frac{n}{6}-\sqrt{n},\frac{n}{6}+\sqrt{n}]\geq\frac{31}{36}.
+    \end{align*}
+    
+    \setcounter{enumi}{31}
+    \item
+    
+    Let $S$ be a random variable with binomial distribution on $n$ trials where $p=\frac{1}{6}$. Then,
+    \begin{align*}
+        \mathbb{E}(S)&=np=2000\\
+        var(S)&=np(1-p)=\frac{5000}{3}\\
+        Z&=\frac{S-np}{\sqrt{np(1-p)}}\\
+        \mathbb{P}(1900<S<2200) &= \mathbb{P}(\frac{1900-2000}{\sqrt{\frac{5000}{3}}}<\frac{S-2000}{\sqrt{\frac{5000}{3}}}<\frac{2200-2000}{\sqrt{\frac{5000}{3}}}\\
+        &=\mathbb{P}(-\frac{100\sqrt{6}}{100}<Z<\frac{200\sqrt{6}}{100})\\
+        &=\int_{-\sqrt{6}}^{2\sqrt{6}}\frac{1}{\sqrt{2\pi}}e^{-\frac{u^2}{2}}du.
+    \end{align*} Therefore, $a=-\sqrt{6}, b=2\sqrt{6}$.
+    
+\end{enumerate}
+
+\section{Chapter 8 Problems}
+
+\begin{enumerate}
+    \setcounter{enumi}{13}
+    \item 
+    
+    Sorry, I got stumped on this one.
+    
+\end{enumerate}
+
+
+\end{document}

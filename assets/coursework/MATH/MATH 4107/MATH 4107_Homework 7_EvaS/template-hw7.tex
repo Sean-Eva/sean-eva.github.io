@@ -1,0 +1,104 @@
+\documentclass[11pt]{article}
+
+%%% Useful packages
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+%%% Sets page margins, overriding 11pt article defaults
+\setlength{\topmargin}{0 in}
+\setlength{\headheight}{0 in}
+\setlength{\headsep}{0 in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{9 in}
+
+%%% Useful for layout
+\newcommand{\VF}{\vspace*{\fill}}
+\newcommand{\HF}{\hspace*{\fill}}
+
+%%% shorthand for sets
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+\DeclareMathOperator{\Ker}{Ker}
+
+\begin{document}
+
+{\noindent\Large\textbf{Homework 7 due Wed, Nov~17th by 11am in Gradescope}}
+
+\vspace{.25in}
+
+{\large
+\noindent
+\textbf{Name:} Sean Eva\smallskip \\
+\textbf{GTID:} 903466156\smallskip \\
+%%% List anyone with whom you discussed the problems
+\textbf{Collaborators:} Matthew Lau\smallskip \\
+%%% List all resources used OTHER than the textbook, lecture notes, 
+%%% and previous homework assignments.
+\textbf{Outside resources:} \smallskip
+}
+
+\pagebreak 
+
+%%% Edit the directions below to remove anything which is not part of
+%%% your solution.  A blank line starts a new paragraph.  '\\' is a 
+%%% line break.   The default latex formatting is usually acceptable,
+%%% so don't spend a significant amount of time making your solutions
+%%% look pretty.  Do spellcheck.  PROOFREAD, more than once!
+
+INSERT a ``pagebreak'' command between each problem (integer numbers).
+Problem subparts (letter numbered) can be on the same page.
+
+REMOVE all comments (within ``textit\{\}'' commands) before submitting
+solutions.
+
+DO NOT include any identifying information (name, GTID) except on the
+first/cover page.
+
+\begin{enumerate}
+
+\item Problem 4.5 \# 11.
+
+Let assumptions be as in problem statement. If we assume that $p(x)$ is irreducible over $F$ then $p(x)$ cannot be factored as a product of two polynomials of positive degree. Consider then that there is an element $r\in F$ such that $p(r) = 0$. Then we would know that $p(r)$ has a root of $(x-r)$ which we could factor out and $p(r)$ would therefore be reducible which contradicts our assumption that $p(r)$ is irreducible. Therefore, if $p(x)$ is irreducible over $F$ then there is no element $r\in F$ such that $p(r) = 0.$
+
+\pagebreak
+\item Problem 4.5 \# 13.
+
+Let assumptions be as in the problems statement. Let us define a function $\phi: \R[x] \rightarrow \C$ as $\phi(f(x))=f(i)$ for $f(x)\in \R[x]$ essentially swapping $x$ with $i$. First we want to prove that $\phi$ is a ring homomorphism. Let $f(x),g(x)\in \R[x]$, then $\phi((f+g)(x)) = (f+g)(i) = f(i)+g(i) = \phi(f(x))+\phi(g(x))$, and $\phi((fg)(x)) = (fg)(i) = f(i)g(i) = \phi(f(x))\phi(g(x)).$ We then want to show that $\phi$ is onto. $\forall a+bi\in \C$, we then choose $a+bx\in \R[x]$. Then, $\phi(a+bx)=\phi(a)+\phi(bx) = a+bi$. Now we are going to find $\Ker\phi = \{f(x)|\phi(f(x))=0\}$, it is important to note that $\phi(x^2+1) = i^2 + 1 = -1 + 1 = 0$. Therefore, $x^2+1\in \Ker\phi$, and $<x^2+1>\subseteq \Ker\phi.$ Let $f(x)\in \Ker\phi$ and then by the division algorithm we would have that $f(x) = q(x)(x^2+1)+r(x)$ where $r=0$ or $\deg r(x) \leq 1.$ Therefore, 
+\begin{align*}
+    \phi(f(x)) &= \phi(q(x)(x^2+1))+\phi(r(x))\\
+    0 &= phi(q(x))(0)+r(i)\\
+    0 &= 0 + r(i)\\
+    0 &= r(i).
+\end{align*} Since $\deg r(x) \leq 1$ then $r(x) = ax+b$ and $0 = ai+b$ and this implies that $a = 0, b = 0.$ Therefore, $r(x) = 0.$ Therefore, $f(x) = q(x)(x^2+1)$ which implies that $f(x)\in <x^2+1>,$ then $\Ker\phi\subseteq<x^2+1>,$ and $\Ker\phi = <x^2+1>$. Thus, by the first homomorphism theorem, $\R[x]/<x^2+1>\simeq\C$.
+
+\pagebreak
+\item Problem 4.5 \# 16.
+
+Let assumptions be as in the problem statement. Since $q(x)$ is irreducible, then $F[x]/q(x)$ is a field, and can be expressed as $a_0+a_1x+...+a_{n-1}x^{n-1}, a_i\in F$. From the division theorem we are able to say that for some $g(x)\in F[x]$, then $g(x)=f(x)q(x)+r(x)$ where $q(x),r(x)\in F[x].$ Then by counting, since there are $p$ options for each coefficient $a_i$ and there are $n$ coefficients, we have $p^n$ total combinations, and therefore that are $p^n$ elements in $F[x]/q(x).$
+
+\pagebreak
+\item Problem 4.5 \# 20.
+
+Let assumptions be as in the problem statement. Given that $R$ is a Euclidean ring, then we know that it is an integral domain and that there is a function $d$ from the nonzero elements of $R$ to the nonnegative integers that satisfies for $a\neq0,b\neq0\in R,d(a)\leq d(ab)$ and there exists $q,r\in R$ such that $b=qa+r,$ where $r=0$ or $d(r)<d(a)$. Let $I$ be an ideal of $R$. If $I$ is the ideal of only the additive identity then it is obviously a principal ideal. Suppose $I$ is an ideal with more than the additive identity in $R$, then $I$ contains at least one nonzero element. Let $b\in I, b\neq 0$ such that $d(b)$ is minimum. We have to show that $I = <b>$. Let $a\in I$ be any element, then by the division algorithm, we have that $a=qb+r$ since $R$ is a euclidean ring. If $r\neq 0$ then since $b\in I$ then $qb\in I$ and since $a\in I$ we know that $a-qb\in I$ and thus, $r\in I.$ Since $r\neq 0$, it would imply that $d(r)<d(b)$ by the definition of a euclidean ring which is not possible since we defined $d(b)$ to be a minimum. Therefore, $r=0$, and $a-qb=0$ and $a=qb\forall a\in I$. Thus, $I$ is a principal ideal generated by $b.$
+
+\pagebreak
+\item Problem 4.5 \# 21.
+
+Let assumptions be as in the problem statement. Since $R$ is a Euclidean Ring, it is an ideal of itself generated by an element $a$ and we have that $R=(a)$ for some $a\in R$ since every ideal of $R$ is a principal ideal from problem 20. Then we can define any element in $R$ as a multiple of $a$, so we will write $a=a*b$ for some $b\in R$, similarly we can define some other element $c\in R$ as $c=da$ for some $d\in R$. Then $cb = dab = da = c$ which implies that $cb=c$ and $b$ is then a unit element. Therefore, if $R$ is a Euclidean Ring then $R$ has a unit element.
+
+\pagebreak
+\item Problem 4.5 \# 22.
+
+Let assumptions be as in the problem statement. Consider $2,6\in R$, that means that there should be $q,r\in R$ such that $6=2q+r$. However, it is trivial to see that $6=2*3+0$ where $q=3,r=0$ and it is obvious that $3\notin R$. Therefore, Euclid's algorithm is false for the ring of even integers.
+
+\end{enumerate}
+
+\end{document}
+

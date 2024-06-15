@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathcomp}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage{array}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{tabularx}
+
+\newtheorem{ishaan}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\title{Homework 8}
+\author{Sean Eva}
+\date{April 2021}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item 
+    
+    First it would be helpful to show that if $Bv=\lambda v$ then $BAv=\lambda Av$ for arbitrary eigenvalue $\lambda$ and corresponding eigenvector $v$.
+    \begin{align*}
+        BAv&=ABv\\
+        &=A(Bv)\\
+        &=A(\lambda v)\\
+        &=\lambda Av.
+    \end{align*} Then to show that B and A share an eigenvector. Since $AB=BA$, we know that $B^{-1}AB=A.$ Since we know that $BAv=\lambda Av$,
+    \begin{align*}
+        BAv&=\lambda Av\\
+        [B-\lambda I]Av&=0.
+    \end{align*} Therefore, $Av$ is also an eigenvector of $B$. We know that it will be a multiple of $v$ which means that it will also be an eigenvector of $A$.
+    
+    \item
+    
+    Since $P$ is an orthogonal projection of $\mathbb{R}^n$ onto $W$, we know that $Px=x, \forall x\in W$ and $py=0,\forall y\in W^\perp$. If we let $dim(W)=k$ for $0<k<n$, we can define $\{u_1, u_2, ..., u_k\}$ to be an orthonormal basis of $W$. We could then extend this basis to be a basis of $\mathbb{R}^n$ as $\{u_1, u_2,..., u_k, u_{k+1}, ..., u_n\}$ where $\{u_{k+1}, ..., u_n\}$ will form a basis for $W^\perp$. Therefore $Pu_i=u_i$ for $1\leq i\leq k$ and $Pu_j=0$ for $k+1\leq j\leq n$. Therefore, we could say that $\{u_1, u_2, ..., u_k\}$ are eigenvectors of $P$ corresponding to the eigenvalue $1$. Similarly, $\{u_{k+1}, ..., u_n\}$ are eigenvectors of $P$ corresponding to eigenvalue $0$. Since $Q$ is orthogonal, we know that the columns of $Q$ are orthonormal and we are given that $Q^T=Q^{-1}$. Let us define diagonal matrix $D$ to have the eigenvalues of $P$ as the elements of the diagonal where $a_{i,i}=\begin{cases}
+    1 & 1\leq i\leq k\crcr
+    0 & k+1\leq i\leq n
+    \end{cases}$. Therefore, $PQ=QD, P=QDQ^{-1}=QDQ^T$. Thus, $Px=QDQ^Tx$.
+    
+    \item
+    
+    The maximum value of $n$ such that norm $<10^{-2}$ is when $n=69$. The Schur decomposition is quite robust as we can see in this problem, even when we calculate when the norm is $<10^{-2}$, the complexity of $A$ is well beyond a reasonable scope that can be achieved by hand. Therefore, it will help in creating simplified representations of a matrix like $A$ as a product of three matrices that can provide information on the matrix $A.$
+    
+    \item
+    
+    The largest $n$ for $B^n D B^{-n}$ is $n=9$. The largest $n$ for $Q^nDQ^{-1}$ is around $1.25*10^{17}$. This means that the second process of orthogonalizing the columns of $B$ is much more reliable and accurate to the production of the eigenvalues.
+    
+\end{enumerate}
+
+\end{document}

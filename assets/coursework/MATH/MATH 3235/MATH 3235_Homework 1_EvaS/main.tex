@@ -1,0 +1,125 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathcomp}
+\usepackage{amsmath}
+\usepackage{natbib}
+
+\newtheorem{ishaan}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\title{Homework 1}
+\author{Sean Eva}
+\date{January 27, 2021}
+
+\begin{document}
+
+\maketitle
+
+\section{Exercises}
+
+\begin{enumerate}
+
+    \setcounter{enumi}{9}
+    \item
+    \begin{proof}
+    Consider the event space $\mathcal{F}$ for which there is a wholeset $\Omega$ and subsets $A$ and $B$. Consider an arbitrary element $x\in A \triangle B$ where $x$ is an element of the symmetric difference of sets $A$ and $B$. This implies that $x \in A$ or $x\in B$ but $x\notin A\cap B$. Since $x\in A$ or $x\in B$ then $x\in \Omega$. Therefore, the symmetric difference $A\triangle B \in \mathcal{F}$.
+    \end{proof}.
+
+    \setcounter{enumi}{16}
+    \item 
+
+    \begin{proof}
+    In order to show that $\mathbb{Q}$ is a probability measure we need to show that it meets the three conditions to be a probability measure. $\mathbb{P}(A)\geq 0 for A\in \mathcal{F}$ is true evidently. Additionally, $\mathbb{P}(\emptyset)=0$ and $\mathbb{P}(\Omega)=1$ follow. Lastly, let $A=\bigcup_i A_i$ with $A_i\cap A_j=\emptyset$. If $\omega \in A$ then there exists one and only one $A_j$ such that $\omega \in A_j$. Thus, $\mathbb{Q} = \sum_{i: \omega_i \in A} p_i = \sum_j\sum_{i: \omega_i \in A_j} p_i=\sum_j\mathbb{Q}(A_j)$, in particular we did not use the fact that $\mathcal{F}$ is the power set of $\Omega$. Consider $\mathcal{F} = \{0, \Omega\}$. Thus $\mathbb{Q}$ would be a probability measure on $\mathcal{F}$.
+    \end{proof}
+
+    \setcounter{enumi}{20}
+    \item 
+
+    $\frac{6}{10} = \frac{3}{5}$
+
+    \setcounter{enumi}{26}
+    \item 
+
+    The number of unique hands is $\binom{53}{13} * \binom{39}{13} * \binom{26}{13} * \binom{13}{13} = \frac{52!}{39!13!}*\frac{39!}{26!13!}*\frac{26!}{13!0!}*1=\frac{52!}{13!^3}$. In order to distribute the four aces to each player, there are $4!$ ways to distribute uniquely. Then to distribute the remaining 48 cards, there are $\frac{48!}{12!^3}$ That means that the probability is $\frac{\frac{4!48!}{12!^3}}{\frac{52!}{13!^3}}=\frac{4!48!13^3}{52!}$
+
+    \setcounter{enumi}{29}
+    \item 
+
+    The probability to roll a six on at least one roll from 4 rolls is $1-(1-\frac{1}{36})^4=1-(\frac{5}{6})^4$. Alternatively, the probability of rolling double 6s from 24 rolls of pairs of dice is $1-(1-\frac{1}{36})^24=1-(\frac{35}{35})^24$. By approximating the values, $a \approx 0.518$ and $b \approx 0.491$, so it is more probable to roll a six on at least one roll from 4 rolls.
+
+    \setcounter{enumi}{43}
+    \item 
+    
+    \begin{proof}
+    Consider $(A\cap(\Omega \backslash B))\cup (A\cap B)=A$ and $(A\cap(\Omega\backslash B))\cap(A\cap B)=\emptyset$. Therefore, $\mathbb{P}(A\cap (\Omega\backslash B))+\mathbb{P}(A\cap B)+\mathbb{P}(A)$. Thus, $\mathbb{P}(A\cap B)=\mathbb{P}(A)\mathbb{P}(B)$. Then, 
+    \begin{align*}
+    \mathbb{P}(A\cap (\Omega\backslash B)) &= \mathbb{P}(A)-\mathbb{P}(A)\mathbb{P}(B)\\
+    &= \mathbb{P}(A)(1-\mathbb{P}(B)\\
+    &= \mathbb{P}(A)\mathbb{P}(\Omega\backslash B)\\
+    \end{align*}
+    since $\mathbb{P}(\Omega\backslash B) = 1-\mathbb{P}(B)$.
+    
+    \end{proof}
+    
+    \setcounter{enumi}{51}
+    \item 
+    
+    \begin{enumerate}
+        \item 
+        
+        $B_1 = $ \{first pick is black\}\\
+        $W_1 = $ \{first pick is white\}\\
+        $B_2 = $ \{second pick is black\}\\
+        $W_2 = $ \{second pick is white\}\\
+        Therefore, $\mathbb{P}(B_2)=\mathbb{P}(B_2|B_1)\mathbb{P}(B_1) + \mathbb{P}(B_2|W_2)\mathbb{P}(W_2) = \frac{7}{9}*\frac{4}{7}+\frac{6}{9}*\frac{3}{7}=\frac{46}{63}$
+        
+        \item g
+        
+        $A_1 = $ \{pick urn 1\}\\
+        $A_2 = $ \{pick urn 2\}\\
+        $B = $ \{pick black\}\\
+        $W = $ \{pick white\}\\
+        Then, $\mathbb{P}(A_1|B) = \frac{\mathbb{P}(B|A_1)\mathbb{P}(A_1)}{\mathbb{P}(B|A_1)\mathbb{P}(A_1)+\mathbb{P}(B|A_2)\mathbb{P}(A_2)}=\frac{\frac{4}{7}*\frac{1}{2}}{\frac{4}{7}*\frac{1}{2}+\frac{6}{8}*\frac{1}{2}} = \frac{16}{37}$
+        
+    \end{enumerate}
+
+
+\end{enumerate}
+
+\section{Problems}
+
+\begin{enumerate}
+
+    \setcounter{enumi}{8}
+    \item 
+    
+    Each player makes a total of $n$ flips of the coin, resulting in $2n$ total flips. If half of these flips are randomly selected for the first person, then there $\binom{2n}{n}$ ways to distribute them. Then, to determine the outcome of each flip, we calculate $(1-\frac{1}{2})^{2n}=(\frac{1}{2})^{2n}$. Thus, the probability that each player gets the same number of heads as each other is $\binom{2n}{n}*(\frac{1}{2})^{2n}$.
+    
+    \setcounter{enumi}{13}
+    \item 
+    
+    \begin{enumerate}
+        \item 
+        
+        The equation can be rewritten as $\mathbb{P}(\cup^{n}_{i=1}A_i)=\sum_{I \in \{1, ..., n\}}(-1)^{|I|-1}\mathbb{P}(\cap_{i\in I}A_i)$ where the sum is over all subsets of \{1, 2, ..., n\} and $|I|$ is the cardinality of $I$. $\mathbb{P}(\cup^N_{i=1}A_i)=\mathbb{P}\cup^{N-1}_{i=1}A_i)+\mathbb{P}(A_N)-\mathbb{P}((\cup^{N-1}_{i=1}A_i)\cap A_N$, but $(\cup^{N-1}_{i=1}A_i)\cap A_N = \cup^{N-1}_{i=1}(A_i\cap A_N)$ so that using the inductive assumption $\mathbb{P}(\cup^N_{i=1}A_i)\mathbb{P}(A_N)+\sum_{I\in \{1, ..., N-1\}}(-1)^{|I|-1}\mathbb{P}(\cap_{i\in I}A_i)-\sum_{I\in \{1, ..., N-1\}}(-1)^{|I|-1}\mathbb{P}(\cap_{i\in I}(A_i\cap A_N))$, but $\cap_{i\in I}(A_i\cap A_N)= (\cap_{i\in I} A_i)\cap A_N$. Therefore, $\sum_{I\in \{1, ..., N-1\}}(-1)^{|I|-1}\mathbb{P}(\cap_{i\in I}(A_i\cap A_N))= \sum_{J\in {1, ..., N}}(-1)^{|J|-1}\mathbb{P}(\cap_{j\in J}A_j$. 
+        
+        \item
+        
+        Let $A_i = $ \{ith key is on its hook\}\\
+        we need $\mathbb{P}(\cup^n_{i=1}A_i$, but $\mathbb{P}(\cap_{i\in I}A_i= \binom{1}{n}^{|I|}$ so that $\mathbb{P}(\cup^n_{i = 1}A_i)=\sum^n_{k=1}(-1)^{k-1}\binom{n}{k}\frac{1}{n^k}=1-(1-\frac{1}{n})^n=1-\mathbb{P}(\cap^n_{i=1}A_i)$. Thus, $\lim_{n\rightarrow \infinity}\mathbb{P}(\cup^n_{i=1}A_i)=1-e^{-1}$.
+        
+    \end{enumerate}
+    
+    \setcounter{enumi}{16}
+    \item 
+
+    If the first toss is a head, there are two outcomes: followed by $r-1$ heads or there is at least one tail in $r-1$ tosses. The first case is a success. The second case we can start again after the first tail. Once there is one tail, the proceeding tosses are all independent from the first amount of tossed. Thus we get, $\mathbb{P}(E|A = head)=p^{r-1}+(1-p^{r-1}\mathbb{P}(E|A= tail)$. Otherwise, if the first toss is a tail, there needs to be at least a head in the following $s-1$ tosses so that $\mathbb{P}(E|A = tail)= (1-q^{s-1})\mathbb{P}(E|A=head)$. Thus, $\mathbb{P}(E)= \mathbb{P}(E|A=tail)q+\mathbb{P}(E|A=head)p$, but $\mathbb{P}(E|A=head)=p^{r-1}+(1-p^{r-1})(1-q^{s-1})\mathbb{P}(E|A=head)$. So that, $\mathbb{P}(E|A= head)=\frac{p^{r-1}}{1-(1-p^{r-1})(1-q^{s-1}}. \mathbb{P}(E|A=tail)=\frac{(1-q^{s-1}p^{r-1}}{1-(1-p^{r+1})(1-q^{s-1})}$. $\mathbb{P}(E)=\frac{(p^r+q(1-q^{s-1})p^{s-1})}{(p^{r-1}+q^{s-1}-p^{r-1}q^{s-1})}$
+
+
+\end{enumerate}
+
+\end{document}

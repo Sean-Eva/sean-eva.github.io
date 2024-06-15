@@ -1,0 +1,84 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathcomp}
+\usepackage{amsmath}
+\usepackage{natbib}
+
+\newtheorem{ishaan}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\renewcommand\qedsymbol{$\blacksquare$}
+\renewcommand{\labelenumii}{\arabic{enumii}.}
+
+
+\title{Homework 2}
+\author{Sean Eva}
+\date{February 9, 2021}
+
+\begin{document}
+
+\maketitle
+
+\section{Exercises}
+
+\begin{enumerate}
+    \setcounter{enumi}{1}
+    \item
+    
+    \begin{enumerate}
+        \setcounter{enumii}{9}
+        \item 
+        
+        The image of $1_E$ is $\{0, 1\}$. Therefore, since the image of $1_E$ is countable ($2$) it is also a discrete random variable.
+        
+        \item
+        
+        The image of $U$ is $\{1, 2, 3, 4, 5, 6\}$ which is countable; therefore, $U$ is a discrete random variable on the probability space. The image of $V$ is $\{0, 1\}$ which is countable amount of outcomes; therefore, $V$ is a discrete random variable on the probability space. The image of $W$ is $\{1, 4, 9, 16, 25, 36\}$ which, similar to $U$, is countable; therefore, $W$ is a discrete random variable on the probability space.
+        
+        \setcounter{enumii}{23}
+        \item
+        
+        In order to show this we assume that there are $k$ failures which means that this would occur with probability $(1-p)^x$. Then we have that $\sum_{n=k}^{\infty}(1-p)^np$ instead of proceeding from $1$ we proceed from $k$. If we consider $k$ as the starting point, it would be equivalent to say we are starting from $1$ just the same. That means that the probability is $\frac{p}{1-(1-p)}$. Therefore, $P(X>k)=\frac{(1-p)^xp}{1-(1-p)}=(1-p)^x$
+        
+    \end{enumerate}
+    
+    \item
+    
+    \begin{enumerate}
+        \setcounter{enumii}{7}
+        \item 
+        
+        There are several different outcomes in this situation. With a total of $\binom{52}{2}$ outcomes.\\
+        Two kings, zero aces $= \binom{4}{2}\binom{4}{0}\binom{44}{0}=(2, 0)=\frac{1}{221}$\\
+        Zero kings, two aces $= \binom{4}{0}\binom{4}{2}\binom{44}{0}=(0, 2)=\frac{1}{221}$\\
+        One king, one ace $=  \binom{4}{1}\binom{4}{1}\binom{44}{0}=(1, 1)=\frac{8}{663}$\\
+        One king, zero aces $= \binom{4}{1}\binom{4}{0}\binom{44}{1}=(1, 0)=\frac{88}{663}$\\
+        Zero kings, one ace $= \binom{4}{0}\binom{4}{1}\binom{44}{1}=(0, 1)=\frac{88}{663}$\\
+        Zero kings, zero aces $= \binom{4}{0}\binom{4}{0}\binom{44}{2}=(2, 0)=\frac{473}{663}$
+        
+    \end{enumerate}
+    
+\end{enumerate}
+
+\section{Problems for Chapter 2}
+
+
+\begin{enumerate}
+    \setcounter{enumi}{3}
+    \item 
+    
+    In order for this to be a probability mass functions we would require that $\sum_{k=1}^{\infty}ck^\alpha=1$, or similarly that $c\sum_{k=1}^{\infty}k^\alpha=1$. Therefore $c=\frac{1}{\sum_{k=1}^{\infty}k^\alpha}$. This will apply for any value of $\alpha>1$
+    
+    \item
+    
+    Assume that $X$ has the 'lack-of-memory property', that is that $p(x>m+n|x>m)=p(x>n)$ for $m, n=0, 1, 2, ...$ where $X$ has geometric distribution. Then $p(X\leq n)= \sum_{k=1}^np(1-p)^{k-1}=p(1+(1-p)+(1-p)^2+...+(1-p)^{n-1}=p(\frac{1-(1-p)^n}{1-(1-p)}=1-(1-p)^n$. So, $p(X>n)=1-p(X\leq n)=(1-p)^n$. Then, $p(X>m+n|X>m)=\frac{p(X?m+n, X>m}{p(X>m)}$. $\frac{p(X>m+n)}{p(X>m)}=\frac{(1-p)^{n+m}}{(1-p)^m}=(1-p)^n=p(X>m)$. Therefore, $p(X>m+n|X>m)=p(x, n)$. Thus, the geometric distribution has the 'lack-of-memory property'.
+    
+    \setcounter{enumi}{6}
+    \item
+    
+    This problem can be solved using an inclusion-exclusion approach. there are $\binom{c}{n}$ ways to choose $n$ sets. The probability to complete $n$ sets is the probability to complete a standard coupon collection. This leads to the expectation of $\sum_{n=1}^c(-1)^{n-1}\binom{c}{n}\frac{c}{n}njH_{nj}=cj\sum_{n=1}^c(-1)^{n-1}\binom{c}{n}H_{nj}=cj\sum_{n=1}^c(-1)^{n-1}\binom{c}{n}(log(j)+log(n)+\gamma+\frac{1}{2nj})+O(\frac{c}{j})=cj(log(n)+\gamma)+\frac{1}{2}cH_c+cj\sum_{n=1}^c(-1)^{n-1}\binom{c}{n}log(n)O(\frac{c}{j})=cjH_n+\frac{1}{2}cH_c-c+cj\sum_{n=1}^c(-1)^{n-1}\binom{c}{n} log(n)+O(\frac{c}{j})$.
+    
+\end{enumerate}
+\end{document}

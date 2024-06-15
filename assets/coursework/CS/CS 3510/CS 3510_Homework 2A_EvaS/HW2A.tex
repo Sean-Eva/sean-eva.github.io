@@ -1,0 +1,260 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsthm,amssymb,amsfonts,xspace}
+\usepackage{longtable}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{mathtools}
+\usepackage[export]{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{hyperref}
+\usepackage{environ}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{interval}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage{listings}
+\usepackage{relsize}
+\usepackage{xlop}
+\usepackage{multirow,bigdelim,dcolumn,booktabs}
+\usepackage[linesnumbered,vlined]{algorithm2e}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{trees}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows,shapes,automata,petri,positioning,calc,arrows.meta}
+
+% Python for pseudocode
+\lstloadlanguages{Python}
+\lstset{
+  language=Python,
+  basicstyle=\scriptsize\sffamily,
+  numberstyle=\color{gray},
+  stringstyle=\color[HTML]{933797},
+  commentstyle=\color[HTML]{228B22}\sffamily,
+  emph={[2]from,import,pass,return}, emphstyle={[2]\color[HTML]{DD52F0}},
+  emph={[3]range}, emphstyle={[3]\color[HTML]{D17032}},
+  emph={[4]for,in,def}, emphstyle={[4]\color{blue}},
+  showstringspaces=false,
+  breaklines=true,
+  prebreak=\mbox{{\color{gray}\tiny$\searrow$}},
+  numbers=left,
+  xleftmargin=15pt
+}
+
+\usepackage[english]{babel}
+% \usepackage{minted}
+\usepackage{xcolor}
+\NewEnviron{hide}{}
+
+% Header
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+% Convenient Shortcuts like \N for naturals
+\newcommand{\pitem}[1]{\item[\textbf{#1.)}]}
+\newcommand{\T}{\mathrm{T}}
+\newcommand{\F}{\mathrm{F}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\Mod}[1]{\ (\text{mod}\ #1)}
+\newcommand{\mmod}{\textrm{\textbf{ mod }}}
+\newcommand{\powerset}{\raisebox{.15\baselineskip}{\Large\ensuremath{\wp}}}
+\newcommand{\floor}[1]{\left \lfloor #1 \right \rfloor}
+\newcommand{\ceil}[1]{\left \lceil #1 \right \rceil}
+\newcommand{\gauss}[3]{\begin{bmatrix} #1 \\ #2 \end{bmatrix}_{#3}}
+\newcommand{\pfrac}[2]{\left(\frac{#1}{#2}\right)}
+
+% Set header fields
+\newcommand{\hmwkTitle}{Homework 2A}
+\newcommand{\hmwkDueDate}{\textbf{Friday} Feb 18}
+\newcommand{\hmwkClass}{CS 3510}
+\newcommand{\hmwkClassTime}{}
+\newcommand{\hmwkClassInstructor}{Professor Faulkner}
+\newcommand{\hmwkAuthorName}{\textbf{CS 3510 Staff}}
+
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+
+\newif\ifincludesolutions
+\includesolutionstrue  % Uncomment to show solutions
+
+\newcounter{ProblemCounter}
+\setcounter{ProblemCounter}{1}
+
+% Define problem / solution env to dissapear appropriately
+\newenvironment{problem}[1][Problem]{
+ \begin{trivlist}
+ \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {%
+ \bfseries \theProblemCounter.%
+ \stepcounter{ProblemCounter}%
+ }]
+}{
+ \end{trivlist}
+}
+
+\ifincludesolutions
+
+\newenvironment{solution}[1][Solution]{
+ \begin{trivlist}
+ \item[\hskip \labelsep \textit{#1.}]
+}{
+ \end{trivlist}
+}
+\else
+\newenvironment{solution}[1][Solution]{
+\hide
+}{
+\endhide
+}
+\fi
+
+% How to make title
+\pagestyle{fancy}
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+    \vspace{3in}
+}
+\author{\hmwkAuthorName}
+\date{}
+
+
+\begin{document}
+\maketitle
+\pagebreak
+
+% \begin{problem}
+% Here is a "game" you can play with $n$ stones (you may assume $n > 0$). Start with all stones in a single pile. You may split any pile into two smaller piles.  The game ends when every stone is in its own pile of size 1.  How many games are there with $n$ stones? The stones are not distinct, the only thing that matters is how many piles there are, and how many stones in each.
+
+% \noindent \textit{Example:}
+% There is only one game of size 3:  $3 \rightarrow 2,1 -> 1,1,1$. 
+
+% \noindent \textit{Example 2:}
+% There are two games of size $4: 4 \rightarrow 3,1$ (and we know there is only one way to proceed from here), and $4 \rightarrow 2,2 \rightarrow 2,1,1 -> 1,1,1,1$
+% \end{problem}
+
+\begin{problem}\textit{(33 points)}
+You need to make change for $n$ cents, but you only have coins of value $4$ and $7$ (assume you have an infinite number of both of these coins).  Design a dynamic programming algorithm which returns whether it is possible to make $n$ cents with the coins you have.
+
+\noindent \textit{Example:}\\
+Input: Target amount = 18\\
+Output: True because 18 = 4 + 7 + 7\\
+
+\begin{enumerate}[label=\textbf{\alph*.)}]
+    \item (6 points) Define the entries of your table in words. E.g. $T(i)$ or $T(i, j)$ is ...\\
+    We are going to create an output array $T[i]$ which will store Boolean values and the Boolean value will represent if it is or isn't possible to make the target amount with the coins.
+    % \vspace{1in}
+    \item (12 Points) State the recurrence for entries of your table in terms of smaller subproblems. Briefly explain in words why it is correct. Don't forget the base cases here.\\
+    We can first deal with the base cases of target $0$ which we can preset to True and for other values less than $4$ we can set to False. For further values, we can say $T[i] = i(\text{mod} 4) \equiv 0 \text{ or } T(i-7)$. This works because if it is divisible by $4$ then we automatically know that we can make it with only coins of values 4, otherwise we can subtract 7 and check the smaller amount for if it was possible. Then with Boolean logic if either of those are True then we know we can create it using coins of value 4 or 7.
+    % \vspace{2in}
+    \item (6 points) Use your recurrence relationship to write pseudocode for your algorithm.\\
+    
+
+    \item (9 Points) Determine the running time of your algorithm. Briefly provide justification.\\
+    In a worst case scenario we are going to be performing mod, $n-4$ times which we can say we are doing $\O(1)$ work roughly $\O(n-4)=\O(n)$ times, which results in the runtime of $\O(n).$
+\end{enumerate}
+\end{problem}
+
+\pagebreak
+
+\begin{problem}\textit{(34 points)}
+You are given a set of $k$ coins each with a different value and a target amount $n$. Return the fewest number of coins that you need to make up the target amount. If that amount of money cannot be made up by any combination of the coins, return -1. You may assume that you have an infinite number of each kind of coin.\ \\
+
+\noindent \textit{Example:}\\
+Input: coins = {1, 2, 5}, target amount = 11\\
+Output: 3 because 11 = 5 + 5 + 1\\
+
+\noindent \textit{Example 2:}\\
+Input: coins = {2, 4, 6}, target amount = 7\\
+Output: -1 because you can't make up the target amount with the coins.\\
+
+\begin{enumerate}[label=\textbf{\alph*.)}]
+    \item (6 points) Define the entries of your table in words. E.g. $T(i)$ or $T(i, j)$ is ...\\
+    The entries for the table $T(i)$ will be the number of coins needed to create the value of the index.
+    \item (12 Points) State the recurrence for entries of your table in terms of smaller subproblems. Briefly explain in words why it is correct. Don't forget the base cases here.\\
+    The base case for this problem is that when the target amount is 0, then the amount required is 0 coins. However, when the target value is greater than 0, then we are going to check the value in the index of the current spot minus the value of the coin we are checking with as $T[i-coins[j]]$ where $coins[]$ is the array of coins that we can use, index $i$ is the current one we are checking, and index $j$ is for which coin in $coins[]$ we are checking with. This works because if the index-coin location was made possible, then by adding the coin value we are able to add the current coin value to it and make the target amount. Then we populate $T[i]$ with $T[i-coins[j]] + 1$ to account for the addition of one coin, being the one that we are currently checking. In this we would iterate over the values of $coins[]$ using the same process and check to see if they are less than the value already in use.
+    \item (6 points) Use your recurrence relationship to write pseudocode for your algorithm.\\
+    \begin{algorithm}[H]
+        \SetKwFunction{FMain}{COIN2}
+        \SetKwProg{Fn}{Function}{:}{}
+        \Fn{\FMain{int coins[], int n}}{
+            \tcc{let $T$ be a $n+1$ long list that is filled with $-1$s}
+            $T\gets [-1]$\\
+            \tcc{base case}
+            $T[0] \gets 0$\\
+            \For{$i \in 1 \to n$}{
+                \For{$j\in 0 \to k-1$}{
+                    \If{$coins[j] \leq i$}{
+                        int $amount = T[i-coins[j]]$\\
+                        \If{$amount > -1 \&\& amount+1 < T[i]$}{
+                            $T[i] \gets amount + 1$
+                        }
+                    }
+                }
+            }
+            \Return $T[n+1]$
+        }
+    \end{algorithm}
+    \item (10 Points) Determine the running time of your algorithm. Briefly provide justification.\\
+    In this algorithm we are going to iterate over each value up to the target for each coin that is input. This implies that we would be doing $\O(k)$ iterations $\O(n)$ times. The comparisons that we make in the if statements all have a running time of $\O(1)$. Therefore, the running time of this algorithm is around $\O(kn).$
+\end{enumerate}
+\end{problem}
+\pagebreak
+
+\begin{problem}\textit{(33 points)} Christmas will be ruined if we can't unload all of our ships in time. To unload a ship, we have to unload its cargo in a specified order, and we want to minimize the amount of time this will take. Each ship is carrying 3 different shapes of boxes, labelled as $\{A, B, C\}$, and the order of the box shapes that a ship must be unloaded is given by a string $U$ (for example, $U = \text{`}ABCCBCCBBBABAB\text{'}$). For each unit of time, we can either unload a single box, or we can unload a chunk of boxes if this chunk happens to be ``convenient'' -- the convenient chunks are specified by a list $L$, which contains acceptable box shape sequences (for example, $L = [AB, AC, BBCC]$). If a chunk of boxes matches a shape sequence on the list $L$, we can unload this group in one unit of time.\\
+
+\noindent Design a dynamic programming algorithm to output the minimum amount of time required to unload a sequence of box shapes $U$. Describe the running time of this algorithm. Assume that you can check if a given string is in list $L$ in $O(1)$ time.\\
+
+\noindent \textit{Example Input: } $U=CAAACBB$, $L = [AAA, ACBB, CBB]$
+
+\noindent \textit{Example Output: } The ship requires 3 units of time to unload, by first unloading the single box $C$ then chunk $AAA$ and finally chunk $CBB$.
+
+\begin{enumerate}[label=\textbf{\alph*.)}]
+    \item (6 points) Define the entries of your table in words. E.g. $T(i)$ or $T(i, j)$ is ...\\
+    The entries of the table $T[i]$ are going to be the number of units of time to unload the subsets of crates from the first create to the nth crate.
+    % \vspace{1in}
+    \item (12 Points) State the recurrence for entries of your table in terms of smaller subproblems. Briefly explain in words why it is correct. Don't forget the base cases here.\\
+    The base case will be if there are no crates to unload then it will take 0 time to unload all the crates from the ship. For crate counts greater than $0$ we are going to first take $T[i] = T[i-1]$, then we are going to compare each convenient chunk from $L$ with the appropriate length substring at the end of the current total substring we are looking at for the $T[i]$ substring. If one of these substrings is works then we are going to look at the value $T[i-chunk length]+1$ and if it less then the current value in $T[i]$ we are going to $T[i] = T[i-chunk length] + 1$ which will change it to the newest smallest amount of time.
+    \item (6 points) Use your recurrence relationship to write pseudocode for your algorithm.\\
+    \begin{algorithm}[H]
+        \SetKwFunction{FMain}{CRATE}
+        \SetKwProg{Fn}{Function}{:}{}
+        \Fn{\FMain{String U, String L[]}}{
+            \tcc{let $T$ be a $n+1$ long list that is filled with $-1$s}
+            $T\gets [-1]$\\
+            \tcc{base case}
+            $T[0] \gets 0$\\
+            \For{$i \in 1 \to U.length$}{
+                $T[i] \gets T[i-1]+1$
+                \For{$j\in 0 \to L[].size$}{
+                    \If{$U.substring(L[j].length, i).equals(L[j])$}{
+                        int $amount = T[i-L[j].length]$\\
+                        \If{$amount > -1 \&\& amount+1 < T[i]$}{
+                            $T[i] \gets amount + 1$
+                        }
+                    }
+                }
+            }
+            \Return $T[n+1]$
+        }
+    \end{algorithm}
+    % \vspace{2in}
+    \item (9 Points) Determine the running time of your algorithm. Briefly provide justification.\\
+    We are performing $\O(n)$ where $n$ is the length of the string of crates on the ship but for each iteration we are going to heck the substrings with the convenient crate options from the list $L[]$, this will then cause the runtime to be dependent on the size of the list L which we will denote as k. Additionally we are going to perform $\O(1)$ work for each of these iteration. Finally that means that we are going to perform $\O(1)\times \O(k) \times \O(n) = \O(kn)$ work. Therefore, the runtime of this algorithm is roughly $\O(kn)$
+\end{enumerate}
+\end{problem}
+
+\end{document}

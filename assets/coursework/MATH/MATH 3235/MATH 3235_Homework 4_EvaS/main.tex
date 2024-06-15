@@ -1,0 +1,168 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathcomp}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage{array}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{tabularx}
+
+\newtheorem{ishaan}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\renewcommand\qedsymbol{$\blacksquare$}
+\renewcommand{\labelenumii}{\arabic{enumii}.}
+
+\title{Homework 4}
+\author{Sean Eva}
+\date{March 2021}
+
+\begin{document}
+
+\maketitle
+
+\section{Exercises}
+
+\begin{enumerate}
+    \setcounter{enumi}{13}
+    \item 
+    
+    There are four scenarios to be considered for $\mathbb{P}(a < X \leq b, c < Y \leq d)$. This is the same as considering the four separate  probabilities $\mathbb{P}(b, d),$ $\mathbb{P}(b, c),$ $ \mathbb{P}(a, d),$ and $\mathbb{P}(a, c)$. We can consider all cases of $\mathbb{P}(b, d)$. We will then need to remove bad scenarios such as $\mathbb{P}(a, d)$ and $\mathbb{P}(b, c)$ which will include situations like $\mathbb{P}(X\leq a, Y\leq d)$ and $\mathbb{P}(X\leq b, y\leq c)$. However, when we remove both of these situations we double remove the case when $\mathbb{P}(X\leq a, Y\leq c)$; therefore, we will need to add back this case with $\mathbb{P}(a, c)$. This results in $\mathbb{P}(a < X \leq b, c < Y \leq d) = F(b, d) + F(a, c) - F(a, d) - F(b, c)$
+    
+    \setcounter{enumi}{25}
+    \item
+    
+    Solving this using the first requirement of $\mathbb{P}(X+Y\leq1)$ would be solving $\int_{-\infty}^{\infty}\int_{-\infty}^{1-X}f(x,y)dydx$ which will edit to, $\int_{0}^{1}\int_{0}^{1-X}f(x,y)dydx$ due to the bounds of $f(x,y)$ being such that $x,y>0$. Therefore, $\int_{0}^{1}\int_{0}^{1-X}f(x,y)dydx = \frac{e-2}{e}.$ \\
+    For the second requirement $\mathbb{P}(X>Y)$, $f(x,y)$ is bounded to $0<x<\infty, 0<y<x$. Therefore, $\int_{0}^{\infty}\int_{0}^{X}f(x,y)dydx=\frac{1}{2}.$
+    
+    \setcounter{enumi}{35}
+    \item
+    
+    Joint density functions integrate to $1$ so that $\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}f(x,y,z)dxdydz=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}(8xyz)dxdydz=x^2y^2z^2$. $X,Y,Z$ are independent since $f$ can be represented as a product of a function of $X$, a function of $Y$, and function of $Z$ as $f_X(x)=2x, f_Y(y)=2y, f_Z(z)=2z.$ \\
+    $\mathbb{P}(X>Y)=\int_{0}^{1}\int_{0}^{1}\int_{Y}^{1}(8xyz)dxdydz=\frac{1}{2}$\\
+    $\mathbb{P}(Y>Z)=\int_{0}^{1}\int_{Z}^{1}\int_{0}^{1}(8xyz)dxdydz=\frac{1}{2}$
+    
+    \setcounter{enumi}{44}
+    \item
+    
+    We can define random variables $u=X+Y$ and $v=Y$ which would therefore mean that $X=u-v$ and $Y=v$. Therefore, the Jacobian is $J=\begin{bmatrix}
+    1 & -1\\
+    0 & 1
+    \end{bmatrix}=1.$ Therefore, $g(u, v)=f(x, y)*J=\frac{1}{2}(x+y)e^{-x-y}=\frac{1}{2}ue^{-u}$. Thus, the density function for $u=X+Y$ is $g_{X+Y}(u)=\int_0^u\frac{1}{2}ue^{-u}dv=\frac{1}{2}u^2e^{-u}$. Therefore, the density function for $X+Y$ is $g_{X+Y}(u)=\frac{1}{2}u^2e^{-u}.$
+    
+    \setcounter{enumi}{54}
+    \item
+    
+    Given the substitutions $U=\frac{1}{2}(X-Y), V=Y$, then $X=2U+V, Y=V$. Then the Jacobian is $J=\begin{bmatrix}
+    2 & 1\\
+    0 & 1
+    \end{bmatrix}=2$. Then $f_{U,V}=\frac{1}{4}e^{-\frac{1}{2}(2u+v+v)}=\frac{1}{2}e^{-u-v}$. Therefore, $f_U(u) = 
+\begin{cases}
+\int_{-2u}^{\infty}\frac{1}{2}e^{-u-v}dv & u<0 \crcr
+\int_0^{\infty}\frac{1}{2}e^{-u-v}dv & u\geq 0
+\end{cases} = \begin{cases}
+\frac{1}{2}e^{-(-u)} & u<0\crcr
+\frac{1}{2}e^{-u} & u\geq 0
+\end{cases}=\frac{1}{2}e^-|u|$
+    
+    \setcounter{enumi}{60}
+    \item
+    
+    Given that the solution is $x$ and $y$ are independent random variables each having the exponential distribution with parameter $\lambda$. The joint density function of $x$ and $y$ is $f(x,y)=\lambda^2e^{-\lambda(x+y)}, x, y>0.$ We want to find the joint probability density function of $x$ and $x+y$. Let $u=x+y, v=x$, then $x=v, y=u-v.$ The Jacobian is then, $J=\begin{bmatrix}
+    1 & 0\\
+    -1 & 1
+    \end{bmatrix}=1$.$f(u, v)=f(x=y, y=u-v)*J=\lambda^2e^{-\lambda(v+u-v)}*1=\lambda^2e^{-\lambda u}$. Therefore, the joint probability density function of $x$ ad $x+y$ is $f(u=x+y, v+x)=\begin{cases}
+    \lambda^2e^{-\lambda(x+y)} & 0<x\leq x+y, x+y>0\crcr
+    0 & \text{ otherwise }
+    \end{cases}$. Now we need to find the general density function of $u=x+y$ as $f(u)=\int_0^u\lambda^2e^{-\lambda u}dv=\lambda^2e^{-\lambda u}(v)^u_0=\lambda^2ue^{-\lambda u}$. Then we need to find the conditional probability density function of $x$ given a point $x+y=a$, $f(x|x+y=a)=f(v|u=a)=\frac{f(v, u-a)}{f(u)}=\frac{\lambda^2e^{-\lambda a}}{\lambda^2ae^{-\lambda a}}=\frac{1}{a}.$ Therefore, the conditional probability density function of $x$ given a point $x+y=a$ is $f(x|x+y=a)=\begin{cases}
+    \frac{1}{a} & 0\leq x\leq a, a>0\crcr
+    0 & otherwise
+    \end{cases}$
+    
+    \setcounter{enumi}{69}
+    \item
+    
+    It will make this problem much simpler if we apply change of variables to this problem to work in polar coordinates.\\
+    $\mathbb{E}\sqrt{X^2+Y^2}=\int_0^{2\pi}\int_0^1(r*\pi^{-1}*r)drd\theta=\frac{2}{3}$\\
+    $\mathbb{E}\sqrt{X^2+Y^2}=\int_0^{2\pi}\int_0^1(r^2*\pi^{-1}*r)drd\theta=\frac{1}{2}$
+    
+    
+    \setcounter{enumi}{79}
+    \item
+    
+    If $(X,Y)$ have distribution $BN(\mu_1, \mu_2, \sigma_1^2, \sigma_2^2)$ then the $Mg$ of the bivariate normal distribution is $M(x, y)=\mathbb{E}(e^{tx+tu})=e^{\mu_1t_t+u_2t_2+\frac{1}{2}(t_1^2\sigma_1^2+2\rho t_1t_2\sigma_1\sigma_2+t_2^2\sigma_2^2)}$. Let's assume that $(X,Y)$ has distribution $Bn(\mu_1, \mu_2, \sigma_1^2, \sigma_2)$ to show that ax+by has normal distribution. Therefore, consider the Mg of $(ax+by=z)$, $m_z(t)=\mathbb{E}(e^{tz})=\mathbb{E}(e^{t(ax+by)})=\mathbb{E}(e^{atx+bty})=\mathbb{E}(e^{t_1x+t_2y})$ for $t_1=at, t_2=bt.$ Since $(x, y)$ has bivariate normal distribution, the Mg is given as $m_{X,Y}(t_1, t_2)=\mathbb{E}(e^{t_11x+t_2y})=e^{u_1t_1+u_2t_\frac{1}{2}(t_1^2\sigma_1^2+2\rho\sigma_1\sigma_2t_1t_2+t_2^2\sigma_2^2)}.$ Replace $t_1=at, t_2=bt$ so that $m_{ax+by}(t)=m_z(t)=e^{u_1at+u_2bt+\frac{1}{2}(a^2t^2\sigma_1^2+2\rho\sigma_1\sigma_2atbt+b^2t^2\sigma_2^2)}.$ Therefore, $m_{X, Y}(t)=e^{t(a\mu_1+b\mu_2)+\frac{1}{2}t^2(a^2\sigma_1^2+s\rho a b\sigma_1\sigma_2+b^2\sigma_2^2)}$ which is the Mg of the univeriate normal distribution with mean $au_1+bu_2$. Thus, $ax+by$ has normal distribution $N(a\mu_1+b\mu_2, a_1^2\sigma_1^2+2\rho ab\sigma_1\sigma_2+b^2\sigma_2^2).$
+    
+\end{enumerate}
+
+\section{Problems}
+
+\begin{enumerate}
+    \setcounter{enumi}{5}
+    \item 
+    
+    We can start by defining the cdf of $U$ as
+    \begin{align*}
+        G(u)&=\mathbb{P}(U\leq u)\\
+        &= \mathbb{P}(min\{X_1, X_2, ..., X_n\}\leq u)\\
+        &= 1-\mathbb{P}(min\{X_1, X_2, ..., X_n\}> u)\\
+        &= 1-\mathbb{P}(X_1>u, X_2>u, ..., X_n>u)\\
+        &= 1-\mathbb{P}(X_1>u)\mathbb{P}(X_2>u)...\mathbb{P}(X_n>u)\\
+        &=1-(\mathbb{P}(X_1>u))^n\\
+        &=1-(1-\mathbb{P}(X_1\leq u))^n\\
+        &= 1-(1-F(u))^n.
+    \end{align*} Similarly for the distribution of $V=max\{X_1, X_2, ..., X_n\}$
+    \begin{align*}
+        H(v)&=\mathbb{P}(V\leq v)\\
+        &= \mathbb{P}(max\{X_1, X_2, ..., X_n\}\leq v)\\
+        &= \mathbb{P}(X_1\leq v, X_2\leq v, ..., X_n\leq v)\\
+        &= (F(v))^n.
+    \end{align*} Then, 
+    \begin{align*}
+        g(u)&=\frac{dG(u)}{du}\\
+        &=nf(u)(1-F(u))^{n-1}\\
+        h(v)&=\frac{dH(v)}{dv}\\
+        &= nf(v)(F(v))^{n-1}.
+    \end{align*} We can therefore write the CDF of random variable $V$ as $\mathbb{P}(V\leq v)=\mathbb{P}(U\leq u, V\leq v)+\mathbb{P}(U>u, V\leq v)$ where $K(u, v)=\mathbb{P}(U\leq u, V\leq v)$. Then,
+    \begin{align*}
+        \mathbb{P}(U\leq u, V\leq v) &= \mathbb{P}(V\leq v)-\mathbb{P}(U>u, V\leq v)\\
+        &= (F(v))^n-\mathbb{P}(u<X_1\leq v, u<X_2\leq v, ..., u<X_n\leq v)\\
+        &= (F(v))^n-\mathbb{P}(u<X_1\leq v)^n\\
+        &= (F(v))^n-(F(v)-F(u))^n.
+    \end{align*} The joint density function is then: $h(u, v)=\frac{\delta(F(v))^n-(F(v)-F(u))^n}{\delta u\delta v}=n(n-1)f(u)f(v)(F(v-F(u)))^{n-2}$
+    
+    \setcounter{enumi}{19}
+    \item
+    
+    The joint probability density of $X$ and $Y$ is $F_{X,Y}(x, y)=\begin{cases}
+    1 & 0<x<1, 0<y<1.\crcr
+    0 &\text{otherwise}
+    \end{cases}$. Then,
+    \begin{align*}
+        \mathbb{P}(X+y<1)&=\mathbb{P}(X<1-y)\\
+        &= \int_{x=0}^{1-y}\int_{y=0}^{1}f(x, y)dxdy\\
+        &= \int_{y=0}^{1}\int_{x=0}^{1-y}1dxdy=\int_{y=0}^1(x)^{1-y}_0dy\\
+        &= \int_{y=0}^1(1-y)dy=(y=\frac{y^2}{2})^1_0\\
+        &= 1-\frac{1}{2}=\frac{1}{2}.
+    \end{align*} The marginal of X is then, 
+    \begin{align*}
+        f_X(x)&=\int_yf(x,y)dy=\int_0^1dy=(y)^1_0=1\\
+        f_X(x)&=\begin{cases}
+        1 & 0<x<1\crcr
+        0 & \text{otherwise}
+        \end{cases}\\
+        f_Y(y)&=\int_xf(x,y)dx=\int_0^11dx=(x)^1_0=1\\
+        f_Y(y)&=\begin{cases}
+        1 & 0<y<1\crcr
+        0 &\text{otherwise}
+        \end{cases}.
+    \end{align*}$\mathbb{E}(x)=\int_0^1xf(x)dx=\int_0^1x1dx=(\frac{x^2}{2})^1_0=\frac{1}{2}.$\\
+    $f_{Y|X}(y|x)=\frac{f(x,y)}{f(x)}=\frac{1}{1}=1$; $0<y<1$.\\
+    $\mathbb{E}(Y|X=x)=\int_0^1yf(y|x)dy=\int_0^1y*1dy=(\frac{y^2}{2})^1_0=\frac{1}{2}$
+    
+\end{enumerate}
+
+
+\end{document}

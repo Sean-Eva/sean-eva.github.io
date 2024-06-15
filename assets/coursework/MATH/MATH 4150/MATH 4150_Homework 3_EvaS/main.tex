@@ -1,0 +1,132 @@
+\documentclass{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Packages
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%amsthm settings
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem{claim}{Claim}
+\newtheorem{definition}{Definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: mathbb
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\A}{\mathbb A}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: greek
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\g}{\gamma}
+\renewcommand{\d}{\delta}
+\newcommand{\e}{\epsilon}
+\renewcommand{\l}{\lambda}
+
+\title{Homework 3}
+\author{Sean Eva}
+\date{February 2022}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item [1. ]
+    
+    \begin{enumerate}
+        \item 
+        
+        $33776925 = 5^2*3*7^3*13*101$
+        
+        \item
+        
+        $210733237 = 11^3*13*19*641$
+        
+        \item
+        
+        $1359170111 = 13*17*19*47*71*97$
+        
+    \end{enumerate}
+    
+    \item [20. ]
+    
+    When $n=0$ we get that $2^{2^0} + 5 = 7$ which is prime. For all other $n$ we get that $2^{2^n} \equiv_3 1$. Therefore, $2^{2^n} + 5 \equiv_3 0$ which means that all other numbers of this form are divisible by 3 an are greater than 3 would would not be prime. Therefore, the only prime of the form $2^{2^n} + 5$ is 7.
+    
+    \item [3. ]
+    
+    $99(63)+86(41) = 9763$. Therefore, he had 63 US dollars and 41 Canadian dollars. 
+    
+    \item [13. ]
+    
+    3 quarters, 2 dimes, and 4 pennies\\
+    And many other combinations of pennies and dimes that are fairly trivial to add together.
+    
+    \item [20. ]
+    
+    If we set $x = -1$, then we have that $-a + by = ab - a - b$, so that $y = a - 1$, and a particular solution is $x_0 = -1$, $y_0 = a - 1$ so the general solution is $x = -1 + bt$ and $y = a - 1 - at$ where $t\in \Z$. Now if $x = -1 + bt \geq 0$, then we have $bt \geq 1$, and since $b \geq 1$ and $t$ is an integer, this implies that $t \geq 1$. Also, if $y = a - 1 - at\geq 0$, then we have $t \leq \frac{a-1}{a} = 1 - \frac{1}{a} < 1$, which contradicts the fact that $t \geq 1$. Therefore, if $n = ab - a - b,$ there are no nonnegative solutions to the linear diophantine equation $ax = by = n.$
+    
+    \item [16. ]
+    
+    Let $m = 5, a = 3, b = 4$, $a + b = 3 + 4 \equiv_5 2.$ However, $4\equiv_5 4$ and $3\equiv_5 3$ so $4 + 3 = 7 \neq 2.$
+    
+    \item [28. ]
+    
+    Given that $\sum_{l = 1}^{n-1}l^3 = (\frac{n(n+1)}{2})^2$. If $n$ is $odd$ then we can rewrite it as $n = 2k+1$ for $k \in \Z$ which means that we can do $(\frac{(n-1)(n-1+1)}{2})^2 = (\frac{n(n-1)}{2})^2 = \frac{n^2(n-1)^2}{4} = \frac{(2k+1)^2(2k+1-1)^2}{4} = \frac{(4k^2+4k+1)(4k^2)}{4} = \frac{16k^4 + 16k^3 + 4k^2}{4} = 4k^4 + 4k^3 + k^2 = k^2(2k+1)^2$ which implies that $\sum_{l=1}^{n-1}l^3 \equiv 0\mod(n)$. Similarly, if $n$ is divisible by 4 we can write it as $n = 4k$ which is then $\frac{(4k)^2(4k-1)^2}{4} = \frac{16^2k^4+16*8k^3-16k^2}{4}= 4*16*k^4+32k^3 -4k^2 = 4k^2(4k-1)^2$ which is divisible by $n=4k$ as desired. However, if the $n$ is even but not divisible by $4$ we can write it as $n = 4k+2$ which means that $\frac{(4k+2)^2(4k+1)^2}{4} = 64k^4+96k^3+52k^2+12k+1 = (2k+1)^2(4k+1)^2$ which are both odd which means that the number is not divisible by $n$ since $n$ is even.
+    
+    \item [43. ]
+    
+    Given the definition of fibonacci numbers we have that $f_n = f_{n-1} + f_{n-2}$. Taking this mod $m$ we have that $f_n \equiv f_{n-1} + f_{n-2} \mod m$ and since there are finitely many possible pairs $(f_{n-1}, f_{n-2})$ it will repeat eventually. Now we have that $f_{n-2} \equiv f_n - f_{n-1}\mod m$ we can go backwards. Since $f_0 = 0$, there exists at least on $f_i\equiv 0\mod m$ for each period of repetition, Hence there are infinitely many $f_n$ such that $m|f_n.$
+    
+    \item [5. ]
+    
+    From the problem we are given that $x \equiv_{23} 0$ and that $11x \equiv_{24} 17$. The second equation gives that $x\equiv_{24} 19$ since the inverse of $11\mod 24$ is 11. Therefore, we get that $x\equiv_{23} 0$ and $x\equiv_{24} 19$ which implies that the orbit period of the satellite is $23*19 = 437$ hours. 
+    
+    \item [16. ]
+    
+    Given that $x^2\equiv 1 \mod 2^k$ we get that $x^2-1\equiv 0 \mod 2^k$. This implies that $(x-1)(x+1)\equiv 0 \mod 2^k$ which implies that $x$ is odd. Let us then write that $x = 2k + 1$ for some $k\in \Z$ then we have that $(2k+1-1)(2k+1+1) = 2k(2k+2) = 4k(k+1)\equiv 0\mod 2^k$. This means that $2^{k-2}$ divides $m(m+1)$ for $k>2.$If $k\leq 2$ then there is no condition on $m$. So all residue classes of odd integer satisfy the above equation. SO now assume that $k>2$. If $m$ is even then $m$ is divisible by $2^{k-2}$ and $x = 2^{k-1}t+1$ for $t\in \Z$. But if $m$ is odd, then $m+1$ is divisible by $2^{k-2}$ and in this case $x = 2(m+1)-1 = 2^{k-1}t-1$ for $t\in \Z$. In the first we shall have only two noncongruent solutions namely $1, 2^{k-1} + 1$ whereas in the second case the noncongruent solutions are $-1$ and $2^{k-1} - 1$ as desired.
+    
+    \item [6. ]
+    
+    We can use CRT to get that $x = 1014060069938914k+326741466757708$ for $k\in \Z$. I am sorry but this was just a giant busy work problem and I'm not typing all the numbers for it.
+    
+    \item [15. ]
+    
+    We can rewrite these as $x = a_1+km_1, x = a_2 + lm_2$. If we let $d = \gcd(m_1, m_2)$ we get that $m_1 = dp, m_2 = dq$. Then we get that $a_1+km_1 = a_2 + lm_2.$ This implies that $(a_1-a_2) = -km_1 + lm_2 \Leftarrow\Rightarrow (a_1-a_2) = ldq-kdp = d(lq-kp) \Leftarrow\Rightarrow d|(a_1-a_2) \Leftarrow\Rightarrow (m_1,m_2)|(a_1-a_2)$ as desired.
+    
+\end{enumerate}
+
+\end{document}

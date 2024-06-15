@@ -1,0 +1,186 @@
+\documentclass[11pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Packages
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%amsthm settings
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem{claim}{Claim}
+\newtheorem{definition}{Definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: mathbb
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\A}{\mathbb A}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: greek
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\g}{\gamma}
+\renewcommand{\d}{\delta}
+\newcommand{\e}{\epsilon}
+\renewcommand{\l}{\lambda}
+
+\begin{document}
+
+\noindent {\bf MATH 4317 Midterm 1}  \hfill Due Friday, 2/11/2022 at 11PM to Gradescope
+
+\bigskip
+
+\noindent {\bf Read this first}: 
+\begin{itemize}
+\item Starting Monday at 9:30 AM, you have until Friday at 11 to submit your final solution set. 
+\item There will be no review session held in-class; instead, you are getting extra time to take the test. There will be no class on Monday 2/7 or Wednesday 2/9.
+\item Each problem I assign, unless otherwise stated, is asking you to prove something. Give a full mathematical proof using only results from class or Wade. You may freely use the field, order and completeness postulates without mention. Manipulations involving the field or order axioms need not be described in detail; it is sufficient to say, e.g.,  ``by algebraic manipulations'' when performing such steps. 
+\item Submit a PDF or JPG to gradescope. I have $\sim 10^{26}$ proofs to grade:  please make my job easier by submitting each problem on a different page. 
+\item No collaboration is allowed. Otherwise, you are permitted to use any of the resources available to you on Canvas or the textbook. The use of internet forums outside of class is expressly forbidden. Previous Piazza posts are accessible but no new posts are allowed until the end of the exam. 
+\item Let me know by email (ablumenthal6@gatech.edu) if you need clarification on a problem. I'll be busy but will try to reply promptly to emails. Note that I will not be able to comment on any actual math content. 
+\end{itemize}
+
+See the next page for the midterm problems. You got this!
+
+\newpage
+
+\subsection*{Problems (8 total, 10 pts each)}
+\begin{problem}
+Prove or disprove (find a counterexample) the following statement: For any nonempty sets $X, Y$, subsets $A, B \subset Y$, and for any function $f : X \to Y$ , we have that 
+\[f^{-1} (A) \cap f^{-1}(B) = f^{-1}(A \cap B) \,. \]
+\end{problem}
+
+\begin{proof}
+Let $x\in f^{-1}(A)\cap f^{-1}(B)$. Then,
+\begin{align*}
+    x\in f^{-1}(A)\cap f^{-1}(B) &\Rightarrow x\in f^{-1}(A)\wedge x\in f^{-1}(B)\\
+    &\Rightarrow f(x) \in A\wedge f(x)\in B\\
+    &\Rightarrow f(x) \in A\cap B\\
+    &\Rightarrow x\in f^{-1}(A\cap B).
+\end{align*} Similarly, let $x\in f^{-1}(A\cap B)$. Then,
+\begin{align*}
+    x\in f^{-1}(A\cap B) &\Rightarrow f(x) \in A\cap B\\
+    &\Rightarrow f(x)\in A\wedge f(x)\in B\\
+    &\Rightarrow x\in f^{-1}(A)\wedge x\in f^{-1}(B)\\
+    &\Rightarrow x\in f^{-1}(A)\cap f^{-1}(B)
+\end{align*}
+\end{proof}
+
+\newpage
+\begin{problem}
+Prove that 
+\[
+\bigcup_{k \in \N} \left[ \frac{1}{k}, 1\right] = (0,1] \, .
+\]
+\end{problem}
+
+\begin{proof}
+Given that this set is a union of sets and our upper bound is fixed for all indices, we need to find when the lower bound is its lowest. We notice that the bigger that $k\in \N$ the smaller the lower bound is. Therefore, it would be helpful to show that $\frac{1}{k}\rightarrow 0$ as $k\rightarrow \infty$. If we let $\epsilon > 0,$ then there is an $N\in \N$ such that $N> \frac{1}{\epsilon}$ for $n \geq N$ then we get that $n> N> \frac{1}{\epsilon}.$ This implies that $n> \frac{1}{\epsilon}$ and further that $\frac{1}{n}< \epsilon$. This then show that $\frac{1}{k}\rightarrow 0$ as $k \rightarrow \infty$ as desired. Therefore, the largest interval in this set is $(0, 1]$. Therefore, $\bigcup_{k \in \N} \left[ \frac{1}{k}, 1\right] = (0,1].$
+\end{proof}
+
+\newpage
+\begin{problem}
+Prove the following statement: if $A, B \subset \R$ are bounded from above, $A \cup B$ is also bounded from above, and 
+\[
+\sup(A \cup B) = \max\{ \sup A, \sup B\} \,. 
+\]
+Here, for $a, b \in \R$, 
+\[
+\max\{ a, b\} = \begin{cases} a & a \geq b \\ b & b > a \end{cases} \,. 
+\]
+\end{problem}
+
+\begin{proof}
+We will prove this in two cases.\\
+Case 1: Let $\sup A \geq \sup B$. Therefore, the $\max\{\sup A, \sup B\} = \sup A$. We then need to show that $\sup (A\cup B) \geq \sup A$. We have that $\sup (A\cup B)$ is an upper bound of $A$ so it must be $\geq \sup A.$ Additionally we need to show that $\sup A \geq \sup(A\cup B)$. Let us say that $\sup A$ is not an upper bound of $A\cup B$. That implies that there exists $x\in B$ such that $x > \sup A$. Therefore, $\sup B \geq x> \sup A.$ which is a contradiction to the assumption from before that $\sup A > \sup B$ which implies that $\sup A \geq \sup (A\cup B).$ Thus, in this case we have that $\sup(A\cup B) =\max\{\sup A, \sup B\}$.\\
+Case 2: Let $\sup B \geq \sup A$. We could use the same procedure as in case 1, to show that $\sup (A\cup B) = \max\{\sup A, \sup B\}$.\\
+Therefore, since the statement holds in all cases, it is true that $\sup(A\cup B) = \max\{\sup A, \sup B\}$
+\end{proof}
+
+\newpage
+\begin{problem}
+Find the limit of the sequence $x_n = \sqrt{n^2 + n} - n$. You may freely use standard algebraic manipulations involving $\sqrt{\cdot}$, e.g., $\sqrt{a^2 ( b + c)} = a \sqrt{b + c}$ for $a, b,c \geq 0$. 
+\end{problem}
+
+\begin{proof}
+I will begin by first multiplying by the reciprocal. We have $\sqrt{n^2+n} - n * \frac{\sqrt{n^2+n}+n}{\sqrt{n^2+1}+n} = \frac{\not n^2 + n - \not n^2}{\sqrt{n^2+n}+n} = \frac{n}{\sqrt{n^2+n}+n}$. Then if we divide the whole expression by the greatest exponent then we get $\frac{1}{\sqrt{1+\frac{1}{n}}+1}$. Then we know that $\lim(\frac{f(x)}{g(x)}) = \frac{\lim f(x)}{\lim g(x)}.$ Then $\lim \frac{1}{\sqrt{1+\frac{1}{n}}+1} = \frac{\lim 1}{\lim \sqrt{1+\frac{1}{n}}+1}$ and from homework 3 problem 3 we have that the limit of a square root is the square root of the limit and that the limit of a sum is the sum of the limit. Therefore we get that $\frac{\lim 1}{\lim \sqrt{1+\frac{1}{n}}+1} = \frac{\lim 1}{\sqrt{\lim 1 + \lim \frac{1}{n}}+\lim 1}$ and we know that $\lim \frac{1}{n} = 0,$ Therefore, $\frac{\lim 1}{\sqrt{\lim 1 + \lim \frac{1}{n}}+\lim 1} = \frac{1}{\sqrt{1}+1} = \frac{1}{2}.$ Thus, the limit of the sequence $x_n = \sqrt{n^2+n}-n = \frac{1}{2}.$
+\end{proof}
+
+\newpage
+\begin{problem}
+Let $(x_n)$ be a sequence of real numbers, $x \in \R$. Prove, directly from the definition of convergence of a sequence, that
+if $x_n \to x$, then $x_n^2 \to x^2$. {\bf Do not use any of the results of Wade Section 2.2, e.g., that the product of convergent sequences is convergent.} You may freely use the fact that a convergent sequence is bounded. 
+\end{problem}
+
+\begin{proof}
+We are first given that for $\epsilon > 0$ that $|x_n - x| < \epsilon$ which shows that $x_n \to x$. This implies then that $|x_n-x| < 1$, moreover $|x_n-x| < \frac{\epsilon}{1 + 2|x|}$ since $\frac{\epsilon}{1 + 2|x|}$ is always positive and could be redefined as a simple $\epsilon$. Then we can see that $|x_n+x| = |x_n - x + 2x| = |x_n - x| + 2|x| < 1 + 2|x|.$ Then for $\epsilon > 0$ by Archimedean Principle we will choose $N\in \N$ such that $N > \frac{\epsilon}{1+2|a|}.$ Then if we have $n > N$ we get that $|x_n^2 - x^2| = |(x_n-x)(x_n+x)| = |x_n-x||x_n+x| < \frac{\epsilon}{1 + 2|x|}(1+2|x|) = \epsilon.$ Therefore, for $n > N$ we have that $|x_n^2-x^2| < \epsilon$ implying that $x_n^2 \to x^2.$
+\end{proof}
+
+\newpage
+\begin{problem}
+Suppose that $x_1 \in \R$ and $x_n = \frac12 (1 + x_{n-1})$. Prove, however you like, (e.g., using the results of Section 2.2 and 2.3), that $x_n \to 1$ as $n \to \infty$. 
+\end{problem}
+
+\begin{proof}
+Suppose not, that is to say that $x_n \not\to 1$ as $n\to \infty$. Therefore, we know then that by the definition of convergence that $|x_n-1| \geq \epsilon$ for some $\epsilon > 0.$ However, let us consider the sequence $x_n$ as defined above by for specific $x_1 = 1$, then we get that $x_2 = \frac{1}{2}(1-x_1) = \frac{1}{2}(1-1)$ which will apply for all further $x_n$. Therefore, for $N\in \N$ and $n>N$ we have that $|x_n-1| = |1-1| = |0| < \epsilon$ which is a contradiction by the fact that $|x_n - 1| \geq \epsilon$ if the sequence $x_n\not\to 1$ as $n\to \infty.$ Therefore, $x_n \to 1$ as $n \to \infty.$
+\end{proof} 
+
+\newpage
+\begin{problem}
+Let $(x_n), (y_n)$ be real sequences of nonnegative real numbers (i.e., $x_n, y_n \geq 0$ for all $n \in \N$). Assume $(y_n)$ is bounded and $x_n \to x$ for some $x \in \R$. Prove that 
+\[
+\limsup_{n \to \infty} (x_n  y_n) = x \cdot \left( \limsup_{n \to \infty} y_n\right) \,. 
+\]
+\end{problem}
+
+\begin{proof}
+Let y = $\limsup_{n\to \infty}y_n$. I am first going to show that $\limsup(x_ny_n) = \limsup(x_n)\limsup(y_n)$\\
+We are going to start by showing that $\limsup(x_ny_n) \geq \limsup(x_n) \limsup(y_n).$ Let $y \in \R$. Therefore, by Theorem 2.38 we know that $y_n$ has a subsequence $y_{n_k}$ such that $y_{n_k} \to y$. Therefore, if we let $x_{n_k}$ be a subsequence of $x_n$ such that $x_{n_k} \to x$, then we know that $x_{n_k}\times y_{n_k} \to xy$. Since $x_{n_k}$ is only a subsequence of $x_n$, then we know that $\limsup(x_ny_n) \geq xy = \limsup (x_n)\limsup(y_n)$. Alternatively, let $y = \infty.$ Therefore, there is a subsequence $y_{n_k}$ such that $y_{n_k} \to \infty.$ Therefore, for $x_{n_k}$ where $x_{n_k}\to x$ we have that $x_{n_k}y_{n_k} \to \infty.$ Therefore, we have that $\limsup x_ny_n \geq \limsup (x_n)\limsup (y_n) = \infty$. Therefore, we know in all cases that $\limsup(x_ny_n) \geq \limsup(x_n)\limsup(y_n).$\\
+Now we want to show that $\limsup(x_n)\limsup(y_n)\geq \limsup(x_ny_n)$. Since we are given that $x_n \to x$ and that $x_n$ is nonnegative. We can then consider that $\limsup(y_n) = \limsup(\frac{1}{x_n}x_ny_n)$ and from earlier we know then that $\limsup(\frac{1}{x_n}x_ny_n) \geq \limsup(\frac{1}{x_n})\limsup(x_ny_n) = \frac{1}{x}\limsup(x_ny_n)$. This then implies that $\limsup (x_nt_n) \leq x(\limsup(y_n)) = \limsup(x_n)\limsup(y_n).$\\
+Since we have that $\limsup(x_ny_n)\geq \limsup(x_n)\limsup(y_n)$ and $\limsup(x_n)\limsup(y_n)\geq \limsup(x_ny_n)$ we know that $\limsup(x_ny_n) = \limsup(x_n)\limsup(y_n).$\\
+This then allows me to say that $\limsup(x_ny_n) = \limsup(x_n)\limsup(y_n).$ Given that $x_n \to x$ we know that from Theorem 2.36 that $\limsup(x_n) = x$. So then we have that $\limsup(x_ny_n) = \limsup(x_n)\limsup(y_n) = x\limsup(y_n)$ as desired.
+\end{proof}
+
+\newpage
+\begin{problem}
+Prove or disprove (find a counterexample) the following statement: 
+if $(x_n)$ is a sequence and $(y_n)$ is a Cauchy sequence, 
+then the sequence $z_n = x_n \cdot y_n$ is Cauchy. 
+\end{problem}
+
+Consider the sequences $x_n = n$ and $y_n = 1$. Then we can see that $y_n \to 1$ and since it converges then it is Cauchy. However $x_n = n$ is unbounded as $n\to \infty$. If we take $x_ny_n = n * 1 = 1n$, we know that this sequence is also unbounded and therefore, not convergent, which implies that it is not Cauchy and the statement is disproved.
+
+\end{document}
+

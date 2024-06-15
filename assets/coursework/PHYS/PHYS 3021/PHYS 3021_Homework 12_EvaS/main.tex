@@ -1,0 +1,139 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathcomp}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage{array}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{graphicx}
+
+\newtheorem{ishaan}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\title{Homework 15}
+\author{Sean Eva}
+\date{December 2021}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item 
+    
+    \begin{enumerate}
+        \item 
+        
+        Density: $D = \frac{m}{v}$, Volume of a sphere: $V = \frac{4}{3}\pi r^3$.\\Density of a neutron: $D = \frac{1.7*10^{-27}}{\frac{4}{3}\pi (1.8*10^{-15})^3} = 6.959*10^{17} \frac{\text{kg}}{\text{m}^3}$. \\Density of a neutron star: $D = \frac{1.4*(1.989*10^{30})}{\frac{4}{3}\pi(10*1000)^{3}} = 6.648*10^{17}\frac{\text{kg}}{\text{m}^3}$.\\
+        The density of a neutron star is ten times that of just a neutron.
+        
+        \item
+        
+        It appears that since the density of a neutron star is ten times that of just a neutron that the neutrons within the star are overlapping.
+        
+    \end{enumerate}
+    
+    \item
+    
+    The mass of the Earth $ = 5.972*10^{24}$kg. Then,
+    \begin{align*}
+        6.648*10^{17} &= \frac{5.972*10^{24}}{\frac{4}{3}\pi(r)^3}\\
+        r &= \sqrt[3]{\frac{5.972*10^{24}}{\frac{4}{3}\pi(6.648*10^{17})}}\\
+        r &= 128.958\text{m} = 0.129 \text{km}
+    \end{align*}
+    
+    \item
+    
+    Conservation of angular momentum: $I_0\omega_0 = I_1\omega_1$. Then, 
+    \begin{align*}
+        M (6.96*10^8)^2 \frac{1}{30*24*3600} &= M (12*1000)^2 \omega\\
+        (6.96*10^8)^2 \frac{1}{30*24*3600} &= (12000)^2 \omega\\
+        \omega &= 1297.840\\
+        P &= \frac{1}{1297.840}\\
+        P &= 7.71*10^{-4}\text{s}
+    \end{align*}
+    
+    \item
+    
+    \begin{enumerate}
+        \item 
+        
+        Maximum wavelength of emission: $\lambda_{max} = \frac{0.0029}{T}$. Then,
+        \begin{align*}
+            \lambda_{max} &= \frac{0.0029}{4.4*10^7}\\
+            \lambda_{max} &= 6.591*10^{-11}\text{m}.
+        \end{align*} This wavelength is in the X rays to Gamma rays part of the spectrum.
+        
+        \item
+        
+        Stefan-Boltzmann: $\frac{L_1}{L_1} = (\frac{R_1}{R_2})^2(\frac{T_1}{T_2})^4$. Then,
+        \begin{align*}
+            L &= (\frac{10000}{6.96*10^8})^2(\frac{4.4*10^7}{5800})^4\\
+            L &= 6.84*10^5.
+        \end{align*} Therefore, the neutron star is about $6.84*10^5 L_\text{Sun}$ or approximately $2.64*10^{32}$
+        
+    \end{enumerate}
+    
+    \item
+    
+    Kepler's 3rd Law: $M*P^2=a^3$. Then,
+    \begin{align*}
+        MP^2 &= a^3\\
+        M (\frac{7.25}{24*365.25})^2 &= (1.163*10^{-2})^3\\
+        M &= 2.300 M_\odot.
+    \end{align*}
+    
+    \item
+    
+    Schwarzschild Radius: $R_S = \frac{2GM}{c^2}$
+    \begin{enumerate}
+        \item 
+        
+        \begin{align*}
+            R_S &= \frac{2GM}{c^2}\\
+            &= \frac{2(6.67*10^{-11})(5.972*10^{24})}{(3*10^8)^2}\\
+            &= 8.85*10^{-3}\text{ m}
+        \end{align*}
+        
+        \item
+        
+        \begin{align*}
+            R_S &= \frac{2GM}{c^2}\\
+            &= \frac{2(6.67*10^{-11})(5.683*10^{26})}{(3*10^8)^2}\\
+            &= 8.42*10^{-1}\text{ m}
+        \end{align*}
+        
+        \item
+        
+        \begin{align*}
+            R_S &= \frac{2GM}{c^2}\\
+            &= \frac{2(6.67*10^{-11})(1.989*10^{30})}{(3*10^8)^2}\\
+            &= 2.948*10^3\text{ m}
+        \end{align*}
+        
+    \end{enumerate}
+    
+    \item
+    
+    In order to find the density we need to find the radius of the event horizon it would be contained in. Schwarzschild Radius: $\frac{2GM}{c^2}$. Then,
+    \begin{align*}
+        R &= \frac{2GM}{c^2}\\
+        &= \frac{2(6.67*10^{-11})(20*(1.989*10^{30}))}{(3*10^8)^2}\\
+        &= 5.896*10^4\text{ m}.
+    \end{align*} Using this radius we can calculate the density: $D=\frac{M}{\frac{4}{3}\pi r^3}$. Then,
+    \begin{align*}
+        D &= \frac{M}{\frac{4}{3}\pi r^3}\\
+        &= \frac{20*(1.989*10^{30}}{\frac{4}{3}\pi(5.896)^3}\\
+        &= 4.633*10^{16} \frac{\text{kg}}{\text{m}^3}.
+    \end{align*} This density is less than the density of a neutron star by about 2 orders of magnitude. 
+    
+\end{enumerate}
+
+\end{document}

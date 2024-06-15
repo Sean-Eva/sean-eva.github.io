@@ -1,0 +1,180 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsthm,amssymb,amsfonts,xspace}
+\usepackage{longtable}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{mathtools}
+\usepackage[export]{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{hyperref}
+\usepackage{environ}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{interval}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+
+% Python for pseudocode
+\lstloadlanguages{Python}
+\lstset{
+  language=Python,
+  basicstyle=\sffamily,
+  numberstyle=\color{gray},
+  stringstyle=\color[HTML]{933797},
+  commentstyle=\color[HTML]{228B22}\sffamily,
+  emph={[2]from,import,pass,return}, emphstyle={[2]\color[HTML]{DD52F0}},
+  emph={[3]range}, emphstyle={[3]\color[HTML]{D17032}},
+  emph={[4]for,in,def}, emphstyle={[4]\color{blue}},
+  showstringspaces=false,
+  breaklines=true,
+  prebreak=\mbox{{\color{gray}\tiny$\searrow$}},
+  numbers=left,
+  xleftmargin=10pt
+}
+
+\usepackage[english]{babel}
+\usepackage{minted}
+\usepackage{xcolor}
+\NewEnviron{hide}{}
+
+% Header
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+% Convenient Shortcuts like \N for naturals
+\newcommand{\pitem}[1]{\item[\textbf{#1.)}]}
+\newcommand{\T}{\mathrm{T}}
+\newcommand{\F}{\mathrm{F}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\Mod}[1]{\ (\text{mod}\ #1)}
+\newcommand{\mmod}{\textrm{\textbf{ mod }}}
+\newcommand{\powerset}{\raisebox{.15\baselineskip}{\Large\ensuremath{\wp}}}
+\newcommand{\floor}[1]{\left \lfloor #1 \right \rfloor}
+\newcommand{\ceil}[1]{\left \lceil #1 \right \rceil}
+\newcommand{\gauss}[3]{\begin{bmatrix} #1 \\ #2 \end{bmatrix}_{#3}}
+\newcommand{\pfrac}[2]{\left(\frac{#1}{#2}\right)}
+
+% Set header fields
+\newcommand{\hmwkTitle}{Homework 4A}
+\newcommand{\hmwkDueDate}{\textbf{Friday} Apr 15}
+\newcommand{\hmwkClass}{CS 3510}
+\newcommand{\hmwkClassTime}{}
+\newcommand{\hmwkClassInstructor}{Professor Faulkner}
+\newcommand{\hmwkAuthorName}{\textbf{CS 3510 Staff}}
+
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+
+\newif\ifincludesolutions
+\includesolutionstrue  % Uncomment to show solutions
+
+\newcounter{ProblemCounter}
+\setcounter{ProblemCounter}{1}
+
+% Define problem / solution env to disappear appropriately
+\newenvironment{problem}[1][Problem]{
+ \begin{trivlist}
+ \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {%
+ \bfseries \theProblemCounter.%
+ \stepcounter{ProblemCounter}%
+ }]
+}{
+ \end{trivlist}
+}
+
+\ifincludesolutions
+
+\newenvironment{solution}[1][Solution]{
+ \begin{trivlist}
+ \item[\hskip \labelsep \textit{#1.}]
+}{
+ \end{trivlist}
+}
+\else
+\newenvironment{solution}[1][Solution]{
+\hide
+}{
+\endhide
+}
+\fi
+
+% How to make title
+\pagestyle{fancy}
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+    \vspace{3in}
+}
+\author{\hmwkAuthorName}
+\date{}
+
+
+\begin{document}
+\maketitle
+
+\clearpage
+
+\begin{problem}\textit{(20 points)}\\
+Write \textbf{True} or \textbf{False} on the line to indicate your answer. Justify each answer in \textbf{two} sentences or less. \vspace{0.1in}
+\begin{enumerate}[label=\textbf{\alph*.)}]
+    \item If $A$ is an NP-Complete problem, and $B$ reduces to $A$, then $B$ is NP-Complete. \textbf{True}\\
+    Since it is currently unknown if $P = NP$ just because we know that a problem can be reduced to something that we already know is $NP$ does not tell us that we are able to reduce $B$ to $P.$
+    
+    \item If $A$ is in $P$, then $A$ reduces to \textsc{3SAT}. \textbf{False}\\
+    Something in 3SAT is in $NP$ inherently. However, for something that is already reduced to $P$ we cannot \textbf{reduce} it specifically to something more general that we cannot solve.
+    
+    \item If \textsc{3-SAT} can be reduced to $A$, then \textsc{Independent Set} can also be reduced to $A$ \textbf{False}. \rule{2.5cm}{0.4pt} \\
+    Since we know that 3SAT is NP-Complete and since it can be reduced to $A$, then we know that $A$ is also NP-Complete and since we know that Independent Set is NP-Complete, we can similarly reduce it to $A$. However, since we do not know that $A \in NP$ then we do not know that it is NP-Complete, from the given information, we know that it is NP-Hard.
+    
+    \item If $A$ can be reduced to $B$, and $B$ can be reduced to $C$, then $A$ can be reduced to $C$. \textbf{True}\\
+    Let us consider the process $M$ that reduces $A \to B$ then the process $N$ that reduces $B \to C$ which are both done in polynomial time, $M(x), N(x)$ respectively. If we process $A$ through $M$ and then through $N$ then it would take $N(M(x))$ which is still polynomial and then shoes that $A$ can be reduced to $C$ in polynomial time.
+    
+    \item Solutions to NP-Hard problems can be verified in polynomial time. \textbf{False}\\
+    The problem $A$ which is NP-Hard is not necessarily NP by definition this implies that they may be undecidable as to their complexity which means that we do not know if we could verify it in polynomial time.
+\end{enumerate}
+\end{problem}
+
+\pagebreak
+
+\begin{problem}\textit{(40 points)}\\
+A kite is a graph on an even number of vertices, say $2n$, in which $n$ of the vertices form a clique and the remaining $n$ vertices are connected in a “tail” that consists of a path joined to one of the vertices of the clique. Given a graph and a goal $g$, the \textsc{Kite} problem asks whether $G$ contains a subgraph which is a kite and which contains $2g$ nodes. Prove Kite is NP-complete. \\
+
+\noindent Here is an example of a kite of size 5:
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=10cm]{kite}
+\end{figure}
+\end{problem}
+
+\begin{proof}
+We can reduce the Clique problem to Kite, Given that $G = (V, E)$ and target $g$, we can build a new graph $G'$ in polynomial time. For each node $v_i$ add a tail of $g$ new nodes. If $G'$ has a kite of size $2g$ then $G$ has a clique of size $g$ which is the kite without the tail and the added nodes will not introduce a new clique on $G'$ so $G$ will contain the same clique as $G'$. Therefore, since we are able to reduce an NP-Complete problem to the Kite problem then we know that Kite is also NP-Complete.
+\end{proof}
+
+\pagebreak
+
+\begin{problem}\textit{(40 points)}\\
+In the \textsc{Exact 4SAT} problem, the input is a boolean formula consisting of a set of clauses, where each clause has \textit{exactly} four literals, and such that each variable occurs at most once in each clause. The goal is to determine whether a satisfying assignment exists. Prove that \textsc{EXACT 4SAT} is NP-complete.
+
+\
+
+\noindent Example of a \textsc{Exact 4SAT} boolean formula:\\
+$C = (x_1 \vee x_2 \vee x_3 \vee x_4) \wedge (x_4 \vee x_5 \vee x_2 \vee x_1) \wedge (\bar{x_1} \vee x_5 \vee \bar{x_3} \vee x_6)$
+\end{problem}
+
+\begin{proof}
+We are able to turn any 3SAT problem into an EXACT 4SAT problem pretty easily and in polynomial time. For each statement in 3SAT we can add pointless boolean literals to make them have 4 literals in each clause. For example, if we have a clause $(x_1 \vee x_2 \vee x_3)$ in 3SAT, we could very simply add in $x_4$ to make it have 4 literals in the clause. If this creates any duplicate clauses then we can simply remove any duplicates and keep only one of them. Thus, since we are able to turn any 3SAT problem into an EXACT 4SAT problem, we know that EXACT 4SAT is NP-Complete.
+\end{proof}
+
+\end{document}

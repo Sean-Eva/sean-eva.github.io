@@ -1,0 +1,170 @@
+\documentclass[11pt, letter]{amsart}
+
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[inline]{enumitem}
+
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}[]
+\newtheorem{exercise}{Exercise}[]
+\newtheorem*{definition*}{Definition}
+
+\newcommand\cF{{\mathcal F}}
+
+\title[Math 4032: Homework \#3\qquad Due February 24 at 1:59pm]{Math 4032: Homework \#3\\
+  Due February 24 at 1:59pm}
+
+
+\begin{document}
+
+
+\maketitle
+
+%\noindent\textit{Information:}
+The relevant background material for this assignment is covered in Chapter 7 of the Matou\v{s}ek--Ne\v{s}et\v{r}il book and Chapters 2 and 4 of the Jukna book.  Techniques to be used in this assignment include Double Counting, Cauchy--Schwarz and Jensen's Inequality, and the Pigeonhole Principle.
+%\noindent\textit{Instructions:}
+\begin{itemize}
+\item You are strongly encouraged to typeset your homework solutions using \LaTeX.
+\item Acknowledge collaborations as noted in the syllabus.
+\item The following problems are optional exercises not to be turned in.  Problems to be turned in for a grade begin on the next page.  
+\end{itemize}
+
+
+\begin{exercise}
+  Recall the Cauchy--Schwarz Inequality: If $a_1, \dots a_n, b_1, \dots, b_n \in \mathbb R$, then
+  \begin{equation*}
+    \left(\sum_{i=1}^n a_ib_i\right)^2 \leq \left(\sum_{i=1}^n a_i^2\right)\left(\sum_{i=1}^n b_i^2\right).
+  \end{equation*}
+  Recall also Jensen's Inequality: If $f : \mathbb R \rightarrow \mathbb R$ is convex, $x_1, \dots, x_n \in \mathbb R$, and $\lambda_1, \dots, \lambda_n \in [0, 1]$ where $\sum_{i=1}^n \lambda_i = 1$, then
+  \begin{equation*}
+    f\left(\sum_{i=1}^n\lambda_i x_i\right) \leq \sum_{i=1}^n \lambda_i f(x_i).
+  \end{equation*}
+  Prove that Jensen's Inequality implies the Cauchy-Schwarz Inequality.  \textit{Hint: Let $f : x \mapsto x^2$, let $x_i = a_i / b_i$, and let $\lambda_i = b_i^2 / \sum_{i=1}^n b_i^2$.}
+\end{exercise}
+
+\begin{exercise}
+  Let $\cF = \{A_1, \dots, A_m\}$ be a family of subsets of a finite set $X$.  For $x \in X$, let $d_\cF(x)$ be the number of members of $\cF$ containing $x$.  Prove that for every $s \in [m]$,
+  \begin{equation*}
+    \sum_{x \in X}d_\cF(x)^s = \sum_{(i_1, \dots, i_s)\in [m]^s}\left| A_{i_1} \cap \cdots \cap A_{i_s}\right|.
+  \end{equation*}
+\end{exercise}
+\begin{exercise}
+  Suppose five points are chosen inside an equilateral triangle with sides of length $1$.  Prove that there is a pair of points of whose distance apart is at most $1/2$.  \textit{Hint: Divide the triangle into four smaller triangles, and use the Pigeonhole Principle.}
+\end{exercise}
+\begin{exercise}
+  Prove that every set $X$ of $n + 1$ distinct integers chosen from $[2n]$ contains a pair of consecutive numbers and a pair of numbers summing to $2n + 1$.  \textit{Hint: To find consecutive numbers, apply the Pigeonhole Principle to sets $A_i = \{2i, 2i - 1\} \cap X$ for $i \in [n]$, and to find numbers summing to $2n + 1$, use a similar argument.}  
+\end{exercise}
+\begin{exercise}
+  Let $X$ be a set of $n^2 + 1$ points in $\mathbb R^2$.  Prove that there exist $(x_1, y_1), \dots, (x_{n+1}, y_{n+1}) \in X$ such that one of the following holds:
+  \begin{align*}
+    && x_1 \leq x_2 \leq \cdots \leq x_{n+1} && \text{and } && &y_1 \leq y_2 \leq \cdots \leq y_{n+1}, \text{ or}&&\\
+    && x_1 \leq x_2 \leq \cdots \leq x_{n+1} && \text{and } && &y_1 \geq y_2 \leq \cdots \geq y_{n+1}.&&
+  \end{align*}
+  \textit{Hint: Use the Erd\H{o}s--Szekerez Theorem.}
+\end{exercise}
+\clearpage
+
+\begin{problem} Let $n \in \mathbb N$.
+  \begin{enumerate}[label=(\alph*)]
+  \item Let $t$ be an integer  at least $2$, and let $G = (V, E)$ be an $n$-vertex graph.  Prove that if $G$ contains no subgraph isomorphic to $K_{2, t}$, then
+    \begin{equation*}
+      2\left| E \right| \leq \sqrt{t - 1}n^{3/2} + n.
+    \end{equation*}
+
+\begin{proof}
+    Let assumptions be as in the problem statement, that is to say that we have a graph $G(V, E)$. Let us define the set $N(v)$ be the set of vertices which share an edge with $v$. If we assume that $G$ has no subgraph isomorphic to $K_{2, t}$ then we know for all $v, u\in V$ we know that $\left|N(v)\cap N(u)\right| \leq t - 1.$ Therefore, we know that $\sum_{v, u\in V}\left|N(v)\cap N(u)\right|\leq \binom{\left|V\right|}{2}\left(t - 1\right)$. Then it follows that $\sum_{v, u\in V}\left|N(v)\cap N(u)\right| = \sum_{v\in V}\binom{\deg(v)}{2}$ which also implies that $\sum_{v\in V}\binom{\deg(v)}{2} \leq \binom{\left|V\right|}{2}\left(t - 1\right)$. We can combine the fact that $\sum_{v\in V}\binom{\deg(v)}{2} = \frac{1}{2}\left(\sum_{v\in V}\deg(v)^2 - \sum_{v\in V}\deg(v)\right)\geq \frac{1}{2}\left(\frac{1}{\left|V\right|}\left(\sum_{v\in V}\deg(v)\right)^2 - \sum_{v\in V}\deg(v)\right)$ as well as\\ $\sum_{v\in V}\deg(v) = 2\left|E\right|$ to get $\sum_{v\in V}\binom{\deg(v)}{2}\geq \frac{1}{2}\left(\frac{4\left|E\right|^2}{\left|V\right|} - 2\left|E\right|\right)$. We can then substitute this into what we found earlier to get $\frac{1}{2}\left(\frac{4\left|E\right|^2}{\left|V\right|} - 2\left|E\right|\right) \leq \binom{\left|V\right|}{2}(t - 1)$. As per the problem statement, we have defined $\left|V\right| = n$ to get $\frac{4\left|E\right|^2}{n} - 2\left|E\right| \leq n(n - 1)(t - 1) \Rightarrow \left|E\right| \leq \frac{n}{4}\left(1 + \sqrt{1 + 4(n - 1)(t - 1)}\right) \leq \frac{n}{2}\left(\sqrt{(n - 1)(t - 1)} + 1\right)$ which we can then rewrite as $2\left|E\right| \leq \sqrt{t - 1}n^{3/2} + n$ as desired.
+\end{proof}
+    
+  \item Let $C$ be a set of $n$ circles in the plane, each of radius $1$, and let $P$ be a set of $n$ points in the plane.  Prove that the number of pairs $(p, c)$ where $p \in P$, $c \in C$, and $p$ lies on $c$, is bounded by $O(n^{3/2})$.  \textit{Hint: Apply part (a) with $t = 3$.}  
+
+\begin{proof}
+    Let assumptions be as in the problem statement, that is to say that we have $n$ circles on the place and $n$ points. Let us then define a graph where each circle is a vertex and each point is a vertex, then for each point that is incident to a circle there will be an edge between them. This forms a bipartite graph between the circles and the points. However, by Euclidean geometry, three circles cannot be incident to the same point, then that is to say that the largest complete bipartite graph would be between two circles and two points hence forming a $K_{2, 2}$. There are no subgraphs isomorphic to $K_{2, 3}$ or larger. Therefore, by part a we have that the number of edges in this graph is of size $\|E\| = \frac{\sqrt{3 - 1}n^{3/2} + n}{2} = O(n^{3/2})$ as desired.
+\end{proof}
+  
+  \end{enumerate}
+\end{problem}
+
+\clearpage
+\begin{problem}
+  Let $S_1, \dots, S_n \subseteq [n]$ such that $|S_i \cap S_j| \leq 1$ for all distinct $i, j \in [n]$.  Prove that $|S_i| \leq \sqrt n + 1$ for some $i \in [n]$.  \textit{Hint: Use the K\H{o}v\'ari--S\'os--Tur\'an Theorem with $s = 2$.}
+\end{problem}
+
+\begin{proof}
+    Let assumptions be as in the problem statement. Then we will construct a graph where there will be $2n$ vertices, the first $n$ vertices will represent the elements of $\left[n\right]$ and the second $n$ vertices will represent each of the $S_i$ then the edges of the graph will represent if an element of $\left[n\right]$ is in some $S_i$. By the problem statement, we know that $\left|S_i\cap S_j\right| \leq 1$ which means that two distinct sets do not share any more than a single element from $\left[n\right]$, this means that we will not be able to form a subgraph isomorphic to $K_{2,2}$ in this graph as we have defined it. Then by the K\H{o}v\'ari--S\'os--Tur\'an Theorem, we have that the number of edges is then equal to $\left|E\right| = \left(s - 1\right)^{1/s}n^{2-1/s} + \left(s - 1\right)n$ and for this problem we have that $s = 2$ implying then that $\left|E\right| = \left(2 - 1\right)^{1/2}n^{2 - 1/2} + \left(2 - 1\right)n = n^{3/2} + n$. So if we divide this number of edges amongst the $n$ $S_i$. Recall that each edge refers to an element from $\left[n\right]$ and its inclusion to an $S_i$ which means that each $S_i$ has at most $\frac{n^{3/2} + n}{n} = \sqrt{n} + 1$ edges. This implies that $\left|S_i\right| \leq \sqrt{n} + 1$ as desired.
+\end{proof}
+
+\clearpage
+An \textit{independent} set in a graph $G = (V, E)$ is a set $I \subseteq V$ such that no edge in $E$ is contained in $I$.  The \textit{neighborhood} of a vertex $v$ in a graph $G = (V, E)$, denoted $N_G(v)$, is the set of vertices in $G$ \textit{adjacent} to $v$; that is, $N_G(v) = \{u \in V : \{u, v\} \in E\}$.
+\begin{problem}The following provides an alternative proof of Tur\'an's Theorem.
+  \begin{enumerate}[label=(\alph*)]
+  \item Prove that every graph $G = (V, E)$ has an independent set of size at least $\sum_{v \in V}1 / (d_G(v) + 1)$. \textit{Hint: Use induction on $|V|$.  Prove that if $v$ is a minimum degree vertex of $G$, then $1/(d_G(v) + 1) + \sum_{u \in N_G(v)}1/(d_G(u) + 1) \leq 1$.}
+
+    \begin{proof}
+        Let assumptions be as in the problem statement. We will proceed via mathematical induction on $|V|$.\\
+        Base Case: Let $|V| = 1$ then there is only one vertex and with no edges. We then know that the largest independent set of this graph would be the one containing the only vertex. Therefore, the statement holds that there is an independent set at least size $\frac{1}{d_G(v) + E} = \frac{1}{0 + 1} = 1$. Hence, the base case is satisfied for $\left|V\right| = 1$
+        \\
+        Inductive Step: Let the statement be true for graphs with at most $n - 1$ vertices. Let us then consider the vertex $v\in V$ with the lowest degree in $G$. Since $v$ is the vertex of lowest degree, we know that $\frac{1}{d_G(v) + 1} + \sum_{u\in N_G(v)}\frac{1}{d_G(u)}\leq \frac{1}{d_G(v) + 1} + \sum_{v\in V}\frac{1}{d_G(v) + 1} = \frac{d_G(v) + 1}{d_G(v) + 1} = 1$ since $d_G(u) \geq d_G(v)$ for all $\{u, v\}\in E$. Now consider the graph $G' = (V', E')$ that comes from removing $v$ and $N_G(v)$ from $G$. It is easy to see that $\sum_{v\in V'}\frac{1}{d_{G'}(v) + 1} \geq \sum_{v\in V}\frac{1}{d_G(v) + 1}$ because their degrees have either stayed the same or decreased once they are removed from $G.$ Therefore, by induction, we have that $G'$ has an independent set of size $\sum_{v\in V'}\frac{1}{d_{G'}(v) + 1}$. Together with this independent set and $v$ we have an independent set in $G$ of size at least $\sum_{v\in V'}\frac{1}{d_{G'}(v) + 1} + 1 \geq \sum_{v\in V}\frac{1}{d_G(v) + 1}$. This then implies that we have an independent set in $G$ of size $\sum_{v\in V}\frac{1}{d_G(v) + 1}$ as desired.
+    \end{proof}
+  
+  \item Prove that for every graph $G = (V, E)$,
+    \begin{equation*}
+      \sum_{v\in V}\frac{1}{d_G(v) + 1} \geq \frac{|V|^2}{2|E| + |V|}.
+    \end{equation*}
+    \textit{Hint: Apply Jensen's Inequality to the function $x \mapsto 1 / (x + 1)$.}
+
+    \begin{proof}
+        Let assumptions be as in the problem statement. Let us define a function $f: x \to \frac{1}{x + 1}$ and $\lambda_1, ..., \lambda_{\left|V\right|} = \frac{1}{\left|V\right|}$. Then by Jensen's Inequality we know then that $f(\sum_{v\in V}\frac{1}{\left|V\right|}\deg(v)) = f(\frac{1}{\left|V\right|}2\left|E\right|) = \frac{1}{\frac{1}{\left|V\right|}2\left|E\right| + 1} = \frac{\left|V\right|^2}{2\left|E\right| + \left|V\right|} \leq \sum_{v\in V} \frac{1}{\left|V\right|} f(\deg(v)) = \sum_{v\in V} \frac{1}{\left|V\right|} \frac{1}{\deg(v) + 1} = \sum_{v\in V} \frac{1}{\deg(v) + 1}$. This implies $\sum_{v\in V}\frac{1}{d_G(v) + 1} \geq \frac{|V|^2}{2|E| + |V|}$ as desired.
+    \end{proof}
+    
+\item Use (a) and (b) to prove the following holds for every $t \in \mathbb N$: If $G = (V, E)$ is a graph with no subgraph isomorphic to $K_{t+1}$, then
+  \begin{equation*}
+    |E| \leq \left(1 - \frac{1}{t}\right)\frac{|V|^2}{2}.
+  \end{equation*}
+  \textit{Hint: Apply (a) and (b) to the graph $\overline G = \left(V, \binom{V}{2}\setminus E\right)$.}
+
+    \begin{proof}
+        Let assumptions be as in the problem statement. Let us consider the independent set of the graph $G$. By part a we know that $G$ has an independent set of size at least $\sum_{v\in V} \frac{1}{d_G(v) + 1}$. We will specifically pick the independent set where $I = V$ and pick some number of edges possible for such independent set and we will denote this graph $\overline{G} = (I, \binom{V}{2} \setminus E)$ where $I = V$ and $\binom{V}{2}\setminus E$ are the chosen edges, resulting in $\overline{G} = (V, \binom{V}{2}\setminus E)$. By part b we then know that size of this independent set is lower bounded by $\frac{\left|V\right|^2}{2\left|E\right| + \left|V\right|}$. Since, by the definition of the graph $G$, it has no subgraph isomorphic to $K_{t + 1}$ it follows that $\left|E\right| \leq (1 - \frac{1}{t})\frac{\left|V\right|^2}{2}$ as desired.
+    \end{proof}
+  
+\end{enumerate}
+\end{problem}
+
+\clearpage
+\begin{problem}Let $A_1, \dots, A_m$ be disjoint sets, and let $X = \bigcup_{i=1}^m A_i$.
+  \begin{enumerate}[label=(\alph*)]
+  \item Let $a = \sum_{i=1}^m |A_i| / m$, and let $b \in [1, a]$.  Prove that at least $(1 - 1/b)|X|$ elements of $X$ are in a set $A_i$ where $|A_i| \geq a / b$.
+
+    \begin{proof}
+        Let assumptions be as in the problem statement. It would be easy to interpret $a$ as the average number of elements within each disjoint set. Since the sets $A_1, ..., A_m$ are disjoint, we know that $|X| = \sum_{i = 1}^m|A_i| = am.$ By the problem statement, we have that $\left(1-1/b\right)\left|X\right| = \left(1-1/b)\right)am.$ Then for some b, we can divide these points among the $m$ $A_i$ to see that each set would have approximately $\left(1-1/b\right)a$ elements from $X$. We can see this is the same as $a-a/b$ elements. And It would then follow that $a - a/b \geq a/b \Rightarrow b \geq 2$ which is true by the definition of $b$. Lastly, for the case of $b = 1$ we have that we would need to split $(1-1)am = 0$ elements, which means we can evenly split all elements of $X$ meaning each $A_i$ has $a$ elements and $a = a /1 = a$ elements trivially. Thus the statement is proved.
+    \end{proof}
+  
+  \item Let $Y \subseteq X$, let $B_i = A_i \cap Y$ for every $i \in [m]$, and let $\lambda > 0$.  Prove that at least $(1 - \lambda)|Y|$ elements of $Y$ are in a set $B_i$ where $|B_i| / |A_i| \geq \lambda |Y| / |X|$.
+
+    \begin{proof}
+        Let assumptions be as in the problem statement. We know that $\left|Y\right| = \sum_{i = 1}^m \left|B_i\right|$. We also know that $\lambda \leq 1$ because if $\lambda > 1$ then we would have $(1-\lambda) < 0$ which would make no sense in the context of the problem statement. Let us suppose that we can evenly divide the $(1 - \lambda)\left|Y\right|$ into the $B_i$, then we know that each set would have to contain $\frac{(1 - \lambda) \sum_{i = 1}^m\left|B_i\right|}{m}$ elements.\\
+        I'm honestly not too sure where to continue from here. My thoughts are though that once we divide the elements among the $B_i$ we are able to incorporate the findings from part a to conclude that the proportions in the inequality hold.
+    \end{proof}
+  
+  \end{enumerate}
+\end{problem}
+\clearpage
+\begin{problem}
+  Prove that for every $n \in \mathbb N$, there is a multiple of $n$ that contains only the digits $9$ or $0$.  \textit{Hint: Consider the values modulo $n$ of all the numbers of the form $9\cdots 9$ with $i$ nines, for $i \in [n + 1]$.  Use the Pigeonhole Principle to find two numbers of the same modulus.}
+\end{problem}
+
+\begin{proof}
+    Let us look at the numbers, $a_1 = 9, a_2 = 99, ..., a_{n+1} = 99...99$. Then if we take these numbers, $\mod n$ we find that since there are only $n$ results $\mod n$ then we have that by the pigeonhole principle that at least two of these have the same result $\mod n$. Let us define these as $a_r \equiv a_s (\mod n)$ for $0 < r < s$. If we then take, $a = a_s - a_r$, $a$ will then be a multiple of $n$ that will only include the numbers $0$ or $9$ as desired. (Additionally, this number will be of the form $a = 99...9900..00$)
+\end{proof}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

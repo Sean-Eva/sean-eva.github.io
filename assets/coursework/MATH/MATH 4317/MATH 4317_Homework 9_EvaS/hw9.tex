@@ -1,0 +1,135 @@
+\documentclass[11pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Packages
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+%\usepackage{hyperref}
+%\usepackage{mathrsfs}
+%\usepackage{color}
+%\usepackage{bm}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%amsthm settings
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem{claim}{Claim}
+\newtheorem{definition}{Definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: mathbb
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\A}{\mathbb A}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: greek
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\g}{\gamma}
+\renewcommand{\d}{\delta}
+\newcommand{\e}{\epsilon}
+\renewcommand{\l}{\lambda}
+\newcommand{\bx}{{\bf x}}
+
+\begin{document}
+
+\noindent {\bf MATH 4317 Homework 9}  \hfill Due Friday, 4/15 at 11PM to Gradescope
+
+\bigskip
+
+\noindent Homework guidelines: 
+\begin{itemize}
+\item Each problem I assign, unless otherwise stated, is asking you to prove something. Give a full mathematical proof using only results from class or Wade.
+\item Submit a PDF or JPG to gradescope. The grader has $\sim 250$ proofs to grade:  please make his job easier by submitting each problem on a different page. 
+\item If you submit your homework in Latex, you get 2\% extra credit. 
+\end{itemize}
+
+
+\subsection*{Problems (5 total, 10 pts each)}
+
+\begin{problem}
+Let 
+\[
+E = \R^2 \setminus \{ (x,0) : x > 0\} \,. 
+\]
+Find the closure $\overline{E}$, the interior $E^\circ$ and the boundary $\partial E$. 
+\end{problem}
+
+\begin{proof}
+The interior, $E^\circ$ is the union of open sets within $E$ then it is clear that $E^\circ = \R^2\backslash \{(x, 0): x \geq 0\}$. Similarly, we know that the closure $\overline{E} = \R^2 \{(x, 0): x > 0\}$. Since we know that $\overline{E} = E^\circ\cup\partial E$ we know that the boundary is specifically $\partial E = \{(0, 0\}.$
+\end{proof}
+
+\pagebreak
+Below, a \emph{cluster point} of a set $E \subset \R^n$ is a point $\bx$ with the 
+property that there exists a sequence $(\bx_k) \subset E$ with $\bx_k \to \bx$. 
+\begin{problem}
+Prove that for any subset $E \subset \R^n$, the boundary $\partial E$ is the set of all cluster points of both $E$ and $E^c$. You may use the fact, presented in class, that the closure $\overline E$ coincides with the set of cluster points of $E$. 
+\end{problem}
+
+\begin{proof}
+Let assumptions be as in the problem statement. We know that $\overline E = ((E^c)^\circ)^c$ and similarly we know that $\overline{E^c} = (E^\circ)^c$. This implies that we know that $\partial E = \overline{E}\cap (E^\circ)^c = \overline{E}\cap \overline{E^c}$. From class we know that $\overline{E}$ is the set of all cluster points of $E$. This then implies that the cluster points of both $E$ and $E^c$ is the boundary of $E$ as desired. 
+\end{proof}
+
+\pagebreak
+\begin{problem}
+Let $A, B \subset \R^n$. Show that if $A \subset B$, then $A^\circ \subset B^\circ$. 
+\end{problem}
+
+\begin{proof}
+Let assumptions be as in the problem statement. Let us consider $x \in A^\circ$ which is to say that $x$ is in the interior of $A$. This implies that there is a set $U$ such that $x\in U \subseteq A$ and since $A \subset B$ then we know that $U\subseteq A \subset B \Rightarrow x\in U\subset B$ which further implies that $x\in B^\circ$ as desired.
+\end{proof}
+
+\pagebreak
+A set $E \subset \R^n$ is said to be \emph{sequentially compact} if 
+for any sequence $(\bx_n)_{n \geq 1} \subset E$, there is a subsequence $n_k \to \infty$ and a point $\bx \in E$ such that $\bx_{n_k} \to \bx$. 
+\begin{problem}
+Prove that if $E$ is a closed, bounded subset of $\R^n$, then it is sequentially compact. 
+\end{problem}
+
+\begin{proof}
+Let assumptions be as in the problem statement. Since the set $E$ is bounded, we know that every sequence in $E$ has a subsequence converging to $x\in E$ by the Bolzano-Weierstrass theorem. If this were not true, say there is a subsequence $x_m$ in $E$ with $\|x_m\| \geq m$ for all $m$, then every subsequence is unbounded and not convergent. Since $E$ is closed, we know that for a noninterior $x$ in $E^c$ we can build a sequence to converge to x. Therefore, the subsets of $E$ for which every sequence in $E$ has a subsequence converging to an element $x$ implying that $E$ must be sequentially compact as desired.
+\end{proof}
+
+\pagebreak
+\begin{problem}
+Find the limit $\bx$ of the sequence
+\[
+\bx_k = \left( \frac{k^2 + k}{k^2 + 1} , \frac{(-1)^k k^3 - k^2 + k + 1}{k^4 - 3 k + 1}\right) 
+\]
+\end{problem}
+
+\begin{proof}
+In order to find the limit of this sequence we are going to split it up into two parts and find the limits of the individual parts. First we need to find $\lim_{k\to\infty}(\frac{k^2+k}{k^2+1}) = 1$. Second, we need to find, $\lim_{k\to\infty}(\frac{(-1)^kk^3-k^2+k+1}{k^4-3k+1}) = \lim_{k\to\infty}(\frac{1}{k}) = 0.$ Therefore, the limit $\bx$ of the sequence $x_k = (\frac{k^2 + k}{k^2 + 1} , \frac{(-1)^k k^3 - k^2 + k + 1}{k^4 - 3 k + 1})$ is $(1, 0).$
+\end{proof}
+
+\end{document}

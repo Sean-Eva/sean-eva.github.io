@@ -1,0 +1,204 @@
+\documentclass[11pt, letter]{amsart}
+
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[inline]{enumitem}
+
+
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{claim*}{Claim}
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}[]
+\newtheorem{exercise}{Exercise}[]
+\newtheorem*{definition*}{Definition}
+\newcommand{\Prob}[1]{\ensuremath{%
+    \mathbb P\left[#1\right]
+}}
+\newcommand{\ProbCond}[2]{\ensuremath{%
+    \mathbb P\left[#1\:\middle|\:#2\right]
+  }}
+\newcommand{\Expect}[1]{\ensuremath{%
+    \mathbb E\left[#1\right]
+  }}
+\newcommand{\p}[0]{\mathbb{P}}
+
+\title[Math 4032: Homework \#5\qquad Due April 7 at 1:59pm]{Math 4032: Homework \#5\\
+  Due April 7 at 1:59pm}
+
+
+\begin{document}
+
+
+\maketitle
+
+The relevant background material for this assignment is covered in Chapters 18--20 of the Jukna book.  Techniques to be used in this assignment include the Lov\'asz Local Lemma and the Deletion / Alteration Method.
+
+\begin{itemize}
+\item You are strongly encouraged to typeset your homework solutions using \LaTeX.
+\item Acknowledge collaborations as noted in the syllabus.
+\item The following problems are optional exercises not to be turned in.  Problems to be turned in for a grade begin on the next page.  
+\end{itemize}
+
+Let $(\Omega, \mathbb P)$ be a finite probability space.  Recall that events $A_1, \dots, A_n \subseteq \Omega$ are \textit{mutually independent} if
+\begin{equation*}
+  \Prob{\bigcap_{i\in I}A_i} = \prod_{i\in I}\Prob{A_i} \quad\text{for every $I \subseteq [n]$}.
+\end{equation*}
+An event $A\subseteq \Omega$ is \textit{mutually independent} of events $A_1, \dots, A_n \subseteq \Omega$ if
+\begin{equation*}
+  \ProbCond{A}{\bigcap_{j\in J}B_j} = \Prob{A_i} \quad\text{for every $J \subseteq [n]$, where $B_j \in \{A_j, \overline{A_j}\}$}.
+\end{equation*}
+\begin{exercise}
+  Prove that events $A_1, \dots, A_n \subseteq \Omega$ are mutually independent if and only if for every $i \in [n]$, the event $A_i$ is mutually independent of the events $A_1, \dots, A_{i-1}, A_{i+1}, \dots, A_n$.
+\end{exercise}
+
+  For finite probability spaces $(\Omega_1, \mathbb P_1), \dots, (\Omega_n, \mathbb P_n)$, the \textit{product space} of $(\Omega_1, \mathbb P_1), \dots,(\Omega_n, \mathbb P_n)$ has sample space $\Omega = \Omega_1 \times \cdots \times \Omega_n$ and probability distribution $\mathbb P$ where $\Prob{(\omega_1,\dots, \omega_n)} = \prod_{i=1}^n \mathbb P_i\left[\omega_i\right]$ for every $(\omega_1, \dots, \omega_n) \in \Omega$.  
+\begin{exercise}
+Let $(\Omega, \mathbb P)$ be the product space of $(\Omega_1, \mathbb P_1), \dots, (\Omega_m, \mathbb P_m)$, and let $A_1, \dots, A_n \subseteq \Omega$ be events, where each $A_i$ is \textit{determined} by the outcomes of $\bigcup_{i\in S_i} \Omega_i$ for some $S_i \subseteq [m]$ (i.e., if $(\omega_1, \dots, \omega_m) \in A_i$ and $(\omega'_1, \dots, \omega'_m) \in \Omega$ where $\omega_j = \omega'_j$ for $j \in S_i$, then $(\omega'_1, \dots, \omega'_m) \in A_i$).  Prove that if $J \subseteq [n]$ satisfies $S_i \cap S_j = \varnothing$ for all $j \in J$, then $A_i$ is mutually independent of $\{A_j : j \in J\}$.  \textit{Note: This fact is sometimes called the \textbf{Mutual Independence Principle}.  You can (and should) use it on the first three homework problems.}
+\end{exercise}
+
+\begin{exercise}
+  Use the asymmetric version of the Lov\'asz Local Lemma to prove that the condition `$4pd \leq 1$' in the symmetric version of the Lov\'asz Local Lemma can be replaced with `$ep(d + 1)\leq1$'.  \textit{Hint: Choose each $x_i = 1 / (d + 1)$.}
+\end{exercise}
+
+\clearpage
+
+Let $k,d \in \mathbb N$.  Recall that an \textit{arithmetic progression of length $k$ with common difference $d$} is a set of $k$ distinct numbers $a_1, \dots, a_k \in \mathbb N$ such that $a_{i+1} - a_i = d$ for all $i\in[k-1]$.  For example, $\{2, 5, 8, 11, 14\}$ is an arithmetic progression of length $5$ with common difference $3$.  An arithmetic progression of length $k$ is also called a \textit{$k$-AP}.
+
+The \textit{van der Waerden number $W(2, k)$} is the smallest $n \in \mathbb N$ such that every $2$-coloring $\chi : [n] \rightarrow [2]$ of $[n]$ contains a monochromatic arithmetic progression of length $k$ (i.e., an arithmetic progression $S \subseteq [n]$ of length $k$ such that $S \subseteq \chi^{-1}(i)$ for some $i \in [2]$).  This problem concerns two different ways to prove lower bounds on $W(2, k)$.
+
+\begin{problem}~
+  \begin{enumerate}[label=(\alph*)]
+  \item Prove that the number of $k$-APs in $[n]$ is less than $n^2  / k$, and prove that for every $k$-AP $S \subseteq [n]$ in $[n]$, fewer than $nk$ $k$-APs $S' \subseteq [n]$ in $[n]$ intersect $S$ (i.e.\ satisfy $S\cap S' \neq \varnothing$).
+
+    \begin{claim*}
+        The number of $k$-APs in $[n]$ is less than $n^2 / k$
+    \end{claim*}
+    \begin{proof}
+        Let assumptions be as in the problem statement. Let us denote $j$ as the smallest element in some arithmetic progression in $[n]$. We know then that the value of $j$ is within $1 \leq j \leq n - k + 1$. For such arithmetic progression, let us say that the common difference is $d$, then we have that $j + (k - 1)d \leq n$ since the $k$ elements need to fit in $[n]$. This then implies that $1 \leq d \leq \frac{n - j}{k - 1}$. Since we know that $d$ needs to be an integer we know then that we have $\lfloor\frac{n-j}{k-1}\rfloor$ values for $d$. And similarly, we find that this is the same number of arithmetic progressions that would begin with $j$. Thus we find that the total number of arithmetic progressions is $\sum_{j = 1}^{n - k + 1} \lfloor\frac{n - j}{k - 1}\rfloor = \sum_{j = k - 1}^{n - 1}\lfloor\frac{j}{k - 1}\rfloor = \sum_{j = 1}^{n - 1}\lfloor\frac{j}{k - 1}\rfloor \leq \sum_{j = 1}^{n - 1} \frac{j}{k - 1} = \frac{1}{k - 1} + \frac{2}{k - 1} + ... + \frac{n - 1}{k - 1} = \frac{1 + 2 + ... + (n - 1)}{k - 1} = \frac{n (n - 1)}{2(k - 1)} < \frac{n^2}{k}$. Thus, we have that the number of $k$-APs in $[n]$ is less than $n^2 / k$ as desired.
+    \end{proof}
+    \begin{claim*}
+        For every $k$-AP $S \subseteq [n]$ in $[n]$, fewer than $nk$ $k$-APs $S' \subseteq [n]$ in $[n]$ intersect $S.$
+    \end{claim*}
+    \begin{proof}
+        This claim is the same as asking how many have a fixed number which we will denote as $x \in [n]$. Let us say that this arbitrary $x$ is the $i$th element of some $k$-AP with some common difference $d$. This then implies that $1 \leq x - (i - 1)d$ and $x + (k - i) d \leq n$. Let us assume then that $k$ is even. We will sum over all $i$ while assuming $x + (k - i)d \leq n$ for all $i \leq k/2$ and then assuming $1 \leq x - (i - 1)d$ for $i > k/2$ to get the following bound. $\sum_{i = 1}^{k/2}\frac{n - x}{k - i} + \sum_{i = k/2 + 1}^k\frac{x - 1}{i - 1} = (n - x)\sum_{i = 1}^{k/2}\frac{1}{k - i} + (x - 1)\sum_{i = k/2 + 1}^k\frac{1}{i - 1} = (n - x + x - 1)\sum_{i = k/2 + 1}^k\frac{1}{i - 1} \leq n - 1$. The argument for if $k$ is odd is similar. Then we can apply this to all $k$ elements of the $k$-AP to find that $k(n - 1) < kn$ as desired.
+    \end{proof}
+  
+  \item Prove that $W(2, k) > \sqrt{k 2^{k - 1}}$ using the Union Bound.
+
+    \begin{proof}
+        Let assumptions be as in the problem statement. If we randomly color all elements of $[n]$ either $0$ or $1$ it is simple to see the probability of forming a $k$-AP is $2^{-(k-1)}$ since the first element doesn't matter just that the other $k - 1$ elements match it. Then from above, we know that the number of $k$-APs is bounded by $n^2/k$ and if we take the union bound over each of these $k$-APs, we get $\frac{n^2}{k2^{k-1}}$. We desire this to be $< 1$ which would then imply that $n < \sqrt{k2^{k-1}}$. This then implies that $W(2, k) > \sqrt{k2^{k-1}}$ as desired for sufficiently large n. 
+    \end{proof}
+  
+  \item Prove that $W(2, k) > 2^k / (2ek)$ using the Lov\'asz Local Lemma (also, see Exercise 3).
+
+    \begin{proof}
+        Let assumptions be as in the problem statement. Consider a random $2$-coloring of $[n] = [\frac{2^k}{2ek}$ uniformly and independently. Let us define a graph $G = (V, E)$ with $V = \{A_1, ..., A_m\}$ where $m$ is the number of $k$-APs in $[\frac{2^k}{2ek}]$. Let $A_i$ be the event that the $i$th $k$-AP is monochromatic. Let there be an edge, $e\in E$, between $A_i$ and $A_j$ where $i\neq j$ when their $k$-APs intersect, i.e. these event are dependent on each other when they intersect and thus result in an edge on a dependency graph. Thus, $G$ is a dependency graph on the set of $A_i$s where we know that the set of $A_i$s and its non-neighbors in the dependency graph are mutually independent. It is simple to see that $\p(A_i) = \frac{1}{2^{k-1}}$ which is just the probability that it is monochromatic for all $i$. Then we find that the maximum degree is $nk-1$ which is the number of $k$-APs that intersect $A_i$ minus $A_i$ itself as from part $a$. Then by the LLL and from excercise 3 we have that $ep(d + 1) = e * \frac{1}{2^{k - 1}} (\frac{k2^k}{2ek} - 1 + 1) = 1 = 1 \checkmark$. Thus we know for $n = \frac{2^k}{2ek}$ then there exists a $2$-coloring thus we know that $W(2, k) > \frac{2^k}{2ek}$ as desired.
+    \end{proof}
+  
+  \end{enumerate}
+\end{problem}
+
+\clearpage
+\begin{problem}
+  Let $G = (V_1 \cup \cdots \cup V_m, E)$ be a graph, where $V_1, \dots, V_m$ are pairwise disjoint.  Prove that if every vertex of $G$ has degree at most $d$ and $|V_i| \geq 2ed$ for every $i \in [m]$, then there exists an independent set $\{u_1, \dots, u_m\}$ in $G$ where $u_i \in V_i$ for every $i \in [m]$.  \textit{Hint: Choose $u_i \in V_i$ uniformly at random, and use the Lov\'asz Local Lemma (also, see Exercise 3).}
+\end{problem}
+
+\begin{proof}
+    Let assumptions be as in the problem statement. Let us choose $u_i \in V_i$ uniformly at random for $i\in [m]$, and then we will define $I = \{u_1, ..., u_m\}$ be a prospective independent set. Let $A_e$ be the event that for some edge $e\in E$ that both of its end vertices are in $I$. Since the $u_i$ are selected at random and we know from the problem statement that $|V_i| \geq 2ed$, then we know that $\p(A_e) \leq \frac{1}{(2ed)^2}$. We will define the dependency graph on the events $A_e$ such that two events are dependent on each other if they have a dependency between the same two $V_i$s for which then we know that the maximum degree is $|V_1|d+|V_2|d - 1 = 4ed^2 - 1$. If we apply the LLL and the condition from exercise 3 then we find that $e * \frac{1}{(2ed)^2} * (4ed^2 - 1 + 1) = 1 \leq 1 \checkmark$. This by the LLL we know that there does exist an independent set $\{u_1, ..., u_m\}$ in $G$ where $u_i\in V_1$ for every $i \in [m]$ as desired.
+\end{proof}
+
+\clearpage
+
+\begin{problem}
+  Let $s,t,n \in \mathbb N$.  Recall Problem 2 from HW \#4.  The following problem provides an improvement using the Local Lemma and the Deletion Method.
+  \begin{enumerate}[label=(\alph*)]
+  \item\label{ramsey-symmetricLLL} Prove that if $e\binom{t}{2}\binom{n - 2}{t - 2}2^{1 - \binom{t}{2}} < 1$, then $R(t, t) > n$.  \textit{Hint: Use the Lov\'asz Local Lemma (also, see Exercise 3)}.
+
+    \begin{proof}
+        Let assumptions be as in the problem statement. Let us uniformly at random consider a $2$-coloring of the edges of a $K_n$. For each subset $S\subset [n]$ of vertices of size $t$, we will let $A_S$ be considered the bad events for the LLL where $S$ is monochromatic. Then it is simple to see that $\p (A_S) = 2^{1-\binom{k}{2}}$. For the dependency graph on such $A$ are dependent if for two events $A_{S_1}, A_{S_2}$ that $|S_1\cap S_2| \geq 2$; i.e. when $S_1$ and $S_2$ share one edge with each other. Thus, for a fixed $S$, there are at most $\binom{t}{2}\binom{n-2}{t-2}S_2$ such that $|S_1\cap S_2| \geq 2$. Therefore, the maximum degree of the dependency graph is such that $d \leq \binom{t}{2}\binom{n-2}{t-2}$ and by LLL and the problem statement we know that this is $ep(d+1) < 1$ and we know that $R(t, t) > n$ as desired.
+    \end{proof}
+
+  \item\label{ramsey-asymmetricLLL} Prove that, if there exists $p,x,y\in (0, 1)$ satisfying
+    \begin{equation*}
+      p^{\binom{s}{2}} \leq x(1 - x)^{\binom{s}{2}\binom{n-2}{s - 2}}(1 - y)^{\binom{n}{t}}\quad\text{and}\quad(1 - p)^{\binom{t}{2}} \leq y (1 - x)^{\binom{t}{2} \binom{n-2}{s-2}}(1 - y)^{\binom{n}{t}},
+    \end{equation*}
+    then $R(s, t) > n$.  \textit{Hint: Consider the random graph $G_{n,p}$ and use the asymmetric Lov\'asz Local Lemma with $x$ and $y$ playing the roles of $x_i$}
+
+    \begin{proof}
+        I'm a little stumped on this problem, I'm gonna to write notes about how I expect to solve it. I expect I would follow a similar construction as in (a) but when I apply asymmetric LLL we will take the probability of the intersection of the disjoint events to find the product in the problem statement.
+    \end{proof}
+    
+  \item\label{ramsey-deletion} Prove that, for every $p \in [0,1]$,
+    \begin{equation*}
+      R(s,t) > n - \binom{n}{s}p^{\binom{s}{2}} - \binom{n}{t}(1 - p)^{\binom{t}{2}}.
+    \end{equation*}
+    \textit{Hint: Consider the graph obtained from the random graph $G_{n,p}$ by deleting vertices from monochromatic cliques.}
+
+    \begin{proof}
+        Consider a random graph $G_{n, p}$ with probability $p$ that there exists an edge between two vertices in $G$. Let us define a random variable $X$ to be the number of $s$-cliques plus the number of $t$-independent sets in $G$. Then we find that $\mathbb{E}[X] = \mathbb{E}[$number of $s$-cliques$] + \mathbb{E} [$number of $t$-independent sets$] = \sum_{s\text{-subsets}\in G}\p(\text{the s-subset forms a clique}) + \sum_{\text{t-subsets}\in G}\p(\text{the t-subset forms an independent set}) = \binom{n}{2}p^{\binom{s}{2}} + \binom{n}{t}(1-p)^{\binom{t}{2}}.$ By the pigeonhole for expectation we have that there exists a graph with $|V| = n$ with at most $\binom{n}{s}p^{\binom{s}{2}} + \binom{n}{t}(1-p)^{\binom{t}{2}}$ s-cliques and t-independent sets. The resulting graph has at least $n - \binom{n}{s}p^{\binom{s}{2}} - \binom{n}{t}(1-p)^{\binom{t}{2}}$ vertices but no s-cliques and no t-independent sets. So this can serve as a lower bound for $R(s, t)$ as desired in the problem statement.
+    \end{proof}
+    
+  \end{enumerate}
+\end{problem}
+\clearpage
+\begin{problem}The following problem uses the previous problem to obtain lower bounds on Ramsey numbers.  Note the difference in bounds obtained via the Local Lemma (Problem 3(a--b)), the Deletion Method (Problem 3(c)), and the Union Bound (Problem 2(a) of HW \# 4).
+  \begin{enumerate}[label=(\alph*)]
+  \item Prove the following bounds on $R(k,k)$ using Problem 2(a) of HW\#4, Problem 3\ref{ramsey-deletion}, and Problem 3\ref{ramsey-symmetricLLL}, respectively:
+    \begin{itemize}
+    \item $R(k,k) > (1 - o(1))k2^{(k-1)/2} / e$,
+
+
+    
+    \item $R(k,k) > (1 - o(1))k2^{k/2} / e$,
+
+    
+        
+    \item $R(k,k) > (1 - o(1))k2^{(k+1)/2} / e$.
+
+    
+    
+    \end{itemize}
+  \item Prove that $R(3, t) = \Omega(t^2 / \log^2 t)$ using Problem 3\ref{ramsey-asymmetricLLL}.  \textit{Hint: Consider $p = c_1 / \sqrt n$, $x = c_2 / n^{3/2}$, and $y = c_3 / \binom{n}{t}$, for appropriately chosen constants $c_1, c_2, c_3 \in \mathbb  R$}.
+
+    
+  
+  \item Prove that $R(4, t) = \Omega(t^2 / \log^2 t)$ using Problem 3\ref{ramsey-deletion}.  \textit{Note: This result also follows from 4(b).  A similar approach would give an even stronger bound of $R(4,t) = \Omega((t / \log t)^{5/2})$.}
+  \end{enumerate}
+\end{problem}
+
+\clearpage
+For every $s, n \in \mathbb N$, let $k_s(n)$ be the minimum $m \in \mathbb N$ such that every bipartite graph $G = (A\cup B, E)$ with $|A| = |B| = n$ and $|E| > m$ contains a subgraph isomorphic to $K_{s,s}$.  Recall that the K\H{o}v\'ari--S\'os--Tur\'an Theorem implies that $k_s(n) \leq (s - 1)^{1/s}n^{2 - 1/s} + (s - 1)n$.  
+\begin{problem}
+  This problem uses the Deletion Method to provide a lower bound on $k_s(n)$.
+  \begin{enumerate}[label=(\alph*)]
+  \item Prove that for every $p \in [0,1]$ and $s,n \in \mathbb N$,
+    \begin{equation*}
+      k_s(n) \geq n^2p - \binom{n}{s}^2 p^{s^2}.
+    \end{equation*}
+
+    \begin{proof}
+        Let assumptions be as in the problem statement. Let us consider a random graph $G = (V, E)$ where $V = A\cup B$ and $|A| = |B| = n$ such that no vertices in $A$ are adjacent to other vertices in $A$ and similarly for $B$ to form a bipartite graph as in the problem statement. Let us define a random variable $X$ to be the number of edges in the graph $G$ minus the number of $K_{s,s}$ subgraphs of $G$. The expected value of this random variable is the expected number of edges minus the expected number of $K_{s,s}$. By the linearity of expectation, this reduces to $n^2p-\binom{n}{s}^2p^{s^2}$. By the pigeonhole for expectation, there exists a graph with its random variable $X$ less than $n^2p-\binom{n}{s}^2p^{s^2}$. Let us now consider deleting an edge from each $K_{s,s}$ in such a graph to remove all of them. The number of edges remaining would be $n^2p - \binom{n}{s}^2p^{s^2}$. Thus, we know there exists a graph $G' = (V, E)$ where $|E| = n^2p-\binom{n}{s}^2p^{s^2}$ so we know that $k_s(n) > n^2p-\binom{n}{s}^2p^{s^2}$ as desired.
+    \end{proof}
+    
+  \item   Let $s \in \mathbb N$.  Prove that $k_s(n) = \Omega(n^{2 - 2/s})$.
+
+    \begin{proof}
+        Let assumptions be as in the problem statement. Let us consider a random graph $G = (V, E)$ the same as in part a. Using the similar logic, we will note that $\binom{n}{s} < n^s$ and choose $p = n^{-2/s}$. This allows us to see that $n^2p - \binom{n}{s}^2 p^{s^2} \geq c * n^{2-2/s}$ for some $c > 0$. Thus, we have that $k_s(n) \geq cn^{2-2/s}$ for $c > 0$, i.e. $k_s(n) = \Omega(n^{2-2/s})$ as desired.
+    \end{proof}
+  
+  \end{enumerate}
+
+  
+\end{problem}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

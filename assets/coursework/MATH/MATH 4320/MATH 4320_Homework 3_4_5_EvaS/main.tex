@@ -1,0 +1,405 @@
+\documentclass{article}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Packages
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%amsthm settings
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{definition}
+\newtheorem{problem}{Theorem}
+\newtheorem{claim}{Claim}
+\newtheorem{definition}{Definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: mathbb
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\A}{\mathbb A}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: greek
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\g}{\gamma}
+\renewcommand{\d}{\delta}
+\newcommand{\e}{\epsilon}
+\renewcommand{\l}{\lambda}
+
+\usepackage[utf8]{inputenc}
+
+\title{Homework 3, 4, \& 5}
+\author{Sean Eva}
+\date{Math 4320}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item [[\phantom{-}10]]
+    
+    \begin{enumerate}
+        \item 
+        
+        To show that $\lim_{z\to \infty}\frac{4z^2}{(z-1)^2} = 4$ we can show that $\lim_{z\to 0} \frac{4(\frac{1}{z})^2}{(\frac{1}{z} - 1)^2} = \lim_{z\to 0} \frac{4\frac{1}{z^2}}{\frac{1}{z^2}-\frac{2}{z}+1} = \lim_{z\to 0}\frac{4}{1-2z+z^2} = \lim_{z\to 0} \frac{4}{(z-1)^2} = 4$ as desired.
+        
+        \item
+        
+        We know that $\lim_{z\to 1} \frac{1}{(z-1)^3} = \infty$ since we can easily show that $\lim_{z\to 1}\frac{(z-1)^3}{1} = \frac{0}{1} = 0$.
+        
+        \item
+        
+        We are able to show that \begin{align*}
+            \lim_{z\to \infty} \frac{z^2 + 1}{z - 1} &= \lim_{z \to \infty}\frac{z^2(1 + \frac{1}{z^2})}{z(1-\frac{1}{z})}\\
+            &= \lim_{z\to \infty} \frac{z(1 + \frac{1}{z^2})}{(1-\frac{1}{z})}\\
+            &= \lim_{z\to\infty}z\frac{\lim_{z\to\infty}(1 + \frac{1}{z^2})}{\lim_{z\to\infty}(1-\frac{1}{z})}\\
+            &= \infty (\frac{1 + 0}{1 - 0}\\
+            &= \infty * 1\\
+            &= \infty
+        \end{align*}
+        
+    \end{enumerate}
+    
+    \item [[\phantom{-}3]]
+    
+    \begin{enumerate}
+        \item 
+        
+        We can consider $P(z) = a_0 + f_1(z) + f_2(z) + ... f_n(z)$ where each $f_j(z) = a_jz^j$ . Therefore we have that $P'(z) = \frac{d}{dz}(a_0 + f_1(z) + f_2(z) + ... f_n(z)) = 0 + f'_1(z) + f'_2(z) + ... f'_n(z) = 0 + a_1 + 2a_2z + ... + na_nz^{n-1}$ as desired.
+        
+        \item
+        
+        \begin{proof}
+        We will proceed by mathematical induction:\\
+        Base Case: If we consider the case when $m = 0$ then we have that $P(0) = a_0 + a_1(0) + ... + a_n(0)^n = a_0$ as desired. Therefore, the statement is verified for $m = 0$.\\
+        Inductive Step: Assume that the statement is true for $m = k$, we then want to show that the statement is true for $m = k + 1$. Then we know that $\frac{d}{dz}P^{k + 1}(z) = \frac{d}{dz}(P^{(k)}(z)) = \frac{d}{dz}(\frac{k!}{0!}a_{k+1} + \frac{(k+1)!}{1!}a_{k+1}z + ... + \frac{n!}{(n-k)!}z^{n-k}) = 0 + \frac{(k+1)!}{0!}a_{k+1} + ... + \frac{n!}{(n-k+1)!}z^{n-k+1}$. Therefore, we see that $P^{(k)}(0) = k!a_k$ implies then that $a_k = \frac{P^{(k)}(0)}{k!}$ as desired.
+        \end{proof}
+        
+    \end{enumerate}
+    
+    \item [[\phantom{-}8]]
+    
+    \begin{enumerate}
+        \item 
+        
+        \begin{proof}
+        Consider $f'(z) = \lim_{\Delta z\to 0} \frac{Re(z + \Delta z) - Re z}{\Delta z} = \lim_{(\Delta x, \Delta y) \to (0 , 0)} \frac{x + \Delta x - x}{\Delta x + i\Delta y} = \lim_{(\Delta x, \Delta y) \to (0, 0)}\frac{\Delta x}{\Delta x + i \Delta y}$. Then, if we find the limit of this along the line $(\Delta x, 0)$, the limit is $1.$ However, if we take the limit along the line $(0, \Delta y)$, the limit is $0.$ Therefore, since the limit of the function is different from two different directions, $1 \neq 0$, then we know that the limit does not exist and further that $f$ is not differentiable at any point.
+        \end{proof}
+        
+        \item
+        
+        \begin{proof}
+        Consider $f'(z) = \lim_{\Delta z\to 0} \frac{Im(z + \Delta z) - Im z}{\Delta z} = \lim_{(\Delta x, \Delta y) \to (0 , 0)} \frac{y + \Delta y - y}{\Delta x + i\Delta y} = \lim_{(\Delta x, \Delta y) \to (0, 0)}\frac{\Delta y}{\Delta x + i \Delta y}$. Then, if we find the limit of this along the line $(\Delta x, 0)$, the limit is $0.$ However, if we take the limit along the line $(0, \Delta y)$, the limit is $1.$ Therefore, since the limit of the function is different from two different directions, $1 \neq 0$, then we know that the limit does not exist and further that $f$ is not differentiable at any point.
+        \end{proof}
+        
+    \end{enumerate}
+    
+    \item [[\phantom{-}4]]
+    
+    Note: for $z \neq 0$ we can write $z = re^{i\theta}$ with $r > 0$ and $-\pi < \theta \leq \pi$ and $f(z) = u(r, \theta) + iv(r, \theta).$
+    
+    \begin{enumerate}
+    
+        \item 
+            
+        We know then that $f(z) = \frac{1}{z^4}$ is the same as $f(r, \theta) = r^{-4}e^{i(-4\theta)}$ which we can then split up into $z = r^{-4}\cos(4\theta) - ir^{-4}\sin(4\theta)$ to get that $u(r, \theta) = r^{-4}\cos(4\theta)$ and $v(r, \theta) = -r^{-4}\sin(4\theta)$. We will then calculate the first order partial derivatives with respect to $r$ and $\theta$ for both of these $u$ and $v$ to get $u_r = -4r^{-5}\cos(4\theta), u_\theta = -4r^{-4}\sin(4\theta), v_r = 4r^{-5}\sin(4\theta), v_\theta = -4r^{-4}\cos(4\theta).$ The polar form of the Cauchy-Riemann equations state that $ru_r = v_\theta$ and $-rv_r = u_\theta$. Then, we can apply this to the problem to get that, $ru_r = -4r^{-4}\cos(4\theta) = v_\theta, -rv_r = -4r^{-4}\sin(4\theta) = u_\theta$. Therefore, the Cauchy-Riemann condition is satisfied indicating that $f'(z)$ does exist and $f'(z) = e^{-i\theta}(-4r^{-5}\cos(4\theta) + i4r^{-5}\sin(4\theta)) = -4r^{-5}e^{-i5\theta} = \frac{-4}{z^5}.$
+        
+        \item
+        
+        We need not to worry about converting this function to polar form. We can note that $u(r, \theta) = e^{-\theta}\cos(\ln(r)), v(r, \theta) = e^{-\theta}\sin(\ln(r))$. We can then take the partial derivatives, $u_r = \frac{-e^{-\theta}\sin(\ln(r))}{r}, u_\theta = -e^{-\theta}\cos(\ln(r)), v_r = \frac{e^{-\theta}\cos(\ln(r))}{r}, v_\theta = -e^{-\theta}\sin(\ln(r)).$ We note that the Cauchy-Riemann condition is satisfied for this scenario and we have verified that $f'(z)$ does exist. Therefore, $f'(z) = e^{-i\theta}(\frac{-e^{-\theta}\sin(\ln(r))}{r} + i(\frac{e^{-\theta}\cos(\ln(r))}{r})) = i(\frac{e^{-\theta}\cos(\ln(r))}{re^{i\theta}} + i(\frac{e^{-\theta}\sin(\ln(r))}{re^{i\theta}})) = i\frac{f(z)}{z}$ as desired.
+        
+    \end{enumerate}
+    
+    \item [[\phantom{-}4]]
+    
+    \begin{enumerate}
+        \item 
+        
+        The singular points are when $z(z^2 + 1) = 0$, which is true when $z = 0, +i, -i$. Therefore, the function is analytic for $z\in \C$ where $z \neq 0, +i, -i$ since the function is not continuous at these values of $z$.
+        
+        \item
+        
+        The singular points are when $z^2 - 3z + 2 = 0$ which is when $z = 1, 2$. Therefore, the function is analytic when $z\in \C$ for $z\neq 1, 2$ since the function is not continuous at these values of $z$.
+        
+        \item
+        
+        The singular points are when $(z+2)(z^2 + 2z + 2) = 0$ which is when $z = -2, -1 + i, -1 - i$. Therefore, the function is analytic when $z\in \C$ for $z\neq -2, -1 + i, -1 - i$ since the function is not continuous at these values of $z$.
+        
+    \end{enumerate}
+    
+    \item [[\phantom{-}7]]
+    
+    \begin{proof}
+    Let us assume we have a function $f(z)$ as described in the problem statement. Then we can write $f(z) = f(x + iy) = u(x,y) + iv(x,y)$. Since we know that $f(z)$ is real-valued for all $z\in D$, then we know that $v(x,y) = 0$ for all $x + iy\in D$. Given that the function $f$ is analytic in $D$, then we know that the Cauchy-Riemann criteria is met which implies that $u_x = v_y$ and since we know that for $x + iy \in D$ that $v(x, y) = 0$ in the region, then we know that $u_x = v_y = 0$ and similarly $u_y = -v_u = 0$. Therefore, we know that both partial derivatives of $u(x,y)$ equal $0$, which then means that $u(x, y) = c$ where $c$ is a constant and $c\in \R$ as it's partial derivatives with respect to $x$ and $y$ and similarly for v(x, y). This then implies that $f(z) = c_1 + ic_2$ which means that $f(z)$ is constant for all $z\in D$ as desired.
+    \end{proof}
+    
+    \item [[\phantom{-}2]]
+    
+    \begin{proof}
+    Let assumptions be as in the problem statement. Let $z_0\in \C$ such that $z_0 = x_0 + iy_0$ is a point in the domain $D$ and $c_1 = u(x_0, y_0)$ and $c_2 = v(x_0, y_0)$ specifically. Since we know that the function $f(z)$ is analytic in $D$, then we know that the Cauchy-Riemann conditions are satisfied which means that $f'(z)$ exists in $D$ and that $u_x = v_y$ and $u_y = -v_x$ and we will allow $f'(z_0) = u_x(x_0, y_0) + iv_x(x_0, y_0) = u_x(x_0, y_0) - iu_y(x_0, y_0) = v_u(x_0, y_0) + v_x(x_0, y_0)$ by definition. Let's define the matrices of partial derivatives $\textbf{n}_1 = 
+    \begin{bmatrix}
+    u_x(x_0, y_0)\\
+    u_y(x_0, y_0)
+    \end{bmatrix}, 
+    \textbf{n}_2 = 
+    \begin{bmatrix}
+    v_x(x_0, y_0)\\
+    v_y(x_0, y_0)
+    \end{bmatrix}$. We know that $\textbf{n}_1$ is orthogonal to the tangent line of the level curve $u(x,y) = c_1$ at the point $(x_0, y_0)$ and $\textbf{n}_2$ is similarly orthogonal to the tangent line of the level curve $v(x, y) = c_2$ at the point $(x_0, y_0)$. Then we know that the two tangent lines will only be orthogonal to each other if $\textbf{n}_1$ and $\textbf{n}_2$ are orthogonal to each other. This implies then that we need $\textbf{n}_1 \cdot  \textbf{n}_2 = 0$. Then we have $\textbf{n}_1 \cdot \textbf{n}_2 = u_x(x_0, y_0)v_x(x_0, y_0) + u_y(x_0, y_0)v_y(x_0, y_0) = -u_x(x_0, y_0)u_y(x_0, y_0) + u_y(x_0, y_0)u_x(x_0, y_0) = 0$ since the Cauchy-Riemann equations we know that $v_x = -u_y$ and $v_y = u_x$. Therefore we know that the tangent lines to the level curves are orthogonal at the point $(x_0, y_0)$ as desired.
+    \end{proof}
+    
+    \item [[\phantom{-}4]]
+    
+    We will first show that this function is exact, which is to say that it is analytic for all $z\in \C$. We will let $g(z) = e^z$ and $h(z) = z^2$ be two functions such that we know that $(g\circ h)(z) = e^{z^2} = f(z)$. We know that $g(z)$ and $z^2$ are exact themselves. Therefore, we know that $(g \circ h) = f(z)$ is also exact. Another way to find if $f(z)$ is to check the Cauchy-Riemann equations. We can say that $f(z) = e^{z^2} = e^{(x + iy)^2} = e^{x^2-y^2}\cos(2xy) + ie^{x^2-y^2}\sin(2xy)$ which means that $u(x,y) = e^{x^2 - y^2}\cos(2xy), v(x,y) = e^{x^2-y^2}\sin(2xy).$ Therefore, we can find that $u_x = 2xe^{x^2-y^2}\cos(2xy) - 2ye^{x^2-y^2}\sin(2xy), u_y = -2ye^{x^2-y^2}\cos(2xy) - 2xe^{x^2-y^2}\sin(2xy), v_x = 2xe^{x^2-y^2}\sin(2xy) + 2ye^{x^2-y^2}\cos(2xy), v_y = -2ye^{x^2-y^2}\sin(2xy) + 2xe^{x^2-y^2}\cos(2xy)$. This then shows that $u_x = v_y$ and $u_y = -v_x$. So since the Cauchy-Riemann equations are satisfied for all $z\in \C$, and we again know that $f(z)$ is exact. Both of these methods have shown that $f(z)$ is differentiable everywhere and therefore exact. We then find that $f'(z) = 2ze^{z^2}$
+    
+    \item [[\phantom{-}7]]
+    
+    ($\Rightarrow$) Since we know that $|e^z| = e^x,$ we then know that $|e^{-2z}| = e^{-2x}$ and to find when $e^{-2x} < 1$ we need to find when $-2x < 0$ which means $e^{-2x} < 1$ when $x > 0$.\\
+    ($\Leftarrow$) If we know that $Re(z) > 0$ then we know that $x > 0$. Then we know that $e^{-2x} < 1$. Since we know that $|e^{z}| = e^x$ which then means that we know that $|e^{-2z}| = e^{-2x}$. Therefore, we know that $|e^{-2z}| < 1$ as desired.\\
+    Since the statement is true in both directions, we then know that $|e^{-2z}| < 1$ if and only if $Re(z) > 0$ as desired.
+    
+    \item [[\phantom{-}3]]
+    
+    First we will note that $i^3 = -i = e^{i(\frac{-\pi}{2})}$. Therefore, we know that $Log(i^3) = Log(-i) = ln|1| + i(\frac{-\pi}{2}) = -i\frac{\pi}{2}$. However, we know that $i = e^{i(\frac{\pi}{2})}$, and then we know that $3Log(i) = 3(ln|1| + i\frac{\pi}{2}) = 3(\frac{\pi}{2}i) = \frac{3\pi}{2}i$ which is in another branch of the logarithmic function. Therefore, we know that $-i\frac{\pi}{2} \neq \frac{3\pi}{2}i$ as they are located within different branches.
+    
+    \item [[\phantom{-}8]]
+    
+    If we take $e^{log(z)} = z = e^{i\frac{\pi}{2}} = \cos(\frac{\pi}{2}) + i\sin(\frac{\pi}{2}) = 0 + i * 1 = i$.
+    
+    \item [[\phantom{-}3]]
+    
+    Equation 4 states that $\log(\frac{z_1}{z_2}) = \log(z_1) - \log(z_2)$. Let us assume that equation 4 holds when $log$ is changed for $Log$ that would be to say that $Log(\frac{z_1}{z_2}) = Log(z_1) - Log(z_2)$. Let us take that $z_1 = 1, z_2 = -1$. That then means that $Log(z_1) - Log(z_2) = (0 + i0) - (0 + i\pi) = -i\pi.$ However, $Log(\frac{z_1}{z_2}) = Log(-1) = i\pi$. Which implies that $i\pi = -i\pi$ which is not true since they would be on different branches of the logarithm and leads to our assumption of equation 4 being true for $Log$ to be a contradiction. Therefore we know that $Log(\frac{z_1}{z_2}) \neq Log(z_1)-Log(z_2)$ as desired.
+    
+    \item [[\phantom{-}8]]
+    
+    \begin{enumerate}
+        \item 
+        
+        Let us say that $z^{c_1}z^{c_2} = a$ for some $a\in \C$. Let us apply log to both sides, we get
+        \begin{align*}
+            \log(z^{c_1}z^{c_2}) &= \log(a)\\
+            \log(z^{c_1}) + \log(z^{c_2}) &=\\
+            c_1\log(z) + c_2\log(z) &=\\
+            (c_1 + c_2) \log(z) &=\\
+            (c_1 + c_2)\log(z) &=\\
+            \log(z^{c_1 + c_2}) &=.
+        \end{align*} Then if we exponentiate this result we get that $z^{c_1 + c_2} = a$ which implies then that $z^{c_1}z^{c_2} = z^{c_1 + c_2}$ as desired.
+        
+        \item
+        
+        Let us say that $\frac{z^{c_1}}{z^{c_2}} = b$. Then,\begin{align*}
+            \log(\frac{z^{c_1}}{z^{c_2}}) &= \log(b)\\
+            \log(z^{c_1}) - \log(z^{c_2}) &=\\
+            c_1\log(z) - c_2\log(z) &=\\
+            (c_1 - c_2) \log(z) &= \\
+            \log(z^{c_1 - c_2}) &=.
+        \end{align*} Which then if we exponentiate, we find that $\frac{z^{c_1}}{z^{c_2}} = z^{c_1 - c_2}$ as desired.
+        
+        \item
+        
+        Let us say that $(z^c)^n = d.$ Then, \begin{align*}
+            \log(z^c)^n &= d\\
+            \log(z^{cn} &=.
+        \end{align*} Then if we expenonentiate this, we get that $(z^c)^n = z^{cn}$ as desired.
+        
+    \end{enumerate}
+    
+    \item [[\phantom{-}2]]
+    
+    \begin{enumerate}
+        \item 
+        
+        \begin{align*}
+        e^{iz_1}e^{iz_2} &=(\cos(z_1) + i\sin(z_1))(\cos(z_2) + i\sin(z_2))\\
+        &= \cos(z_1)\cos(z_2) + \cos(z_1)(i\sin(z_2)) + (i\sin(z_1))\cos(z_2) + i^2\sin(z_1)\sin(z_2)\\
+        &= \cos(z_1)\cos(z_2) + i\cos(z_1)\sin(z_2) + i\sin(z_1)\cos(z_2) - \sin(z_1)\sin(z_2)\\
+        &= cos(z_1)\cos(z_2) - \sin(z_1)\sin(z_2) + i(\sin(z_1)\cos(z_2) + \cos(z_1)\sin(z_2)).
+        \end{align*} Then we have that $e^{-i\theta} = \cos(\theta) - i \sin(\theta)$ then,
+        \begin{align*}
+            e^{-iz_1}e^{iz_2} &= (\cos(z_1) - i\sin(z_1))(\cos(z_2) - i\sin(z_2))\\
+            &= \cos(z_1)\cos(z_2) - i\cos(z_1)\sin(z_2) - i\sin(z_1)\cos(z_2) + i^2\sin(z_1)\sin(z_2)\\
+            &= \cos(z_1)\cos(z_2) - i(\cos(z_1)\sin(z_2) + \sin(z_1)\cos(z_2)) - \sin(z_1)\sin(z_2)\\
+            &=\cos(z_1)\cos(z_2) - \sin(z_1)\sin(z_2) - i(\cos(z_1)\sin(z_2) + \sin(z_1)\cos(z_2)).
+        \end{align*} And this is as desired.
+        
+        \item
+        
+        If we know that $\sin(z_1 + z_2) = \frac{1}{2i}(e^{iz_1}e^{iz_2} - e^{-iz_1}e^{-iz_2})$. If we substitute $e^{iz_1}e^{iz_2}, e^{-iz_1}e^{-iz_2}$ in the equation, which are obtained in part a. Then we know that 
+        \begin{align*}
+            \sin(z_1 + z_2) &= \frac{1}{2i}((\cos(z_1)\cos(z_2) - \sin(z_1)\sin(z_2) + i(\sin(z_1)\cos(z_2) + \cos(z_1)\sin(z_2)))\\&\phantom{=} - ((\cos(z_1)\cos(z_2)) - (\sin(z_1)\sin(z_2)) - i(\sin(z_1)\cos(z_2) + \cos(z_1)\sin(z_2)))\\
+            &= \frac{1}{2i}(\cos(z_1)\cos(z_2) - \sin(z_1)\sin(z_2) + i(\sin(z_1)\sin(z_2) + \cos(z_1)\sin(z_2))\\&\phantom{=} - \cos(z_1)\cos(z_2) + \sin(z_1)\sin(z_2) + i(\sin(z_1)\cos(z_2) + \cos(z_1)\sin(z_2)))\\
+            &= \frac{1}{2i}(i(\sin(z_1)\cos(z_2) + \cos(z_1)\sin(z_2)) + i(\sin(z_1)\cos(z_2) + \cos(z_1)\sin(z_2))\\
+            &= \frac{1}{2i}(2i(\sin(z_1)\cos(z_2) + \cos(z_1)\sin(z_2)))\\
+            &= \sin(z_1)\cos(z_2) + \cos(z_1)\sin(z_2)
+        \end{align*}
+        
+    \end{enumerate}
+    
+    \item [[\phantom{-}5]]
+    
+    \begin{enumerate}
+        \item 
+        
+        We know the identity $\sin^2(z) + \cos^2(z) = 1$, then if we divide each side by $\cos^2(z)$ we get that $\frac{\sin^2(z)}{\cos^2(z)} + \frac{\cos^2(z)}{\cos^2(z)} = \frac{1}{\cos^2(z)} \Rightarrow \tan^2(z) + 1 = \sec^2(z)$ as desired.
+        
+        \item
+        
+        We know the identity $\sin^2(z) + \cos^2(z) = 1$, then if we divide each side by $\sin^2(z)$, we get that $\frac{\sin^2(z)}{\sin^2(z)} + \frac{\cos^2(z)}{\sin^2(z)} = \frac{1}{\sin^2(z)} \Rightarrow 1 + \cot^2(z) = \csc^2(z)$ as desired. 
+        
+    \end{enumerate}
+    
+    \item [[\phantom{-}9]]
+    
+    \begin{enumerate}
+        \item 
+        
+        We know that $\cos(z) = \frac{e^{iz} + e^{-iz}}{2}$. Therefore we know that \begin{align*}
+            |\cos(z)| &= |\frac{e^{iz} + e^{-iz}}{2}\\
+            &\leq |\frac{e^{iz}}{2}| + |\frac{e^{-iz}}{2}|\\
+            &\leq |\frac{e^{i(x + iy)}}{2}| + |\frac{e^{-i(x + iy)}}{2}|\\
+            &= |\frac{e^{ix - y}}{2}| + |\frac{e^{-ix + y}}{2}|\\
+            &= |\frac{e^{ix}e^{-y}}{2}| + |\frac{e^{-ix}e^{y}}{2}|\\
+            &\leq \frac{e^{-y}}{2} + \frac{e^y}{2}\\
+            &= \frac{e^{-y} + e^y}{2}\\
+            &= \cosh(y)\\
+            |\cos(z)| &\leq \cosh(y).
+        \end{align*} Similarly, since we know that $\sin(z) = \frac{e^{iz} - e^{-iz}}{2i}$
+        \begin{align*}
+            |\sin(z)| &= |\frac{e^{iz} - e^{-iz}}{2i}|\\
+            &= |\frac{e^{iz} - e^{-iz}}{2}|\\
+            &\leq |\frac{e^{iz}}{2}| + |\frac{e^{-iz}}{2}|\\
+            &= |\frac{e^{i(x + iy)}}{2}| + |\frac{e^{-i(x + iy)}}{2}|\\
+            &= |\frac{e^{ix-y}}{2}| + |\frac{e^{-ix + y}}{2}|\\
+            &= |\frac{e^{ix}e^{-y}}{2}| + |\frac{e^{-ix}e^y}{2}|\\
+            &\leq \frac{e^{-y}}{2} + \frac{e^y}{2}\\
+            &= \cosh(y)\\
+            |\sin(z)| &\leq \cosh(y).
+        \end{align*} Then given that $|\sin(z)|^2 = \sin^2(x) + \sinh^2(y) \Rightarrow |\sinh(y)| \leq |\sin(z)|$ which implies that $|\sinh(y)|\leq |\sin(2)|\leq \cosh(y)$ as desired.
+        
+        \item
+        
+        Since we already know that $|\cos(z)| \leq |\cosh(y)|$. Given that $|\cos(z)|^2 = \cos^2(x) + \sinh^2(y) \Rightarrow \sinh^2(y) \leq |\cos(z)|^2 \Rightarrow \sqrt{\sinh^2(y)} \leq \sqrt{|cos(z)|^2}\Rightarrow |\sinh(y)| \leq |\cos(z)|$. Therefore, we know that $|\sinh(y)| \leq |\cos(z)| \leq |\cosh(y)|$ as desired.
+        
+    \end{enumerate}
+    
+    \item [[\phantom{-}5]]
+    
+    By the properties of $\sinh$ we have that $\sinh(z) = -i\sin(iz).$ Therefore, we have that $|\sinh(z)|^2 = |-i\sin(i(x + iy))|^2 = |-i|^2|\sin(-y + xi)|^2 + |\sin(-y + xi)|^2$. (15) states that $|\sin(x + iy)|^2 = \sin^2(x) + \sinh^2(y)$. So we then have that $|\sin(-y + xi)|^2 = \sin^2(y) + \sinh^2(x)$ as desired. 
+    
+    \item [[\phantom{-}16]]
+    
+    \begin{enumerate}
+        \item 
+        
+        Given that \begin{align*}
+            \sinh(z) &= i\\
+            \sinh(x + iy) &=\\
+            \sinh(x)\cos(y) + i\cosh(x)\sin(y) &=\\
+            \sinh(x)\cos(y) &= 0\\
+            \cosh(x)\sin(y) &= 1.
+        \end{align*} We have that either $x = 0, y = (2n - 1)\frac{\pi}{2}$ or both. When $x = 0, y = \frac{\pi}{2} + 2n\pi$, then there is no solution if $y = (2n - 1)\frac{\pi}{2}$. Solutions are $z = (2n + \frac{1}{2})\pi i.$
+        
+        \item
+        
+        Given $\cosh(z) = \frac{1}{2} \Rightarrow \cosh(z) = \frac{e^z + e^{-z}}{2} = \frac{1}{2} \Rightarrow e^z + e^{-z} = 1$. Thus, $e^z + e^{-z} = 2\cos(y)\cosh(x) + 2i\sin(y)\sinh(x) = 1 + 0i$. Therefore, $\sin(y)\sinh(x) = 0$ and $\cos(y)\cosh(x) = \frac{1}{2}$. Therefore, $\sinh(z) = 0, \cos(y) = \frac{1}{2} \Rightarrow x = 0, y = 2n\pi \pm \frac{\pi}{y} \Rightarrow z = (2n\pi \pm \frac{\pi}{y})i \Rightarrow z = (2n \pm \frac{1}{y})\pi i.$
+        
+    \end{enumerate}
+    
+    \item [[\phantom{-}2]]
+    
+    \begin{enumerate}
+        \item 
+        
+        We will first write that $\sin(z) = \sin(x + iy) = \sin(x)\cosh(y) + \cos(x)\sinh(iy) = \sin(x)\cosh(y) + i\cos(x)\sinh(y).$ Therefore, $\sin(x)\cosh(y) + i\cos(x)\sinh(y) = 2$. If we compare the real and imaginary parts, we get that $\sin(x)\cosh(y) = 2$ and $\cos(x)\sinh(y) = 0$. If $y = 0$ then the real part becomes $\sin(x) = 2$ which is not possible because the range of $\sin(x)$ is $[-1, 1]$ so $y \neq 0$, $\sinh(y) \neq 0$, and $\cos(x) = 0$ from the imaginary part. Therefore, $x = 2n\pi - \frac{\pi}{2}$. In this case, the real part becomes $(-1)^n\cosh(y) = 2$. Since $\cosh(y)$ is always positive, then $x$ has to be $2n\pi + \frac{\pi}{2}$. Then, $\cosh(y) = 2$ or $y = \cosh^{-1}(2)$. Therefore, the only roots of $\sin(z) = 2$ are $z = 2n\pi + \frac{\pi}{2} + i\cosh^{-1}(2).$ Now we want to show that $\cosh^{-1}(2) = \pm \ln(2 + \sqrt{3}$. We have that $y = \cosh^{-1}(2) \Rightarrow \cosh(y) = 2 \Rightarrow \frac{e^y + e^{-y}}{2} = 2 \Rightarrow e^y + \frac{1}{e^y} = y \Rightarrow (e^y)^2 - ye^y + 1 = 0$. This is the in the form of a quadratic equation in terms of $e^y$. Then by using the quadratic equation we find that the roots are $2 \pm \sqrt{3}$. Then if we take the logarithm of this, we find that $\ln(2 - \sqrt{3} = -\ln(2 + \sqrt{3}$ which leads to $y = \pm \ln(2 + \sqrt{3}$, and $\cosh^{-1}(2 = \pm\ln(2 + \sqrt{3})$ since $y = \cosh^{-1}(2).$ Therefore, the only roots of $\sin(z) = 2$ are $z = (2n\pi + \frac{\pi}{2}) \pm i\ln(2 + \sqrt{3})$.
+        
+        \item
+        
+        We have that $\sin^{-1}(w) = -i\log(iw + \sqrt{1 - w^2})$ from the data we knwo that $\sin(z) = 2$ as $z = \sin^{-1}(2)$. But putting $w = 2$ in $\sin^{-1}(w) = -i\log(iw + \sqrt{1 - w^2})$ we get that $z = -i\log(2i \pm i\sqrt{3})$. Now we find $\log((2 + \sqrt{3})i$ and $\log((2 - \sqrt{3})i)$ as if $z = re^{i\theta}$ is a nonzero complex number, the argument $\theta$ has only one of the values of $\theta = \Theta + 2n\pi$ where $\Theta = Arg(z)$ and $\log(z) = \ln r + i(\Theta + 2n\pi)$. Let $(2 + \sqrt{3})i = re^{i\theta}.$ Then, $(2 + \sqrt{3})i = r\cos(\theta) + ir\sin(\theta) \Rightarrow r\cos(\theta) = 0, r\sin(\theta) = (2 + \sqrt{3})$. Then we get that $r = (2 + \sqrt{3})$ and therefore, $\cos(\theta) = 0, \sin(\theta) = 1$, then $\theta = \frac{\pi}{2}, Arg(i) = \frac{\pi}{2}, \Theta = \frac{\pi}{2}$. Therefore, $\log((2 + \sqrt{3}) i) = \ln(2 + \sqrt{3}) + i(\frac{\pi}{2} + 2n\pi)$. Now, $z = -i\ln(2 + \sqrt{3}) + \frac{\pi}{2} + 2n\pi$. Let $(2-\sqrt{3})i = re^{i\theta} = r\cos(\theta) = ir\sin(\theta)$. Then we know that $r\cos(\theta) = 0$, $r\sin(\theta) = 1$ which implies that $\theta = \frac{\pi}{2}, Argh(i) = \frac{\pi}{2}, \Theta = \frac{\pi}{2}$. Thus $\log((2 - \sqrt{3})i) = \ln(2 - \sqrt{3}) + i(\frac{\pi}{2} + 2n\pi)$. Now, $z = -i \ln(2 - \sqrt{3}) + \frac{\pi}{2} + 2n\pi$. Then we have that $\ln(2 - \sqrt{3} = -\ln(2 + \sqrt{3})$. Then we know that $z = -i\ln(2 + \sqrt{3}) + \frac{\pi}{2} + 2n\pi$. Then we arrive to $z = (\pm i \ln(2 + \sqrt{3}) + (\frac{\pi}{2} + 2n\pi)).$
+        
+    \end{enumerate}
+    
+    \item [[\phantom{-}2]]
+    
+    \begin{enumerate}
+        \item 
+        
+        $\int_0^1(1 + it)^2dt = \int_0^11-t^2+2itdt = t|_0^1 + \frac{1}{3}|_0^1 + it^2|_0^1 = 1-\frac{1}{3} + i = \frac{2}{3} + i$ as desired.
+        
+        \item
+        
+        $\int_1^2(\frac{1}{t} - i)^2dt = \int_1^2(\frac{1}{t^2} - \frac{2i}{t} + i^2)dt = \int_1^2(\frac{1}{t^2} - 1)dt - 2i\int_1^2\frac{dt}{t} = -\frac{1}{t}|_1^2 - t|_1^2 - 2i\ln(t)|^2_1 = -(\frac{1}{2} - 1) - (2 - 1) - 2i(\ln(2) - \ln(1)).$ So $\in_1^2(\frac{1}{t}-i)^2dt = -\frac{1}{2}-2i\ln(2) = -\frac{1}{2}-i\ln(4)$ as desired.
+        
+        \item
+        
+        $\int_0^{\frac{\pi}{6}}e^{i2t}dt = \int_0^{\frac{\pi}{6}}(\cos(2t) + i\sin(2t)dt = \int_0^{\frac{\pi}{6}}\cos(2t)dt + i\int_0^{\frac{\pi}{6}}\sin(2t)dt = \frac{1}{2}\sin(2t)|_0^{\frac{\pi}{6}} + i (-\frac{1}{2}\cos(2t)|_0^{\frac{\pi}{6}} = \frac{1}{2}(\frac{\sqrt{3}}{2}-0) - \frac{i}{2}(\frac{1}{2} - 1)$. Therefore, we have that $\int_0^{\frac{\pi}{6}}e^{i2t}dt = \frac{\sqrt{3}}{4} + \frac{i}{4}.$
+        
+        \item
+        
+        If $M > 0$, we have that 
+        \[
+        \int _0^M e^{-zt} \, dt = \int_0^M e^{-(x + iy)t} \, dt = \int_0^M e^{-xt} e^{-iyt} \, dt = \int_0^M e^{-xt} \cos(yt) \, dt - i \int_0^M e^{-xt} \sin(yt) \, dt.
+        \]
+        Then if we say $M \to \infty$,
+        \[
+        \int_0^\infty e^{-zt} \, dt = \int_0^\infty e^{-xt} \cos(yt) \, dt - i \int_0^\infty e^{-xt} \sin(yt) \, dt,
+        \]
+        where both of these integrals converge since $x = \Re(z) > 0.$ Since $\frac{d}{dt}(e^{-zt}) = -z e^{-zt}$, then for $M > 0$, we know that
+        \[
+        \int_0^M e^{-zt} \, dt = -\frac{1}{z} e^{-zt} \Big|_0^M = \frac{1}{z}(1 - e^{-Mz}),
+        \]
+        and since $|e^{-Mz}| = e^{-Mx} |e^{-iMy}| = e^{-Mx} \to 0$ as $M \to \infty$ provided that $x > 0$, then we have that
+        \[
+        \int_0^\infty e^{-zt} \, dt = \lim_{M \to \infty} \int_0^M e^{-zt} \, dt = \frac{1}{z}
+        \]
+        provided that $x = \Re(z) > 0.$ If we then equate the real and imaginary parts, we get that
+        \[
+        \int_0^\infty e^{-xt} \cos(yt) \, dt = \frac{x}{x^2 + y^2}
+        \]
+        and
+        \[
+        \int_0^\infty e^{-xt} \sin(yt) \, dt = -\frac{y}{x^2 + y^2}.
+        \]
+                
+    \end{enumerate}
+    
+    \item [[\phantom{-}3]]
+    
+    Let $m, n\in \Z$ such that $m\neq n$, then we have that $\int_0^{2\pi}e^{im\theta}e^{-in\theta}d\theta = \int_o^{2\pi}e^{i(m-n)\theta} = \frac{1}{i(m-n)}e^{i(m-n)\theta}|_0^{2\pi} = \frac{1}{i(m-n)}(e^{i(m-n)2\pi}-e^{i(m-n)0}) = \frac{1}{i(m-n)}(1-1)$ since $e^{i(m-n)2\pi} = e^{i0} = 1$. Therefore, we have that $\int_0^{2\pi}e^{im\theta}e^{-in\theta}d\theta = 0$ if $m\neq n$. Also, if $m = n$, then we have that $e^{im\theta}e^{-in\theta}=1$, so then $\int_0^{2\pi}e^{im\theta}e^{-in\theta}d\theta = \int_0^{2\pi}1dt = 2\pi$ if $m = n.$
+    
+\end{enumerate}
+
+\end{document}

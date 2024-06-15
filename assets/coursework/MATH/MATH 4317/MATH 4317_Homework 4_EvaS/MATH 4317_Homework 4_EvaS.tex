@@ -1,0 +1,156 @@
+\documentclass[11pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Packages
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+%\usepackage{hyperref}
+%\usepackage{mathrsfs}
+%\usepackage{color}
+%\usepackage{bm}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%amsthm settings
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem{claim}{Claim}
+\newtheorem{definition}{Definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: mathbb
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\A}{\mathbb A}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: greek
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\g}{\gamma}
+\renewcommand{\d}{\delta}
+\newcommand{\e}{\epsilon}
+\renewcommand{\l}{\lambda}
+
+\begin{document}
+
+\noindent {\bf MATH 4317 Homework 4}  \hfill Due Friday, 2/25/2022 at 11PM to Gradescope
+
+\bigskip
+
+\noindent Homework guidelines: 
+\begin{itemize}
+\item Each problem I assign, unless otherwise stated, is asking you to prove something. Give a full mathematical proof using only results from class or Wade.
+\item Submit a PDF or JPG to gradescope. The grader has $\sim 250$ proofs to grade:  please make his job easier by submitting each problem on a different page. 
+\item If you submit your homework in Latex, you get 2\% extra credit. 
+\end{itemize}
+
+\subsection*{Problems (5 total, 10 pts each)}
+
+\begin{problem}
+Let $f : E \to \R$ be continuous on a nonempty set $E \subset \R$ and let $F \subset E$ be a nonempty subset. Define $g = f|_F$ to be the {\bf restriction} of $f$ to $F$, defined by 
+\[
+g(x) = f(x) \quad \text{ for } x \in F \,. 
+\]
+Note that, as a function, $g : F \to \R$. Prove that $g$ is continuous on $F$. 
+\end{problem}
+
+\begin{proof}
+Let assumptions be as in the problem statement. Since we are given that $f$ is continuous on $E$, then we know for $\epsilon > 0, \delta > 0$, then $|x-a| < \delta$ and $x\in E$ implies that $|f(x)-f(a)| < \epsilon$ for all points $a\in E.$ Given the restriction on $g,$ we know that $g(x) = f(x)$; therefore, for all $a\in F, a\in E$ for $\epsilon > 0, \delta > 0, $ then we have that $|x-a| < \delta$ for $x\in F$ implies that $|g(x)-g(a)| = |f(x)-f(a)| < \epsilon$ for all $x\in F.$ Therefore, we know that $g$ is continuous on $F.$
+\end{proof}
+
+\newpage
+\begin{problem}
+Prove that the function 
+\[
+f(x) = \begin{cases} \frac{x^2 + x - 2}{x - 1} & x \neq 1 \\ 3 & x = 1 \end{cases}
+\]
+is continuous on $\R$. 
+\end{problem}
+
+We will prove this in two parts, $\frac{x^2+x-2}{x-1}$ is continuous on $\R$ then that $f(x)$ is continuous at $x = 1$.
+
+\textbf{Claim: } $\frac{x^2+x-2}{x-1}$ is continuous on $\R$.
+\begin{proof}
+Let us simplify $\frac{x^2+x-2}{x-1} = \frac{(x+2)(x-1)}{x-1} = x+2.$ So we need to show that $x+2$ is continuous on $\R$. If we fix $a\in \R$, for $x\in \R$ we have that $|f(x)-f(a)| = |x+2-(a+2)| = |x-a|$. Given $\epsilon > 0$ if we choose $\delta = \epsilon.$ So we have that $|f(x) - f(a)| = |x - a| < \delta = \epsilon$
+\end{proof}
+\textbf{Claim:} $f(x)$ is continuous at $x=1.$
+\begin{proof}
+Using the same simplification from the first part of this proof that we can write $\frac{x^2+x-2}{x-1} = \frac{(x+2)(x-1)}{x-1} = x+2$ for $\epsilon > 0$ if we choose $\delta = \epsilon$. Then if $|x - 1| < \delta$ we get that $|f(x) - f(3)| = |x + 2 - 3| = |x - 1| < \delta = \epsilon.$ Therefore, we know that $f(x)$ is continuous at $x = 3.$
+\end{proof} Since we have that $\frac{x^2+x-2}{x-1}$ is continuous on $\R$ and that $f(x)$ is continuous at $x = 1$ then we know that $f(x)$ is continuous on $\R.$
+
+\newpage
+\begin{problem}
+Prove or disprove (find a counterexample) to the following statement: Let $E \subset \R$ and let $f, g : E \to \R$. If $f + g : E \to \R$ is continuous on $E$, then both $f$ and $g$ are continuous on $E$. 
+\end{problem}
+
+Let's take $f(x) = \begin{cases}
+1 & x \leq 0\\
+0 & x > 0
+\end{cases}$ and $g(x) = \begin{cases}
+1 & x \geq 0\\
+0 & x < 0
+\end{cases}$. If we take $f(x) + g(x) = 1$ at all $x$, then in this case $E = \R$, we know it is continuous on $E.$ However, $f(x), g(x)$ themselves are not continuous on $E.$
+
+\newpage
+\begin{problem}
+Let $f : \R \to \R$, and for $\epsilon >0$ define 
+$g_\epsilon(x) := \sup_{y \in [x - \e, x + \e]} f(y)$. Prove that
+if $f$ is continuous at $x \in \R$, then 
+\[
+f(x) = \lim_{\epsilon \to 0} g_\epsilon(x) \,. 
+\]
+
+You may freely use the following subsequential characterization of one-sided limits: if $h : (0, \infty) \to \R$, then $\lim_{\epsilon \to 0+} h(\epsilon)$ exists and equals some $L \in \R$ iff for all sequences $(\epsilon_n) \subset (0,\infty)$ with $\epsilon_n \to 0$, we have that $\lim_{n \to \infty} h(\epsilon_n) \to L$. 
+\end{problem}
+
+\begin{proof}
+Let assumptions be as above. Let us consider the interval of $I = [x-\epsilon, x + \epsilon]$ where we have defined $g_\epsilon(x) := \sup_{y\in I}f(y).$ If we take the $\lim_{\epsilon \to 0}g_\epsilon(x) = \lim_{\epsilon \to 0}\sup_{y\in I}f(y)$ then we get that $y\in [x-\epsilon, x + \epsilon] \to [x-0, x+0]$ as $\epsilon \to 0$. Therefore, since this interval $I$ is closed and bounded and a subset of $\R$ and given that $f(y)$ is continuous at $x\in \R$ by the Bolzano-Weierstrass theorem we are able to write a subsequence $y_\epsilon$ over the interval $I$ such that $y_\epsilon$ converges to $x$. This then allows us to say that $\lim_{\epsilon \to 0}\sup_{y\in I}f(y) = f(y_\epsilon) = f(x)$ as desired.
+\end{proof}
+
+\newpage
+\begin{problem}
+Let $f : \R \to \R$ be an everywhere-continuous function such that
+\begin{align}\label{e1}
+f(x + y) = f(x) + f(y)
+\end{align}
+for all $x, y \in \R$. Prove that there exists a fixed value $m \in \R$ such that
+\[
+f(x) = m \cdot x \quad \text{ for all } x \in \R \,. 
+\]
+{\it Hint: To start, you should expect that $m = f(1)$ (why?). You might also find it useful to show that starting from the identity \eqref{e1}, we have that $f(0) = 0$ and $f(-x) = - f(x)$ for all $x \in \R$. Now, with $m := f(1)$, show first that $f(n) = m \cdot n$ for all $n \in \Z$, and then that $f(q) = m \cdot q$ for $q \in \Q$. To conclude the desired identity for all $x \in \R$, approximate a given $x \in \R$ by a sequence $q_n$ of rational numbers, using the facts that (i) $f$ was assumed continuous; and (ii) $\Q$ is {\bf dense} in $\R$: for any $\alpha \in \R$ there exists a sequence $(q_n)$ of rational numbers such that $q_n \to \alpha$. }
+\end{problem}
+
+\begin{proof}
+Let assumptions be as above. Given that $f(x+y) = f(x) + f(y)$ we can say that $f(x+0) = f(x) + f(0) = f(x)$, this shows us that we can then say that $f(0) = 0.$ Similarly we could further say that $f(2x) = f(x+x) = f(x) + f(x) = 2f(x)$ and further we can say that for $f(ax)$ for some $a\in \Z^+$ we get that $f(x + x + ... + x) = f(x) + f(x) + ... + f(x) = af(x)$. Alternatively, for given that $0 = f(0)$ we know that $f(0) = f(x + -x) = f(x) + f(-x)$ implying that $-f(x) = f(-x)$. Then we can say $f(-ax) = -f(ax) = -af(x)$. This allows us to generally say that $f(ax) = af(x)$ for $a\in \Z$ (not necessarily positive integers now). Next consider if we have $f(x) = f(\frac{x}{2} + \frac{x}{2}) = f(\frac{x}{2}) + f(\frac{x}{2}) = 2f(\frac{x}{2}) \Rightarrow \frac{1}{2}f(x) = f(\frac{x}{2})$. More generally we are able to then say $f(\frac{x}{n}) = \frac{1}{n}f(x)$ for $n\in \Z$. Combining these two statements we get that $f(\frac{a}{n}x) = af(\frac{1}{n}x) = \frac{a}{n}f(x)$. We can simplify this to say that for $q\in \Q$ that $f(qx) = qf(x).$ This then allows us to take that $f(q) = f(q*1) = qf(1)$; let us then say that $f(1) = m$ for some constant $m\in \R$, then we can say that $f(q) = mq$ for any rational $q$. Lastly, given that $f(x)$ is continuous on $\R$ we have that it can be expressed over a sequence of rational numbers $q_n$. Since $\Q$ is dense in $\R$ we know that we for any $\alpha \in R$ there exists a sequence $q_n$ of rational numbers such that $q_n \rightarrow \alpha.$ This then implies that for appropriate $q_n$ that we can say that $f(\alpha) = f(q_n) = q_nf(1) = q_nm = \alpha m$. Therefore, we get that we can write $f(x) = m*x$ for $x\in R$ and fixed $m \in \R$ as desired.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,152 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsthm,amssymb,amsfonts,xspace}
+\usepackage{longtable}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{mathtools}
+\usepackage[export]{adjustbox}
+\usepackage{mathrsfs}
+\usepackage{hyperref}
+\usepackage{environ}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{interval}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+
+% Python for pseudocode
+\lstloadlanguages{Python}
+\lstset{
+  language=Python,
+  basicstyle=\sffamily,
+  numberstyle=\color{gray},
+  stringstyle=\color[HTML]{933797},
+  commentstyle=\color[HTML]{228B22}\sffamily,
+  emph={[2]from,import,pass,return}, emphstyle={[2]\color[HTML]{DD52F0}},
+  emph={[3]range}, emphstyle={[3]\color[HTML]{D17032}},
+  emph={[4]for,in,def}, emphstyle={[4]\color{blue}},
+  showstringspaces=false,
+  breaklines=true,
+  prebreak=\mbox{{\color{gray}\tiny$\searrow$}},
+  numbers=left,
+  xleftmargin=10pt
+}
+
+\usepackage[english]{babel}
+\usepackage{minted}
+\usepackage{xcolor}
+\NewEnviron{hide}{}
+
+% Header
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+% Convenient Shortcuts like \N for naturals
+\newcommand{\pitem}[1]{\item[\textbf{#1.)}]}
+\newcommand{\T}{\mathrm{T}}
+\newcommand{\F}{\mathrm{F}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\Mod}[1]{\ (\text{mod}\ #1)}
+\newcommand{\mmod}{\textrm{\textbf{ mod }}}
+\newcommand{\powerset}{\raisebox{.15\baselineskip}{\Large\ensuremath{\wp}}}
+\newcommand{\floor}[1]{\left \lfloor #1 \right \rfloor}
+\newcommand{\ceil}[1]{\left \lceil #1 \right \rceil}
+\newcommand{\gauss}[3]{\begin{bmatrix} #1 \\ #2 \end{bmatrix}_{#3}}
+\newcommand{\pfrac}[2]{\left(\frac{#1}{#2}\right)}
+
+% Set header fields
+\newcommand{\hmwkTitle}{Homework 4B}
+\newcommand{\hmwkDueDate}{\textbf{Saturday} Apr 23}
+\newcommand{\hmwkClass}{CS 3510}
+\newcommand{\hmwkClassTime}{}
+\newcommand{\hmwkClassInstructor}{Professor Faulkner}
+\newcommand{\hmwkAuthorName}{\textbf{CS 3510 Staff}}
+
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+
+\newif\ifincludesolutions
+\includesolutionstrue  % Uncomment to show solutions
+
+\newcounter{ProblemCounter}
+\setcounter{ProblemCounter}{1}
+
+% Define problem / solution env to disappear appropriately
+\newenvironment{problem}[1][Problem]{
+ \begin{trivlist}
+ \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {%
+ \bfseries \theProblemCounter.%
+ \stepcounter{ProblemCounter}%
+ }]
+}{
+ \end{trivlist}
+}
+
+\ifincludesolutions
+
+\newenvironment{solution}[1][Solution]{
+ \begin{trivlist}
+ \item[\hskip \labelsep \textit{#1.}]
+}{
+ \end{trivlist}
+}
+\else
+\newenvironment{solution}[1][Solution]{
+\hide
+}{
+\endhide
+}
+\fi
+
+% How to make title
+\pagestyle{fancy}
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+    \vspace{3in}
+}
+\author{\hmwkAuthorName}
+\date{}
+
+
+\begin{document}
+\maketitle
+
+\clearpage
+
+\begin{problem}\textit{(50 points)}\\
+The \textsc{SubsetSum-Pair} problem takes in a list of pairs of integers as ($s_1$, $t_1$), ($s_2$, $t_2$), ..., ($s_n$, $t_n$), and it also takes in two goals \textit{x} and \textit{y} as inputs. It returns the subset of pairs where all the \textit{s} elements sum to goal \textit{x} and the \textit{t} elements sum to goal \textit{y}. Prove that the \textsc{SubsetSum-Pair} problem is NP-Complete.
+\end{problem}
+
+\begin{proof}
+In order to show that the \textsc{SubsetSum-Pair} is NP-Complete, we need to show that \textsc{SubsetSum-Pair} is NP-Hard and is NP. In order to determine if it is NP-Hard we want to reduce a known NP-Hard problem to this problem. Let us assume we have black-box algorithm to solve \textsc{SubsetSum-Pair} problem. We will attempt to convert our already proved NP-Complete \textsc{SubsetSum} problem which, since it is NP-Complete, we know it is also NP-Hard. Let us create a set $S$ that will contain all the subsets that will satisfy the first goal $x$ that is the sums of the $s_i$ components. Then we can simply check in polynomial time all the sums of the $t_i$s that are in these subsets and find which of them will achieve the target $y$. This check and be done by simply checking through each value in the list $S.$ Therefore we know that we can convert an already known NP-Complete problem, the \textsc{SubsetSum} problem, to the \textsc{SubsetSum-Pair} problem in polynomial time which means we know it is NP-Hard. Now we simply need to show that \textsc{SubsetSum-Pair} is itself verifiable in polynomial time. This is true because the addition needed to add together the values from the tuples to check if they achieve the goals can be done trivially in polynomial time. Therefore, since \textsc{SubsetSum-Pair} is NP-Hard and itself NP (since we can verify a solution in polynomial time), then we know that it is NP-Complete as desired.
+\end{proof}
+
+\clearpage
+
+\begin{problem}\textit{(50 points)}\\
+    Consider the problem \textsc{Colored Path}.
+    
+    \textit{Input: } A graph with colored nodes, and two integers, $k, m$.
+    
+    \textit{Output: } Is there a path of length at \textbf{most} $k$ that contains vertices of at least $m$ different colors.
+Prove that \textsc{Colored Path} is NP-complete
+\end{problem}
+
+\begin{proof}
+In order to show that \textsc{Colored Path} is NP-Complete, we need to show that it is NP and that it is NP-Hard. In order for \textsc{Colored Path} is NP, we need to make sure that a solution is verifiable in polynomial time. This is simple since for a dictated path, we can just travel along it with a counter for the number of different color nodes we cross and another counter that keeps track of the length, then once it is done, we can check that it has at least $m$ different colors and if it has a total length of less than or equal to $k.$ Now we need show that we can convert a known NP-Hard problem to \textsc{Colored Path} in polynomial time to show that \textsc{Colored Path} is also NP-Hard. We are going to start with Hamiltonian Path which we showed in class is NP-Complete and therefore NP-Hard. Create a graph $G$ with the property that if $G$ has a Hamiltonian path then it has a path of length less than $k$ that contains at least $m$ different colors. We can do this by saying, if the graph has a Hamiltonian path, we can follow along the different Hamiltonian paths and verify if they contain vertices with at least $m$ different colors and have a length less than $k$. This is can be done in polynomial time because we are simply checking each Hamiltonian path to see if, on the colored graph, it achieves are conditions appropriately. Since we were able to convert a known NP-Hard problem to this one we know it is NP-Hard and we showed thast this problem is NP so we then know it is NP-Complete as desired.
+\end{proof}
+
+\end{document}

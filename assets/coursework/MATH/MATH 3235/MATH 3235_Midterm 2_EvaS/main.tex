@@ -1,0 +1,313 @@
+\documentclass[letterpaper,12pt,addpoints]{exam}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathcomp}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage{array}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{epic}
+
+\qformat{Question \thequestion\dotfill \emph{\totalpoints\ point}}
+\newtheorem{ishaan}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\renewcommand\qedsymbol{$\blacksquare$}
+\renewcommand{\labelenumii}{\arabic{enumii}.}
+
+\title{Midterm 2}
+\author{Sean Eva}
+\date{April 2021}
+
+\begin{document}
+
+\header{MATH 3235}{Midterm 2}{Due April 6, 2021 before class}
+\firstpagefooter{}{}{}
+\pagestyle{headandfoot}
+\vspace*{1cm}
+\begin{center}
+\fbox{\parbox{6in}{\centering {\bf This is a take home midterm. You can use 
+your notes, my online notes on canvas and the textbooks book. 
+You are supposed to work on your own text without external help. I'll be 
+available to answer question in person or via email. Please, write clearly and 
+legibly and take a readable scan before uploading.}}}
+\end{center}
+
+
+\vspace*{\fill}
+
+\vspace{0.5cm}
+\noindent
+\makebox[\textwidth]{Name (print): Sean Eva}
+\vspace{0.5cm}
+
+\vspace*{\fill}
+ 
+\begin{center}
+\gradetable[h][questions]
+\end{center}
+% \vspace{0.5cm}
+% \begin{center}
+% \bonusgradetable[h][questions]
+% \end{center}
+\vspace{0.5cm}
+
+\vspace*{\fill}
+\newpage
+
+
+\printanswers
+
+\setcounter{page}{1}
+\footer{}{Page \thepage\ of \numpages}{}
+
+\begin{questions}
+\question
+Let $X$ be a normal random variable with $\mu=\mathbb{E}(X)=2$ and 
+$\sigma^2=\mathrm{var}(X)=4$.
+
+\begin{parts}
+\part[10]
+Compute $\mathbb{P}(X<0)$. Express the result in term of the cumulative 
+distribution function $\Phi$ of a Normal Standard r.v.. $\Phi$ is usually 
+called the {\it probability integral}.
+
+\begin{solution}
+Given that $\mu = \mathbb{E}(x)=2$ and $\sigma^2=var(x)=4, \sigma=2.$ Therefore,
+\begin{align*}
+    \mathbb{P}(X<0)&=\mathbb{P}(Z<\frac{0-2}{2})\\
+    &=\mathbb{P}(Z<-1)\\
+    &=\Phi(-1)
+\end{align*}
+\end{solution}
+\vspace*{\fill}
+
+\part[10]
+Find $\delta$ such that
+\[
+ \mathbb{P}(2-\delta<X<2+\delta)=0.95\,.
+\]
+Express the result in term of the $\alpha$ critical value $z_\alpha$ defined as 
+$\Phi(-z_\alpha)=\alpha$.
+\begin{solution}
+\begin{align*}
+    \mathbb{P}(2-\delta<X<2+\delta)&=0.95\\
+    \mathbb{P}(\frac{2-\delta-2}{2}<Z<\frac{2+\delta-2}{2}&=0.95\\
+    \mathbb{P}(\frac{-\delta}{2}<Z<\frac{\delta}{2})&=0.95\\
+    \Phi(\frac{\delta}{2})-\Phi(\frac{-\delta}{2})&=0.95\\
+    \frac{\delta}{2}&=1.96\\
+    \delta&=3.9 2
+\end{align*}
+\end{solution}
+\end{parts}
+\vspace*{\fill}\eject
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\question
+
+Let $X$ and $Y$ be two r.v. such that the marginal p.d.f. of $X$ is
+\[
+ f_X(x)=
+ \begin{cases}
+  4x e^{-2x} & x>0\\
+  0          & x\leq 0
+ \end{cases}
+\]
+and the conditional p.d.f. of $Y$ given $X$ is
+\[
+ f_{Y|X}(y|x)=
+ \begin{cases} 
+  \frac1x & 0<y<x\\
+  0 & \mathrm{otherwise}\,.
+ \end{cases}
+\]
+This means that, given $X=x$, $Y$ in uniform in $[0,x]$.
+\begin{parts}
+
+\part[10]
+Write the joint p.d.f. $f(x,y)$ of $X$ and $Y$.
+\begin{solution}
+\begin{align*}
+    f_{X,Y}(x, y)&=f_{Y|X}(y|x)f_X(x)\\
+    &=\frac{1}{x}4xe^{-2x}\\
+    &=\begin{cases}
+     4e^{-2x} & 0<y<x<\infty \crcr
+     0 & \text{otherwise}
+    \end{cases}
+\end{align*}
+\end{solution}
+\vspace*{\fill}
+
+\part[10]
+Compute the marginal p.d.f. of $f_Y(y)$ of $Y$ and the conditional p.d.f. 
+$f_{X|Y}(x|y)$ of $X$ given $Y$.
+
+\begin{solution}
+\begin{align*}
+    f_Y(y)&=\int_y^{\infty}f_{X,Y}(x,y)dx\\
+    &=\int_y^{\infty}4e^{-2x}\\
+    &=4[\frac{e^{-2x}}{-2}]^{\infty}_y\\
+    &=\begin{cases}
+     2e^{-2y}&y>0\crcr
+     0 & \text{otherwise}
+    \end{cases}\\
+    f_{X|Y}(x|y)&=\frac{f_{X,Y}(x,y)}{f_Y(y)}\\
+    &=\frac{4e^{-2x}}{2e^{-2y}}\\
+    &=\begin{cases}
+     2e^{-2(x-y)}&x>y\crcr
+     0&\text{otherwise}
+    \end{cases}
+\end{align*}
+\end{solution}
+\vspace*{\fill}
+\eject
+
+
+\part[15]
+Compute $\mathbb{P}(Y>X/2)$.({\bf Hint}: consider first 
+$\mathbb{P}(Y>X/2|X=x)$.)
+
+\begin{solution}
+\begin{align*}
+    \mathbb{P}(Y>\frac{x}{2}|X=x)&=\int_{\frac{x}{2}}^xf_{Y|X}(y|x)dy\\
+    &=\int_{\frac{x}{2}}^x\frac{1}{x}dy\\
+    &=\frac{1}{x}(x-\frac{x}{2})\\
+    &=\frac{1}{2}.
+\end{align*} Therefore,
+\begin{align*}
+\mathbb{P}(Y>\frac{X}{2})&=\int_0^{\infty}\mathbb{P}(Y>\frac{x}{2}|X=x)f_X(x)dx\\
+&=\int_0^{\infty}\frac{1}{2}4xe^{-2x}dx\\
+&=2[x\int e^{-2x}dx-\int\frac{d}{dx}x\int e^{-2x}dxdx]^{\infty}_0\\
+&=2[x\frac{e^{-2x}}{-2}-\frac{e^{-2x}}{4}]^{\infty}_0\\
+&=\frac{2}{4}\\
+&=\frac{1}{2}
+\end{align*}
+\end{solution}
+
+\end{parts}
+
+\vspace*{\fill}\eject
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\question[15]
+Let $X$ and $Y$ be two independent Normal Standard r.v., that is 
+the joint p.d.f. of $X$ and $Y$ is
+\[
+ f_{X,Y}(x,y)=\frac 1{2\pi} e^{-\frac{x^2+y^2}2}\, .
+\]
+
+Call
+\[
+ \begin{aligned}  
+  U&=X+Y\\
+  V&=X-Y\,.
+ \end{aligned}
+\]
+Compute the joint p.d.f. of $U$ and $V$. Are they independent?
+
+
+\begin{solution}
+We could rewrite our terms of $U$ and $V$ as $X=\frac{U+V}{2}, Y=\frac{V-U}{2}$. Therefore,
+\begin{align*}
+    f_{X,Y}(x,y)&=\frac 1{2\pi} e^{-\frac{x^2+y^2}2}\\
+    f_{U,V}(u,v)&=\frac{1}{2\pi}e^{-\frac{(\frac{u+v}{2})^2+(\frac{v-u}{2})^2}{2}}\\
+    &=\frac{1}{2\pi}e^{-\frac{(\frac{u^2+2uv+v^2}{4})+(\frac{v^2-2uv+u^2}{4})}{2}}\\
+    &=\frac{1}{2\pi}e^{-\frac{(\frac{u^2+v^2}{2})}{2}}\\
+    &=\frac{1}{2\pi}e^{-\frac{u^2+v^2}{4}}.
+\end{align*} $U$ and $V$ are independent if this joint p.d.f. can be represented as a product of a p.d.f. in terms of $u$ and a p.d.f. in terms of $v$. This is possible as we could write $f_U(u)=\frac{1}{2\pi}e^{\frac{u^2}{-4}}$ and $f_V(v)=e^{\frac{v^2}{-4}}$. Since $f_U(u)*f_V(v)=f_{U,V}(u,v)$, we can say that $U$ and $V$ are independent.
+\end{solution}
+
+\vspace*{\fill}\eject
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\question[15]
+If $X$ is a continuous r.v., the upper quintile $q(0.8)$ of the p.d.f. of $X$ 
+is defined by
+\[
+ \mathbb{P}(X\leq q(0.8))=0.8.
+\]
+A Pareto r.v. $X$ with shape $\alpha$ is defined by the p.d.f.
+\[
+ f(x)=\begin{cases}
+ \alpha x^{-(\alpha+1)}& x\geq1\\
+ 0 & x<1
+ \end{cases}
+\]
+where $\alpha>1$.
+
+Compute $q(0.8)$ when $X$ is a Pareto r.v. with shape 
+$\alpha$.
+
+
+\begin{solution}
+pdf is given by $f(x)=\begin{cases}
+ \alpha x^{-(\alpha+1)}&x\geq1\crcr
+ 0&x<1
+\end{cases}$.
+ Now,
+\begin{align*}
+    \int_{-\infty}^{\infty}f(x)dx&=1\\
+    &\Rightarrow \int_{-\infty}^10*dx+\int_1^{\infty}\alpha x^{-(\alpha+1}dx\\
+    &=1\\
+    &\Rightarrow [\alpha \frac{x^{-\alpha-1+1}}{-\alpha-1+1}]^{\infty}_1\\
+    &=-[\frac{1}{x^{\alpha}}]^{\infty}_1\\
+    &= -[0-1]\\
+    &=1.
+\end{align*} Now, $\mathbb{P}(X\leq q(0.8))$. Let $q(0.8)=x$. So,
+\begin{align*}
+    \mathbb{P}(X\leq x)&=0.8\\
+    &\Rightarrow \int_1^xf(x) = 0.8\\
+    &\Rightarrow -[\frac{1}{x^\alpha}]^x_1=0.8\\
+    &\Rightarrow \frac{-1}{x^\alpha}+1=0.8\\
+    &\Rightarrow \frac{1}{x^\alpha}=0.2\\
+    &\Rightarrow x^\alpha = 5\\
+    &\Rightarrow x=5^{\frac{1}{\alpha}}\\
+    &\Rightarrow q(0.8)=5^{\frac{1}{\alpha}}  \hspace{1cm} (\alpha>1)
+\end{align*}
+\end{solution}
+
+
+\vspace*{\fill}\eject
+
+\question[15]
+Let $X_1$ and $X_2$ be two independent r.v. uniformly distributed in $[0,1]$. 
+Find the p.d.f. of $Y=X_1+X_2$.
+
+\begin{solution}
+$f_Y(y)=\int_{-\infty}^{\infty}f_{X_1}(x)f_{X_2}(y-x)dx.$ We could denote both $f_{X_1}$ and $f_{X_2}$ as $f_X$ since they both have the exact same distribution. Therefore, we could rewrite $f_Y(y)$ as $f_Y(y)=\int_{-\infty}^{\infty}f_X(x)f_X(y-x)dx.$ The integrand of this function can have values $1$ when $0<x<1$ and $0<y-x<1$ and $0$ otherwise. The limits of integration will depend on the value of $y.$
+\begin{enumerate}
+    \item 
+    
+    When $0<y<1$, $x=0$ to $x=y$. So $f_Y(y)=\int_0^y1dx=y.$
+    
+    \item
+    
+    When $1<y<2,x=y-1$ to $x=1,$  so $f_Y(y)=\int_{y-1}^1 1dx=2-y.$
+    
+    \item
+    
+    When $y<0$ or $y>2$, the integrand is zero, so $f_Y(y)=0$
+    
+\end{enumerate}
+Therefore, the p.d.f. of $Y$ is $f_Y(y)=\begin{cases}
+ y&0<y<1\crcr
+ 2-y&1\leq y<2\crcr
+ 0&\text{otherwise}
+\end{cases}$
+\end{solution}
+
+\end{questions}
+
+
+\end{document}

@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathcomp}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage{array}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{multirow}
+
+\newtheorem{ishaan}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\title{Homework 3}
+\author{Sean Eva}
+\date{September 2021}
+
+\begin{document}
+
+\maketitle
+
+Boltzmann Equation:
+\begin{align*}
+    \frac{N_b}{N_a} &= \frac{g_be^{-\frac{E_b}{kT}}}{g_ae^{-\frac{E_a}{kT}}}\\
+    &= \frac{g_b}{g_a}e^{\frac{-(E_b-E_a)}{kT}}
+\end{align*}
+Saha Equation:
+\begin{align*}
+    P_e &= n_ekT\\
+    \frac{N_{i+1}}{N_i} &= \frac{2kTZ_{i+1}}{P_eZ_i}(\frac{2\pi m_ekT}{h^2})^{\frac{3}{2}}e^{\frac{-\chi_i}{kT}}
+\end{align*}
+
+\begin{enumerate}
+    \item 
+    
+    \begin{align*}
+        5 &= \frac{1}{(2^2)}e^{\frac{-(0-10.2)*(1.6*10^{-19})}{(1.381*10^{-23})T}}\\
+        ln(20) &= \frac{-(0-10.2)*(1.6*10^{-19})}{(1.381*10^{-23})T}\\
+        T &= \frac{-(0-10.2)*(1.6*10^{-19})}{(1.381*10^{-23})ln(20)}\\
+        T &= 39450k
+    \end{align*}
+    
+    \item
+    
+    \begin{tabular}{|p{3cm}||p{3cm}|p{3cm}|p{3cm}|}
+    \hline
+    & 5000k & 12000k\\
+    \hline
+    $n = 2$ & $5.4*10^{-11}$ &    $5.29*10^{-5}$\\
+    $n = 3$ & $6.83*10^{-13}$ & $8.53*10^{-6}$\\
+    $n = 4$ & $1.48*10^{-13}$ & $4.51*10^{-6}$\\
+    $n = 5$ & $7.27*10^{-14}$ & $3.35*10^{-6}$\\
+    $n = 6$ & $4.94*10^{-14}$ & $2.86*10^{-6}$\\
+    \hline
+    \end{tabular}
+    
+    \item
+    
+    \begin{enumerate}
+        \item 
+        
+        When the temperature is doubled the ionization ratio changes by a factor of about $3*10^5$
+        
+        \item
+        
+        When the electron density is doubled, the ionization ratio changes by a factor of $\frac{1}{2}$.
+        
+        \item
+        
+        When the ionization potential is doubled, the ionization ratio is changed by a factor of $1*10^{-10}$
+        
+    \end{enumerate}
+    
+    \item
+    
+    $T = 12000$\\
+    $\frac{N_{II}}{N_{I}}=\frac{2(1.381*10^{-23})(12000)(2)}{(0.2)(1)}(\frac{2\pi (9.109*10^{-31})(1.381*10^{-23})(12000)}{(6.626*10^{-34})^2})^{\frac{3}{2}}e^{\frac{-24.6(1.6*10^{-19})}{1.381*10^{-23}*12000}}=0.510$\\
+    $\frac{N_{III}}{N_{II}}=\frac{2(1.381*10^{-23})(12000)(1)}{(0.2)(2)}(\frac{2\pi (9.109*10^{-31})(1.381*10^{-23})(12000)}{(6.626*10^{-34})^2})^{\frac{3}{2}}e^{\frac{-54.4(1.6*10^{-19})}{1.381*10^{-23}*12000}}=4.07*10^{-14}$\\
+    $\frac{N_{II}}{N_{total}}=\frac{0.510}{1+0.510}=0.338$\\
+    
+\end{enumerate}
+
+\end{document}

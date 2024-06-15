@@ -1,0 +1,145 @@
+\documentclass[11pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Packages
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+%\usepackage{hyperref}
+%\usepackage{mathrsfs}
+%\usepackage{color}
+%\usepackage{bm}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%amsthm settings
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem{claim}{Claim}
+\newtheorem{definition}{Definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: mathbb
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\A}{\mathbb A}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: greek
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\g}{\gamma}
+\renewcommand{\d}{\delta}
+\newcommand{\e}{\epsilon}
+\renewcommand{\l}{\lambda}
+\newcommand{\bx}{{\bf x}}
+
+\begin{document}
+
+\noindent {\bf MATH 4317 Homework 10}  \hfill Due Friday, 4/22 at 11PM to Gradescope
+
+\bigskip
+
+\noindent Homework guidelines: 
+\begin{itemize}
+\item Each problem I assign, unless otherwise stated, is asking you to prove something. Give a full mathematical proof using only results from class or Wade.
+\item Submit a PDF or JPG to gradescope. The grader has $\sim 250$ proofs to grade:  please make his job easier by submitting each problem on a different page. 
+\item If you submit your homework in Latex, you get 2\% extra credit. 
+\end{itemize}
+
+
+\subsection*{Problems (5 total, 10 pts each)}
+
+\begin{problem}
+Let $E = [0,1] \cap \mathbb Q$. Find $\overline{E}, E^\circ$ and $\partial E$. 
+\end{problem}
+
+\begin{proof}
+Let us first understand what the set $E$ really is, it is the rational numbers between 0 and 1. We will start by finding the interior of this set. If we take any $x\in E$ and $r\in \R$ then it is not possible for us to construct an open ball centered at $x$ that will contain only rational numbers. This then implies that $E^\circ = \emptyset$. Further the closure of this set for every $x\in [0, 1]$ there are rationals $q$ arbitrarily close to $x.$ For $n\in \N$ choose $a_n \in E$ such that $|x-a_n|<\frac{1}{n}.$ This implies that we have $lim_{n\to \infty}a_n = x$ which then implies that $\overline{E} = [0,1].$ Finally, since $\partial E = \overline{E} \backslash E^\circ = [0,1]\backslash \emptyset = [0,1].$
+\end{proof}
+
+\pagebreak
+A set $K \subset \R^n, n \geq 1$ is called \emph{convex} if for all $x, y \in K$ and $t \in [0,1]$, we have that 
+\[
+t x + (1 - t) y \in K \,. 
+\]
+\begin{problem}
+Show that any nonempty convex subset $K \subset \R^n$ is connected. 
+
+\emph{Hint: Assume for the sake of contradiction that $K$ is not connected, and let $U, V$ be disjoint open sets separating $K$. Fix $x \in U, y \in V$ and define $\phi : [0,1] \to \R^n, \phi(t) := t x + (1 - t) y$. Show that the contradiction hypothesis implies $\phi([0,1])$ is disconnected and derive a contradiction. }
+\end{problem}
+
+\textbf{Claim: } If $F$ is a family of connected sets such that $\cap F \neq \emptyset$ then $\cup F$ is connected.
+\begin{proof}
+Let $x\in \cap F$. Suppose that $x\in X$ so if $y\in Y,$ then there is $f\in F$ such that $y\in f$ so $f = (A\cap f)\cup (B\cap f)$ which is a contradiction since $A$ is open in $\cup F, A\cap f$ is open in $f$ and $B\cap f$ is open in $f$
+\end{proof}
+Now for the question.
+\begin{proof}
+Let $K$ be a non-empty convex subset and let $a\in K.$ Let $L_v = \{x\in X| x = y + \lambda v: \lambda \in \R\}$. As $K$ is convex, $X = \bigcup_{\|v\| = 1}L_v$. We then need to show that $L_v$ is connected, but since $L_v$ is homeomorphic to some real interval, since $K$ is convex, $L_v$ is also connected. Since $\{a\} \subset\cap_{\|v\| = 1}L_v$, the previous claim implies that $K$ is in fact connected.
+\end{proof}
+
+\pagebreak
+\begin{problem}
+Let $E \subset \R^n$ be finite. Prove, directly from the open-cover definition of compactness, that $E$ is compact. 
+\end{problem}
+
+\begin{proof}
+Let $U$ be an open cover of $E$, there is some $A_0\in U$ such that $0\in A_0$. Since $A_0$ is open and $\lim_{n\to\infty}\frac{1}{n} = 0, \frac{1}{n}\in A_0$ as $n$ is large enough. So there is some $N\in \N$ such that $n \geq N$ that implies that $\frac{1}{n}\in A_0.$ For each $n\in \{1, 2, ..., N-1\}$, let $A_n\in U$ be such that $\frac{1}{n} \in A_n$. Then $\{A_n|n \in \{0, 1, ..., N-1\}\}$ is a finite subcover of $U.$ Since this open cover has finite subcovers, then $E$ is compact as desired.
+\end{proof}
+
+\pagebreak
+\begin{problem}
+Prove that $\R$ is not compact by finding an explicit open covering of $\R$ admitting no finite subcover. Make sure to prove that for the open cover you specify, no finite subcover exists. 
+\end{problem}
+
+\begin{proof}
+Let $U_n = (-n, n)$. If we take $\bigcup_{n\in \N}U_n = \R$ and if $F\subset\bigcup_{n\in \N}U_n$, then $F$ contains an element $U_k$ such that $k\geq i$ for each $U_i \in F$. But then $\cup F = U_k = (-k, k) \subsetneq \R$ so $F$ cannot be an open cover for $\R.$ This implies that the open cover $U_n$ does not have any subcoverings as desired.
+\end{proof}
+
+\pagebreak
+%Let $E \subset \R^n$ be a compact set, $x \in \R^n$. Define the 
+For a set $S \subset \R^n$ and a point $x \in \R^n$, define the \emph{minimal distance} 
+\[
+d(x, S) = \inf\{ \| x - y \| : y \in S\} \,. 
+\]
+\begin{problem}
+Assume $E \subset \R^n$ is compact. Show that for any $x \in \R^n$ there exists $\hat x \in E$ such that
+\[
+\| x - \hat x\| = d(x, E) \,. 
+\]
+
+{\it Hint: Show that the function $g : \R^n \to \R$ defined by $g(y) := \| x - y\|$ is continuous. }
+\end{problem}
+
+\begin{proof}
+Let assumptions be as above. For $x\in \R^n$ and for each $\hat{x}\in E$. Consider the ball $B(\hat{x}: \|\hat{x}-x\|).$ Then $\{B(\hat{x}: \|\hat{x}-x\|: \hat{x}\in E\}$ is an open cover for $E.$ Since $E$ is compact, there are points $\hat{x_1}, \hat{x_2}, ..., \hat{x_n}$ such that $E = \bigcup_{i = 1}^nB(\hat{x_i}: \|\hat{x_i}-x\|).$ Then $d(x)$ will be minimum for all $\hat{x}\in E$ as desired.
+\end{proof}
+
+\end{document}

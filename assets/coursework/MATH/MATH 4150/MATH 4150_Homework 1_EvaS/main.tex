@@ -1,0 +1,179 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathcomp}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage{array}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{tabularx}
+
+\newtheorem{ishaan}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\title{Homework 1}
+\author{Sean Eva}
+\date{January 2022}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \setcounter{enumi}{4}
+    \item 
+    
+    \begin{proof}
+    Suppose not, that is to say that $\sqrt{3}$ is rational which means that $\sqrt{3}=\frac{p}{q}$ for some $p,q\in \mathbb{Z}$ that are reduced. Then,
+    \begin{align*}
+        \sqrt{3} &= \frac{p}{q}\\
+        p &= \sqrt{3}q\\
+        p^2 &= 3q^2.
+    \end{align*} This implies that $p^2$ is divisible by $3$ and further that $p$ is divisible by $3$. So we can write $p=3c$ for some $c$. Then,
+    \begin{align*}
+        p^2 &= 3q^2\\
+        (3c)^2 &= 3q^2\\
+        9c^3 &= 3q^2\\
+        3c^2 &= q^2.
+    \end{align*} This then implies that $q^2$ is divisible by $3$ and further that $q$ is divisible by 3. However, this implies that both $p$ and $q$ were divisible by $3$ and then that $p$ and $q$ were not reduced as we stated before and that is a contradiction. Therefore, $\sqrt{3}$ is irrational.
+    \end{proof}
+    
+    \setcounter{enumi}{11}
+    \item
+    
+    \begin{proof}
+    We will consider this problem in 2 cases.\\
+    Case 1: If $\{x\}< \frac{1}{2}$. Then we know that $[x+\frac{1}{2}] = [x].$ This then implies that $[x]+[x+\frac{1}{2}] = [x]+[x] = 2[x] = [2x].$\\
+    Case 2: If $\{x\}\geq \frac{1}{2}$. Then we know that $[x+\frac{1}{2}] = [x+1].$ Similarly $[2x]= 2x+1.$ Then we have that $[x]+[x+1] = 2x+1 = [2x]$ as desired.
+    \end{proof}
+    
+    \setcounter{enumi}{27}
+    \item
+    
+    \begin{proof}
+    Let $A, B$ be the two countable sets we desire. Then let $A = \{a_1, a_2,...\}, B=\{b_1,b_2\}$. Then let us define $C=A \cup B$ where we could then say $C=\{c_1,c_2,...\}$ where $c_1=a_1,c_2=b_1$ where we could generalize $c_{2n-1} = a_n, c_{2n} = b_n$. This implies then that the union of the two countable sets is then countable since we can create a one-to-one correspondence between the set of positive integers and the set of this set.
+    \end{proof}
+    
+    \setcounter{enumi}{39}
+    \item
+    
+    \begin{proof}
+    Given that $\alpha$ and $\beta$ are different as defined, we know that their decimal representations must be different. If they are different in the digits to the left of the decimal then we know that $[\alpha]\neq[\beta]$. This then implies that the spectrum sequences are different. Alternatively, if the different is to the right of the decimal in the kth position then $[10^k\alpha]\neq[10^k\beta]$. This also implies that their spectrum sequence is different again.
+    \end{proof}
+    
+    \setcounter{enumi}{5}
+    \item
+    
+    \begin{proof}
+    Let's say we have two triangles $t_n$ and $t_{n-1}$ with $n$ and $n-1$ rows respectively. If we take the sum from $1$ to $n$ and $1$ to $n-1$ then we get $\frac{n(n+1)}{2} + \frac{n-1(n-1+1)}{2} = \frac{n^2+n}{2} + \frac{n^2-n}{2} = \frac{2n^2}{2} = n^2$ as desired.
+    \end{proof}
+    
+    \setcounter{enumi}{4}
+    \item
+    
+    Conjecture: $A^n = \begin{bmatrix}
+    1 & n \\
+    0 & 1
+    \end{bmatrix}$.
+    \begin{proof}
+    Let $P(n): A^n = \begin{bmatrix}
+    1 & n \\
+    0 & 1
+    \end{bmatrix}.$\\
+    Base case: Let $n=1$ then $A^1 = \begin{bmatrix}
+    1 &  1\\
+    0 & 1
+    \end{bmatrix}$. So $P$ is true for $n=1.$\\
+    Inductive Step: Assume that $P$ is true for $n=k$ and we want to show that $P$ is true for $n=k+1.$ Then $A^{k+1} = A^K *A = \begin{bmatrix}
+    1 &  k\\
+    0 & 1
+    \end{bmatrix} * \begin{bmatrix}
+    1 &  1\\
+    0 & 1
+    \end{bmatrix} = \begin{bmatrix}
+    1 &  k+1\\
+    0 & 1
+    \end{bmatrix}$. Therefore, $P$ is true for $n=k+1$. Thus $P$ is true for all $n\in \mathbb{N}$ by mathematical induction.
+    \end{proof}
+    
+    \setcounter{enumi}{8}
+    \item
+    
+    \begin{proof}
+    Let $p(n): \sum_{j=1}^nj(j+1) = \frac{n(n+1)(n+2)}{3}$\\\
+    Base Case: Consider $n=1$, then we have that $\sum_{j=1}^1j(j+1) = 1(1+1) = 2$ and $\frac{n(n+1)(n+2)}{3} = \frac{1(1+1)(1+2)}{3} = 2$. Therefore, $p$ is true for $n=1$\\
+    Inductive Step: Let $p$ be true for $n=k$. We then want to prove that $p$ is true for $n=k+1.$ Then, 
+    \begin{align*}
+    \sum_{j=1}^{k+1}j(j+1) &= \sum_{j=1}^{k}j(j+1)+(k+1)(k+1+1)\\
+    &= \frac{k(k+1)(k+2)}{3}+(k+1)(k+1+1)\\
+    &= \frac{k^3+3k^2+2k}{3}+\frac{3(k+1)(k+2)}{3}\\
+    &= \frac{k^3+3k^2+2k}{3}+\frac{3k^2+9k+6}{3}\\
+    &= \frac{k^3+6k^2+11k+6}{3}\\
+    &= \frac{(k+1)(k+1+1)(k+1+2)}{3}.
+    \end{align*} Since we arrived to the desired results then $p$ is true when $n=k+1$. Therefore $p$ is true for all $n$ in the positive integers by mathematical induction.
+    \end{proof}
+    
+    \setcounter{enumi}{13}
+    \item
+    
+    We have two methods to solve this problem, either brute force solve for the cent values of $54$ to $63$ and the rest can be created by simply adding more $10$ cent pieces or we could proceed via induction.
+    \begin{proof} We need to show that we can form,
+    \begin{align*}
+    54 &= 2(7)+4(10)\\
+    55 &= 5(7)+2(10)\\
+    56 &= 8(7)+0(10)\\
+    57 &= 1(7)+5(10)\\
+    58 &= 4(7)+3(10)\\
+    59 &= 7(7)+1(10)\\
+    60 &= 0(7)+6(10)\\
+    61 &= 3(7)+4(10)\\
+    62 &= 6(7)+2(10)\\
+    63 &= 9(7)+0(10).
+    \end{align*}Therefore, any greater amount than these already calculated can be formed by taking these amounts and simply adding $10$ cent stamps as needed to reach the desired amount. 
+    \end{proof}
+    
+    \setcounter{enumi}{15}
+    \item
+    
+    \begin{proof}
+    We will prove this by using mathematical induction for $p: H_{2^n}\leq 1+n$\\
+    Base Case: Consider the case for when $n=1$, then $2^1 = 2.$ Then we have that $\sum_{j=1}^{2^1}\frac{1}{j} = 1 + \frac{1}{2} \leq 1 + 1$ as desired. Therefore, $p$ is true for $n=1.$\\
+    Inductive Step: Assume that $p$ is true for $n=k$. We want to show that $p$ is true for $n=k+1.$ Then we know that
+    \begin{align*}
+    H_{2^{k+1}} &= 1+\frac{1}{2} + \frac{1}{3} + ... + \frac{1}{2^k} + \frac{1}{2^k+1} + ... + \frac{1}{2^{k+1}}\\
+    &\leq (1 + k)+\frac{1}{2^k+1} + ... + \frac{1}{2^{k+1}}\\
+    &\leq (1+k)+\frac{1}{2^k}+...+\frac{1}{2^k}\\
+    &= (1+k)+2^k(\frac{1}{2^k})\\
+    &= 1+(k+1).
+    \end{align*} This results as desired. Then we know that $p$ is true for $n=k+1$. Therefore, we know that $p$ is true for all $n$ by the induction hypothesis.
+    \end{proof}
+    
+    \setcounter{enumi}{23}
+    \item
+    
+    In an induction proof we don't relabel things like the person did in this false proof. We can't just name $k+1$ as $k$ and proceed as usual. Especially mathematically this has certain implications and in this qualitative scenario where things are labelled accordingly and simply assume it will work the same when labelled otherwise.
+    
+    \setcounter{enumi}{30}
+    \item
+    
+    We will prove this via strong induction where $p: a_0=1, a_1=3, a_2 = 9, a_n = a_{n-1} + a_{n-2} + a_{n-3}: a_n \leq 3^n$.
+    \begin{proof}
+    Base Case: Consider for $n = 0, a_0 = 1 \leq 3^0 = 1$, $n=1, a_1 = 3 \leq 3^1 = 3$, and $n=2, a_2 = 9\leq 3^2 = 9$. These are all true and $p$ is then true for $n=0, 1, 2.$\\
+    Inductive Step: Let's assume $p$ is true for $1\leq n\leq k$. We then want to show that $p$ is true for $n=k+1$. Therefore we have that
+    \begin{align*}
+        a_{k+1} &= a_k + a_{k-1} + a_{k-2}\\
+        &\leq 3^{k} + 3^{k-1} + 3^{k-2}\\
+        &= 3^{k-2}(3^2 + 3 + 1)\\
+        &= 3^{k-2}(9+3+1)\\
+        &\leq 3^{k-2}(27)\\
+        &= 3^{k+1}.
+    \end{align*} This is as we wanted and therefore we know that $p$ is true for $n=k+1$. Therefore $p$ is true for all $n$ by the induction hypothesis.
+    \end{proof}
+    
+\end{enumerate}
+
+\end{document}

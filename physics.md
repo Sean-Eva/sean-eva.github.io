@@ -6,4 +6,4 @@ classes: wide
 author_profile: true
 ---
 
-Physics Stuff
+## PHYS 3021: Stellar Astrophysics

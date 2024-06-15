@@ -1,0 +1,163 @@
+\documentclass[11pt, letter]{amsart}
+
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumerate}
+\usepackage[inline]{enumitem}
+
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}[]
+\newtheorem{exercise}{Exercise}[]
+\newtheorem*{definition*}{Definition}
+
+
+\title[Math 4032: Homework \#1\qquad Due January 20 at 1:59pm]{Math 4032: Homework \#1\\
+  Due January 20 at 1:59pm}
+
+
+\begin{document}
+
+
+\maketitle
+
+
+\begin{center}
+  You are strongly encouraged to typeset your homework solutions using \LaTeX.
+\end{center}
+
+The following problems are optional exercises not to be turned in.  Problems to be turned in for a grade begin on the next page.  
+
+\begin{exercise}
+  Let $n \in \mathbb N$.  Prove that every $n$-element set contains $2^{n - 1}$ subsets of odd size and $2^{n - 1}$ subsets of even size.
+\end{exercise}
+\begin{exercise}
+  Determine how many permutations of $\{1, \dots, n\}$ have a single cycle.
+\end{exercise}
+
+\begin{exercise}
+  Provide an `algebraic proof' of the following formula:
+  \begin{equation*}
+    \binom{n - 1}{k - 1} + \binom{n - 1}{k} = \binom{n}{k}.
+  \end{equation*}
+  That is, show how the formula follows from the definition $\binom{n}{k} = \left(\prod_{i=0}^{k - 1}(n - i)\right) / k!$ by rearranging terms.
+\end{exercise}
+
+\begin{exercise}
+  Determine how many ways are there to arrange 7 elves and 5 goblins in a row in such a way that no goblins stand next to each other.
+\end{exercise}
+
+\begin{exercise}
+  Determine whether each of the following are true or false:
+  \begin{enumerate}[label=(\alph*)]
+  \item $n^2 = O(n^2 \ln n)$
+  \item $n^2 = o(n^2 \ln n)$
+  \item $n^2 + 5n\ln n = n^2(1 + o(1)) \sim n^2$
+  \item $n^2 + 5n\ ln n = n^2 + O(n)$
+  \item $\sum_{i=1}^n i^8 = \Theta(n^9)$
+  \item $\sum_{i=1}^n \sqrt i = \Theta(n^{3/2})$
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Determine whether each of the following are true or false:
+  \begin{enumerate}[label=(\alph*)]
+  \item $n! \sim \left((n + 1) / 2\right)^n$
+  \item $n! \sim ne(n / e)^n$
+  \item $n! = O((n / e)^n)$
+  \item $\ln(n!) = \Omega(n \ln n)$
+  \item $\ln(n!) \sim n\ln n$
+  \end{enumerate}
+\end{exercise}
+\clearpage
+
+\begin{problem}
+  Among the numbers $1, 2, \dots, 10^{10}$, are there more of those containing the digit 9 in their decimal notation, or of those with no $9$?  Prove your answer is correct.
+  
+\textbf{Claim:} There are more numbers between 1 and $10^{10}$ that have the digit 9 in them.
+\begin{proof}
+We can simply calculate the numbers that do NOT have the digit $9$ in them by considering that there are $10$ digits that cannot be the digit $9$ which leaves $9$ digit options for each of those spots. That is to say that there are $9^10$ numbers that do not have the digit $9$ in them. So then we have $10^10 - 9^10 = 6513215600$ which is more than half of the numbers in the range so we have shown that there are more numbers that contain the digit $9$.
+\end{proof}
+
+\end{problem}
+
+\clearpage
+\begin{problem}
+  Let $n \in \mathbb N$.  Prove that for every $r \in [n]$,
+  \begin{equation*}
+    \sum_{k=r}^n \binom{k}{r} = \binom{n + 1}{r + 1}.
+  \end{equation*}
+
+\begin{proof}
+We will proved by induction.\\
+Base Case: Let n = r, then we have that $\sum_{k = r}^n\binom{k}{r} = \binom{r}{r} = 1 = \binom{r + 1}{r + 1} = \binom{n + 1}{r + 1}$. Thus the statement holds for $n = r.$\\
+Inductive step: Suppose that for some $j\in \mathbb{N}, j \geq r$ the statement is true, that is to say that $\sum_{k = r}^j\binom{k}{r} = \binom{k + 1}{r + 1}$. Then we want to show that the statement is true for $j + 1.$ Then $\sum_{k = r}^{j + 1}\binom{k}{r} = \sum_{k = r}^j\binom{k}{r} + \binom{j + 1}{r} = \binom{j + 1}{r + 1} + \binom{k + 1}{r} = \binom{j + 2}{r + 1}$ by pascal's identity. Thus, since $j \rightarrow j + 1$ we know that the statement holds for all $n \in \mathbb{N}.$
+\end{proof}
+
+\end{problem}
+
+\clearpage
+\begin{problem}
+  Calculate the following sums.  (That is, express by a simple formula not containing a summation.)
+  \begin{enumerate}[label=(\alph*)]
+  \item $\sum_{i=2}^n i(i - 1)$\\
+  \textbf{Claim:} = $\frac{k(k + 1)(k - 1)}{3}$
+  \begin{proof}
+  We can show that $\sum_{i = 2}^ni(i-1) = \sum_{i = 2}^ni^2-i = \sum_{i = 2}^ni^2 - \sum_{i = 2}^n i = \frac{n(n + 1)(2n + 1)}{6} - 1 - (\frac{n}{n + 1}{2} - 1)$ by part b. Then we know that $\frac{n(n + 1)(2n + 1)}{6} - \frac{n(n + 1)}{2} = \frac{k(k + 1)(k - 1)}{3}$ as desired.
+  \end{proof}
+  \item $\sum_{i=2}^n i^2$\\
+  \textbf{Claim:} = $\frac{n (n + 1) (2 n + 1)}{6} - 1$
+  \begin{proof}
+  Base Case: Consider $n = 2$, then $2^2 = 4$ and $\frac{2 (2 + 1) (2 (2) + 1)}{6}  - 1= 4.$ Therefore, the statement is true for $n = 2.$\\
+  Inductive Step: Consider that the statement is true for $n = k$, then we want to show that it is true for $n = k + 1.$ Then we have that $\sum_{i = 2} i^2 = 2^2 + ... + k^2 + (k + 1)^2 = \frac{k (k + 1)(2k + 1)}{6} - 1 + (k + 1)^2 = \frac{2k^3 + 3k^2 + k}{6} + \frac{6k^2 + 12k + 6}{6} - 1 = \frac{2k^3 + 9k^2 + 13k + 6}{6} - 1 = \frac{(k + 1)((k + 1) + 1)(2(k + 1) + 1)}{6} - 1$ as we desire. Then by the inductive hypothesis, since $k \rightarrow k + 1$ we know that the statement is for all $n$.
+  \end{proof}
+  \item $\sum_{i=1}^n i^3$\\
+  \textbf{Claim:} = $\frac{n^2(n + 1)^2}{4} - 1$
+  \begin{proof}
+  Base Case; Consider when $n = 2$ then $n^3 = 8$ and $\frac{2^2(2 + 1)^2}{4} - 1 = 8$. Therefore, the statement is verified for $n = 2.$\\
+  Inductive step: Assume that the statement is true for $n = k$, that is to say that $\sum_{i = 2}^ki^3 = \frac{k^2(k + 1)^2}{4} - 1$. We want to show that it is true for $n = k + 1.$ We have that $\sum_{i = 2}^{k + 1}i^3 = 2^3 + ... + k^3 + (k + 1)^3 = \frac{k^2(k + 1)^2}{4} - 1 + (k + 1)^3 = \frac{k^4 + 2k^3 + k^2}{4} + \frac{4k^3 + 12k^2 + 12k + 4}{4} - 1 = \frac{k^4 + 6k^3 + 13k^2 + 12k + 4}{4} - 1 = \frac{(k + 1)^2 ((k + 1) + 1)^2}{4} - 1$ as desired. Thus, by the inductive hypothesis $k \rightarrow k + 1$ and we know that the statement is true for all $n$.
+  \end{proof}
+  \end{enumerate}
+  Prove your answers are correct.
+  \textit{Hint: Use the previous problem.}
+\end{problem}
+
+\clearpage
+\begin{problem}
+  Let $n \in \mathbb N$.  Prove that
+  \begin{equation*}
+    \sum_{k=1}^n k \binom{n}{k} = n 2^{n - 1}.
+  \end{equation*}
+
+\begin{proof}
+    We can say that $\sum_{k = 1}^nk\binom{n}{k} = n\sum_{k = 1}^{n}\binom{n-1}{k-1} = n\sum_{k = 0}^{n-1}\binom{n-1}{k} = n2^{n-1}$ by pascal's identity. Thus, we have that $\sum_{k = 1}^nk\binom{n}{k} = n2^{n - 1}$ as desired.
+\end{proof}
+  
+\end{problem}
+
+\clearpage
+\begin{problem}
+  Prove (without using Stirling's formula) that every $n \in \mathbb N$ satisfies
+  \begin{equation*}
+    n! \geq e\left(\frac{n}{e}\right)^n.
+  \end{equation*}
+  \textit{Hint:} It is possible to prove both via induction and via integration.
+
+\begin{proof}
+    We will proceed by induction.\\
+    Base Case: Let $n = 1$.Then we have that $1! = 1$ and $e(\frac{1}{e})^1 = 1$. Thus, the statement is proved for $n = 1$.\\
+    Inductive Step: Assume the statement is true for $n = k$ that is to say that we know that $k! \geq e(\frac{k}{e})^k$. We then need to show that the statement is true for $n = k + 1.$ Then we have that $(k + 1)! = (k + 1)k! \geq (k + 1)e(\frac{k}{e})^k = e(k + 1)(\frac{k}{k + 1})^k(\frac{(k + 1)^k)}{e^k}) = e(\frac{k}{k + 1})^k(\frac{(k + 1)^{k+1})}{e^k})$. We also know that $\lim_{x\to\infty}(1 + \frac{1}{x})^x = e$ which implies then that $(\frac{k}{k + 1})^k = \frac{1}{(1 + 1/k)^k} = \frac{1}{e}$. Then we have that $e(k + 1)(\frac{k}{k + 1})^k(\frac{(k + 1)^k)}{e^k}) = e(\frac{1}{e})(\frac{(k + 1)^{k+1})}{e^k}) = e(\frac{(k + 1)^{k + 1}}{e^{k + 1}}) = e(\frac{k+1}{e})^{k + 1}$ as desired. Thus, since $k \to k + 1$ we know that the statement is true for all $n \in \mathbb{N}.$
+\end{proof}
+  
+\end{problem}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

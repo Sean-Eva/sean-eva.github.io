@@ -1,0 +1,227 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathcomp}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage{array}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{tabularx}
+
+\newtheorem{ishaan}{Claim}[section]
+\newtheorem{lemma}{Lemma}[section]
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\begin{document}
+
+{\noindent\Large\textbf{Homework 1 due Wed, Sept~1st by 11am in Gradescope}}
+
+\vspace{.25in}
+
+{\large
+\noindent
+\textbf{Name: Sean Eva} \smallskip \\
+\textbf{GTID: 903466156} \smallskip \\
+%%% List anyone with whom you discussed the problems
+\textbf{Collaborators: None} \smallskip \\
+%%% List all resources used OTHER than the textbook, lecture notes, 
+%%% and previous homework assignments.
+\textbf{Outside resources: None} \smallskip
+}
+
+\pagebreak 
+
+\begin{enumerate}
+    \item 
+    
+    Let $G$ be the dihedral group of order $6$. That is to say that the plane $S$ is rotated $\frac{2\pi}{3}$ each rotation. The formula $(f^ih^j)(f^sh^t)=f^{i+s(mod 2)}h^{j+t(mod n)}=f^{i+s(mod 2)}h^{j+t(mod 3)}$.
+    \begin{ishaan}
+    The dihedral group of order 6 is nonabelian.
+    \end{ishaan}
+    \begin{proof}
+    Let $G$ be a group such that it is defined as $G=<f, h|f^2=h^3=e,fgf^{-1}=g^{-1}>$. In order to show that $G$ is nonabelian we can show that it does not commute. That is to say that $gf\neq fg$. However if we consider the inverse $g^{-1}$
+    \begin{align*}
+        g^{-1} &= fgf^{-1}\\
+        fg^{-1} &= ffgf^{-1}\\
+        fg^{-1} &= gf^{-1}\\
+        fg^{-1} &= gf,
+    \end{align*}
+    By left multiplication and the fact that $f = f^{-1}$. This shows that $gf=fg^{-1}$ instead of $gf=fg$. Alternatively,
+    \begin{align*}
+        g^{-1} &= fgf^{-1}\\
+        g^{-1}f &= fgf^{-1}f\\
+        fg^{-1}f &= fg.
+    \end{align*}
+     This shows that $fg = fg^{-1}$. Since $gf \neq fg$, $G$ is nonabelian.
+    \end{proof}
+    \pagebreak 
+    
+    \item
+    
+    \begin{enumerate}
+        \item 
+        
+        $f^2$ is always the identity when defined for the dihedral group of order $2n$ because when we reflect a plane over the y-axis two times, it is the same as doing nothing to the plane. Similarly, the rotation $h$ is defined as a rotation $\frac{2\pi}{n}$ counterclockwise, which would mean that if we rotated $n$ times, the total rotation would be $2\pi$ which is a full rotation, or the same as doing nothing to the plane.
+        
+        \item
+        
+        The matrix transformation f is 
+        $\begin{bmatrix}
+        -1 & 0\\
+        0 & 1
+        \end{bmatrix}$, and the matrix transformation for h, a rotation of $\frac{2\pi}{n}$ radians counterclockwise, is 
+        $\begin{bmatrix}
+        cos(\frac{2\pi}{n}) & -sin(\frac{2\pi}{n})\\
+        sin(\frac{2\pi}{n}) & cos(\frac{2\pi}{n})
+        \end{bmatrix}$. Then,
+            $fh = \begin{bmatrix}
+            -1 & 0\\
+            0 & 1
+            \end{bmatrix}\begin{bmatrix}
+            cos(\frac{2\pi}{n}) & -sin(\frac{2\pi}{n})\\
+            sin(\frac{2\pi}{n}) & cos(\frac{2\pi}{n})
+            \end{bmatrix} = 
+            \begin{bmatrix}
+            -cos(\frac{2\pi}{n}) & sin(\frac{2\pi}{n})\\
+            sin(\frac{2\pi}{n}) & cos(\frac{2\pi}{n})
+            \end{bmatrix}$. While, $hf = \begin{bmatrix}
+            cos(\frac{2\pi}{n}) & -sin(\frac{2\pi}{n})\\
+            sin(\frac{2\pi}{n}) & cos(\frac{2\pi}{n})
+            \end{bmatrix}\begin{bmatrix}
+            -1 & 0\\
+            0 & 1
+            \end{bmatrix} = \begin{bmatrix}
+            -cos(\frac{2\pi}{n}) & -sin(\frac{2\pi}{n})\\
+            -sin(\frac{2\pi}{n}) & cos(\frac{2\pi}{n})
+            \end{bmatrix}$. Simply put $\begin{bmatrix}
+            -cos(\frac{2\pi}{n}) & -sin(\frac{2\pi}{n})\\
+            -sin(\frac{2\pi}{n}) & cos(\frac{2\pi}{n})
+            \end{bmatrix}\neq \begin{bmatrix}
+            -cos(\frac{2\pi}{n}) & sin(\frac{2\pi}{n})\\
+            sin(\frac{2\pi}{n}) & cos(\frac{2\pi}{n})
+            \end{bmatrix}$, which means that $hf\neq fh.$ 
+        
+        \item
+        
+        By using matrix inverses $h^{-1}=
+        \begin{bmatrix}
+        cos(\frac{2\pi}{n}) & sin(\frac{2\pi}{n})\\
+        -sin(\frac{2\pi}{n}) & cos(\frac{2\pi}{n})
+        \end{bmatrix}$. Then, $h^{-1}f = \begin{bmatrix}
+        cos(\frac{2\pi}{n}) & sin(\frac{2\pi}{n})\\
+        -sin(\frac{2\pi}{n}) & cos(\frac{2\pi}{n})
+        \end{bmatrix}\begin{bmatrix}
+        -1 & 0\\
+        0 & 1
+        \end{bmatrix} = \begin{bmatrix}
+        -cos(\frac{2\pi}{n}) & sin(\frac{2\pi}{n})\\
+        sin(\frac{2\pi}{n}) & cos(\frac{2\pi}{n})
+        \end{bmatrix}.$ Similarly, from the previous part, we saw that $fh = \begin{bmatrix}
+        -cos(\frac{2\pi}{n}) & sin(\frac{2\pi}{n})\\
+        sin(\frac{2\pi}{n}) & cos(\frac{2\pi}{n})
+        \end{bmatrix}$. This means that $fh = h^{-1}f$.
+
+        
+        \item
+        
+        Simply, $D_n$ has the identity element $e$, $f$, and $h$. It also has $h^2, h^3, ..., h^{n-1}$ for each rotation until it reaches $h^n=e$. Similarly, once the plane is reflected using $f$, we can then apply the same rotations to get elements $fh, fh^2,..., fh^{n-1}$ where $fh^{n}=fe=f$. Therefore, $D_n$ has 2n distinct elements.
+        
+        \item
+        
+        We can express $(f^ih^j)(f^kh^l)=f^ah^b$ where $a=(i+j)(mod 2)$ and $b=(j+l)(mod n)$. Therefore, $(f^ih^j)(f^kh^l)=f^{(i+j)(mod 2)}h^{b=(j+l)(mod n)}$. This shows that $a$ depends on $i$ and $k$ in the way that it is the sum of them modulo $2$ and $b$ depends on $h$ and $l$ in that it is the sum of them modulo $n$.
+        
+    \end{enumerate}
+    \pagebreak 
+    
+    \item
+    
+    \begin{enumerate}
+        \item 
+        
+        There is no element $a\in D_3$ where $a \neq e$ such that $ab=be \forall b\in D_3$.
+        
+        \item
+        
+        This can be generalized to all odd $n$ because 
+        
+        \item
+        
+        There is only one element in $D_4$, $h^2$, where $h^2 b= b h^2$
+        
+        \item
+        
+        This can be generalized to all dihedral groups of even $n$. Let $n=2k$ it is easy to see that $(h^k)(h^i)=h^{k+i}=h^{i+k}=(h^i)(h^k).$ Otherwise, consider the element $fh^i$, then,
+        \begin{align*}
+            (h^k)(fh^i) &= (h^kf)(h^i)\\
+            &= (fh^{-k})(h^i)\\
+            &= (fh^k)(h^i)\\
+            &= (fh^i)(h^k).
+        \end{align*} This is true because $k$ is half of $n$ and the rotations are the same clockwise and counterclockwise and the inverse of $h^k$ is $h^k$.
+        
+    \end{enumerate}
+    \pagebreak 
+    
+    \item
+    
+    \begin{ishaan}
+    Let $G$ be a group. For $a, b\in G$, define the relation $a\sim b$ if there exists an $x\in G$ such that $b=x^{-1}ax$. This relation is an equivalence relation on $G$.
+    \end{ishaan}
+    \begin{proof}
+    Let $G$ be a group and relation $a\sim b$ if there exists $x\in G$ such that $b=x^{-1}ax$. In order for us to show that this is a equivalence relation on $G$ we need to show that it is reflexive, symmetric, and transitive.\\
+    Reflexive: Consider $a\in G$. Since $G$ is a group $a^{-1}\in G$. Therefore if we front multiply $a$ by $e=a^{-1}a$. This allows $a^{-1}aa$ which implies that $a\sim a.$ Therefore, the relation is reflexive.\\
+    Symmetric: Let $a, b\in G$ such that $a\sim b$, that is to say that there exists $x\in G$ such that $b=x^{-1}ax$. Then if we premultiply by $x$ and postmultiply by $x^{-1}$. Then $xbx^{-1}=xx^{-1}axx^{-1}=a$. This then shows that $b\sim a$ which means that the relation is symmetric.\\
+    Transitive: Let $a, b, c\in G$ such that $a\sim b$ and $b\sim c$. Since the relation is symmetric, we know that there exists some $x, y\in G$ such that $b\sim a$ and $c\sim b$, that is to say that $a=x^{-1}bx$ and $b=y^{-1}y$. Then we can say that $a=x^{-1}y^{-1}cyx.$ Let $z=xy$, we get that $a=z^{-1}cz$ which shows that $a\sim c$. Therefore the relation is transitive.\\
+    Since the relation is reflexive, symmetric, and transitive, we know that it is an equivalence relation.
+    \end{proof}
+    \pagebreak 
+    
+    \item
+    
+    \begin{enumerate}
+        \item 
+        
+        \begin{proof}
+        Reflexive: Let $G$ be a group with subgroup $H$. Consider $a \in H.$ Since $H$ is a group, we know that $a^{-1}\in H$ because of the existence of an inverse property. This means that $a\sim a$ and the relation is reflexive.\\
+        Symmetric: Let $G$ be a group with subgroup $H$. Consider $a, b \in H$ where $a \sim b$ which is to say that $a^{-1}b\in H$. Since $a,b\in H$, we know that $a^{-1},b^{-1}\in H$ by the existence of inverses property of groups. Then we can premultiply $a^{-1}b$ by $(b^{-1}a)^2$ that gives us, $(b^{-1}a)(b^{-1}a)(a^{-1}b)=(b^{-1}a)(b^{-1})(aa^{-1})(b)=(b^{-1}a)(b^{-1})(e)(b)=(b^{-1}a)(b^{-1}b)=(b^{-1}a)(e)=(b^{-1}a)\in H$ since $H$ is closed. Therefore, since $b^{-1}a\in H$ we know that since $a\sim b$ that $b\sim a$ and that the relation is symmetric.\\
+        Transitive: Let $G$ be a group with subgroup $H$. Consider $a, b, c \in H$ where $a \sim b$ and $b\sim c$. That is to say that $a^{-1}b\in H$ and $b^{-1}c\in H$. We could premultiply $b^{-1}c$ by $a^{-1}b$ to get $a^{-1}bb^{-1}c=a^{-1}c\in H$ since H is closed, which means that $a\sim c$. Since $a\sim c$ we know that the relation is transitive.\\
+        Since the relation is reflexive, symmetric, and transitive, then the relation is an equivalence relation.
+        \end{proof}
+        
+        \item
+        
+        The equivalence class of $a$ is all elements for which $a\sim h$ for $h\in H$. This means that for all elements in $H$ that $a\sim h\in H.$ Since $H$ is a group, it is closed, and this implies that $a\sim h$ for all $h\in H$.
+        
+        \item
+        
+        \begin{proof}
+        Consider $a,b\in H$ such that $a$ and $b$ lie in the left coset of $H$ and $a\sim b$ that is to say that $aH=bH.$ Since $a\sim b$, we know that $a^{-1}b\in H$ which then means that $b\in aH$ which means that $bH\subset aH.$ But since the relation is symmetric, we know that $aH\subset bH.$ Therefore, $a\sim b$ implies that $aH=bH$ which means that the left coset does partition $G$
+        \end{proof}
+        
+        \item
+        
+        The relation on $a,b\in G$ that yields the right cosets of $H$ is that $a\sim b$ if $b^{-1}a\in H$.
+        
+    \end{enumerate}
+    \pagebreak 
+    
+    \item
+    
+    \begin{ishaan}
+    Let $G$ be a group and fix $a\in G$. Define $\phi_a: G\rightarrow G$ by $\phi_a(x)=a^{-1}xa$ for all $x\in G.$ $\phi_a$ is an isomorphism of $G$ onto itself.
+    \end{ishaan}
+    \begin{proof}
+    Let $G$ be a group and fix $a\in G$ and define $\phi_a: G\rightarrow G$ by $\phi_a(x)=a^{-1}xa$ for all $x\in G$. First we will show that this is a monomorphism, or is one to one. Consider $x, y\in G$ where $\phi_a(x)=\phi_a(y).$ That is to say that 
+    \begin{align*}
+        a^{-1}xa &= a^{-1}ya\\
+        aa^{-1}xaa^{-1} &= aa^{-1}yaa^{-1}\\
+        exe &= eye\\
+        x &= y.
+    \end{align*} Therefore, the mapping is one to one and is a monomorphism. Now we will show the mapping is an isomorphism by showing that the mapping is onto. Consider the element $x\in G$ then if we use $axa^{-1},$ then $\phi_a(axa^{-1})=a^{-1}axa^{-1}a = exe = x.$ Therefore, this mapping is onto and the mapping is an isomorphism of G onto G.
+    \end{proof}
+    
+\end{enumerate}
+
+\end{document}

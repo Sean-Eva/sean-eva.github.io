@@ -1,0 +1,84 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathcomp}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage{array}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{graphicx}
+
+\newtheorem{ishaan}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\title{Homework 14}
+\author{Sean Eva}
+\date{November 2021}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item 
+    
+    Formula given: $t_{ff} = \sqrt{(\frac{3\pi}{32})(\frac{1}{G\rho_0})}$. Then,
+    \begin{align*}
+        t_{ff} &= \sqrt{(\frac{3\pi}{32})(\frac{1}{(6.674*10^{-11})(10^{13})})}\\
+        &= \sqrt{4.41*10^{-4}}\\
+        &= 0.021\text{ s}
+    \end{align*}
+    
+    \item
+    
+    \begin{enumerate}
+        \item 
+        
+        Dimensions: $s=r\theta$\\
+        Major axis: $s=\frac{4\pi}{10800}*2400 = 2.8\text{ pc}$\\
+        Minor axis: $s=\frac{2\pi}{10800}*2400 = 1.4\text{ pc}$\\
+        Linear dimensions are $2.8\text{ pc }x1.4\text{ pc}$
+        
+        \item
+        
+        Age: $t=\frac{s}{2v}$. Then
+        \begin{align*}
+            t &= \frac{s}{2v}\\
+            &= \frac{2.8(3.09*10^{13}}{2(1400)}\\
+            &= 3.09*10^{10}\text{ s}\\
+            &= 979\text{ years}.
+        \end{align*}
+        
+    \end{enumerate}
+    
+    \item
+    
+    Magnitude: $m-M = 5\log{\frac{d}{10}}$. Then, 
+    \begin{align*}
+        m - (-17.5) &= 5\log{\frac{2400}{10}}\\
+        m &= 5\log{240} - 17.5\\
+        &= -5.60.
+    \end{align*}
+    Comparing brightness using apparent magnitude: $\frac{F_2}{F_1} = 100^{\frac{(m_1-m_2)}{5}}$. Then,
+    \begin{align*}
+        \frac{F_{Crab}}{F_{Venus}} &= 100^{\frac{(-4-(-5.60)}{5}}\\
+        &= 4.37.
+    \end{align*} Therefore, the Crab Nebula is 4.37 times brighter than Venus.
+    
+    \item
+    
+    The distance of SN 1986A according to a brief Google search is $d=51.4\text{ kpc}$. Energy during supernova: $E=4\pi d^2(E_{avg})(A)$. Then, 
+    \begin{align*}
+        E &= 4\pi (51.4(3.08*10^{19}))^2(1.4(1.602*10^{-19}))(1.5*10^{14})\\
+        E &= 1.06*10^{45}\text{ J}
+    \end{align*}
+    
+\end{enumerate}
+
+\end{document}

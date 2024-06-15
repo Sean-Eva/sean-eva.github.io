@@ -1,0 +1,194 @@
+\documentclass{article}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Packages
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%amsthm settings
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{definition}
+\newtheorem{problem}{Theorem}
+\newtheorem{claim}{Claim}
+\newtheorem{definition}{Definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: mathbb
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\A}{\mathbb A}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: greek
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\g}{\gamma}
+\renewcommand{\d}{\delta}
+\newcommand{\e}{\epsilon}
+\renewcommand{\l}{\lambda}
+
+\usepackage[utf8]{inputenc}
+
+\title{Homework 6, 7, \& 8}
+\author{Sean Eva}
+\date{October 2022}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item [[\phantom{-}2]]
+    
+    First we will verify that $Z(Y) = z(\phi(y))$ when $\phi(y) = \arctan(\frac{y}{\sqrt{4-y^2}})$.\\
+    \begin{proof}
+    Let us first consider that $z(\theta) = 2e^{i\theta} = 2\cos(\theta) + 2i\sin(\theta)$. Then we know that $\frac{y}{x} = \frac{y}{\sqrt{4-y^2}} = \frac{2\sin(\theta)}{2\cos(\theta)} = \tan(\theta)$. This implies that $\tan(\theta) = \frac{y}{\sqrt{4-y^2}} \Rightarrow \theta = \phi(y) = \arctan(\frac{y}{\sqrt{4-y^2}})$. We will then note that $\cos(\arctan(t)) = \frac{1}{\sqrt{1 + t^2}}$ and $\sin(\arctan(t)) = \frac{t}{\sqrt{1 + t^2}}.$ Therefore, we have that $z(\phi(y)) = 2\cos(\arctan(\frac{y}{\sqrt{4-y^2}})) + 2i\sin(\arctan(\frac{y}{\sqrt{4-y^2}})) = \frac{2}{\sqrt{1 + \frac{y^2}{4-y^2}}} + i\frac{\frac{2y}{\sqrt{4-y^2}}}{\sqrt{1 + \frac{y^2}{4-y^2}}} = \frac{2\sqrt{4-y^2}}{\sqrt{4}} + i\frac{2y}{\sqrt{4}} = \sqrt{4-y^2} + iy = Z(y)$ as desired.
+    \end{proof}
+    Now we want to show that $\phi$ has a positive derivative as required.\\
+    \begin{proof}
+    For this function of $\phi(y)$ we only need to verify that it has a positive derivative in the range between $-2 < y < 2$. Then we get that $\phi'(y) = \frac{d}{dy}\arctan(\frac{y}{\sqrt{4-y^2}}) = \frac{1}{1 + (\frac{y}{\sqrt{4-y^2}})^2} * \frac{\sqrt{4-y^2} + \frac{y^2}{\sqrt{4-y^2}}}{\sqrt{4-y^2}^2} = \frac{1}{\sqrt{4-y^2}} > 0$ when $-2 < y < 2$. Therefore, we know that $\phi'(y) = \frac{1}{\sqrt{4-y^2}} > 0$ when $-2 < y < 2$ as desired.
+    \end{proof}
+    
+    \item [[\phantom{-}6]]
+    
+    \begin{enumerate}
+        \item 
+        
+        \begin{proof}
+        If we want to show all of the times that the arc $C$ formed by $z = x + iy(x)$ is of the form $z = 1/n$ then we need to show all of the zeros of $y(x)$ are of the form $1/n$. This then means we need to find all the zeros of $x^3\sin(\frac{\pi}{x})$ in the range $0 < x \leq 1$ and we are given that $y(x) = 0$ when $x = 0;$ thus, we need to find that the form of the zeros of $\sin(\frac{\pi}{x})$ are of the form $1/n$. Therefore, if we consider when $x = \frac{1}{n}$ for $n = 1, 2, ...$, then we have $\sin(\frac{1}{x}\pi) = \sin(\frac{1}{\frac{1}{n}}\pi) = \sin(n\pi)$ which for any $n = 1, 2, ...$ we have that $\sin(n\pi) = 0$ which means then we have that all the zeros of $y(x)$ are $0$ and of the form $1/n$ for $n = 1, 2, ...$ as desired.
+        \end{proof}
+        
+        \item
+        
+        \begin{proof}
+        Let us begin by finding $y'(x) = 3x^2\sin(\frac{\pi}{x}) - x\cos(\frac{\pi}{x}) = x(3x\sin(\frac{\pi}{x}) - \cos(\frac{\pi}{x}))$. Then we have that $|y'(x)| \geq 0$ for $x > 0$. Then we have that $|x(3x\sin(\frac{\pi}{x}) - \cos(\frac{\pi}{x}))| \geq |x||3x\sin(\frac{\pi}{x}) - \cos(\frac{\pi}{x})|$ which implies that $|x| \geq  0$ or $|3x\sin(\frac{\pi}{x}) - \cos(\frac{\pi}{x})|$. Then it follows that $0\leq |3x\sin(\frac{\pi}{x}-\cos(\frac{\pi}{x})|\leq 3x-1$ when $x > 0$. Therefore, we have that $|\sin(\frac{\pi}{x})| \leq 1$ and $|\cos(\frac{\pi}{x})| \leq 1$ as desired.
+        \end{proof}
+        
+    \end{enumerate}
+    
+    \item [[\phantom{-}4]]
+    
+    We are able to first parametrize this arc from $z = -1 - i$ to $z = 1 + i$ on the curve $y = x^3$ as $z = t + it^3$ for $-1 < t < 1$. We know that $f$ is piecewise continuous by its definition, so then we have that $\int_Cf(z)dz = \int_{-1}^0f(z(t))z'(t)dt + \int_0^1f(z(t))z'(t)dt = \int_{-1}^01*(1 + 3it^2)dt + \int_0^14t^3(1 + 3it^2)dt = t|_{-1}^0 + it^3|_{-1}^0 + t^4|_0^1 + 2it^6|_0^1 = (0-(-1)) + i(0 - (-1)) + (1 - 0) + 2i(1 - 0) = 2 + 3i.$ Therefore, we know that $\int_Cf(z)dz = 2 + 3i.$
+    
+    \item [[\phantom{-}11]]
+    
+    \begin{enumerate}
+        \item 
+        
+        We have that $\int_Cf(z) = \int_{\frac{-\pi}{2}}^{\frac{\pi}{2}}f(z(\theta))z'(\theta)d\theta = \int_{\frac{-\pi}{2}}^{\frac{\pi}{2}}(2e^{-i\theta})(2ie^{i\theta})d\theta = \int_{\frac{-\pi}{2}}^{\frac{\pi}{2}}4id\theta = 4i\theta|_{\frac{-\pi}{2}}^{\frac{\pi}{2}} = 2\pi i - (-2\pi i) = 4\pi i.$
+        
+        \item
+        
+        We have that $\int_Cf(z) = \int_{-2}^{2}f(z(y))z'(y)dy = \int_{-2}^{2}(\sqrt{4-y^2}-iy)(\frac{-y}{\sqrt{4-y^2}} + i)dy = \int_{-2}^{2}(-y + \sqrt{4-y^2}i + i\frac{y^2}{\sqrt{4-y^2}} + y)dy = i\int_{-2}^{2}(\frac{4}{\sqrt{4-y^2}})dy = 4i(\arcsin(\frac{1}{2}y))|_{-2}^{2} = 4i(\arcsin(1) - \arcsin(-1)) = 4i(\frac{\pi}{2} - \frac{-\pi}{2}) = 4\pi i.$
+        
+    \end{enumerate}
+    
+    \item [[\phantom{-}3]]
+    
+    \begin{proof}
+    In order to show that this is true, we will first notice that $|\int_C f(z)dz| \leq ML$ which would imply for this problem, that $|\int_C (e^z-\bar{z})dz| \leq ML$ where $M$ is the maximum value of the function in this region and $L$ is the length of the contour $C$. We can simply find $L$ by adding the lengths of the three sides of the triangle as $0 \to 3i, 3i \to -4, -4\to 0$ as $L = 3 + 5 + 4 = 12$. Then to solve for the maximum value $M$ we will use that $M = |e^z - \bar{z}| \leq |e^z| + |-\bar{z}| = |e^z| + |\bar{z}| = |e^x| + |\bar{z}|$ and we have that $|\bar{z}$ is maximum at $z = -4$ with a value of $4$ and $|e^x|$ has a maximum at $z = 0, 3i$ where $|e^x| = 1$ which gives $M = 1 + 4 = 5$. Therefore we have that $|\int_C(e^z - \bar{z})dz \leq ML = 5 * 12 = 60 \Rightarrow |\int_C(e^z - \bar{z})dz \leq 60$ as desired.
+    \end{proof}
+    
+    \item [[\phantom{-}2]]
+    
+    \begin{enumerate}
+        \item 
+        
+        $\int_{0}^{1 + i}z^2dz = \frac{1}{3}z^3|_0^{1 + i} = \frac{1}{3}((1+i)^3 - 0^3) = \frac{1}{3}(1+i)^3 = \frac{1}{3}(-2 + 2i) = \frac{2}{3}(-1 + i)$
+        
+        \item
+        
+        $\int_{0}^{\pi + 2i}\cos(\frac{z}{2})dz = 2\sin(\frac{z}{2})|_0^{\pi + 2i} = 2(\sin(\frac{\pi = 2i}{2}) - \sin(\frac{0}{2})) = 2(\sin(\frac{\pi}{2} + i)) = 2(\frac{1 + e^2}{2e}) = \frac{1}{e} + e$
+        
+        \item
+        
+        $\int_1^3(z-2)^3dz = \frac{1}{4}(z-2)^4|_1^3 = \frac{1}{4}((3-2)^4-(1-2)^4) = \frac{1}{4}(1-1) = 0$
+        
+    \end{enumerate}
+    
+    \item [[\phantom{-}1]]
+    
+    \begin{enumerate}
+        \item 
+        
+        This given function is analytic everywhere except $z = -3$, since the denominator vanishes at this value. That is to say that this function is analytic on an open disc containing the closed $|z| = 1$. Thus, by the Cauchy-Goursat theorem, since the function is analytic on and in the region $|z| = 1$ then the integral is $0.$
+        
+        \item
+        
+        This function is conveniently the product of exact functions as both $z$ and $e^{-z}$ are both exact, thus the product of exact functions is itself exact which means that $ze^{-z}$ is exact meaning it is analytical everywhere which means it would satisfy the Cauchy-Goursat theorem and the integral equals $0$.
+        
+        \item
+        
+        This function has two discontinuities when $z^2 + 2z + 2 = 0$ which is when $z = 1 + i, 1 - i$. These points are of a distance $\sqrt{2}$ which is beyond our limit of $|z| = 1$; thus, we know that this function is analytic withing the contour region. Therefore by the Cauchy-Goursat theorem, the integral equals $0$.
+        
+        \item
+        
+        The function $sech(z) = \frac{1}{cosh(z)}$ so we need to know when $cosh(z) = 0$. We know that $cosh(z) = 0$ when $z = i\frac{\pi}{2}$. Since this point has a distance from $0$ of more than $1$, then we know that this function is analytical in the desired region. Therefore, by the Cauchy-Goursat theorem, the integral equals $0$.
+        
+        \item
+        
+        The function $\tan(z) = \frac{\sin(z)}{\cos(z)}$ so we need to know when $\cos(z) = 0$ which is when $z = \frac{\pi}{2} + n\pi$ for $n \in \N$. Since $z = \frac{\pi}{2}$ is outside of our contour, then we know that the function is analytic within the contour then the Cauchy-Goursat theorem is met and we know the integral equals $0.$
+        
+        \item
+        
+        The function $Log(z + 2)$ has branch cuts along the negative real axis including $0$. Let $g(z) = z + 2$ which we know is entire by definition. Therefore, $Log(z + 2)$ is analytic in the domain $g^{-1}(D)$ where $D$ is the compliment for the ray that makes up the branch cuts of $Log(z)$ which means that $g^{-1}(D)$ is the compliment to the ray starting at $z = -2$ and extending the negative real axis. Since the given contour $|z| = 1$ is within $D$, then we know by the Cauchy-Goursat theorem that the integral equals $0.$
+        
+    \end{enumerate}
+    
+    \item [[\phantom{-}3]]
+    
+    We have that $g(2) = \int_C\frac{2s^2 - s - 2}{s - z}ds = 2i\pi(2s^2 - s - 2)|_{z = 2} = 8i\pi$. And when $|z| > 3$ then $z \neq s$, therefore it is zero.
+    
+    \item [[\phantom{-}6]]
+    
+    \begin{proof}
+    We write the Cauchy integral formula as $f(z) = \frac{1}{2\pi i}\int_C\frac{f(s)ds}{s-z}$ where $z$ is the interior of $C$ and $s$ is a point on $C$. If we differentiate this, we get that $f'(z) = \frac{1}{2\pi i}\int_C\frac{f(s)ds}{(s-z)^2}$. To verify, let $d$ be the smallest distance from $z$ to $s$ on $C$ so that we can write $\frac{f(z + \Delta z) - f(z)}{\Delta z} = \frac{1}{2\pi i}\int_C(\frac{1}{s - z - \Delta z} - \frac{1}{s - z})\frac{f(s)}{\Delta z}ds = \frac{1}{2\pi i}\int_C\frac{f(s)ds}{(s - z - \Delta z)(s - z)}$, where $0 < |\Delta z| < d$. Then we have that $\frac{f(z + \Delta z) - f(z)}{\Delta z} - \frac{1}{2\pi i}\int_C\frac{f(s)ds}{(s-z)^2} = \frac{1}{2\pi i}\int_C\frac{\Delta f(s)ds}{(s - z - \Delta z)(s - z)^2}$ as desired.
+    \end{proof}
+    
+    \item [[\phantom{-}5]]
+    
+    \begin{proof}
+    Let a function $f(z)$ be continuous on a closed bounded region $R$ such that $f(z)$ is analytic and not constant throughout the interior of $R$. Let us assume $f(z) \neq 0$ in $R$. Then $g(z) = \frac{1}{f(z)}$ is also analytic and non constant throughout $R$ (and since $f(z) \neq 0$ in $R$ then we know that $g(z)$ exists everywhere in $R$. By the Maximum Modulus Principle, $|g(z)|$ cannot have a maximum value in the interior of $R$ as its maximum occurs on the boundary. However, a maximum of $|g(z)|$ is a minimum of $|f(z)|$. Thus, $|f(z)|$ has a minimum value on the boundary of $R$ and not in the interior of $R$ as desired.
+    \end{proof}
+    
+    \item [[\phantom{-}6]]
+    
+    \begin{proof}
+    Let assumptions be as in the problem statement, that is $S = \sum_{n = 1}^\infty z_n$. That is to say that $S = z_1 + z_2 + ... = (x_1 + iy_1) + (x_2 + iy_2) + ... = (x_1 + x_2 + ...) + i(y_1 + y_2 + ...)$. Then we have $\sum_{n = 1}^\infty \bar{z_n} = \bar{z_1} + \bar{z_2} + ... = \bar{(x_1 + iy_1)} + \bar{(x_2 + iy_2)} + ... = (x_1 - iy_1) + (x_2 - iy_2) + ... = (x_1 + x_2 + ...) - i(y_1 + y_2 - ...) = \bar{(x_1 + x_2 + ...) - i(y_1 + y_2 + ...)} = \bar{S}$ as desired.
+    \end{proof}
+    
+\end{enumerate}
+
+\end{document}

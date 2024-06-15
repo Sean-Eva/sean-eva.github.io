@@ -1,0 +1,151 @@
+\documentclass{article}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Packages
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{graphicx}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%amsthm settings
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{definition}
+\newtheorem{problem}{Theorem}
+\newtheorem{claim}{Claim}
+\newtheorem{definition}{Definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: mathbb
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\A}{\mathbb A}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: greek
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\g}{\gamma}
+\renewcommand{\d}{\delta}
+\newcommand{\e}{\epsilon}
+\renewcommand{\l}{\lambda}
+
+\usepackage[utf8]{inputenc}
+
+\title{Homework 14, 15 \& 16}
+\author{Sean Eva}
+\date{December 2022}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item [[\phantom{-}3]]
+
+    Let us consider the point $z = x + iy$, then we essentially want to exchange the $x$ and $y$ values as well as translate the region over to the left by $1$ unit. Therefore the transformation is $w = i(x + iy) + 1 = iz + 1.$
+
+    \item [[\phantom{-}2]]
+
+    Specifically when $c_1 = 0$ we get $\frac{1}{x + iy} = \frac{x-iy}{(x + iy)(x - iy)} = \frac{x}{x^2 + y^2} - \frac{iy}{x^2 + y^2}$ which then means that we have $u = \frac{x}{x^2 + y^2}, v= -\frac{y}{x^2 + y^2}$ or inversely, we have that $x = \frac{u}{u^2 + v^2}, y = -\frac{v}{u^2 + v^2}$. Thus, for the given region, we have that $x < c_1 \Rightarrow \frac{u}{u^2 + v^2} < c_1 < 0 \Rightarrow \frac{u}{c_1} > u^2 + v^2$. Then, $u^2 + v^2 - \frac{u}{c_1} < 0 \Rightarrow v^2 + u^2 - 2\frac{1}{2c_1}u + \frac{1}{4c_1^2} - \frac{1}{4c_1^2} < 0 \Rightarrow (u-\frac{1}{2c_1^2})^2 + v^2 < (\frac{1}{2c_1})^2.$ So we have that this is the  interior of a circle centered at $(\frac{1}{2c_1}, 0)$ with radius $\frac{1}{2c_1}$. If $c_1 = 0$ then the radius of the circle becomes infinite, so the image is then the entire plane.
+
+    \item [[\phantom{-}9]]
+
+    Given the mapping $w = \frac{i}{z} \Rightarrow u + iv = \frac{i}{x + iy} = \frac{i(x - iy)}{(x + iy)(x - iy)} = \frac{ix + y}{x^2 + y^2} = \frac{y}{x^2 + y^2} + i\frac{x}{x^2 + y^2}$. This then implies that we have $u = \frac{y}{x^2 + y^2}, v = \frac{x}{x^2 + y^2}$. Then we have that $\frac{u}{v} = \frac{y}{x}$ which shows that $x = \frac{vy}{u}$ which then gives us that $v = \frac{\frac{vy}{u}}{(\frac{vy}{u})^2 + y^2} \Rightarrow vy^2(v^2 + u^2) = uvy \Rightarrow vy^2(v^2 + u^2) - uvy = 0$. This then gives us that $vy(y(v^2 + u^2) - u) = 0$ which implies that either $v = 0$ or $y = 0$ or $y = \frac{u}{v^2 + u^2}$. Since we know that $y < 1$ we have that $\frac{u}{v^2 + u^2} < 1 \Rightarrow v^2 + u^2 > u$ or $u^2 + v ^2 - u > 0 \Rightarrow U62 - u + \frac{1}{4} + v^2 > \frac{1}{4} \Rightarrow (u - \frac{1}{2})^2 + v^2 > (\frac{1}{2})^2$ which shows that that outer part of the circle with center at $(\frac{1}{2}, 0)$ and radius $\frac{1}{2}.$ Then for $y > 0$ we have that $\frac{u}{v^2 + u^2} > 0 \Rightarrow u > 0$ which still falls within the same circle.
+
+    \item [[\phantom{-}1]]
+
+    We can use the equation $\frac{(z - z_1)(z_2 - z_3)}{(z - z_3)(z_2 - z_1)} = \frac{(w - w_1)(w_2 - w_3)}{(w - w_3)(w_2 - w_1)} \Rightarrow \frac{(z + 1)(0 - 1)}{(z - 1)(0 + 1)} = \frac{(w + i)(1 - i)}{(w - i)(1 + i)} \Rightarrow w = \frac{i - z}{i + z}$
+
+    \item [[\phantom{-}3]]
+
+    \begin{enumerate}
+        \item
+
+        If we want to find the inverse of $w = \frac{i - z}{i + z}$ we get
+        \begin{align*}
+        w &= \frac{i - z}{i + z}\\
+        w(i + z) &= i - z\\
+        wi + wz &= i - z\\
+        wz + z &= i - wi\\
+        z(w + 1) &= i(1 - w)\\
+        z &= \frac{i(1 - w)}{w + 1}\\
+        z &= i\frac{1 - w}{w + 1}.
+        \end{align*} Therefore, we find that the function for the problem $w = i\frac{1-z}{1 + z}$ is actually the inverse function. Then we inherently know that the transformation $w = i\frac{1 - z}{1 + z}$ maps the disk $|z| \leq 1$ onto the half plane $Im(w) = \geq 0.$
+
+        \item
+
+        To verify this transformation $w = iW = i(i\frac{1 - Z}{1 + Z} = -1\frac{1 - Z}{1 + Z} = \frac{Z - 1}{1 + Z}$ then given that $Z = z - 1$ we have that $w = \frac{(z - 1) - 1}{1 + z - 1} = \frac{z - 2}{z}$ which verifies that this modification is indeed valid. Therefore, if we refer to the previous example, we translate $z$ to the right by 1 with $Z = z - 1$ and then we apply the inverse mapping from part a to turn the disk to the upper half plane and then when we multiply by i, we rotate this plane 90 degrees to get the half plane $Re (w) \leq 0.$
+        
+    \end{enumerate}
+
+    \item [[\phantom{-}4]]
+
+    We have that $w = e^z = e^{x + iy} = e^x + e^{iy} \Rightarrow |w| = e^x \geq 1, 0 \leq arg(w) \leq \pi$ so that $w$ lies in the portion of the closed upper half plane external to the open unit disk. Therefore, the map is onto as $w = re^{i\theta}$ with $r \geq 1$ and $0\leq \theta \leq \pi$ then $e^{x + iy} = w, $ where $x = \log(r) \geq 0$ and $y = \theta$.
+
+    \item [[\phantom{-}4]]
+
+    Here we have that $w = z^2$ which implies that $u + iv = (x + iy)^2 = (x^2 - y^2) + 2xyi$ which then shows us that $u = x^2 - y^2, v = 2xy$. When $x = 1$ we have that $u = 1 - y^2, v = 2y$ which then implies that $y = \frac{v}{2}$ and $y = 1-\frac{v^2}{4} = \frac{4 - v^2}{4} \Rightarrow 4u = 4 - v^2 \Rightarrow v^2 = 4(1 - u) = -4(u - 1).$ Then when $y = x, u = 0$ and $y = -x, u = 0$. Thus we have that the image of the line $x = 1$ is the parabola $v^2 = -4(u - 1)$ and the images of lines $y = \pm x$ is the v-axis, i,e, $u = 0$ as shown in the given figure. Now, for $C$, $z = 1 \Rightarrow w = 1$. Thus, $C = (1, 0)$ corresponds to $C' = (1, 0).$ Which then implies that $A = 0 \Rightarrow w = 0$. Thus, $A = (0, 0)$ corresponds to $A' = (0, 0).$ Then, $D = (1, 1) \Rightarrow w = (1 + i)^2 = 2i = (0, 2)$; thus, $D = (1, 1)$ corresponds to $D' = (0, 2).$ And finally, $B = (1, -1) \Rightarrow w = (1 - i)^2 = -2i = (0, -2)$; thus, $B = (1, -1)$ corresponds to $B' = (0, -2).$
+
+    \item [[\phantom{-}6]]
+
+    \begin{enumerate}
+        \item
+
+        We know that $g(w) = \phi^{\frac{1}{2}}e^{i\frac{\theta}{2}}$ and so we need to limit the bounds of $\theta$ and for $z = 2$ we set the bounds $-\pi < \theta < \pi$ and $\phi > 0$
+
+        \item
+
+        We know that $g(w) = \phi^{\frac{1}{2}}e^{i\frac{\theta}{2}}$ and so we need to limit the bounds of $\theta$ and for $z = -2$ we set the bounds $\pi < \theta < 3\pi$ and $\phi > 0$
+
+        \item
+
+        We know that $g(w) = \phi^{\frac{1}{2}}e^{i\frac{\theta}{2}}$ and so we need to limit the bounds of $\theta$ and for $z = -i$ we set the bounds $2\pi < \theta < 4\pi$ and $\phi > 0$
+    
+    \end{enumerate}
+
+    \item [[\phantom{-}2]]
+
+    \begin{enumerate}
+        \item
+
+        Given that $u(x, y) = xy$, this is harmonic because $u_{xx} + u_{yy} = 0 + 0 = 0$. Therefore, to find the harmonic conjugate of $u$ we have that $v(x, y) = \int_{(x_0, y_0)}^{(x, y)}-u_t(s, t)ds + u_s(s, t)dt = \int_{(x_0, y_0)}^{(x, y)}-u_t(s, t)ds + \int_{(x_0, y_0)}^{(x, y)} u_s(s, t)dt = \int_{(x_0, y_0)}^{(x, y)}-sds + \int_{(x_0, y_0)}^{(x, y)}tdt = \frac{1}{2}(-x^2) + \frac{1}{2}y^2 = -\frac{1}{2}(x^2 + y^2)$ which means that the harmonic conjugate $v(x, y) = -\frac{1}{2}(x^2 - y^2).$ This therefore means that $f(z) = xy + i(-\frac{1}{2}(x^2 - y^2)) = -\frac{i}{2}z^2.$
+
+        \item
+
+        Given that $u(x, y) = y^3 - 3x^2y$ we can see that this is harmonic because $u_{xx} + u_{yy} = -6y + 6y = 0$. Then to find the harmonic conjugate $v$, we can do $v(x, y) = \int_{(x_0, y_0)}^{(x, y)}-u_t(s, t)ds + u_s(s, t)dt = \int_{(x_0, y_0)}^{(x, y)}-u_t(s, t)ds + \int_{(x_0, y_0)}^{(x, y)} u_s(s, t)dt = \int_{(x_0, y_0)}^{(x, y)}-(3t^2 - 3s^2)ds + \int_{(x_0, y_0)}^{(x, y)}(-6st)dt = -3xy^2 + x^3.$ Therefore, this gives that $f(z) = y^3 - 3x^2y + i(-2xy^2 + x^3) = iz^3$
+        
+    \end{enumerate}
+    
+\end{enumerate}
+
+\end{document}

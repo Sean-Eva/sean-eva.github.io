@@ -1,0 +1,179 @@
+\documentclass[11pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Packages
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+%\usepackage{hyperref}
+%\usepackage{mathrsfs}
+%\usepackage{color}
+%\usepackage{bm}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%amsthm settings
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem{claim}{Claim}
+\newtheorem{definition}{Definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: mathbb
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\A}{\mathbb A}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: greek
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\g}{\gamma}
+\renewcommand{\d}{\delta}
+\newcommand{\e}{\epsilon}
+\renewcommand{\l}{\lambda}
+
+\begin{document}
+
+\noindent {\bf MATH 4317 Homework 6}  \hfill Due Friday, 3/11/2022 at 11PM to Gradescope
+
+\bigskip
+
+\noindent Homework guidelines: 
+\begin{itemize}
+\item Each problem I assign, unless otherwise stated, is asking you to prove something. Give a full mathematical proof using only results from class or Wade.
+\item Submit a PDF or JPG to gradescope. The grader has $\sim 250$ proofs to grade:  please make his job easier by submitting each problem on a different page. 
+\item If you submit your homework in Latex, you get 2\% extra credit. 
+\end{itemize}
+
+\subsection*{Problems (5 total, 10 pts each)}
+
+\begin{problem}
+Consider, for each $p \in \R$, the series
+\[
+S_p := \sum_{k = 1}^\infty \frac{(-1)^{k + 1} }{k (1 + k)^{p/2}} \,. 
+\]
+For which values of $p \in \R$ is the series $S_p$ convergent? For each $p$ for which $S_p$ is convergent, determine whether $S_p$ is absolutely or conditionally convergent. Provide rigorous arguments for all statements. 
+\end{problem}
+
+%\begin{problem}
+%Prove that the series
+%\[
+%\sum_{k = 1}^\infty \frac{k!}{k^k} 
+%\]
+%converges. In your proof, you may freely use the following version of Stirling's approximation: there exist constants $C_1, C_2 > 0$ such that 
+%\[
+%C_1 \leq \frac{k!}{k^{k + 1/2} e^{- k}} \leq C_2 \quad \text{ for all } k \in \N \,. 
+%\]
+%\end{problem}
+
+\begin{proof}
+We will first rewrite $S_p := \sum_{k = 1}^\infty \frac{(-1)^{k + 1} }{k (1 + k)^{p/2}}$ as $S_p := \sum_{k = 1}^\infty (-1)^{k+1} * \frac{1}{k(1+k)^{p/2}}.$ Then by the alternating series test we know a series of the form $\sum_{k=1}^\infty (-1)^ka_k$ if $a_k \downarrow$ as $k\rightarrow \infty$ converges; therefore, for $S_p$ it will converge when $\frac{1}{k(1+k)^{p/2}} \downarrow 0$ as $k\rightarrow \infty$. For $p > 0$ we have $\frac{1}{k(1+k)^{p/2}}$ will allows us to use the comparison test with $\frac{1}{k^n}$ where $n > 1$ since $p > 0$ which means that by the p-test this series will converge and that $\sum_{k = 1}^\infty \frac{(-1)^{k + 1} }{k (1 + k)^{p/2}}$ will converge absolutely since $\sum_{k = 1}^\infty |\frac{(-1)^{k + 1} }{k (1 + k)^{p/2}}| = \sum_{k = 1}^\infty \frac{1}{k (1 + k)^{p/2}}$ as we were using. For $p \in (-2, 0]$ we have that by the alternating series test, that we need to evaluate $\frac{1}{k(1+k)^{p/2}}$ and we can see that $\frac{1}{k(1+k)^{p/2}} \downarrow 0$ as $k\to \infty$ therefore, we know that the series would converge. However, this series does not converge absolutely on this range, if we consider the series $\sum_{k = 1}^\infty \frac{1}{k (1 + k)^{p/2}}$ with negative $p$ as it is in this range we get that $\sum_{k = 1}^\infty \frac{(k+1)^{p/2}}{k}$ for $p\in (-2, 0]$. If we consider $p=0$ we get $\sum_{k = 1}^\infty \frac{1}{k}$ which is the harmonic series which we already know is divergent. For other values $p\in (-2, 0)$ we get we get similarly divergent series. Lastly, for $p \in (-\infty, -2)$ this series diverges because $\frac{1}{k(1+k)^{p/2}}$ does not approach 0. Therefore, this series converges absolutely for $p > 0$, converges conditionally for $p\in (-2, 0]$, and the diverges for $p \leq -2$.
+\end{proof}
+
+\pagebreak
+Given a (possibly divergent) 
+series $\sum_{k = 1}^\infty a_k$ with partial sums $s_n, n \geq 1$,  
+the \emph{Cesaro averages} are the sequence of values $\sigma_n$ given
+by 
+\[
+\sigma_n = \frac{s_1 + \cdots + s_n}{n} \,. 
+\]
+We say that $S$ is \emph{Cesaro summable} to some value $L$ if 
+$\lim_n \sigma_n = L$. 
+\begin{problem}
+Prove the following version of Tauber's theorem: if $a_k \geq 0$ for all $k \geq 1$ and $\sum_1^\infty a_k$ is Cesaro-summable to some $L$, then $\sum_1^\infty a_k$ converges to $L$. 
+
+{\it Hint: It will be useful to first prove that 
+\[
+\sigma_n = \sum_{k = 1}^{n} \left( 1 - \frac{k-1}{n} \right) a_k
+\]
+for all $n$.}
+\end{problem}
+
+\textbf{Claim} $\sigma_n = \sum_{k = 1}^{n} \left( 1 - \frac{k-1}{n} \right) a_k$
+\begin{proof}
+Let us consider the value of $\sigma_n = \frac{s_1 + s_2 + ... + s_n}{n} = \frac{1}{n}(s_1+s_2+...+s_n) = \frac{1}{n}(\sum_{k=1}^1a_k + \sum_{k=1}^2a_k + ... + \sum_{k=1}^na_k) = \frac{1}{n} ((a_1) + (a_1 + a_2) + ... (a_1 + a_2 + ... + a_n)) = \frac{1}{n} (n(a_1) + (n-1)(a_2) + ... 2(a_{n-1}) + a_n) = a_1 + \frac{(n-1)a_2}{n} + ... + \frac{2a_{n-1}}{n} + \frac{a_n}{n} = (a_1 - 0) + (a_2 - \frac{(2-1)a_2}{n}) + (a_3-\frac{(3-1)a_3}{n}) + ... (a_n - \frac{(n-1)a_n}{n}) = \sum_{k=1}^n(1-\frac{k-1}{n})a_k$. Therefore, we have that $\sigma_n = \sum_{k = 1}^{n} \left( 1 - \frac{k-1}{n} \right) a_k$ as desired.
+\end{proof}
+Now we will prove the original statement.
+\begin{proof}
+Let assumptions be as above, that is to say that $\lim_\infty \sigma_n = L$ for our series. This implies that $\lim_n\sigma_n = \lim_n \sum_{k=1}^\infty (1-\frac{k-1}{n})a_k = L$. Therefore if we take $\sum_{k=1}^\infty a_k - L = \sum_{k=1}^\infty a_k - \sum_{k=1}^\infty (1-\frac{k-1}{n})a_k = \sum_{k=1}^\infty a_k + \sum_{k=1}^\infty (\frac{k-1}{n}-1)a_k = \sum_{k=1}^\infty a_k + (\frac{k-1}{n} - 1)a_k = \sum_{k=1}^\infty a_k(1 + \frac{k-1}{n}-1) = \sum_{k=1}^\infty a_k(\frac{k-1}{n}).$ Therefore, we know by Dirichlet's test, since $\frac{k-1}{n} \downarrow 0$ as $k\to \infty$ implies that the whole series converges. Therefore, this all implies that $\sum_{k=1}^\infty$ converges to $L.$
+\end{proof}
+
+\pagebreak
+\begin{problem}
+Given the formula $\sum_{k = 1}^\infty \frac{1}{k^2} = \frac{\pi^2}{6}$, find the exact value of 
+\[
+\sum_{k = 1}^\infty \frac{1}{(2 k - 1)^2} 
+\]
+and prove your answer. 
+\end{problem}
+
+\begin{proof}
+We know that $\sum_{k=1}^\infty \frac{1}{k^2} = 1 + \frac{1}{2^2} + \frac{1}{3^2} + ...$ and that $\sum_{k = 1}^\infty \frac{1}{(2 k - 1)^2} = 1 + \frac{1}{3^3} + \frac{1}{5^2} + ...$, so we will recognize that $\sum_{k = 1}^\infty \frac{1}{(2 k - 1)^2}$ are the odd terms of $\sum_{k = 1}^\infty \frac{1}{k^2}$. Then,
+\begin{align*}
+    \sum_{k = 1}^\infty \frac{1}{k^2} &= \sum_{k = 1}^\infty \frac{1}{2k^2} + \sum_{k = 1}^\infty \frac{1}{(2 k - 1)^2}\\
+    \sum_{k = 1}^\infty \frac{1}{k^2} &= \frac{1}{4} \sum_{k = 1}^\infty \frac{1}{k^2} + \sum_{k = 1}^\infty \frac{1}{(2 k - 1)^2}\\
+    \frac{3}{4} \sum_{k = 1}^\infty \frac{1}{k^2} &= \sum_{k = 1}^\infty \frac{1}{(2 k - 1)^2} \\
+    \sum_{k = 1}^\infty \frac{1}{(2 k - 1)^2}  &= \frac{3}{4} * \frac{\pi^2}{6}\\
+    \sum_{k = 1}^\infty \frac{1}{(2 k - 1)^2}  &= \frac{\pi^2}{8}.
+\end{align*}
+\end{proof}
+
+\pagebreak
+\begin{problem}
+Let $f_n, f : E \to \R, n \geq 1$ be continuous functions defined on some set $E \subset \R$. Show that $f_n$ converges to $f$ uniformly on $E$ if and only if 
+\[
+\lim_{n \to \infty} \sup_{x \in E} | f_n(x) - f(x)| = 0 \, . 
+\]
+\end{problem}
+
+\begin{proof}
+Let assumptions be as above. Let us assume that $f_n$ converges to $f$ uniformly on $E$, that is to say that for every $\epsilon > 0$ there is an $N\in \N$ such that $n \geq N$ implies $|f_n(x) - f(x)| < \frac{\epsilon}{2}$ for all $x\in E.$ This implies that $0 \leq \sup|f_n(x) - f(x)| \leq \frac{\epsilon}{2} < \epsilon$ for all $n > N$. It then follows that $\lim_{n\to \infty} \sup|f_n(x)-f(x)| = 0.$\\
+Conversely, suppose that $\lim_{n \to \infty} \sup_{x \in E} | f_n(x) - f(x)| = 0$, and let $\epsilon > 0.$ We want to show that there exists $N \in \N$ such that $n > N$ implies that $|f_n(x) - f(x)| < \epsilon$ for all $x\in E$. Since $\lim_{n \to \infty} \sup_{x \in E} | f_n(x) - f(x)| = 0$, there exists $N$ such that $n > N$ implies that $\sup|f_n(x)-f(x)| - 0 = \sup|f_n(x)-f(x)| < \frac{\epsilon}{2}.$ Then, by the definition of a supremum, we have that $|f_n(x) - f(x)| \leq \frac{\epsilon}{2}<\epsilon$ for $x \in E$ and $n > N$ as desired.\\
+Therefore, for $f_n, f: E\to \R, n\geq 1$ where $f_n$ is a continuous function on $E$, then $f_n$ converges to $f$ uniformly on $E$ if and only if $\lim_{n \to \infty} \sup_{x \in E} | f_n(x) - f(x)| = 0.$
+\end{proof}
+
+\pagebreak
+\begin{problem}
+Let $f_n, f, g : [a,b] \to \R, n \geq 1$ be functions. Assume the following: 
+\begin{itemize}
+	\item[(a)] there exists $M > 0$ such that $|f_n(x)| \leq M$ for all $n \geq 1, x \in [a,b]$ (i.e., $(f_n)$ is \emph{uniformly bounded}); 
+	\item[(b)] $f_n \to f$ uniformly on any closed subinterval $[c,d] \subset (a,b)$; 
+	\item[(c)] $g$ is continuous on $[a,b]$ and satisfies $g(a) = g(b) = 0$. 
+\end{itemize} 
+Prove that under these conditions, $f_n g \to f g$ uniformly. 
+\end{problem}
+
+\begin{proof}
+Let assumptions be as above. Let us define $h = f_ng$; therefore, we want to show that $h$ converges uniformly to $fg$. Let $\epsilon > 0,$ since $g$ is continuous on $[a, b]$, it has a maximum value $C$ on $[a,b]$. There is $N \in \R$ such that if $n > N$ and $x\in [a,b]$ then $|f_n-f| < \frac{\epsilon}{C}.$ So if $n > N$ and $x\in [a, b]$ then $|h -fg| = |f_ng-fg| = |g||f_n-f| < C(\frac{\epsilon}{C} = \epsilon.$ Therefore, $f_ng$ converges uniformly to $fg$ as desired.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathcomp}
+\usepackage{amsmath}
+\usepackage{natbib}
+
+\newtheorem{ishaan}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\title{Homework 3}
+\author{Sean Eva}
+\date{February 8, 2021}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item
+    
+    Consider the definition of $\mathbb{C}^n$, that is to say that it is composed of n-tuples of complex numbers. Therefore, it would be simple to define a basis $C$ over $\mathbb{C}^n$ as $C=\{ c_1, c_2, ..., c_n\}$ where each $c_k = a_k+b_ki$ for $a_k, b_k\in \mathbb{C}$ therefore we can rewrite the basis $C$ as $C=\{a_1+b_1i, ..., a_n+b_ni\}$. We could then separate the components of $C$ to be a similar basis of $\mathbb{C}$ over $\mathbb{R}$. We will name this new basis $V = \{a_1, ..., a_n, b_1i, ..., b_ni\}$. This basis $V$ is a basis for $\mathbb{C}^n$ that also is over $\mathbb{R}$.
+    
+    \item 
+    
+    \begin{proof}
+    Let $\beta := \{\delta^k: k\in\mathbb{Z}\}$. Consider, for some sequence $(x_n)$ such that $x_n=0$ for all but finitely many $n$. We could write this as a linear combination of the elements of beta. Consider the elements of $(x_n)$ that are not equal to $0$, in order to create a linear combination of $\delta^k$ where k is equal to the index of the location of the non-zero values within $(x_n)$, of course scaled to the proper non-zero value. Therefore, one could create any $(x_n)$ by using linear combinations of elements from $\beta$. It is important for there for be finitely many n because otherwise the definition of $\beta$ would not hold as being a basis, because it would have infinitely many elements.
+    \end{proof}
+    
+    \item
+    
+    Consider the vector space $V_{n, b}$ over the polynomials $f(z)=a_nz^n+...+a_1z+a_0$ with complex coefficients such that $f(b)=0$. That is to say that $a_nb^n+...+a_1b+a_o=0$ or similarly $a_0 = -(a_nb^n+...+a_1b)$, we can therefore replace the value of $a_0$ in $f(z)$. Thus, $f(z)=(a_nz^n+...+a_1z)-(a_nb^n+...+a_1b)=a_n(z^n-b^n)+...a_1(z-b)$. Now consider the set $A={(z-b), (z^2-b^2),..., (z^n-b^n)}$. If we want to show that the set $A$ is a basis for $V_{n, b}$ then we must show that $A$ is a spanning set and that $A$ is a linearly independent set. In order to show that $A$ is a spanning set, we can look at the construction of the equation of $f(z)=(a_nz^n+...+a_1z)-(a_nb^n+...+a_1b)=a_n(z^n-b^n)+...+a_1(z-b)$. This $f(z)$ shows that all values can explicitly be written as a linear combination of elements of $A$. Therefore, $A$ is a spanning set. To prove that $A$ is a linearly independent set, let $k_1, k_2, ..., k_n$ such that $k_1(z-b)+k_2(z^2-b^2)+...+k_n(z^n-b^n)=0$. Therefore, $(k_1z+k_2z^2+...+k_nz^n)-(k_1b+k_2b^2+...+k_nb^n)=0$. This implies that $k_1=0, k_2=0, ..., k_n=0$. Thus, $A$ is a linearly independent set. Since $A$ is both a spanning set and a linearly independent set, it holds that $A$ forms a basis for $V_{n, b}$
+    
+    \item
+    
+    \begin{enumerate}
+        \item 
+        
+        Since this is a moving average filter, before there are $m$ points of data, the moving average doesn't have enough information to compute a proper average for the previous $m$ data values since there is no enough data for this to be calculated. Therefore, the original graph and the filtered graph look so much different because the filtered graph hasn't had enough data to properly be created yet. The filtered graph has a line going up towards the original graph because it is calculating the moving average by using $0$ for unused data portions before the original graph begins.
+        
+        \item
+        
+        Increasing the value of $m$ decreases the affect on the moving average caused by the noise. However, while it does decrease the affect, it does not completely eliminate the noise. As $m$ approaches $\infty$ it is likely that the affect of the noise will become almost untouchable, but will technically never be gone.
+        
+        \item
+        
+        It would not make a sizable difference. Anything that could become exaggerated when two graphs are superimposed onto each other will be represented in their moving averages and would therefore also show when the moving averages are superimposed onto each other.
+        
+    \end{enumerate}
+    
+\end{enumerate}
+
+\end{document}

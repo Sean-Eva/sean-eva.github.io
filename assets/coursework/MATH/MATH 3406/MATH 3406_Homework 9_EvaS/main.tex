@@ -1,0 +1,132 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathcomp}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage{array}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{tabularx}
+
+\newtheorem{ishaan}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\title{Homework 9}
+\author{Sean Eva}
+\date{April 2021}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item 
+    
+    Part 1: Consider the following theorem,
+    \begin{ishaan}
+    Let $T$ be a normal operator on a finite dimensional inner product space $V$. Let $x$ be an eigenvector of $T$ corresponding to eigenvalue $\lambda$ of $T$. Then $x$ is an eigenvector of $T^*$ corresponding to eigenvalue $\lambda'$.
+    \end{ishaan}
+    \begin{proof}
+    Let $u=T-\lambda I$. Then, $uu^*=u^*u$, then $u$ is normal. Also,
+    \begin{align*}
+        ||u^*x||^2&=<u^*x,u^*x>\\
+        &=<x,uu^*x>\\
+        &=<x,u^*ux>\\
+        &=<ux,ux>\\
+        &=||ux||^2.
+    \end{align*} This implies that $||u^*x||=0 \iff ||ux||=0.$ So, $0=||(T^*-\lambda'I)x||\iff||(T-\lambda I)x||=0.$ This implies that $x$ is an eigenvector of $T$ corresponding to eigenvalue $\lambda$ iff $x$ is an eigenvector of $T^*$ corresponding to eigenvalue $\lambda'.$
+    \end{proof}
+    In other words, we can say that eigenvectors of $A$ and $A^*$ are equal.\\
+    Part 2: Let $Tx=\lambda x$ and $ty=\mu y$ for $\lambda \neq \mu.$ Consider,
+    \begin{align*}
+        \lambda <x,y>&=<\lambda x,y>\\
+        &=<Tx,y>\\
+        &=<x,T^*y>\\
+        &=<x,\bar{\mu}y>\\
+        &=\mu<x,y>.
+    \end{align*} Since $\lambda \neq \mu \Rightarrow <x,y>=0 \Rightarrow x\perp y.$ Therefore, we can say that there is an orthonormal basis in $\mathbb{C}^n$ such tat each vector in the basis is an eigenvector of both $A$ and $A^*.$
+    
+    \item
+    
+    \begin{enumerate}
+        \item 
+        
+        We know that $A$ is normal iff it is diagonalizable by some unitary matrix $U$. Given that $U$ is unitary, $UU^*=U^*U=I$ which therefore means that $U^{-1}=U^*$. Therefore, $A=U^{-1}DU$ where $D$ is a diagonal matrix containing the eigenvalues of $A$ along the diagonal. Given that the the eigenvalues of $A$ are real. Then,
+        \begin{align*}
+            A^* &= (U^*DU)^*\\
+            &=U^*D^*U\\
+            &=U^*DU\\
+            &=A.
+        \end{align*} Therefore, $A^*=A$ which means that $A$ is self-adjoint.
+        
+        \item
+        
+        ($\Rightarrow$): Let $A$ be a normal matrix that is to say that $AA^*=A^*A=I$. Then, $Au=\lambda u$, and by taking the conjugate transpose, $u^*A^*=\lambda^*u^*$. If we multiply both those statements together. 
+        \begin{align*}
+            u^*A^*Au&=\lambda^*u^*\lambda u\\
+            u^*Iu&=(\lambda^*\lambda)(u^*u)\\
+            ||u||^2&=|\lambda|^2||u||^2\\
+            |\lambda|^2&=1.
+        \end{align*} Therefore, the eigenvalues of $A$ have absolute value of $1$. Thus, if $A$ is a normal, unitary matrix, then it has eigenvalues with absolute value $1$.\\
+        ($\Leftarrow$): Let $A$ be a normal matrix with eigenvalues that have absolute value equal to $1$. Then, $Au=du$ and $u^*A^*=d^*u^*$. Then,
+        \begin{align*}
+            u^*A^*Au&=\lambda^* \lambda u^*u\\
+            u^*(A^*A)u&=|\lambda|^2 ||u||^2\\
+            u^*(A^*A)u&=||u||^2.
+        \end{align*} This then implies that $A^*A=AA^*=I$ which means that $A$ is unitary. Thus, if $A$ is a normal matrix whose eigenvalues have absolute value $1$, then it is also unitary.\\
+        Therefore, a normal matrix $A$ is unitary iff its eigenvalues have absolute value $1$.
+        
+        \item
+        
+        If the normal matrix is Hermitian, then its eigenvalues must be real, but if the normal matrix is not Hermitian, then this restriction does not apply.
+        
+    \end{enumerate}
+    
+    \item
+    
+    \begin{enumerate}
+        \item 
+        
+        Given that $A$ is normal, that is to say that $AA^*=A^*A.$ Let $P(x)=Ax$. Then, 
+        \begin{align*}
+            A^2&=A\\
+            A&=A^*\\
+            A^*A&=A^*\\
+            (A^*A)^*&=A^*\\
+            A^*A&=A\\
+            (I-A^*)A&=0\\
+            (I-A)^*A&=0\\
+            y^*(I-A)^*Ax&=0\\
+            (Ax,(I-A)y)&=0\\
+            Ax &\perp (I-A)y\\
+            Ax &\perp Col(I-A)\\
+            (I-A)x &\in Col(I-A)
+        \end{align*} for all $x,y\in \mathbb{C}^n$. Therefore, if we say that $P=(I-A)$ then $P$ is the orthogonal projection of $\mathbb{C}^n$ onto the column space of $A.$
+        
+        \item
+        
+        Consider the matrix, $B=\begin{bmatrix}
+        0 & 1\\
+        0 & -1
+        \end{bmatrix}$. Since, $B$ has two distinct eigenvalues, $B$ is diagonalizable. Additionally, $B^2=B$. However, $BB^T=\begin{bmatrix}
+        1 & -1\\
+        -1 & 1
+        \end{bmatrix}$ and $B^TB=\begin{bmatrix}
+        0 & 0\\
+        0 & 2
+        \end{bmatrix} \neq BB^T$. Therefore, $B$ is not normal.
+        
+    \end{enumerate}
+    
+    \item
+    
+    $cond(B)=4.1804e+16,\\rank(B)=1, \\norm(B-U(1:m,1)*S(1,1)*V(1:5,1)')=6.6385e-14$\\
+    As the value of $k$ increases, the noise size approaches the value of the compression error. Particularly the values for when $k=19, k=20$ the rounded values are the same. That means that when the noise is a very small then the SVD compression process is largely unaffected; however, when the noise is larger, then the SVD compression is affected by very noticeable amounts (the value of $N$ is $11.3416$ when $k=1$).
+    
+\end{enumerate}
+
+\end{document}

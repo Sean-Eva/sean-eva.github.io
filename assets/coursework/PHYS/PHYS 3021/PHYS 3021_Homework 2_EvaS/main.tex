@@ -1,0 +1,112 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathcomp}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage{array}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{tabularx}
+
+\newtheorem{ishaan}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\title{Homework 2}
+\author{Sean Eva}
+\date{September 2021}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item 
+    
+    \begin{enumerate}
+        \item 
+        
+        If the hydrogen begins are the $n=2$ state , it begins with $E_2=13.6(1-\frac{1}{2^2})=10.2$eV. In order for the hydrogen to become ionized it needs to have $13.6$eV of energy. This means that it needs $13.6-10.2=3.4$eV of energy to become ionized.
+        
+        \item
+        
+        Formula: $E=hv=\frac{hc}{\lambda}$ where $h$ is Planck's Constant.\\
+        \begin{align*}
+            3.4eV &= 5.44*10^{-19}\\
+            5.44*10^{-19} &= 6.625*10^{-34}v\\
+            8.211*10^{14}Hz &= v\\
+            c &= v\lambda\\
+            3*10^8 &= (8.211*10^{14})\lambda\\
+            365\text{nm} &= \lambda
+        \end{align*}
+        
+    \end{enumerate}
+    
+    \item
+    
+    \begin{enumerate}
+        \item 
+        
+        \begin{align*}
+            \Delta E &= \frac{hc}{\lambda}\\
+            \lambda &= \frac{hc}{\Delta E}\\
+            \frac{1}{\lambda} &= RZ^2(\frac{1}{m^2}-\frac{1}{n^2})\\
+            \Delta E &= RhcZ^2(\frac{1}{m^2}-\frac{1}{n^2})\\
+            \Delta E &= (1.097*10^7)(3.625*10^{-34})(3*10^8)(\frac{1}{1^2}-\frac{1}{4^2})\\
+            \Delta E &= 1.118*10^{-18}\text{J} = 6.988\text{eV}
+        \end{align*}
+        
+        \item
+        
+        Since the energy for emission is the same as the energy for absorption the photon would need the same amount of energy of $6.998$eV.
+        
+    \end{enumerate}
+    
+    \item
+    
+    Energy to ionize a hydrogen atom: $13.6$eV. The energy at $n=3$ is $E_n = 13.6\text{eV}(1-\frac{1}{n^2}) = 13.6(1-\frac{1}{9}) = 12.1\text{eV}$. Therefore, the photon would need $13.6-12.1=1.5\text{eV}$.\\
+    \begin{align*}
+        1.5*(1.6*10^{-19}) &= \frac{(3.625*10^{-34})(3*10^8)}{\lambda}\\
+        453\text{nm} &= \lambda
+    \end{align*}
+    
+    \item
+    
+    Rydberg Formula: $\frac{1}{\lambda}=RZ^2(\frac{1}{m^2}-\frac{1}{n^2})$
+    \begin{align*}
+        \frac{1}{468.6*10^{-9}} &= (1.097*10^{7})(2)^2(\frac{1}{m^2}-\frac{1}{n^2})\\
+         &= (\frac{1}{m^2}-\frac{1}{n^2}).
+    \end{align*} If $m=3$ and $n=4$. Then this equality is true. Therefore, this electronic transition is the Paschen $\alpha$ line.
+    
+    \item
+    
+    The minimum amount of energy to excite the atom would be to move it from the ground state to $n=2$. The amount of energy to cause this change would be $10.2$eV.
+    
+    \item
+    
+    \begin{enumerate}
+        \item 
+        
+        $5.1\text{eV} = 8.16*10^{-19}$
+        \begin{align*}
+            8.16*10^{-19} &- \frac{1}{2}mv^2\\
+            &= \frac{1}{2}(9.11*10^{-31}*v^2\\
+            1.33*10^6 \frac{m}{s} &= v.
+        \end{align*}
+        
+        \item
+        
+        \begin{align*}
+            8.16*10^{-19} &- \frac{1}{2}mv^2\\
+            &= \frac{1}{2}(1.67*10^{-27}*v^2\\
+            9.77*10^8 \frac{m}{s} &= v.
+        \end{align*}
+        
+    \end{enumerate}
+    
+\end{enumerate}
+
+\end{document}

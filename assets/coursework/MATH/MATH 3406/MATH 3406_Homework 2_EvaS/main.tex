@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathcomp}
+\usepackage{amsmath}
+\usepackage{natbib}
+
+\newtheorem{ishaan}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\title{Homework 2}
+\author{Sean Eva}
+\date{February 1, 2021}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item
+    
+    \begin{proof}
+    Base: Consider that matrix $A$ is a $1 \times 1$ matrix. Then $A=\begin{bmatrix}
+    -a_o
+    \end{bmatrix}$. Then $\lambda I - A = \begin{bmatrix}
+    \lambda + a_0
+    \end{bmatrix}$. Therefore, $det(\lambda I - A)= \lambda +a_0$. This shows that the general form $\lambda^n+a_{n-1}\lambda^{n-1}+...+a_1\lambda+a_0$ holds for $n=1$.\\ Additionally for $n = 2$, $A = \begin{bmatrix}
+    0 & 1\\
+    -a_0 & -a_1
+    \end{bmatrix}$ and $\lambda I - A = \begin{bmatrix}
+    \lambda & -1\\
+    a_0 & \lambda + a_1
+    \end{bmatrix}$. Then $det(\lambda I - A) = \lambda^2 + \lambda a_1 + a_0$. Therefore the statement is also true for $n = 2$. We can notice that the matrix for $n = 1$ is present within the matrix for $n = 2$ as the entry in $A_{2, 2}$ as $-a_1$. To find the new $det(\lambda I - A)$ 
+    Inductive Step: Let the statement be true for matrix $A$ of dimension $m\times m$. That is to say that $det(\lambda I - A) = \lambda^m + a_{n-1} \lambda^{n-1} + ... + a_1 \lambda + a_0$. Then for a matrix $B$ of dimension $m + 1 \times m + 1$. We can notice, such as was done during the base case, that the matrix $A$ is present from $A_{2, 2}$ to $A_{m+1, m+1}$ simply increase all of the indexes for $a_k$ for all $k$ in the submatrix of $A$ within $B$ to $a_{k + 1}$, we will denote this as $A_{k+1}$ whose determinan will be $det(A_{k+1}) = \lambda^m + a_{n} \lambda^{n-1} + ... + a_2 \lambda + a_1$. This allows us to use the $det(A)$ to help solve $det(B)$. Therefore $det(B) = \lambda * det(A_{k+1}) - (-1) * a_0 = \lambda * (\lambda^m + a_{n} \lambda^{n-1} + ... + a_2 \lambda + a_1) + a_0 = \lambda^{m + 1} + a_m \lambda^{m} + ... + a_1 \lambda + a_0$. Therefore, the statement is true for $n = m + 1$ given that it is true for $n = m$. So the statement is true for $n\in \mathbb{N}$
+    \end{proof}
+    
+    \item
+    
+    $AB = \begin{bmatrix}
+    a_1 & a_2 & ... & a_n
+    \end{bmatrix} \begin{bmatrix}
+    b_1 & b_2 & ... & b_n
+    \end{bmatrix} = \begin{bmatrix}
+    Ab_1 & Ab_2 & ... & Ab_n
+    \end{bmatrix}$. Suppose $B$ is singular, then when $AB$ is calculated, it too will be singular. Similarly, if $B$ is non-singular $AB$ will be non-singular. Therefore, $rank(AB) \leq rank(B)$. If $A$ is singular then $rank(AB) \leq rank(A)$. This means that $rank(AB)$ is capped by $rank(A)$ unless $rank(B)$ is lower. combining those two conditions, then $rank(AB)$ is capped by the smaller of $rank(A)$ and $rank(B)$. Therefore, $rank(AB) \leq min(rank(A), rank(B))$.
+    
+    \item
+    
+    \begin{proof}
+    \begin{align*}
+        A^2 + I &= 0\\
+        A^2 &= -I\\
+        det(A^2) &= det(-I).\\
+    \end{align*}
+    Since the $det(A^2) = det(A) * det(A) = det(A)^2$. This means that for any $det(A)$ it will be positive, therefore, $det(-I)$ must also be positive. The $det(-I)$ is equal to the product along the main diagonal, therefore the dimension of $n$ must be even.
+    \end{proof}
+    Consider $A = \begin{bmatrix}
+    i & 0 & 0\\
+    0 & i & 0\\
+    0 & 0 & i\\
+    \end{bmatrix}$ then $A^2+I=0$ and $n=3$ which is not even.
+    
+    \item
+    
+    It is better to store the values of $L, U, P$ than it is to store the entries of $A^{-1}$. While it takes up less individual values to store the entries of $A^{-1}$ by the nature of it only being a single $n\times n$ matrix. However, the data that would be stored for the entries $L, U, P$ are almost undeniably much more trivial. $P=I_n$. $U$ is the matrix where one row over the main diagonal entries, there is a diagonal of $-1$, then along the main diagonal, the values follow the pattern $\frac{row+1}{col}$ with all other entries equaling $0$. Similarly for the matrix $L$, the entries along the main diagonal are all $1$, then one row below the main diagonal the entries follow the pattern $-\frac{col}{row}$ with all other entries equaling $0$. So while there are $3$ times the number of entries to record, there is a pattern that could be stores to make reproduction much more trivial for larger values of $n$.
+    
+\end{enumerate}
+
+\end{document}

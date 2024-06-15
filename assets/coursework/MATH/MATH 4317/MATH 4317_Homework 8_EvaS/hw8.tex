@@ -1,0 +1,149 @@
+\documentclass[11pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Packages
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+%\usepackage{hyperref}
+%\usepackage{mathrsfs}
+%\usepackage{color}
+%\usepackage{bm}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%amsthm settings
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem{claim}{Claim}
+\newtheorem{definition}{Definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: mathbb
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\A}{\mathbb A}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: greek
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\g}{\gamma}
+\renewcommand{\d}{\delta}
+\newcommand{\e}{\epsilon}
+\renewcommand{\l}{\lambda}
+\newcommand{\bx}{{\bf x}}
+
+\begin{document}
+
+\noindent {\bf MATH 4317 Homework 8}  \hfill Due Friday, 4/8 at 11PM to Gradescope
+
+\bigskip
+
+\noindent Homework guidelines: 
+\begin{itemize}
+\item Each problem I assign, unless otherwise stated, is asking you to prove something. Give a full mathematical proof using only results from class or Wade.
+\item Submit a PDF or JPG to gradescope. The grader has $\sim 250$ proofs to grade:  please make his job easier by submitting each problem on a different page. 
+\item If you submit your homework in Latex, you get 2\% extra credit. 
+\end{itemize}
+
+
+\subsection*{Problems (5 total, 10 pts each)}
+
+\begin{problem}
+For each $p \in \N$ and $\bx = (x_1, \cdots, x_n) \in \R^n$, define
+\[
+\| \bx\|_p := \left( \sum_{i = 1}^n | x_i|^p\right)^{1/p} \,. 
+\]
+Prove that for each such $\bx$, we have that
+\[
+\lim_{p \to \infty} \| \bx\|_p = \| \bx\|_\infty \, , 
+\]
+where 
+\[
+\| \bx \|_\infty := \max\{ |x_i| : 1 \leq i \leq n \} \, .
+\]
+
+You may freely use the following facts: (i) if $a \in (0,\infty)$, then $\lim_{m \to \infty} {a}^{1/m} = 1$; and (ii) if $a \in (0,1)$ then $\lim_{m \to \infty} a^m = 0$. 
+\end{problem}
+
+\begin{proof}
+Let assumptions be as the above problem statement. We can write $\lim_{p\to \infty}\|x\|_p = \lim_{p \to \infty}(\sum_{i=1}^n|x_i|^p)^{1/p}.$ Consider if $x_1 = x_2 = ... = x_n$ then we get $(nx_i^p)^{1/p} = (n)^{1/p}x_i$ and since $n \geq 1$ then $n^{1/p} \to 1$ as $n \to \infty$. Therefore, $\lim_{p\to \infty}\|x\|_p = x_i$ if $x_1 = x_2 = ... = x_n = \max\{|x_i|: 1 \leq i \leq n\}$. Now consider if $x_1 > x_2, x_3 , ..., x_n$ without loss of generality. We have that $(x_1^p + x_2^p + ... + x_n^p) ^{1 / p} = (1 + \frac{x_2^p}{x_1^p} + ... + \frac{x_n^p}{x_1^p})^{1/p}x_1$ and similarly since $(1 + \frac{x_2^p}{x_1^p} + ... + \frac{x_n^p}{x_1^p}) \geq 1$ we have that $(1 + \frac{x_2^p}{x_1^p} + ... + \frac{x_n^p}{x_1^p}) \to 1$ as $p \to \infty$ which further implies that $(1 + \frac{x_2^p}{x_1^p} + ... + \frac{x_n^p}{x_1^p})^{1/p}x_1 \to x_1$  as $p \to \infty$ which means that $\lim_{p\to \infty}\|x\|_p = \max\{|x_i|: 1 \leq i \leq n\}.$ Since this is true for both cases then we know that the original statement that $\lim_{p \to \infty}\|x\|_p = \|x\|_\infty$ as desired. 
+\end{proof}
+
+\pagebreak
+\begin{problem}
+Prove that the set
+\[
+U = \{ \bx \in \R^n : \| \bx \|_1 < 1\}
+\]
+is open. You may freely use the triangle inequality for $\| \cdot \|_1$, namely that
+\[
+\| \bx + {\bf y} \|_1 \leq \| \bx\|_1 + \| {\bf y}\|_1 \, \quad \text{ for all } \bx, {\bf y} \in \R^n \, , 
+\]
+as well as the fact (Remark 8.7 in Wade) that $\| \bx \| \leq \| \bx\|_1 \leq \sqrt{n} \| \bx\|$ for all $\bx \in \R^n$. 
+\end{problem}
+
+\begin{proof}
+Let $U = \{x \in \R^n: \|x\|_1 < 1\}$. Then we can see that $\|x - y + y\|_1 \leq \|x - y\|_1 + \|y\|_1$. It follows then that $\|x\| - \|y\|\leq \|x-y\|$ by symmetry, one gets $|\|x\|-\|y\|| \leq \|x-y\|$. Therefore, this set $U$ is a continuous preimage of an open set, $[0, 1),$ which means that it is open.
+\end{proof}
+
+\pagebreak
+\begin{problem}
+Prove that $\Z \subset \R$ is closed. 
+\end{problem}
+
+\begin{proof}
+Consider the compliment to $\Z$ which we will denote $\Z^c = \cup_{k\in \Z}(k, k+1)$ which is an open set because it is a union of open sets. Therefore, since the compliment $\Z^c$ is an open subset, we know that $\Z \subset \R$ is closed.
+\end{proof}
+
+\pagebreak
+\begin{problem}
+	Let $a,b,c,d \in \R$ and assume $a < b$ and $c < d$. Prove that the set $U = (a,b) \times (c,d)$ is open. 
+\end{problem}
+
+\begin{proof}
+Let assumptions be as in the problem statement. Let $x = (x_1, x_2)$ where $a < x_1 < b$ and $c < x_2 < d$. If we let $\epsilon >  \min(x_1 - a, b - x_1, x_2 - c, d - x_2)$ which is the minimum distance from $(x_1, x_2)$ to the edge of the rectangle $(a, b) \times (c, d)$. Then the open ball $B_{\epsilon}(x_1, x_2) \subset (a, b) \times (c, d)$ which implies that $(a, b)\times (c, d)$ is an open rectangle.
+\end{proof}
+
+\pagebreak
+\begin{problem}
+Prove that the set 
+\[
+E = \{ (x,y) \in \R^2 : |y| > |x| + 2\}
+\]
+is disconnected. 
+\end{problem}
+
+\begin{proof}
+Let $E = \{(x, y) \in \R^2: |y| > |x| + 2\}$. Consider the set $U = \{(x, y) \in \R^2: |x| + 3 > |y| > |x| + 2\}$ and $V = \{(x, y) \in \R^2: |y| \geq |x| + 3\}$. For these sets, because of the way they are defined we know that $E \cap U \cap V = \emptyset, E \cap U = \emptyset$ primarily that we know that $U \cap V = \emptyset.$ Similarly if we take $U \cup V = E$ then we know that $E \subseteq U \cup V$. Lastly, we know that $E\cup U = U \neq \emptyset$ and that $E \cup V = V \neq \emptyset.$ Given these conditions we know that the set $E = \{(x, y) \in \R^2: |y| > |x| + 2\}$ is disconnected.
+\end{proof}
+
+\end{document}

@@ -1,0 +1,142 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathcomp}
+\usepackage{amsmath}
+\usepackage{natbib}
+
+\newtheorem{ishaan}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\renewcommand\qedsymbol{$\blacksquare$}
+\renewcommand{\labelenumii}{\arabic{enumii}.}
+
+\title{Homework 3}
+\author{Sean Eva}
+\date{March 2, 2021}
+
+\begin{document}
+
+\maketitle
+
+\section{Exercises from Chapter 3}
+
+\begin{enumerate}
+    \setcounter{enumi}{24}
+    \item
+    
+    Let $A$ and $B$ be two events such that $A$ and $B$ are independent. Therefore, $\mathbb{P}(A\cup B) = \mathbb{P}(A)+\mathbb{P}(B)$, $\mathbb{P}(A\cap B)=0$ which means that $A\cap B = \emptyset$. Consider, 
+    \begin{align*}
+        1_{A\cap B}(\omega) &= 
+        \begin{cases}
+        1 & x\in A\cap B\\
+        0 & x\notin A\cap B
+        \end{cases}\\
+        &=
+        \begin{cases}
+            1 & x\in A \text{ and } x\in B\\
+            0 & x\notin A\cap B
+        \end{cases}\\
+        &=
+        \begin{cases}
+            1 & x\in A\\
+            0 & x\notin A\cap B
+        \end{cases}
+        *
+        \begin{cases}
+            1 & x\in B\\
+            0 & x\notin A\cap B
+        \end{cases}\\
+        &= 1_A(\omega)*1_B(\omega).
+    \end{align*}
+    Since $A$ and $B$ are independent events, their random variables $1_A$ and $1_B$ are independent.
+    
+    \setcounter{enumi}{41}
+    \item
+    
+    $N$ could be redefined by using the indicator function for $A_1, A_2, ..., A_n$ as $1_{A_1}+1_{A_2}+...+1_{A_n}$. We could then apply the expected value of this sum to receive, $\mathbb{E}(1_{A_1}+1_{A_2}+...+1_{A_n})=\mathbb{E}(1_{A_1})+\mathbb{E}(1_{A_2})+...+\mathbb{E}(1_{A_n}) = \mathbb{P}(A_1)+\mathbb{P}(A_2)+...\mathbb{P}(A_n) = \sum_{i=1}^n(A_i)$.
+    
+\end{enumerate}
+
+\section{Problems from Chapter 3}
+
+\begin{enumerate}
+    \setcounter{enumi}{3}
+    \item 
+    
+    It is simple to see that $\mathbb{P}(x_i \leq k) = \frac{k}{N}$ as $\mathbb{P}(x_i = 1) + \mathbb{P}(x_i = 2) + ... + \mathbb{P}(x_i = k) = \frac{1}{N} + \frac{1}{N} + ... + \frac{1}{N} = \frac{k}{N}$. Therefore, $\mathbb{P}(U_n\leq k) = \mathbb{P}(x_1 \leq k) * \mathbb{P}(x_2\leq x)*...* \mathbb{P}(x_K\leq k) = (\frac{k}{N}) * (\frac{k}{N})*...*(\frac{k}{N}) = \frac{k^n}{N^n}$. Then, $\mathbb{P}(U_n = k) = \mathbb{P}(U_n \leq k) - \mathbb{P}(U_n \leq k-1) = \frac{k^n}{N^n} - \frac{(k-1)^n}{N^n} = \frac{k^n - (k-1)^n}{N^n}$
+    \begin{center}
+        $\mathbb{P}(U_n = k) = \frac{k^n - (k-1)^n}{N^n}$
+    \end{center}
+    Similarly, $\mathbb{P}(x_1 > k) = (1-\frac{k}{N})$. Then, $\mathbb{P}(V_n > k) = (1-\frac{k}{N})(1-\frac{k}{N})...(1-\frac{k}{N} = (1-\frac{k}{N})^n$. Therefore,
+    \begin{center}
+        $\mathbb{P}(V_n=k) = (1-\frac{k}{N})^n - (1-\frac{k-1}{N})^{n}$.
+    \end{center}
+    
+    \setcounter{enumi}{6}
+    \item
+    
+    \begin{align*}
+        \mathbb{E}(X_1+X_2+...+X_N) &= \mathbb{E}(\mathbb{E}(X_1+X_2+...+X_N\mid N))\\
+        &= \mathbb{E}(\mathbb{E}(\sum_{i=1}^NX_i\mid N))\\
+        &= \mathbb{E}(\sum_{i=1}^N\mathbb{E}(X_i)\mid N)\\
+        &= \mathbb{E}(\sum_{i=1}^N\mu \mid N)\\
+        &= \mathbb{E}(N\mu N)\\
+        &= \mu \mathbb{E}(N\mid N)\\
+        &= \mu \mathbb{E}(N).
+    \end{align*}
+    
+\end{enumerate}
+
+\section{Exercises from Chapter 4}
+
+\begin{enumerate}
+    \setcounter{enumi}{17}
+    \item 
+    
+    \begin{align*}
+        G_Y(s) &= \mathbb{E}(s^Y)\\
+        &= \mathbb{E}(s^kX)\\
+        &= \mathbb{E}((s^k)^X)\\
+        &= G_X(s^k).
+    \end{align*}
+    \begin{align*}
+        G_Z(s) &= \mathbb{s^Z}\\
+        &= \mathbb{E}(s^{X+k})\\
+        &= \mathbb{E}(s^Xs^k)\\
+        &= s^k\mathbb{E}(s^X)\\
+        &= s^kG_X(s).
+    \end{align*}
+    
+    \setcounter{enumi}{40}
+    \item
+    
+    Let $(B_k)_k$ be a sequence of a random variable with Bernoulli distribution such that $\mathbb{P}(B_k=1)=p \text{ for } k=1, 2, ...$. Then, $X = B_1+...+B_n$ for parameters $n, p$ and $Y= B_{n+1}+ ... + B_{n+m}$ for parameters $m, p$. Therefore, $X+Y = B_1 + ... + B_n + B_{n+1}+ ... + B_{n+m}$. This sum is binomally distributed with parameters $n+m, p$.
+    
+\end{enumerate}
+
+\section{Problems from Chapter 4}
+
+\begin{enumerate}
+    \setcounter{enumi}{4}
+    \item 
+    
+    The tree will produce $N=n$ flowers following a binomial distribution with parameters $n$ and $p= \frac{1}{2}$.
+    \begin{enumerate}
+        \item 
+        
+        The probability that the tree will have $r$ ripe fruits is,\\
+        $\mathbb{P}(R=r) = \sum_{n=r}^\infty \mathbb{P}(N=n)\mathbb{P}(R=r\mid N=n)=\sum_{n=r}^\infty (1-p)p^n\binom{n}{r}\frac{1}{2^n}$\\
+        $\mathbb{P}_R(z) = \sum_{r=0}^\infty \mathbb{P}(R=r)z^r = \sum_{r=0}^\infty \sum_{n=r}^\infty\mathbb{P}(R=r\mid N=n)\mathbb{P}(N=n)z^r=\sum_{n=0}^\infty\mathbb{P}(N=n)\sum_{r=r}^n\mathbb{P}(R=r\mid N=n)\mathbb{P}(N=n)z^r=\sum_{n=0}^\infty\mathbb{P}(N=n)\mathbb{P}_{R\mid N=n}(z)=\sum_{n=0}^\infty(1-p)p^n(\frac{1+z}{2})^n=\frac{1-p}{1-p\frac{1+z}{2}}=\frac{2-2p}{2-p-pz}=\sum_{r=0}^\infty\frac{2-2p}{2-p}(\frac{p}{2-p})^rz^r$.\\
+        Therefore, $\mathbb{P}(R=r)=\frac{2-2p}{2-p}(\frac{p}{2-p})^r$
+        \item
+        
+        $\mathbb{P}(N=n\mid R=r)=\frac{\mathbb{P}(N=n, R=r)}{\mathbb{P}(R=r)}=\frac{\mathbb{P}(R=r\mid N=n)\mathbb{P}(N=n)}{\mathbb{P}(R=r)} = \frac{\binom{n}{r}2^{-n}(1-p)p^n}{\frac{2-2p}{2-p}(\frac{p}{2-p})^r}$
+        
+    \end{enumerate}
+    
+\end{enumerate}
+
+
+\end{document}

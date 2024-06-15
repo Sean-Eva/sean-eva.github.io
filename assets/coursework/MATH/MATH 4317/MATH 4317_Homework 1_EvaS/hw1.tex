@@ -1,0 +1,153 @@
+\documentclass[11pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Packages
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+%\usepackage{hyperref}
+%\usepackage{mathrsfs}
+%\usepackage{color}
+%\usepackage{bm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Header
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{MATH 4317 Homework 1}
+\author{Alex Blumenthal}
+\date{Due Friday, 1/21/2022 at 11PM to Gradescope}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%amsthm settings
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem{claim}{Claim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: mathbb
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\A}{\mathbb A}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\X}{\mathbb{X}}
+\newcommand{\Z}{\mathbb{Z}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%Custom commands: greek
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\a}{\alpha}
+\renewcommand{\b}{\beta}
+\newcommand{\g}{\gamma}
+\renewcommand{\d}{\delta}
+\newcommand{\e}{\epsilon}
+\renewcommand{\l}{\lambda}
+
+\begin{document}
+
+\noindent {\bf MATH 4317 Homework 1}  \hfill Due Friday, 1/21/2022 at 11PM to Gradescope
+
+\bigskip
+
+\noindent Homework guidelines: 
+\begin{itemize}
+\item Each problem I assign, unless otherwise stated, is asking you to prove something. Give a full mathematical proof using only results from class or Wade.
+\item Submit a PDF or JPG to gradescope. The grader has $\sim 250$ proofs to grade:  please make his job easier by submitting each problem on a different page. 
+\item If you submit your homework in Latex, you get 2\% extra credit. 
+\end{itemize}
+
+\begin{problem}
+Prove the following directly from the field axioms (Postulate 1 in Section 1.2): For all $x \in \R$ and $n \in \N$, we have that
+\begin{align}\label{eq:geometricSeries}
+(x - 1) \cdot \left(  \sum_{k = 0}^{n-1} x^k \right) = (x^n - 1)
+\end{align}
+Explain each step, including uses of the distributive properties for addition and multiplication. You do not have to explain uses of the associative properties for addition and multiplication. 
+
+\emph{Hint: Use mathematical induction, see Section 1.4 in Wade or the notes from MATH 2106 on Canvas. Remember that you have to do two things: first, prove \eqref{eq:geometricSeries} at $n = 1$, then show that \eqref{eq:geometricSeries} for some $n$ implies \eqref{eq:geometricSeries} holds for $n + 1$. }
+\end{problem}
+
+Let us first consider when $n=1.$ Then $(x-1)*(\sum_{k=0}^{1-1}x^k) = (x-1)(1)$ by the definition of the problem statement. Then by the additive identity we know then that $(x-1)(1) = (x-1)$ which then implies that $(x-1) = (x^1-1)$ which means the statement is true for $n=1.$ So we will then assume that this statement is true for $n=j.$ That is to say that we know that $(x-1)(\sum_{k=0}^{j-1}x^k) = (x^k-1).$ We now want to show it works for $n=j+1$. That is to say that we want to show $(x-1)(\sum_{k=0}^{j+1-1}x^k) = (x^{j+1}-1)$. We could then say by the distributive law $(x-1)(\sum_{k=0}^{j-1}x^k+x^j) = (x-1)(\sum_{k=0}^{j-1}x^k)+(x-1)(x^j) = (x^j-1)+(x-1)(x^j)$. Then we could again invoke the distributive law to say $(x^j-1)+(x^{j+1}-x^j) = x^{j+1}-1$ which is what we wanted to show. Then we know it is then true that $(x-1)(\sum_{k=0}^{n-1}x^k) = (x^n-1)$ by induction.
+
+\pagebreak
+
+\begin{problem}
+Write the set
+\[
+E = \{ \cdots, -3, 1, 5, 9, 13, \cdots\}
+\]
+of integers equal to 1 modulo 4 in set-builder notation. You do not have to prove your answer. 
+\end{problem}
+
+$E = \{x\in \mathbb{Z}: x\equiv 1(\mod{4})\}$ or alternatively, $E= \{x\in \mathbb{Z}: 4|x+3\}$.
+
+\pagebreak
+
+\begin{problem}
+Let $X, Y$ be sets. 
+\begin{itemize}
+\item[(a)] Show that if $f : X \to Y$ is one-to-one, then $f(A \cap B) = f(A) \cap f(B)$ for all sets $A, B \subset X$. 
+\item[(b)] Is the assertion in (a) true if we drop the assumption that $f : X \to Y$ is one-to-one? If yes, give a proof, and if no, give a counterexample. 
+\end{itemize}
+\end{problem}
+
+\begin{itemize}
+    \item[(a)]
+    Since $A\cap B\subset A$ we then know that $f(A\cap B)\subset f(A)$; similarly, $A\cap B\subset B$ we know that $f(A\cap B)\subset f(B)$. From this we then get $f(A\cap B)\subset f(A)\cap f(B)$. We then want to show that $f(A)\cap f(B)\subset f(A\cap B)$. Let $x\in f(A)\cap f(B)$, then we know that $x\in f(A)$ and $x\in f(B)$. Since $y\in f(A)$ and $y\in f(B)$, then there exists $a\in A$ such that $y=f(a)$ and $b\in B$ such that $y=f(b)$. Therefore, $y=f(a)=f(b)$ implies that $f(a)=f(b)$ and since $f$ is one to one we know that $a=b.$ Let us then define $x=a=b$ and then $x\in A$ and $x\in B$ such that $y=f(x)$. Then $x\in A\cap B$ and $f(x)\in f(A\cap B)$ then $y\in f(A\cap B).$ Therefore, $f(A)\cap f(B)\subset f(A\cap B)$. Since $f(A\cap B)\subset f(A)\cap f(B)$ and $f(A)\cap f(B)\subset f(A\cap B)$ we know then that $f(A\cap B)= f(A)\cap f(B).$
+    
+    \item[(b)]
+    Let us define $A = \{1, 2\}$ and $B= \{2, 3\}$ such that $f(1)=4, f(2)=5, f(3)=4$. Then $f(A\cap B) = f(\{2\}) = \{5\}$, but $f(A) = \{4, 5\}$ and $f(B) = \{4, 5\}$ and therefore, $f(A)\cap f(B) = \{4, 5\}$. Under this example $f(A\cap B) \neq f(A)\cap f(B)$.
+    
+\end{itemize}
+\pagebreak
+
+For the next problem: If $E$ is a finite set, then the cardinality $|E|$ is defined to be the number of elements in $E$.
+\begin{problem}
+Let $n \in \N$ and let $f : \{ 1,2,\cdots, n\} \to \{ 1,2,\cdots, n\}$ be a function. 
+Prove that $f$ is one-to-one if and only if $f$ is onto. 
+
+For this problem, you may use the following freely:
+\begin{itemize}
+\item[(a)] If $X, Y$ are finite sets and $f : X \to Y$, then $f$ is one-to-one if and only if $| f(X) | = |X|$. 
+\item[(b)] If $A, B$ are finite sets and $A \subset B$, then $|A| = |B|$ if and only if $A = B$. 
+\end{itemize}
+\end{problem}
+
+First let us assume that the function $f$ is onto. That is to say that for every element $x'$ in the codomain of $f$ there is an element $x$ in the domain of $f$ such that $f(x) = x'$. Given that the codomain and the domain of $f$ are defined the same we can conclude that they are equal and then by condition $(b)$ we are able to conclude that they have equal cardinality. This then implies that the range of $f$ is also equal to the codomain of $f$ and then by using condition $(a)$ we know then that $f$ is one-to-one. Therefore, if $f$ is onto then it is also one-to-one. Alternatively, if $f$ is one-to-one, that is to say that for $a,b$ is the domain of $f$ if $f(a)=f(b)$ then we know that $a=b.$ From condition $(a)$ we know that the cardinality of the domain and the range are equal. However, since we know that $f$ is one-to-one we know that each $a$ in the domain of $f$ has a mapping in the codomain of $f$ or else there would be two elements in the domain of $f$ that are equal and as defined this is not the case. Therefore, we know that the cardinality of the range of $f$ is $n$ which the cardinality of the codomain of $f$ which implies that the codomain is equal to the range. Therefore, this then shows that each element of the codomain of $f$ has an element in the domain of $f$ that maps to it meaning then that if $f$ is one-to-one then it is also onto. Therefore $f$ is one-to-one if and only if $f$ is onto.
+
+\pagebreak
+
+For the last problem: If $A, B$ are (possibly infinite) sets, we say that \emph{the cardinality of $A$ equals the cardinality of $B$}, written $|A| = |B|$ for short, if there is a one-to-one and onto mapping $f : A \to B$. We say that a set $A$ is countable if $|A| = |\Z|$. 
+
+\begin{problem}
+Let $A = \{ 2 k + 1 : k \in \Z\}$ be the set of odd integers. Prove that $A$ is countable. 
+\end{problem}
+
+In order to show that $A$ is countable, we want to show that $|A|=|\mathbb{Z}|$ and order to do this we need to construct a function $f:A \rightarrow \mathbb{Z}$ that is both one-to-one and onto. We will define this function as $f(x) = \frac{x-1}{2}$. Let us say that there exists $a,b\in A$ such that $f(a)=f(b)$ this implies that $\frac{a-1}{2} = \frac{b-1}{2}$, which we can rearrange to show then that $a=b$ and $f$ is therefore, one-to-one. Now we will assume that there is a $z\in \mathbb{Z}$, we will consider the element $y=2z+1\in A$, we can then take $f(y)=\frac{(2z+1)-1}{2} = z$ which implies that $f$ is onto. Since $f$ is one-to-one and onto we can then conclude that $|A|=|\mathbb{Z}|$ and then that $A$ is countable.
+
+\end{document}
+

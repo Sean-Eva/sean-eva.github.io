@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathcomp}
+\usepackage{amsmath}
+\usepackage{natbib}
+
+\newtheorem{ishaan}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\renewcommand\qedsymbol{$\blacksquare$}
+
+\title{Homework 1}
+\author{Sean Eva}
+\date{January 25, 2021}
+
+\begin{document}
+
+\maketitle
+
+\begin{enumerate}
+    \item Let $Ax = b$ be a linear system with real coefficients such that $A$ is an $m \times n$ matrix and $Ax = b$ has a unique solution.
+    What can you say about $m, n$?
+    Explain how to pick a subsystem of $n$ equations in $Ax = b$ such that the two systems have the same solutions.
+    (Just present a correct algorithm; you don’t have to prove that the algorithm works).\\
+    
+    In this situation, $m$ is the number of equations that are present in the linear system and $n$ is the number of unknowns the equations have. For example, if $A$ has dimensions $3 \times 4$, then the system would contain $3$ equations in $4$ unknowns.\\
+    In order to come up with a pair of systems that will produce the same solutions, you simply need to put the matrix A into Row Echelon Form, then take the equations whose rows contain the pivots. There should be n equations given that the system as a unique solution. Use exclusively these equations to form an $n\times n$ matrix that would have the same solution.\\
+    
+    \item Read the essay on floating point arithmetic in Appendix A (in the course notes to be found in Canvas) and write a paragraph (under 50 words) on why round-off errors are inevitable in the floating point arithmetic.\\
+    
+    In floating point arithmetic, the rewritten number can only have a certain degree of precision. If a number contains more information that extends beyond the degree of precision, that information will be lost. This means that round-off errors are inevitable because it will almost always lose information.\\
+    
+    \item Read the essay on row reduction with partial pivoting in Appendix D and fill details in the claim that the equation $-9999x_2 = -9998$ can be written as $-(.1) \times 10^5x_2 = -(.1) \times 10^5$.\\
+    
+    Through the use of rounded arithmetic, we can estimate the values of $-9999x_2 = -9998$ to be of base $10$, precision $3$, and exponent range $[-16, 16]$. Rounded arithmetic desires for numbers to be written in the form $\pm 0.d_1d_2d...d_t\times \beta^e$ for $d_1, d_2, ..., d_t$ being non-negative integers between $0$ and $9$ where $d_1\neq 0$ and $e$ is an integer between a defined exponent range. This allows for the original equation to be written as $-(0.1)\times 10^5 x_2 = -(0.1)\times 10^5$.\\
+    
+    \item The MATLAB command $hilb(n)$ calls the $n \times n$ Hilbert matrix that is famously illconditioned.
+    Let’s play with it a bit.
+    Find the smallest $n$ such that $inv(hilb(n))-invhilb(n)$ has an entry with absolute value at least $1$.
+    Here $inv(hilb(n))$ is the numerical inverse of $hilb(n)$ and $invhilb(n)$ is the exact inverse.
+    Discuss what this has to do with errors in solving numerically the linear system $Ax = b$ where $A = hilb(n)$ and $b$ is a column of the identity matrix.\\
+    
+    Given that there was a difference between $inv(hilb(n))$ and $invhilb(n)$, that means that there is an amount of error that occurs during the calculation process, depending on which inverse you find.\\
+    
+    \item Let A be a real matrix such that the linear system Ax = 0 has a nonzero complex solution. Show that it has a nonzero real solution.\\
+    
+    \begin{proof}
+    Suppose for the sake of contradiction that the real matrix $A$ does not have real solutions to the linear system $Ax=0$. However, we know the system has a solution matrix $x$ that has a nonzero complex solution. If this is the only solution, that means that there must be a complex component of matrix $A$ in order for the product of complex numbers to result in 0. That is a contradiction with the definition of matrix $A$ in that the matrix is real.
+    \end{proof}
+    
+\end{enumerate}
+
+\end{document}
