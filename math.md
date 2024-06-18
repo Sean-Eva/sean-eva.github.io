@@ -5,11 +5,13 @@ permalink: /math/
 classes: wide
 author_profile: true
 ---
-This page is where I will be documenting my coursework for the various math courses I took during my time during Georgia Tech. While this isn't an exhaustive list of all the courses I took, these are some of my favorites and would like to present my work.
+This page is where I will be documenting my coursework for the various math courses I took during my time at Georgia Tech. While this isn't an exhaustive list of all the courses I took, these are some of my favorites and would like to present my work.
 
 The coursework found here is the most up to date version that I had submitted to my professors during my time. I do not claim that all the solutions that are found here are 100% accurate. In fact, I know that there are some incorrect solutions here, but I present them "as is," as a completed body of work. While there are incorrect solutions here, I endeavor to, overtime, go back and fix the mistakes I made now that I have a better understanding of the topics.
 
 Additionally, after the coursework presentations, I will list any additional reading or work that I have done that I wish to present.
+
+Currently, my interests are in Partial Differential Equations and their applications. I also have interests in learning more about Topology and Dynamical Systems.
 
 # Coursework
 ## MATH 3235: Probability Theory

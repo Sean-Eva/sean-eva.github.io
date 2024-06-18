@@ -6,6 +6,14 @@ classes: wide
 author_profile: true
 ---
 
+This page is where I will be documenting my coursework for the various physics courses I took during my time at Georgia Tech. While this isn't an exhaustive list of all the courses I took, these are some of my favorites and would like to present my work.
+
+The coursework found here is the most up to date version that I had submitted to my professors during my time. I do not claim that all the solutions that are found here are 100% accurate. In fact, I know that there are some incorrect solutions here, but I present them "as is," as a completed body of work. While there are incorrect solutions here, I endeavor to, overtime, go back and fix the mistakes I made now that I have a better understanding of the topics.
+
+Additionally, after the coursework presentations, I will list any additional reading or work that I have done that I wish to present.
+
+Currently, my interests are in astrophysics and stellar bodies. I am particularly interested in black-body radiation stellar phenomena such as dual-body systems.
+
 ## PHYS 3021: Stellar Astrophysics
 Course Description: Develops a working knowledge of stellar and extra-stellar galactic astronomy. Includes stellar structure, nucleosynthesis, stellar evolution, and degenerate objects.
 
