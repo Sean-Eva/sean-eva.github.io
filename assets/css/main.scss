@@ -7,3 +7,22 @@ search: false
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+
+// Add this to the end of your main.scss file
+
+.masthead {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #141010; /* Adjust as needed */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Adds a slight shadow for better visibility */
+    padding: 8px 0; /* Adjust as needed for spacing */
+  }
+  
+  .masthead__inner-wrap {
+    max-width: 1200px; /* Adjust based on your layout */
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
