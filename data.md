@@ -15,6 +15,7 @@ Currently, my interests are in neural networks and their applications.
 Course Description: Gain an immersive understanding of the practices and processes used by a junior or associate data analyst in their day-to-day job. Learn key analytical skills (data cleaning, analysis, & visualization) and tools (spreadsheets, SQL, R programming, Tableau). Understand how to clean and organize data for analysis, and complete analysis and calculations using spreadsheets, SQL and R programming. Learn how to visualize and present data findings in dashboards, presentations and commonly used visualization platforms.
 
 [*LINK*](https://www.credly.com/badges/8538caa1-482a-4880-8cce-53335a5b2556/public_url){:target="_blank"} to view certificate award on Credly.
+
 [*LINK*](https://www.coursera.org/professional-certificates/google-data-analytics){:target="_blank"} to course website.
 ## Covid Project 1
 This project is focused on exercising abilities to query in SQL on a covid dataset from ourworldindata.org. The main focus was to learn some information about the Covid-19 virus and infection rate from the dataset.
